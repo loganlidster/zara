@@ -3,7 +3,7 @@ import './SimulationForm.css'
 
 const SYMBOLS = ['RIOT', 'MARA', 'CLSK', 'HUT', 'BTDR', 'CORZ', 'CIFR', 'CAN', 'HIVE']
 const METHODS = ['EQUAL_MEAN', 'WEIGHTED_MEDIAN', 'VOL_WEIGHTED', 'WINSORIZED', 'VWAP_RATIO']
-const SESSIONS = ['RTH', 'AH']
+const SESSIONS = ['ALL', 'RTH', 'AH']
 
 function SimulationForm({ onSubmit, loading }) {
   const [params, setParams] = useState({
@@ -14,7 +14,7 @@ function SimulationForm({ onSubmit, loading }) {
     method: 'EQUAL_MEAN',
     buyPct: 0.5,
     sellPct: 1.1,
-    session: 'RTH',
+    session: 'ALL',
     rthMethod: 'EQUAL_MEAN',
     rthBuyPct: 0.5,
     rthSellPct: 1.1,

@@ -1,0 +1,162 @@
+[
+  {
+    "textPayload": "Simulation error: Error: connect ETIMEDOUT 34.41.97.179:5432",
+    "insertId": "68fe4d3c000b5ca9d02ecdd7",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00007-8l2",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744617Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  },
+  {
+    "textPayload": "    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16) {",
+    "insertId": "68fe4d3c000b5cc387900456",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00007-8l2",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744643Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  },
+  {
+    "textPayload": "  errno: -110,",
+    "insertId": "68fe4d3c000b5cc9236d6ae2",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00007-8l2",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744649Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  },
+  {
+    "textPayload": "  code: 'ETIMEDOUT',",
+    "insertId": "68fe4d3c000b5ccd1263e90d",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00007-8l2"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744653Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  },
+  {
+    "textPayload": "  syscall: 'connect',",
+    "insertId": "68fe4d3c000b5cd14d345a1c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00007-8l2",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744657Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  },
+  {
+    "textPayload": "  address: '34.41.97.179',",
+    "insertId": "68fe4d3c000b5cd58afc4b38",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00007-8l2"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744661Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  },
+  {
+    "textPayload": "  port: 5432",
+    "insertId": "68fe4d3c000b5cd9696fbce1",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00007-8l2",
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744665Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  },
+  {
+    "textPayload": "}",
+    "insertId": "68fe4d3c000b5cde322347d3",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00007-8l2",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-26T16:33:00.744670Z",
+    "labels": {
+      "instanceId": "00147782967d3a7bcf84948ed1187cda70d0a05d2a9972ef1618cc80efae66788fc714f9a1e55d7c401032613f05162d56ccc95499fbf87c95c539ee92f29041cbc7597bfe042b4e86ccd41b3e5e"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-26T16:33:00.750249295Z"
+  }
+]

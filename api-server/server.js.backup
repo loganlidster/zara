@@ -11,15 +11,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// FIXED: Add proper CORS configuration for Firebase hosting
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://tradiac-testing-66f6e.web.app',
-    'https://tradiac-testing-66f6e.firebaseapp.com'
-  ],
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
 // Database configuration
@@ -59,12 +51,6 @@ app.post('/api/simulate', async (req, res) => {
   try {
     await client.connect();
 
-    // FIXED: Support 'ALL' session - don't filter by session if 'ALL' is selected
-    const sessionFilter = session === 'ALL' ? '' : 'AND s.session = $5';
-    const queryParams = session === 'ALL' 
-      ? [method, symbol, startDate, endDate]
-      : [method, symbol, startDate, endDate, session];
-
     // Query to get data with baselines
     const query = `
       SELECT 
@@ -88,12 +74,12 @@ app.post('/api/simulate', async (req, res) => {
       WHERE s.symbol = $2
         AND s.et_date >= $3
         AND s.et_date <= $4
-        ${sessionFilter}
+        AND s.session = $5
         AND tc.is_open = true
       ORDER BY s.bar_time ASC
     `;
 
-    const result = await client.query(query, queryParams);
+    const result = await client.query(query, [method, symbol, startDate, endDate, session]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'No data found for the specified parameters' });
@@ -366,20 +352,16 @@ app.post('/api/simulate', async (req, res) => {
   }
 });
 
-// Batch simulate endpoint
-app.post('/api/batch-simulate', batchSimulate);
-
-// Batch daily endpoint
-app.post('/api/batch-daily', batchDaily);
-
-// Fast daily endpoint
-app.post('/api/fast-daily', handleFastDaily);
+  // Batch Grid Search endpoint
+  app.post('/api/batch-simulate', batchSimulate);
+  app.post('/api/batch-daily', batchDaily);
+  app.post('/api/fast-daily', handleFastDaily);
 
 // Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 API Server running on http://localhost:${PORT}`);
 });

@@ -1,0 +1,100 @@
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { Client } from 'pg';
+import { batchSimulate } from './batch-endpoint.js';
+import { batchDaily } from './batch-daily-endpoint.js';
+import { handleFastDaily } from './fast-daily-endpoint.js';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(cors());
+app.use(express.json());
+
+// Database configuration
+// Use Unix socket for Cloud Run, IP for local development
+const isCloudRun = process.env.K_SERVICE !== undefined;
+const dbConfig = {
+  host: isCloudRun 
+    ? `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME || 'tradiac-testing:us-central1:tradiac-testing-db'}`
+    : (process.env.DB_HOST || '34.41.97.179'),
+  port: isCloudRun ? undefined : parseInt(process.env.DB_PORT || '5432'),
+  database: process.env.DB_NAME || 'tradiac_testing',
+  user: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
+  ssl: isCloudRun ? false : { rejectUnauthorized: false }
+};
+
+// Simulation endpoint
+app.post('/api/simulate', async (req, res) => {
+  const {
+    symbol,
+    startDate,
+    endDate,
+    method,
+    buyPct,
+    sellPct,
+    session,
+    initialCapital,
+      allowShorts = false,
+      conservativePricing = true,
+      slippage = 0
+  } = req.body;
+
+  console.log('Running simulation:', { symbol, startDate, endDate, method, buyPct, sellPct, session });
+
+  const client = new Client(dbConfig);
+
+  try {
+    await client.connect();
+
+    // Query to get data with baselines
+    const query = `
+      SELECT 
+        s.et_date,
+        s.et_time,
+        s.bar_time,
+        s.close as stock_close,
+        b.close as btc_close,
+        bl.baseline,
+        s.session,
+        tc.prev_open_date,
+        (b.close / NULLIF(s.close, 0)) as current_ratio
+      FROM minute_stock s
+      INNER JOIN minute_btc b ON s.bar_time = b.bar_time
+      INNER JOIN trading_calendar tc ON s.et_date = tc.cal_date
+      INNER JOIN baseline_daily bl ON 
+        bl.symbol = s.symbol 
+        AND bl.trading_day = tc.prev_open_date
+        AND bl.session = s.session
+        AND bl.method = $1
+      WHERE s.symbol = $2
+        AND s.et_date >= $3
+        AND s.et_date <= $4
+        AND s.session = $5
+        AND tc.is_open = true
+      ORDER BY s.bar_time ASC
+    `;
+
+    const result = await client.query(query, [method, symbol, startDate, endDate, session]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'No data found for the specified parameters' });
+    }
+
+    // Run simulation
+    let cash = initialCapital;
+    let shares = 0;
+    let position = 'FLAT';
+    let trades = [];
+    let dailyPerformance = [];
+    let currentDay = null;
+    let dayStartEquity = initialCapital;
+    let dayTrades = 0;
+
+      // Track previous trade for delta calculations
+      let prevTradeValue = null;
+      let prevTradeBtcPrice = null;

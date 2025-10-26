@@ -1,0 +1,59 @@
+[
+  {
+    "insertId": "68fe4e5d000610724bd8c941",
+    "httpRequest": {
+      "requestMethod": "POST",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/simulate",
+      "requestSize": "1149",
+      "status": 500,
+      "responseSize": "317",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:4561:359c:e18c:d665",
+      "referer": "https://tradiac-testing-66f6e.web.app/",
+      "serverIp": "2600:1900:4245:200::",
+      "latency": "2.212597757s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00009-qhg",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-26T16:37:46.992030Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "00147782964c31df9445681111f85301666b05e2b83a7f45c67b934d42306cc25ebb11d333f66f3a229e594fa570a05276337952a57bf973fccf134e2edf72430b02f49095d6722164ad63826255"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/a1aa82faa4cc3a5064f79cc33bb4c74b",
+    "receiveTimestamp": "2025-10-26T16:37:49.402976313Z",
+    "spanId": "99fe4fc52d896044",
+    "traceSampled": true
+  },
+  {
+    "textPayload": "Internal error looking up Cloud SQL instance \"tradiac-testing:us-central1:tradiac-testing\"",
+    "insertId": "68fe4e5d0005e1954a18730f",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00009-qhg",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-26T16:37:49.385429Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "00147782964c31df9445681111f85301666b05e2b83a7f45c67b934d42306cc25ebb11d333f66f3a229e594fa570a05276337952a57bf973fccf134e2edf72430b02f49095d6722164ad63826255"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-10-26T16:37:49.673378669Z"
+  }
+]
