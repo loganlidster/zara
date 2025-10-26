@@ -1,36 +1,36 @@
 @echo off
+echo ========================================
+echo   TRADIAC Platform Launcher
+echo ========================================
 echo.
-echo ========================================
-echo   Starting TRADIAC Platform
-echo ========================================
+echo Starting API Server and Web UI...
 echo.
 
 REM Start API Server in new window
-echo Starting API Server (Port 3001)...
-start "TRADIAC API Server" cmd /k "cd /d %~dp0api-server && npm start"
+start "TRADIAC API Server" cmd /k "cd api-server && npm install && node server.js"
 
 REM Wait 3 seconds for API to start
-timeout /t 3 /nobreak >nul
+timeout /t 3 /nobreak > nul
 
-REM Start Frontend in new window
-echo Starting Frontend (Port 3000)...
-start "TRADIAC Frontend" cmd /k "cd /d %~dp0web-ui && npm run dev"
-
-REM Wait 2 seconds
-timeout /t 2 /nobreak >nul
-
-REM Open browser
-echo Opening browser...
-start http://localhost:3000
+REM Start Web UI in new window
+start "TRADIAC Web UI" cmd /k "cd web-ui && npm install && npm run dev"
 
 echo.
 echo ========================================
-echo   TRADIAC Platform Started!
+echo   TRADIAC is starting!
 echo ========================================
 echo.
 echo API Server: http://localhost:3001
-echo Frontend:   http://localhost:3000
+echo Web UI: http://localhost:3000
 echo.
-echo Press any key to exit this window...
-echo (The API and Frontend will keep running)
-pause >nul
+echo Press any key to open Web UI in browser...
+pause > nul
+
+REM Open browser
+start http://localhost:3000
+
+echo.
+echo Both servers are running in separate windows.
+echo Close those windows to stop the servers.
+echo.
+pause
