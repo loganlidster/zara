@@ -15,13 +15,17 @@ app.use(cors());
 app.use(express.json());
 
 // Database configuration
+// Use Unix socket for Cloud Run, IP for local development
+const isCloudRun = process.env.K_SERVICE !== undefined;
 const dbConfig = {
-  host: process.env.DB_HOST || '34.41.97.179',
-  port: parseInt(process.env.DB_PORT || '5432'),
+  host: isCloudRun 
+    ? `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME || 'tradiac-testing:us-central1:tradiac-testing'}`
+    : (process.env.DB_HOST || '34.41.97.179'),
+  port: isCloudRun ? undefined : parseInt(process.env.DB_PORT || '5432'),
   database: process.env.DB_NAME || 'tradiac_testing',
   user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD,
-  ssl: { rejectUnauthorized: false }
+  password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
+  ssl: isCloudRun ? false : { rejectUnauthorized: false }
 };
 
 // Simulation endpoint
