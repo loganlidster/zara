@@ -69,9 +69,17 @@ async function recalculateBaselines(startDate, endDate) {
     console.log('✅ Cleared\n');
     
     let totalBaselines = 0;
+    let processedCount = 0;
     
     for (const date of tradingDays) {
       console.log(`📊 Processing ${date}...`);
+      
+      // Keepalive ping every 50 dates to prevent timeout
+      processedCount++;
+      if (processedCount % 50 === 0) {
+        await client.query('SELECT 1');
+        console.log('  🔄 Keepalive ping sent');
+      }
       
       const baselines = [];
       
