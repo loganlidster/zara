@@ -1,0 +1,14 @@
+{
+  "name": "tradiac-processor",
+  "version": "1.0.0",
+  "description": "TRADIAC Nightly Processor for Pre-computation",
+  "type": "module",
+  "main": "nightly-processor.js",
+  "scripts": {
+    "test": "node test-processor.js",
+    "process": "node nightly-processor.js"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.env
+.DS_Store
+outputs/
+summarized_conversations/
+*.csv
+*.sql
+INSERT_BASELINES.sql

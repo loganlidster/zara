@@ -1,0 +1,974 @@
+[
+  {
+    "table_name": "baseline_daily",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "symbol",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "session",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "trading_day",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "method",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "baseline",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "sample_count",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "min_ratio",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "max_ratio",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "std_dev",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "baseline_daily",
+    "column_name": "calculated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "id",
+    "data_type": "bigint",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "bar_time",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "et_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "et_time",
+    "data_type": "time without time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "open",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "high",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "low",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "close",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "volume",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "vwap",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "trades",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "session",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "source",
+    "data_type": "character varying",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_btc",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "id",
+    "data_type": "bigint",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "symbol",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "bar_time",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "et_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "et_time",
+    "data_type": "time without time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "open",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "high",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "low",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "close",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "volume",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "vwap",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "trades",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "session",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "source",
+    "data_type": "character varying",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "minute_stock",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "symbol",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "baseline_method",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "buy_threshold_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "sell_threshold_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "entry_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "entry_time",
+    "data_type": "time without time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "entry_session",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "entry_price",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "entry_baseline",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "exit_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "exit_time",
+    "data_type": "time without time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "exit_session",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "exit_price",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "exit_baseline",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "position_type",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "shares",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "trade_return_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "trade_return_dollars",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "stock_delta_pct",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "btc_delta_pct",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "precomputed_trades",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "run_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "start_time",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "end_time",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "combinations_processed",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "trades_created",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "states_updated",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "status",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "error_message",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "processing_log",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "id",
+    "data_type": "bigint",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "run_id",
+    "data_type": "uuid",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "trading_day",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "day_start_value",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "day_end_value",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "day_return",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "day_return_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "shares_held",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "cash_balance",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "trades_today",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "buys_today",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "sells_today",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "cumulative_return",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "cumulative_return_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "peak_value",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "drawdown",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_performance",
+    "column_name": "drawdown_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "run_id",
+    "data_type": "uuid",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "user_id",
+    "data_type": "character varying",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "symbol",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "start_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "end_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "baseline_method",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "buy_threshold",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "sell_threshold",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "session",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "initial_capital",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "total_return",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "total_return_pct",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "sharpe_ratio",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "max_drawdown",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "max_drawdown_pct",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "win_rate",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "total_trades",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "winning_trades",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "losing_trades",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "avg_trade_return",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "avg_win",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "avg_loss",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "best_trade",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "worst_trade",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "final_portfolio_value",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "execution_time_ms",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_runs",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "symbol",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "baseline_method",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "buy_threshold_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "sell_threshold_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "has_position",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "position_type",
+    "data_type": "character varying",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "entry_date",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "entry_time",
+    "data_type": "time without time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "entry_session",
+    "data_type": "character varying",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "entry_price",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "entry_baseline",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "shares",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "last_processed_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "last_processed_time",
+    "data_type": "time without time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "trade_id",
+    "data_type": "bigint",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "run_id",
+    "data_type": "uuid",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "trade_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "trade_time",
+    "data_type": "time without time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "bar_time",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "action",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "shares",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "price",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "btc_price",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "stock_price",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "current_ratio",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "baseline",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "deviation_pct",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "position_before",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "position_after",
+    "data_type": "integer",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "cash_before",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "cash_after",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "portfolio_value",
+    "data_type": "numeric",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "trade_return",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "simulation_trades",
+    "column_name": "trade_return_pct",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "cal_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "day_of_week",
+    "data_type": "character varying",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "is_open",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "session_open_et",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "session_close_et",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "prev_open_date",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "next_open_date",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "notes",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "trading_calendar",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  }
+]

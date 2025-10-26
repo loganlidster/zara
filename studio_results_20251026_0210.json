@@ -1,0 +1,14 @@
+[
+  {
+    "table_name": "precomputed_trades",
+    "column_count": "22"
+  },
+  {
+    "table_name": "processing_log",
+    "column_count": "10"
+  },
+  {
+    "table_name": "simulation_state",
+    "column_count": "16"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "name": "tradiac-simulation-engine",
+  "version": "1.0.0",
+  "description": "Trading simulation engine for TRADIAC platform",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node src/index.js BTDR 2025-09-24 2025-09-24 EQUAL_MEAN 0.5 1.1 RTH 10000"
+  },
+  "dependencies": {
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1"
+  }
+}

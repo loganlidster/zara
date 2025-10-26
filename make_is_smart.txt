@@ -1,0 +1,1 @@
+make is smart.docx is not a Word Document. It seems to be a ZIP file, so is probably an OpenDocument file, or a "docx" file from MS Word 2007 or newer (antiword only handles binary format documents from MS Word 2003 and earlier)

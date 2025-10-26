@@ -1,0 +1,17 @@
+{
+  "name": "tradiac-data-pipeline",
+  "version": "1.0.0",
+  "description": "Data pipeline for TRADIAC - fetches and processes market data",
+  "type": "module",
+  "scripts": {
+    "detect-gaps": "node gap-detector.js",
+    "fetch": "node fetch-polygon.js",
+    "calculate-baselines": "node calculate-baselines.js",
+    "verify": "node verify-baselines.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "csv-parse": "^6.1.0",
+    "pg": "^8.11.3"
+  }
+}
