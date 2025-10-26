@@ -234,6 +234,9 @@ export async function handleFastDaily(req, res) {
       sessionType
     });
     
+    console.log('Symbols:', symbols);
+    console.log('Methods:', methods);
+    
     // Generate threshold arrays
     const buyThresholds = [];
     for (let i = buyThresholdMin; i <= buyThresholdMax; i += 0.1) {
@@ -262,6 +265,11 @@ export async function handleFastDaily(req, res) {
             
             if (result) {
               results.push(result);
+              console.log(`  Found result: ${symbol} ${method} ${buyThreshold}/${sellThreshold} = ${result.totalReturn.toFixed(2)}%`);
+            } else {
+              if (processed === 1) {
+                console.log(`  No result for first combo: ${symbol} ${method} ${buyThreshold}/${sellThreshold}`);
+              }
             }
             
             processed++;
