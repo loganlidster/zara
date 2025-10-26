@@ -3,6 +3,7 @@ import SimulationForm from './components/SimulationForm'
 import ResultsDisplay from './components/ResultsDisplay'
 import BatchGridSearch from './pages/BatchGridSearch/BatchGridSearch'
 import BatchDaily from './pages/BatchDaily/BatchDaily'
+import FastDaily from './pages/FastDaily/FastDaily'
 import './App.css'
 
 function App() {
@@ -63,6 +64,12 @@ function App() {
           >
             📅 Batch Daily
           </button>
+          <button 
+            className={activeTab === 'fast-daily' ? 'active' : ''}
+            onClick={() => setActiveTab('fast-daily')}
+          >
+            ⚡ Fast Daily
+          </button>
         </nav>
       </header>
 
@@ -90,6 +97,10 @@ function App() {
 
         {activeTab === 'batch-daily' && (
           <BatchDaily />
+        )}
+
+        {activeTab === 'fast-daily' && (
+          <FastDaily />
         )}
       </main>
 

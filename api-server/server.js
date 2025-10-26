@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { Client } from 'pg';
 import { batchSimulate } from './batch-endpoint.js';
 import { batchDaily } from './batch-daily-endpoint.js';
+import { handleFastDaily } from './fast-daily-endpoint.js';
 
 dotenv.config();
 
@@ -350,6 +351,7 @@ app.post('/api/simulate', async (req, res) => {
   // Batch Grid Search endpoint
   app.post('/api/batch-simulate', batchSimulate);
   app.post('/api/batch-daily', batchDaily);
+  app.post('/api/fast-daily', handleFastDaily);
 
 // Health check
 app.get('/api/health', (req, res) => {
