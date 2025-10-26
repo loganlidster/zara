@@ -218,7 +218,7 @@ export async function batchDaily(req, res) {
         
         // Fetch minute data for previous days
         const prevDataResult = await client.query(`
-          SELECT ms.stock_c, ms.stock_v, mb.close as btc_c, mb.volume as btc_v
+          SELECT ms.close as stock_c, ms.volume as stock_v, mb.close as btc_c, mb.volume as btc_v
           FROM minute_stock ms
           JOIN minute_btc mb ON ms.et_date = mb.et_date AND ms.et_time = mb.et_time
           WHERE ms.symbol = $1
@@ -229,7 +229,7 @@ export async function batchDaily(req, res) {
         
         // Fetch minute data for current day
         const currentDataResult = await client.query(`
-          SELECT ms.stock_c, ms.stock_v, mb.close as btc_c, mb.volume as btc_v
+          SELECT ms.close as stock_c, ms.volume as stock_v, mb.close as btc_c, mb.volume as btc_v
           FROM minute_stock ms
           JOIN minute_btc mb ON ms.et_date = mb.et_date AND ms.et_time = mb.et_time
           WHERE ms.symbol = $1
