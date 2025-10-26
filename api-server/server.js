@@ -19,7 +19,7 @@ app.use(express.json());
 const isCloudRun = process.env.K_SERVICE !== undefined;
 const dbConfig = {
   host: isCloudRun 
-    ? `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME || 'tradiac-testing:us-central1:tradiac-testing'}`
+    ? `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME || 'tradiac-testing:us-central1:tradiac-testing-db'}`
     : (process.env.DB_HOST || '34.41.97.179'),
   port: isCloudRun ? undefined : parseInt(process.env.DB_PORT || '5432'),
   database: process.env.DB_NAME || 'tradiac_testing',
