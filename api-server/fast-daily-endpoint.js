@@ -2,16 +2,22 @@ import pg from 'pg';
 
 const { Pool } = pg;
 
+// Use Unix socket for Cloud Run, IP for local development
+const isCloudRun = process.env.K_SERVICE !== undefined;
 const pool = new Pool({
-  host: process.env.DB_HOST || '34.41.97.179',
-  port: process.env.DB_PORT || 5432,
+  host: isCloudRun 
+    ? `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME || 'tradiac-testing:us-central1:tradiac-testing-db'}`
+    : (process.env.DB_HOST || '34.41.97.179'),
+  port: isCloudRun ? undefined : (process.env.DB_PORT || 5432),
   database: process.env.DB_NAME || 'tradiac_testing',
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
-  ssl: false,
-  max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 10000,
+  ssl: isCloudRun ? false : { rejectUnauthorized: false },
+  max: 50,
+  idleTimeoutMillis: 60000,
+  connectionTimeoutMillis: 60000,
+  statement_timeout: 120000,
+  query_timeout: 120000,
 });
 
 // Session time ranges
