@@ -223,7 +223,7 @@ export async function batchDaily(req, res) {
           JOIN minute_btc mb ON ms.et_date = mb.et_date AND ms.et_time = mb.et_time
           WHERE ms.symbol = $1
           AND ms.et_date = ANY($2)
-          AND ms.session = 'RTH'
+          AND ms.et_time >= '09:30:00' AND ms.et_time < '16:00:00'
           ORDER BY ms.et_date, ms.et_time
         `, [symbol, prevDays]);
         
@@ -234,7 +234,7 @@ export async function batchDaily(req, res) {
           JOIN minute_btc mb ON ms.et_date = mb.et_date AND ms.et_time = mb.et_time
           WHERE ms.symbol = $1
           AND ms.et_date = $2
-          AND ms.session = 'RTH'
+          AND ms.et_time >= '09:30:00' AND ms.et_time < '16:00:00'
           ORDER BY ms.et_time
         `, [symbol, currentDay]);
         
