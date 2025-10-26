@@ -100,7 +100,8 @@ function BatchGridSearch() {
     setResults(null);
 
     try {
-      const response = await fetch('/api/batch-simulate', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API_URL}/api/batch-simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params)

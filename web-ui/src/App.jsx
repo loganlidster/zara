@@ -18,7 +18,8 @@ function App() {
     setResults(null)
 
     try {
-      const response = await fetch('/api/simulate', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API_URL}/api/simulate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

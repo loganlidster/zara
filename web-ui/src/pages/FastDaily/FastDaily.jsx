@@ -78,7 +78,7 @@ function FastDaily() {
     setResults(null);
     
     try {
-      const response = await fetch('http://localhost:3001/api/fast-daily', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/fast-daily`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
