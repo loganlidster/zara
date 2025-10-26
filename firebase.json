@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "web-ui/dist",
+    "site": "tradiac-testing-66f6e",
     "ignore": [
       "firebase.json",
       "**/.*",
