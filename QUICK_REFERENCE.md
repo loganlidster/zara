@@ -1,101 +1,92 @@
-# ⚡ QUICK REFERENCE CARD
+# 🎯 QUICK REFERENCE - What Changed & What To Do
 
-## 🎯 What You Need to Do Right Now
+## ⚡ THE FIX IN 30 SECONDS
 
-### 1️⃣ Import Trading Calendar (10 min)
-```powershell
-cd C:\Users\logan\OneDrive\Desktop\tradiac-live\tradiac-testing
-npm install pg
-node import_calendar.js
-```
-**Expected:** "✅ Trading calendar import complete!" with 1,828 rows
+**Problem:** System only processed RTH or AH, not both together (missing trades)
+
+**Solution:** Added "ALL" session option that processes entire trading day
+
+**Test:** HIVE 9/24-9/25, EQUAL_MEAN, 0.5/1.0, **ALL** session → Should show 5 trades, +4.6% ROI
 
 ---
 
-### 2️⃣ Deploy Fixed Simulator (5 min)
-```powershell
-cd simulation-engine
-npm install
-```
-**Expected:** Dependencies installed successfully
+## 🚀 WHAT TO DO RIGHT NOW
 
----
+```bash
+# 1. Pull latest code
+cd C:\Users\grant\OneDrive\Desktop\TRADIAC\zara
+git pull origin main
 
-### 3️⃣ Run Test Case (1 min)
-```powershell
-node src/index.js BTDR 2025-09-24 2025-09-24 EQUAL_MEAN 0.5 1.1 RTH 10000
-```
-**Expected:** 10.53% return, 6 trades
+# 2. Start API server (Terminal 1)
+cd api-server
+node server.js
 
----
+# 3. Start frontend (Terminal 2)
+cd web-ui
+npm start
 
-## 📁 Files to Download
+# 4. Test in browser: http://localhost:3000
+# Settings: HIVE, 9/24-9/25, EQUAL_MEAN, 0.5/1.0, ALL session
+# Expected: 5 trades, +4.6% ROI
 
-From this workspace:
-- `import_calendar.js`
-- `import_calendar.sql`
-- `simulation-engine/` (entire folder)
-- `STEP_BY_STEP_DEPLOYMENT.md`
-- `READY_TO_DEPLOY_PACKAGE.md`
-- `SESSION_SUMMARY.md`
+# 5. If test passes, deploy:
+cd api-server
+gcloud run deploy tradiac-api --source . --region us-central1
 
----
-
-## 🔍 What Changed
-
-**The Fix:**
-```javascript
-// BEFORE (WRONG):
-AND bl.trading_day = s.et_date
-
-// AFTER (CORRECT):
-INNER JOIN trading_calendar tc ON s.et_date = tc.cal_date
-AND bl.trading_day = tc.prev_open_date
+cd ../web-ui
+npm run build
+firebase deploy
 ```
 
-**Why:** Eliminates look-ahead bias by using previous trading day's baseline
+---
+
+## 📊 WHAT CHANGED
+
+### **Frontend:**
+- Dropdown now shows: **ALL**, RTH, AH (instead of just RTH, AH)
+- Default changed from RTH to **ALL**
+
+### **Backend:**
+- When session = 'ALL': Processes all bars (RTH + AH together)
+- When session = 'RTH': Only RTH bars
+- When session = 'AH': Only AH bars
+- Fixed CORS for Firebase hosting
 
 ---
 
-## ✅ Verification Checklist
+## ✅ WHAT'S FIXED
 
-- [ ] Calendar imported (1,828 rows)
-- [ ] Simulator runs without errors
-- [ ] Test returns 10.53% (±0.1%)
-- [ ] Test shows 6 trades
-- [ ] Trade log shows `prev_baseline_date`
+1. ✅ Single Simulation - Now processes full trading day
+2. ✅ CORS error - Batch Grid should work now
 
----
+## ⚠️ WHAT STILL NEEDS FIXING
 
-## 🚀 After Verification
-
-Tell me: "✅ All tests passed!"
-
-Then I'll build:
-1. Batch grid search runner (81,000+ simulations)
-2. Advanced analytics (correlation, regime detection)
-3. Web UI (React dashboard)
+1. ⚠️ Batch Grid - Needs same ALL session support
+2. ⚠️ Batch Daily - Needs same ALL session support  
+3. ⚠️ Fast Daily - Needs investigation
 
 ---
 
-## 📞 Need Help?
+## 📞 WHAT TO TELL ZARA
 
-Check these files:
-- **STEP_BY_STEP_DEPLOYMENT.md** - Detailed instructions
-- **READY_TO_DEPLOY_PACKAGE.md** - Technical details
-- **SESSION_SUMMARY.md** - Complete overview
+### **If it works:**
+"Zara, the fix works! HIVE shows 5 trades and +4.6% ROI. Deployed to production."
 
----
-
-## 💡 Key Points
-
-1. **Trading calendar is required** - Provides prev_open_date
-2. **Test case is critical** - Validates accuracy
-3. **10.53% return** - Must match exactly
-4. **6 trades** - Must match exactly
+### **If it doesn't work:**
+"Zara, still seeing [X] trades and [Y]% ROI. Screenshots attached."
 
 ---
 
-**Total Time: ~25 minutes to full verification** ⏱️
+## 🔑 KEY POINT
 
-**Let's do this!** 🔥
+**Your Python tool processes ALL sessions together in chronological order.**
+
+**Our old system only processed ONE session at a time.**
+
+**Now we match your Python tool exactly.** ✅
+
+---
+
+**That's it! Pull, test, deploy.** 🚀
+
+- Zara
