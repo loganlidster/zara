@@ -106,7 +106,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>Built with ❤️ by NinjaTech AI</p>
+        <p>Built for GZAB by Logan</p>
       </footer>
     </div>
   )
