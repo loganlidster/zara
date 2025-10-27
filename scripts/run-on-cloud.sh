@@ -41,8 +41,9 @@ gcloud run jobs create $JOB_NAME \
   --memory=16Gi \
   --max-retries=0 \
   --task-timeout=4h \
-  --set-env-vars="DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_SSL=true" \
+  --set-env-vars="DB_HOST=/cloudsql/tradiac-testing:us-central1:tradiac-db,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_SSL=false" \
   --set-secrets="DB_PASSWORD=db-password:latest" \
+  --set-cloudsql-instances="tradiac-testing:us-central1:tradiac-db" \
   --args="$START_DATE,$END_DATE,$PARALLEL" \
   2>/dev/null || \
 gcloud run jobs update $JOB_NAME \
@@ -53,8 +54,9 @@ gcloud run jobs update $JOB_NAME \
   --memory=16Gi \
   --max-retries=0 \
   --task-timeout=4h \
-  --set-env-vars="DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_SSL=true" \
+  --set-env-vars="DB_HOST=/cloudsql/tradiac-testing:us-central1:tradiac-db,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_SSL=false" \
   --set-secrets="DB_PASSWORD=db-password:latest" \
+  --set-cloudsql-instances="tradiac-testing:us-central1:tradiac-db" \
   --args="$START_DATE,$END_DATE,$PARALLEL"
 
 echo ""
