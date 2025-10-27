@@ -100,15 +100,14 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
   }
   
      // Get baselines for the PREVIOUS trading day (lagging baseline strategy)
-     // We use yesterday's baseline to trade today
+     // Use trading_calendar to get the correct previous trading day
      const baselineResult = await client.query(`
-       SELECT session, baseline
-       FROM baseline_daily
-       WHERE trading_day < $1
-         AND symbol = $2
-         AND method = $3
-       ORDER BY trading_day DESC
-       LIMIT 1
+       SELECT b.session, b.baseline
+       FROM trading_calendar tc
+       JOIN baseline_daily b ON b.trading_day = tc.prev_open_date
+       WHERE tc.cal_date = $1
+         AND b.symbol = $2
+         AND b.method = $3
      `, [date, symbol, method]);
   const baselines = {};
   for (const row of baselineResult.rows) {

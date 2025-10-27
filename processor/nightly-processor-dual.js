@@ -388,13 +388,12 @@ async function processDateRange(startDate, endDate) {
       `, [date]);
       
       // Load baselines for the PREVIOUS trading day (lagging baseline strategy)
-      // For each symbol/method/session, get the most recent baseline before this date
+      // Use trading_calendar to get the correct previous trading day
       const baselineResult = await client.query(`
-        SELECT DISTINCT ON (symbol, method, session) 
-          symbol, method, session, baseline
-        FROM baseline_daily
-        WHERE trading_day < $1
-        ORDER BY symbol, method, session, trading_day DESC
+        SELECT b.symbol, b.method, b.session, b.baseline
+        FROM trading_calendar tc
+        JOIN baseline_daily b ON b.trading_day = tc.prev_open_date
+        WHERE tc.cal_date = $1
       `, [date]);
       
       const baselineData = new Map();
