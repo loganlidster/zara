@@ -12,8 +12,11 @@
  * - Resumable and fault-tolerant
  */
 
-const { Pool } = require('pg');
-require('dotenv').config();
+import pg from 'pg';
+import dotenv from 'dotenv';
+
+const { Pool } = pg;
+dotenv.config();
 
 // Database connection
 const pool = new Pool({
@@ -359,7 +362,7 @@ async function processIncremental(targetDate) {
 }
 
 // CLI Interface
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   const args = process.argv.slice(2);
   
   if (args.length < 2) {
@@ -381,7 +384,7 @@ if (require.main === module) {
     });
 }
 
-module.exports = {
+export {
   processAll,
   processIncremental,
   processGroup
