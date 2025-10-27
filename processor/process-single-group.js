@@ -241,8 +241,8 @@ async function processGroup(symbol, method, session, startDate, endDate) {
       }
       
       processed++;
-      if (processed % 100 === 0) {
-        console.log(`Processed ${processed}/${COMBINATIONS.length} combinations`);
+      if (processed % 50 === 0 || processed === 1) {
+        console.log(`Processed ${processed}/${COMBINATIONS.length} combinations (${totalEvents} events so far)`);
       }
     }
 
