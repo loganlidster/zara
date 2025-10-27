@@ -159,7 +159,7 @@ async function insertResults(client, results) {
     const losingTrades = r.total_return_pct <= 0 ? 1 : 0;
     const winRate = r.total_trades > 0 ? (winningTrades / r.total_trades) * 100 : 0;
     
-    values.push(`($${paramIndex}, $${paramIndex+1}, $${paramIndex+2}, $${paramIndex+3}, $${paramIndex+4}, $${paramIndex+5}, $${paramIndex+6}, $${paramIndex+7}, $${paramIndex+8}, $${paramIndex+9}, $${paramIndex+10}, $${paramIndex+11})`);
+    values.push(`($${paramIndex}, $${paramIndex+1}, $${paramIndex+2}, $${paramIndex+3}, $${paramIndex+4}, $${paramIndex+5}, $${paramIndex+6}, $${paramIndex+7}, $${paramIndex+8}, $${paramIndex+9}, $${paramIndex+10}, $${paramIndex+11}, $${paramIndex+12})`);
     params.push(
       r.symbol, r.method, r.session, r.buy_pct, r.sell_pct,
       r.start_date, r.end_date, r.total_trades,
