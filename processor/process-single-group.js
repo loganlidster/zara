@@ -135,7 +135,7 @@ function simulateContinuous(minuteData, buyPct, sellPct) {
       const sellHour = sellEventDate.getHours();
       const sellMinute = sellEventDate.getMinutes();
       const sellTimeInMinutes = sellHour * 60 + sellMinute;
-      const sellSession = (sellTimeInMinutes >= 570 &amp;&amp; sellTimeInMinutes < 960) ? 'RTH' : 'AH';
+      const sellSession = (sellTimeInMinutes >= 570 && sellTimeInMinutes < 960) ? 'RTH' : 'AH';
       
       const lastBuyPrice = events.length > 0 ? events[events.length - 1].stock_price : stock_price;
       const tradeRoi = ((stock_price - lastBuyPrice) / lastBuyPrice) * 100;
