@@ -70,26 +70,23 @@ async function fetchMinuteData(symbol, method, session, startDate, endDate) {
 
     const query = `
       SELECT 
-        ms.timestamp,
+        ms.bar_time as timestamp,
         ms.close as stock_price,
         mb.close as btc_price,
         mb.close / ms.close as ratio,
         bd.baseline,
-        ms.is_rth
+        CASE WHEN ms.session = 'RTH' THEN true ELSE false END as is_rth
       FROM minute_stock ms
-      JOIN minute_btc mb ON ms.timestamp = mb.timestamp
+      JOIN minute_btc mb ON ms.bar_time = mb.bar_time
       JOIN baseline_daily bd ON 
         bd.symbol = ms.symbol 
         AND bd.method = $2
-        AND bd.trading_day = (
-          SELECT prev_open_date 
-          FROM trading_calendar 
-          WHERE open_date = ms.timestamp::date
-        )
+        AND bd.session = ms.session
+        AND bd.trading_day = ms.et_date
       WHERE ms.symbol = $1
-        AND ms.timestamp::date BETWEEN $3 AND $4
+        AND ms.et_date BETWEEN $3 AND $4
         ${sessionFilter}
-      ORDER BY ms.timestamp
+      ORDER BY ms.bar_time
     `;
 
     const result = await client.query(query, [symbol, method, startDate, endDate]);
