@@ -152,7 +152,7 @@ shares, trade_return_pct, trade_return_dollars, stock_delta_pct, btc_delta_pct
 5. For each sell% (0.1 to 3.0)
 6. Calculate all trades and insert into appropriate table
 
-**Total:** 9 symbols × 5 methods × 2 sessions × 900 combos = **81,000 combinations**
+**Total:** 11 symbols × 5 methods × 2 sessions × 900 combos = **99,000 combinations**
 
 ## API Endpoints
 
