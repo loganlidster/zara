@@ -169,6 +169,12 @@ async function insertResults(client, results) {
     paramIndex += 13;
   }
   
+  // First, delete existing records for this date range to avoid duplicates
+  await client.query(`
+    DELETE FROM precomputed_grid_summary
+    WHERE symbol = $1 AND method = $2 AND session = $3 AND start_date = $4
+  `, [results[0].symbol, results[0].method, results[0].session, results[0].start_date]);
+  
   const query = `
     INSERT INTO precomputed_grid_summary (
       symbol, method, session, buy_pct, sell_pct,
@@ -176,15 +182,6 @@ async function insertResults(client, results) {
       winning_trades, losing_trades, win_rate,
       total_return_pct, total_return_dollars
     ) VALUES ${values.join(', ')}
-    ON CONFLICT (symbol, method, session, buy_pct, sell_pct, start_date)
-    DO UPDATE SET
-      total_trades = EXCLUDED.total_trades,
-      winning_trades = EXCLUDED.winning_trades,
-      losing_trades = EXCLUDED.losing_trades,
-      win_rate = EXCLUDED.win_rate,
-      total_return_pct = EXCLUDED.total_return_pct,
-      total_return_dollars = EXCLUDED.total_return_dollars,
-      calculated_at = CURRENT_TIMESTAMP
   `;
   
   await client.query(query, params);
