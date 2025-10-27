@@ -361,28 +361,26 @@ async function processIncremental(targetDate) {
   console.log('Use processAll() for now to reprocess entire history');
 }
 
-// CLI Interface
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const args = process.argv.slice(2);
-  
-  if (args.length < 2) {
-    console.log('Usage: node event-based-processor.js <start_date> <end_date>');
-    console.log('Example: node event-based-processor.js 2024-01-01 2024-12-31');
-    process.exit(1);
-  }
+// CLI Interface - Always run when executed directly
+const args = process.argv.slice(2);
 
-  const [startDate, endDate] = args;
-
-  processAll(startDate, endDate)
-    .then(() => {
-      console.log('Processing completed successfully');
-      process.exit(0);
-    })
-    .catch(error => {
-      console.error('Processing failed:', error);
-      process.exit(1);
-    });
+if (args.length < 2) {
+  console.log('Usage: node event-based-processor.js <start_date> <end_date>');
+  console.log('Example: node event-based-processor.js 2024-01-01 2024-12-31');
+  process.exit(1);
 }
+
+const [startDate, endDate] = args;
+
+processAll(startDate, endDate)
+  .then(() => {
+    console.log('Processing completed successfully');
+    process.exit(0);
+  })
+  .catch(error => {
+    console.error('Processing failed:', error);
+    process.exit(1);
+  });
 
 export {
   processAll,
