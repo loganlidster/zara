@@ -158,15 +158,16 @@ async function insertResults(client, results) {
     const winningTrades = r.total_return_pct > 0 ? 1 : 0;
     const losingTrades = r.total_return_pct <= 0 ? 1 : 0;
     const winRate = r.total_trades > 0 ? (winningTrades / r.total_trades) * 100 : 0;
+    const avgTradeReturn = r.total_trades > 0 ? r.total_return_pct / r.total_trades : 0;
     
-    values.push(`($${paramIndex}, $${paramIndex+1}, $${paramIndex+2}, $${paramIndex+3}, $${paramIndex+4}, $${paramIndex+5}, $${paramIndex+6}, $${paramIndex+7}, $${paramIndex+8}, $${paramIndex+9}, $${paramIndex+10}, $${paramIndex+11}, $${paramIndex+12})`);
+    values.push(`($${paramIndex}, $${paramIndex+1}, $${paramIndex+2}, $${paramIndex+3}, $${paramIndex+4}, $${paramIndex+5}, $${paramIndex+6}, $${paramIndex+7}, $${paramIndex+8}, $${paramIndex+9}, $${paramIndex+10}, $${paramIndex+11}, $${paramIndex+12}, $${paramIndex+13})`);
     params.push(
       r.symbol, r.method, r.session, r.buy_pct, r.sell_pct,
       r.start_date, r.end_date, r.total_trades,
       winningTrades, losingTrades, winRate,
-      r.total_return_pct, r.total_return_dollars
+      r.total_return_pct, r.total_return_dollars, avgTradeReturn
     );
-    paramIndex += 13;
+    paramIndex += 14;
   }
   
   // First, delete existing records for this date range to avoid duplicates
@@ -180,7 +181,7 @@ async function insertResults(client, results) {
       symbol, method, session, buy_pct, sell_pct,
       start_date, end_date, total_trades,
       winning_trades, losing_trades, win_rate,
-      total_return_pct, total_return_dollars
+      total_return_pct, total_return_dollars, avg_trade_return_pct
     ) VALUES ${values.join(', ')}
   `;
   
