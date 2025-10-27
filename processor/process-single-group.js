@@ -47,10 +47,8 @@ const COMBINATIONS = generateCombinations();
 async function fetchMinuteData(symbol, method, session, startDate, endDate) {
   const client = await pool.connect();
   try {
-    // Session filter - RTH or AH only (no ALL)
-    const sessionFilter = session === 'RTH' 
-      ? "AND ms.session = 'RTH'" 
-      : "AND ms.session = 'AH'";
+    // No session filter - process all hours (04:00 - 20:00)
+    const sessionFilter = '';
 
     const query = `
       SELECT 
