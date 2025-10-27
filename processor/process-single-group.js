@@ -53,18 +53,30 @@ async function fetchMinuteData(symbol, method, session, startDate, endDate) {
     const query = `
       SELECT 
         ms.bar_time as timestamp,
+        ms.et_time,
         ms.close as stock_price,
         mb.close as btc_price,
         mb.close / ms.close as ratio,
-        bd.baseline,
+        ms.session as minute_session,
+        bd_rth.baseline as rth_baseline,
+        bd_ah.baseline as ah_baseline,
         CASE WHEN ms.session = 'RTH' THEN true ELSE false END as is_rth
       FROM minute_stock ms
       JOIN minute_btc mb ON ms.bar_time = mb.bar_time
-      JOIN baseline_daily bd ON 
-        bd.symbol = ms.symbol 
-        AND bd.method = $2
-        AND bd.session = ms.session
-        AND bd.trading_day = (
+      LEFT JOIN baseline_daily bd_rth ON 
+        bd_rth.symbol = ms.symbol 
+        AND bd_rth.method = $2
+        AND bd_rth.session = 'RTH'
+        AND bd_rth.trading_day = (
+          SELECT prev_open_date 
+          FROM trading_calendar 
+          WHERE cal_date = ms.et_date
+        )
+      LEFT JOIN baseline_daily bd_ah ON 
+        bd_ah.symbol = ms.symbol 
+        AND bd_ah.method = $2
+        AND bd_ah.session = 'AH'
+        AND bd_ah.trading_day = (
           SELECT prev_open_date 
           FROM trading_calendar 
           WHERE cal_date = ms.et_date
@@ -88,7 +100,13 @@ function simulateContinuous(minuteData, buyPct, sellPct) {
   let shares = 0;
 
   for (const bar of minuteData) {
-    const { timestamp, stock_price, btc_price, ratio, baseline } = bar;
+    const { timestamp, et_time, stock_price, btc_price, ratio, minute_session, rth_baseline, ah_baseline } = bar;
+    
+    // Use the correct baseline based on the minute's session
+    const baseline = minute_session === 'RTH' ? rth_baseline : ah_baseline;
+    
+    // Skip if baseline is missing
+    if (!baseline) continue;
     
     const buyThreshold = baseline * (1 + buyPct / 100);
     const sellThreshold = baseline * (1 - sellPct / 100);
