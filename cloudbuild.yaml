@@ -41,8 +41,8 @@ steps:
     waitFor: ['install-ui-deps']
 
   # Step 5: Deploy Web UI to Firebase
-  - name: 'gcr.io/$PROJECT_ID/firebase'
-    args: ['deploy', '--only', 'hosting']
+  - name: 'gcr.io/tradiac-testing/firebase-tools'
+    args: ['deploy', '--only', 'hosting', '--project', 'tradiac-testing']
     dir: 'web-ui'
     id: 'deploy-ui'
     waitFor: ['build-ui']
