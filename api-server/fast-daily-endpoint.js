@@ -99,15 +99,17 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
     return null;
   }
   
-  // Get baselines for this day
-  const baselineResult = await client.query(`
-    SELECT session, baseline
-    FROM baseline_daily
-    WHERE trading_day = $1
-      AND symbol = $2
-      AND method = $3
-  `, [date, symbol, method]);
-  
+     // Get baselines for the PREVIOUS trading day (lagging baseline strategy)
+     // We use yesterday's baseline to trade today
+     const baselineResult = await client.query(`
+       SELECT session, baseline
+       FROM baseline_daily
+       WHERE trading_day < $1
+         AND symbol = $2
+         AND method = $3
+       ORDER BY trading_day DESC
+       LIMIT 1
+     `, [date, symbol, method]);
   const baselines = {};
   for (const row of baselineResult.rows) {
     baselines[row.session] = parseFloat(row.baseline);

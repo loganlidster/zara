@@ -387,11 +387,14 @@ async function processDateRange(startDate, endDate) {
         ORDER BY et_time
       `, [date]);
       
-      // Load baselines for this day (both RTH and AH)
+      // Load baselines for the PREVIOUS trading day (lagging baseline strategy)
+      // For each symbol/method/session, get the most recent baseline before this date
       const baselineResult = await client.query(`
-        SELECT symbol, method, session, baseline
+        SELECT DISTINCT ON (symbol, method, session) 
+          symbol, method, session, baseline
         FROM baseline_daily
-        WHERE trading_day = $1
+        WHERE trading_day < $1
+        ORDER BY symbol, method, session, trading_day DESC
       `, [date]);
       
       const baselineData = new Map();
@@ -399,9 +402,6 @@ async function processDateRange(startDate, endDate) {
         const key = `${row.symbol}_${row.method}_${row.session}`;
         baselineData.set(key, parseFloat(row.baseline));
       }
-      
-      console.log(`  📊 Loaded ${stockResult.rows.length} stock bars, ${btcResult.rows.length} BTC bars, ${baselineResult.rows.length} baselines`);
-      
       // Process RTH session
       const rthResult = await processDayForSession(
         client, date, SESSIONS.RTH,
