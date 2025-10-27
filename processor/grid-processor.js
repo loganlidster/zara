@@ -29,12 +29,13 @@ for (let i = 1; i <= 30; i++) {
 
 const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR'];
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
-const SESSIONS = ['RTH', 'AH', 'ALL'];
+const SESSIONS = ['RTH', 'AH'];  // Two tables: RTH and AH
 
 console.log(`Grid Configuration:`);
 console.log(`  Buy %: ${BUY_PERCENTAGES.length} values (${BUY_PERCENTAGES[0]} to ${BUY_PERCENTAGES[BUY_PERCENTAGES.length-1]})`);
 console.log(`  Sell %: ${SELL_PERCENTAGES.length} values (${SELL_PERCENTAGES[0]} to ${SELL_PERCENTAGES[SELL_PERCENTAGES.length-1]})`);
 console.log(`  Combinations per symbol/method/session: ${BUY_PERCENTAGES.length * SELL_PERCENTAGES.length}`);
+console.log(`  Sessions: RTH and AH (2 separate tables)`);
 console.log(`  Total combinations: ${SYMBOLS.length * METHODS.length * SESSIONS.length * BUY_PERCENTAGES.length * SELL_PERCENTAGES.length}`);
 
 // Calculate baseline for a given day using previous trading day's data
@@ -198,19 +199,21 @@ async function processCombo(client, symbol, method, session, buyPct, sellPct, st
     allTrades.push(...dayTrades);
   }
 
-  // Insert trades into database
+  // Insert trades into appropriate table (RTH or AH)
+  const tableName = session === 'RTH' ? 'precomputed_trades_grid_rth' : 'precomputed_trades_grid_ah';
+  
   if (allTrades.length > 0) {
     for (const trade of allTrades) {
       await client.query(`
-        INSERT INTO precomputed_trades_grid (
-          symbol, method, session, buy_pct, sell_pct,
+        INSERT INTO ${tableName} (
+          symbol, method, buy_pct, sell_pct,
           entry_date, entry_time, entry_price, entry_baseline, entry_ratio, entry_btc_price,
           exit_date, exit_time, exit_price, exit_baseline, exit_ratio, exit_btc_price,
           shares, trade_return_pct, trade_return_dollars, stock_delta_pct, btc_delta_pct
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22)
-        ON CONFLICT (symbol, method, session, buy_pct, sell_pct, entry_date, entry_time) DO NOTHING
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)
+        ON CONFLICT (symbol, method, buy_pct, sell_pct, entry_date, entry_time) DO NOTHING
       `, [
-        symbol, method, session, buyPct, sellPct,
+        symbol, method, buyPct, sellPct,
         trade.entryDate, trade.entryTime, trade.entryPrice, trade.entryBaseline, trade.entryRatio, trade.entryBtcPrice,
         trade.exitDate, trade.exitTime, trade.exitPrice, trade.exitBaseline, trade.exitRatio, trade.exitBtcPrice,
         trade.shares, trade.returnPct, trade.returnDollars, trade.stockDelta, trade.btcDelta
