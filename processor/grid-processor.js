@@ -27,7 +27,7 @@ for (let i = 1; i <= 30; i++) {
   SELL_PERCENTAGES.push(parseFloat(pct));
 }
 
-const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR'];
+const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
 const SESSIONS = ['RTH', 'AH'];  // Two tables: RTH and AH
 
