@@ -126,7 +126,7 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
   // Simulate trades
   let position = null;
   const trades = [];
-     const decisionLog = []; // Track every minute's decision
+     const decisionLog = includeDecisionLog ? [] : null; // Only track if requested
   
   for (const bar of dataResult.rows) {
     const barTime = bar.et_time;
@@ -195,19 +195,21 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
       }
     }
        
-       // Log this minute's decision
-       decisionLog.push({
-         time: barTime,
-         session: barSession,
-         btc_price: btcPrice,
-         stock_price: stockPrice,
-         ratio: ratio,
-         baseline: baseline,
-         buy_threshold: buyThr,
-         sell_threshold: sellThr,
-         decision: decision,
-         position: positionStatus
-       });
+       // Log this minute's decision (only if requested)
+       if (includeDecisionLog) {
+         decisionLog.push({
+           time: barTime,
+           session: barSession,
+           btc_price: btcPrice,
+           stock_price: stockPrice,
+           ratio: ratio,
+           baseline: baseline,
+           buy_threshold: buyThr,
+           sell_threshold: sellThr,
+           decision: decision,
+           position: positionStatus
+         });
+       }
   }
   
   // Calculate summary
@@ -220,19 +222,25 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
   const winningTrades = trades.filter(t => t.return > 0).length;
   const winRate = (winningTrades / trades.length) * 100;
   
-  return {
-    symbol,
-    method,
-    buyThreshold,
-    sellThreshold,
-    totalReturn,
-    avgReturn,
-    tradeCount: trades.length,
-    winRate,
-    trades,
-       decisionLog  // Include minute-by-minute decisions
-  };
-}
+     const result = {
+       symbol,
+       method,
+       buyThreshold,
+       sellThreshold,
+       totalReturn,
+       avgReturn,
+       tradeCount: trades.length,
+       winRate,
+       trades
+     };
+     
+     // Only include decisionLog if requested
+     if (includeDecisionLog && decisionLog) {
+       result.decisionLog = decisionLog;
+     }
+     
+     return result;
+   }
 
 export async function handleFastDaily(req, res) {
   console.log('🚀 Fast Daily endpoint called!');
@@ -252,7 +260,8 @@ export async function handleFastDaily(req, res) {
       sessionType,
       conservativePricing = true,
       slippage = 0.0,
-      allowShorts = false
+      allowShorts = false,
+      includeDecisionLog = false  // NEW: Optional decision log
     } = req.body;
     
     console.log('Fast Daily request:', {
