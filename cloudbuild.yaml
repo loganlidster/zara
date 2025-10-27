@@ -20,6 +20,7 @@ steps:
       - '--region=us-central1'
       - '--platform=managed'
       - '--allow-unauthenticated'
+      - '--project=tradiac-testing-66f6e'
       - '--set-env-vars'
       - 'DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_PASSWORD=Fu3lth3j3t!'
     id: 'deploy-api'
