@@ -184,10 +184,13 @@ async function insertResults(client, results) {
 
 // Main processing function
 async function processDateRange(startDate, endDate) {
+  console.log(`\n🚀 Fast Grid Processor Starting - Connecting to database...`);
+  
   const client = await pool.connect();
+  console.log(`✅ Database connected!`);
   
   try {
-    console.log(`\n🚀 Fast Grid Processor Starting`);
+    console.log(`\n📊 Fast Grid Processor Starting`);
     console.log(`📅 Date Range: ${startDate} to ${endDate}`);
     console.log(`📊 Symbols: ${SYMBOLS.length}`);
     console.log(`🎯 Methods: ${METHODS.length}`);
@@ -245,12 +248,19 @@ async function processDateRange(startDate, endDate) {
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
+  console.log('🎬 Script started!');
   const startDate = process.argv[2] || '2025-09-24';
   const endDate = process.argv[3] || '2025-09-24';
   
+  console.log(`📅 Processing dates: ${startDate} to ${endDate}`);
+  
   processDateRange(startDate, endDate)
-    .then(() => process.exit(0))
+    .then(() => {
+      console.log('✅ Script completed successfully!');
+      process.exit(0);
+    })
     .catch(err => {
+      console.error('❌ Script failed with error:');
       console.error(err);
       process.exit(1);
     });
