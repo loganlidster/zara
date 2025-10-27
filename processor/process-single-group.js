@@ -103,15 +103,15 @@ function simulateContinuous(minuteData, buyPct, sellPct) {
         events.push({
           event_timestamp: timestamp,
           event_type: 'BUY',
-          stock_price,
-          btc_price,
-          ratio,
+          stock_price: Math.round(stock_price * 10000) / 10000, // Round to 4 decimals
+          btc_price: Math.round(btc_price * 100) / 100, // Round to 2 decimals
+          ratio: Math.round(ratio * 10000) / 10000, // Round to 4 decimals
           shares: sharesToBuy,
-          transaction_value: transactionValue,
-          cash_balance: cash,
+          transaction_value: Math.round(transactionValue * 100) / 100, // Round to 2 decimals
+          cash_balance: Math.round(cash * 100) / 100, // Round to 2 decimals
           shares_held: shares,
-          position_value: shares * stock_price,
-          total_value: cash + (shares * stock_price)
+          position_value: Math.round((shares * stock_price) * 100) / 100, // Round to 2 decimals
+          total_value: Math.round((cash + (shares * stock_price)) * 100) / 100 // Round to 2 decimals
         });
       }
     }
@@ -124,15 +124,15 @@ function simulateContinuous(minuteData, buyPct, sellPct) {
       events.push({
         event_timestamp: timestamp,
         event_type: 'SELL',
-        stock_price,
-        btc_price,
-        ratio,
+        stock_price: Math.round(stock_price * 10000) / 10000, // Round to 4 decimals
+        btc_price: Math.round(btc_price * 100) / 100, // Round to 2 decimals
+        ratio: Math.round(ratio * 10000) / 10000, // Round to 4 decimals
         shares: soldShares,
-        transaction_value: transactionValue,
-        cash_balance: cash,
+        transaction_value: Math.round(transactionValue * 100) / 100, // Round to 2 decimals
+        cash_balance: Math.round(cash * 100) / 100, // Round to 2 decimals
         shares_held: shares,
         position_value: 0,
-        total_value: cash
+        total_value: Math.round(cash * 100) / 100 // Round to 2 decimals
       });
     }
   }
