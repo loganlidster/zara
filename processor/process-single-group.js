@@ -100,18 +100,25 @@ function simulateContinuous(minuteData, buyPct, sellPct) {
         cash -= transactionValue;
         shares = sharesToBuy;
 
+        const eventDate = new Date(timestamp);
+        const eventTime = eventDate.toTimeString().slice(0, 8); // HH:MM:SS
+        const eventDateOnly = eventDate.toISOString().slice(0, 10); // YYYY-MM-DD
+        
+        // Determine session based on time
+        const hour = eventDate.getHours();
+        const minute = eventDate.getMinutes();
+        const timeInMinutes = hour * 60 + minute;
+        const session = (timeInMinutes >= 570 && timeInMinutes < 960) ? 'RTH' : 'AH'; // 9:30 = 570, 16:00 = 960
+        
         events.push({
-          event_timestamp: timestamp,
+          event_date: eventDateOnly,
+          event_time: eventTime,
+          session: session,
           event_type: 'BUY',
-          stock_price: Math.round(stock_price * 10000) / 10000, // Round to 4 decimals
-          btc_price: Math.round(btc_price * 100) / 100, // Round to 2 decimals
-          ratio: Math.round(ratio * 10000) / 10000, // Round to 4 decimals
-          shares: sharesToBuy,
-          transaction_value: Math.round(transactionValue * 100) / 100, // Round to 2 decimals
-          cash_balance: Math.round(cash * 100) / 100, // Round to 2 decimals
-          shares_held: shares,
-          position_value: Math.round((shares * stock_price) * 100) / 100, // Round to 2 decimals
-          total_value: Math.round((cash + (shares * stock_price)) * 100) / 100 // Round to 2 decimals
+          stock_price: Math.round(stock_price * 10000) / 10000,
+          btc_price: Math.round(btc_price * 100) / 100,
+          ratio: Math.round(ratio * 10000) / 10000,
+          baseline: baseline
         });
       }
     }
@@ -121,18 +128,28 @@ function simulateContinuous(minuteData, buyPct, sellPct) {
       const soldShares = shares;
       shares = 0;
 
+      const sellEventDate = new Date(timestamp);
+      const sellEventTime = sellEventDate.toTimeString().slice(0, 8);
+      const sellEventDateOnly = sellEventDate.toISOString().slice(0, 10);
+      
+      const sellHour = sellEventDate.getHours();
+      const sellMinute = sellEventDate.getMinutes();
+      const sellTimeInMinutes = sellHour * 60 + sellMinute;
+      const sellSession = (sellTimeInMinutes >= 570 &amp;&amp; sellTimeInMinutes < 960) ? 'RTH' : 'AH';
+      
+      const lastBuyPrice = events.length > 0 ? events[events.length - 1].stock_price : stock_price;
+      const tradeRoi = ((stock_price - lastBuyPrice) / lastBuyPrice) * 100;
+      
       events.push({
-        event_timestamp: timestamp,
+        event_date: sellEventDateOnly,
+        event_time: sellEventTime,
+        session: sellSession,
         event_type: 'SELL',
-        stock_price: Math.round(stock_price * 10000) / 10000, // Round to 4 decimals
-        btc_price: Math.round(btc_price * 100) / 100, // Round to 2 decimals
-        ratio: Math.round(ratio * 10000) / 10000, // Round to 4 decimals
-        shares: soldShares,
-        transaction_value: Math.round(transactionValue * 100) / 100, // Round to 2 decimals
-        cash_balance: Math.round(cash * 100) / 100, // Round to 2 decimals
-        shares_held: shares,
-        position_value: 0,
-        total_value: Math.round(cash * 100) / 100 // Round to 2 decimals
+        stock_price: Math.round(stock_price * 10000) / 10000,
+        btc_price: Math.round(btc_price * 100) / 100,
+        ratio: Math.round(ratio * 10000) / 10000,
+        baseline: baseline,
+        trade_roi_pct: Math.round(tradeRoi * 100) / 100
       });
     }
   }
@@ -150,60 +167,62 @@ async function insertEvents(symbol, method, session, buyPct, sellPct, events) {
     const insertQuery = `
       INSERT INTO trade_events (
         symbol, method, session, buy_pct, sell_pct,
-        event_timestamp, event_type, stock_price, btc_price, ratio,
-        shares, transaction_value, cash_balance, shares_held,
-        position_value, total_value
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
-      ON CONFLICT (symbol, method, session, buy_pct, sell_pct, event_timestamp) 
+        event_date, event_time, event_type, 
+        stock_price, btc_price, ratio, baseline, trade_roi_pct
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+      ON CONFLICT (symbol, method, session, buy_pct, sell_pct, event_date, event_time) 
       DO NOTHING
     `;
 
     for (const event of events) {
       await client.query(insertQuery, [
-        symbol, method, session, buyPct, sellPct,
-        event.event_timestamp, event.event_type, event.stock_price,
-        event.btc_price, event.ratio, event.shares, event.transaction_value,
-        event.cash_balance, event.shares_held, event.position_value,
-        event.total_value
+        symbol, method, event.session, buyPct, sellPct,
+        event.event_date, event.event_time, event.event_type,
+        event.stock_price, event.btc_price, event.ratio, event.baseline,
+        event.trade_roi_pct || null
       ]);
     }
 
-    const lastEvent = events[events.length - 1];
     const buyCount = events.filter(e => e.event_type === 'BUY').length;
     const sellCount = events.filter(e => e.event_type === 'SELL').length;
-    const finalROI = ((lastEvent.total_value - INITIAL_CASH) / INITIAL_CASH) * 100;
+    const sellEvents = events.filter(e => e.event_type === 'SELL' && e.trade_roi_pct !== null);
+    const avgTradeRoi = sellEvents.length > 0 
+      ? sellEvents.reduce((sum, e) => sum + e.trade_roi_pct, 0) / sellEvents.length 
+      : 0;
+    const winRate = sellEvents.length > 0
+      ? (sellEvents.filter(e => e.trade_roi_pct > 0).length / sellEvents.length) * 100
+      : 0;
 
     const metadataQuery = `
       INSERT INTO simulation_metadata (
         symbol, method, session, buy_pct, sell_pct,
-        status, first_event_date, last_event_date, last_processed_date,
-        total_events, total_buys, total_sells, final_total_value, final_roi_pct,
+        status, first_event_date, last_event_date,
+        total_events, total_buys, total_sells, 
+        avg_trade_roi_pct, win_rate_pct,
         updated_at
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, NOW())
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW())
       ON CONFLICT (symbol, method, session, buy_pct, sell_pct)
       DO UPDATE SET
         status = $6,
         last_event_date = $8,
-        last_processed_date = $9,
-        total_events = simulation_metadata.total_events + $10,
-        total_buys = simulation_metadata.total_buys + $11,
-        total_sells = simulation_metadata.total_sells + $12,
-        final_total_value = $13,
-        final_roi_pct = $14,
+        total_events = simulation_metadata.total_events + $9,
+        total_buys = simulation_metadata.total_buys + $10,
+        total_sells = simulation_metadata.total_sells + $11,
+        avg_trade_roi_pct = $12,
+        win_rate_pct = $13,
         updated_at = NOW()
     `;
 
     await client.query(metadataQuery, [
-      symbol, method, session, buyPct, sellPct,
+      symbol, method, 'ALL', buyPct, sellPct,
       'completed',
-      events[0].event_timestamp,
-      lastEvent.event_timestamp,
-      lastEvent.event_timestamp,
+      events[0].event_date,
+      events[events.length - 1].event_date,
       events.length,
       buyCount,
       sellCount,
-      lastEvent.total_value,
-      finalROI
+      avgTradeRoi,
+      winRate
     ]);
 
     await client.query('COMMIT');
