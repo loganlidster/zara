@@ -124,7 +124,6 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
   }
   
   // Simulate trades
-           decision = 'SELL';
   let position = null;
   const trades = [];
      const decisionLog = []; // Track every minute's decision
