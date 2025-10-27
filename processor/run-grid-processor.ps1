@@ -30,8 +30,8 @@ node grid-processor-parallel.js $StartDate $EndDate
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""
-    Write-Host "✅ Processing complete!" -ForegroundColor Green
+    Write-Host "Processing complete!" -ForegroundColor Green
 } else {
     Write-Host ""
-    Write-Host "❌ Processing failed with exit code $LASTEXITCODE" -ForegroundColor Red
+    Write-Host "Processing failed with exit code $LASTEXITCODE" -ForegroundColor Red
 }
