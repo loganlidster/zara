@@ -73,21 +73,24 @@ function simulateDay(minuteData, baseline, buyPct, sellPct) {
   let shares = 0;
   let trades = 0;
   
-  const buyThreshold = baseline * (1 - buyPct / 100);
-  const sellThreshold = baseline * (1 + sellPct / 100);
+    const buyThreshold = baseline * (1 + buyPct / 100);  // CORRECT: Buy when ratio is HIGH
+    const sellThreshold = baseline * (1 - sellPct / 100);  // CORRECT: Sell when ratio is LOW
   
   for (const bar of minuteData) {
-    const price = parseFloat(bar.stock_c);
+      const stockPrice = parseFloat(bar.stock_c);
+      const btcPrice = parseFloat(bar.btc_c);
+      const ratio = btcPrice / stockPrice;  // BTC / Stock
+
     
     // Buy signal
-    if (shares === 0 && price <= buyThreshold) {
-      shares = Math.floor(cash / price);
-      cash -= shares * price;
+    if (shares === 0 && ratio >= buyThreshold) {  // Compare RATIO
+      shares = Math.floor(cash / stockPrice);
+      cash -= shares * stockPrice;
       trades++;
     }
     // Sell signal
-    else if (shares > 0 && price >= sellThreshold) {
-      cash += shares * price;
+    else if (shares > 0 && ratio <= sellThreshold) {  // Compare RATIO
+      cash += shares * stockPrice;
       shares = 0;
       trades++;
     }
