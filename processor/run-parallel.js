@@ -70,11 +70,18 @@ function runWorker(work) {
     let output = '';
     
     worker.stdout.on('data', (data) => {
-      output += data.toString();
+      const text = data.toString().trim();
+      if (text) {
+        console.log(`[${symbol}] ${text}`);
+      }
+      output += text;
     });
 
     worker.stderr.on('data', (data) => {
-      console.error(`[ERROR ${symbol}] ${data.toString()}`);
+      const text = data.toString().trim();
+      if (text) {
+        console.error(`[ERROR ${symbol}] ${text}`);
+      }
     });
 
     worker.on('close', (code) => {
