@@ -1,0 +1,24 @@
+# Cloud Build configuration for running event-based processor as a job
+steps:
+  # Build the processor image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/event-processor:latest'
+      - '-f'
+      - 'processor/Dockerfile'
+      - '.'
+    
+  # Push the image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/event-processor:latest'
+
+images:
+  - 'gcr.io/$PROJECT_ID/event-processor:latest'
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
