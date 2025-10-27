@@ -217,7 +217,11 @@ async function insertEvents(symbol, method, session, buyPct, sellPct, events) {
 
 async function processGroup(symbol, method, session, startDate, endDate) {
   try {
+    console.log(`Starting: ${symbol} - ${method} - ${session}`);
+    console.log(`Fetching minute data...`);
+    
     const minuteData = await fetchMinuteData(symbol, method, session, startDate, endDate);
+    console.log(`Fetched ${minuteData.length} minute bars`);
     
     if (minuteData.length === 0) {
       console.log('No data available');
@@ -225,6 +229,7 @@ async function processGroup(symbol, method, session, startDate, endDate) {
     }
 
     let totalEvents = 0;
+    let processed = 0;
 
     for (const combo of COMBINATIONS) {
       const { buy_pct, sell_pct } = combo;
@@ -234,12 +239,18 @@ async function processGroup(symbol, method, session, startDate, endDate) {
         await insertEvents(symbol, method, session, buy_pct, sell_pct, events);
         totalEvents += events.length;
       }
+      
+      processed++;
+      if (processed % 100 === 0) {
+        console.log(`Processed ${processed}/${COMBINATIONS.length} combinations`);
+      }
     }
 
-    console.log(`Processed ${COMBINATIONS.length} combinations, ${totalEvents} events`);
+    console.log(`COMPLETE: Processed ${COMBINATIONS.length} combinations, ${totalEvents} events`);
     
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error(`ERROR: ${error.message}`);
+    console.error(error.stack);
     throw error;
   } finally {
     await pool.end();
