@@ -246,8 +246,9 @@ async function processDateRange(startDate, endDate) {
   }
 }
 
-// Run if called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Run if called directly (works on both Unix and Windows)
+const isMainModule = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'));
+if (isMainModule || import.meta.url.includes('fast-grid-processor.js')) {
   console.log('🎬 Script started!');
   const startDate = process.argv[2] || '2025-09-24';
   const endDate = process.argv[3] || '2025-09-24';
