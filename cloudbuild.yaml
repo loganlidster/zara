@@ -40,17 +40,8 @@ steps:
     id: 'build-ui'
     waitFor: ['install-ui-deps']
 
-  # Step 5: Deploy Web UI to Firebase (using official image)
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        curl -sL https://firebase.tools | bash
-        firebase deploy --only hosting --project tradiac-testing --non-interactive
-    dir: 'web-ui'
-    id: 'deploy-ui'
-    waitFor: ['build-ui']
+  # Note: Firebase deployment removed - deploy manually using: firebase deploy --only hosting
+  # This requires Firebase authentication which Cloud Build doesn't have by default
 
 options:
   logging: CLOUD_LOGGING_ONLY
