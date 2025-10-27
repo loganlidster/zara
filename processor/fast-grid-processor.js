@@ -155,27 +155,35 @@ async function insertResults(client, results) {
   let paramIndex = 1;
   
   for (const r of results) {
-    values.push(`($${paramIndex}, $${paramIndex+1}, $${paramIndex+2}, $${paramIndex+3}, $${paramIndex+4}, $${paramIndex+5}, $${paramIndex+6}, $${paramIndex+7}, $${paramIndex+8}, $${paramIndex+9}, $${paramIndex+10})`);
+    const winningTrades = r.total_return_pct > 0 ? 1 : 0;
+    const losingTrades = r.total_return_pct <= 0 ? 1 : 0;
+    const winRate = r.total_trades > 0 ? (winningTrades / r.total_trades) * 100 : 0;
+    
+    values.push(`($${paramIndex}, $${paramIndex+1}, $${paramIndex+2}, $${paramIndex+3}, $${paramIndex+4}, $${paramIndex+5}, $${paramIndex+6}, $${paramIndex+7}, $${paramIndex+8}, $${paramIndex+9}, $${paramIndex+10}, $${paramIndex+11})`);
     params.push(
       r.symbol, r.method, r.session, r.buy_pct, r.sell_pct,
       r.start_date, r.end_date, r.total_trades,
-      r.total_return_pct, r.total_return_dollars, r.final_equity
+      winningTrades, losingTrades, winRate,
+      r.total_return_pct, r.total_return_dollars
     );
-    paramIndex += 11;
+    paramIndex += 13;
   }
   
   const query = `
     INSERT INTO precomputed_grid_summary (
       symbol, method, session, buy_pct, sell_pct,
       start_date, end_date, total_trades,
-      total_return_pct, total_return_dollars, final_equity
+      winning_trades, losing_trades, win_rate,
+      total_return_pct, total_return_dollars
     ) VALUES ${values.join(', ')}
     ON CONFLICT (symbol, method, session, buy_pct, sell_pct, start_date)
     DO UPDATE SET
       total_trades = EXCLUDED.total_trades,
+      winning_trades = EXCLUDED.winning_trades,
+      losing_trades = EXCLUDED.losing_trades,
+      win_rate = EXCLUDED.win_rate,
       total_return_pct = EXCLUDED.total_return_pct,
       total_return_dollars = EXCLUDED.total_return_dollars,
-      final_equity = EXCLUDED.final_equity,
       calculated_at = CURRENT_TIMESTAMP
   `;
   
