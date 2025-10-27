@@ -42,17 +42,29 @@ app.post('/api/simulate', async (req, res) => {
     symbol,
     startDate,
     endDate,
+    sessionMode,
     method,
     buyPct,
     sellPct,
     session,
+    rthMethod,
+    rthBuyPct,
+    rthSellPct,
+    ahMethod,
+    ahBuyPct,
+    ahSellPct,
     initialCapital,
       allowShorts = false,
       conservativePricing = true,
       slippage = 0
   } = req.body;
 
-  console.log('Running simulation:', { symbol, startDate, endDate, method, buyPct, sellPct, session });
+  console.log('Running simulation:', { 
+    symbol, startDate, endDate, sessionMode, 
+    method, buyPct, sellPct, session,
+    rthMethod, rthBuyPct, rthSellPct,
+    ahMethod, ahBuyPct, ahSellPct
+  });
 
   const client = new Client(dbConfig);
 
@@ -114,10 +126,29 @@ app.post('/api/simulate', async (req, res) => {
       let prevTradeBtcPrice = null;
       
     for (const bar of result.rows) {
-      const { et_date, et_time, stock_close, btc_close, baseline, current_ratio, prev_open_date } = bar;
-
-      const buyThreshold = baseline * (1 + buyPct / 100);
-      const sellThreshold = baseline * (1 - sellPct / 100);
+      const { et_date, et_time, stock_close, btc_close, baseline, current_ratio, prev_open_date , session: barSession } = bar;
+   
+         // Determine which thresholds to use based on session mode
+         let buyThreshold, sellThreshold;
+         
+         if (sessionMode === 'ALL') {
+           // Use session-specific thresholds
+           if (barSession === 'RTH') {
+             buyThreshold = baseline * (1 + rthBuyPct / 100);
+             sellThreshold = baseline * (1 - rthSellPct / 100);
+           } else if (barSession === 'AH') {
+             buyThreshold = baseline * (1 + ahBuyPct / 100);
+             sellThreshold = baseline * (1 - ahSellPct / 100);
+           } else {
+             // Fallback to single session values
+             buyThreshold = baseline * (1 + buyPct / 100);
+             sellThreshold = baseline * (1 - sellPct / 100);
+           }
+         } else {
+           // Single session mode - use single values
+           buyThreshold = baseline * (1 + buyPct / 100);
+           sellThreshold = baseline * (1 - sellPct / 100);
+         }
 
       // Track daily performance
       if (currentDay !== et_date) {
