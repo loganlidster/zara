@@ -18,7 +18,7 @@ import dotenv from 'dotenv';
 const { Pool } = pg;
 dotenv.config();
 
-// Database connection
+// Database connection with keepalive for long-running processes
 const pool = new Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT || 5432,
@@ -29,6 +29,8 @@ const pool = new Pool({
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 10000,
+  keepAlive: true,
+  keepAliveInitialDelayMillis: 10000,
 });
 
 // Configuration
@@ -271,17 +273,29 @@ async function processGroup(symbol, method, session, startDate, endDate) {
       // Run simulation
       const events = simulateContinuous(minuteData, buy_pct, sell_pct);
 
-      // Insert events
+      // Insert events with retry logic
       if (events.length > 0) {
-        await insertEvents(symbol, method, session, buy_pct, sell_pct, events);
-        totalEvents += events.length;
+        let retries = 3;
+        while (retries > 0) {
+          try {
+            await insertEvents(symbol, method, session, buy_pct, sell_pct, events);
+            totalEvents += events.length;
+            break;
+          } catch (error) {
+            retries--;
+            if (retries === 0) throw error;
+            console.log(`  Retry inserting events (${retries} attempts left)...`);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        }
       }
 
       processedCount++;
 
       // Progress update every 100 combinations
       if (processedCount % 100 === 0) {
-        console.log(`  Processed ${processedCount}/${COMBINATIONS.length} combinations (${totalEvents} events)`);
+        const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+        console.log(`  Processed ${processedCount}/${COMBINATIONS.length} combinations (${totalEvents} events) - ${elapsed}s elapsed`);
       }
     }
 
