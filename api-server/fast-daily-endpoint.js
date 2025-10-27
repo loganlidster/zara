@@ -214,6 +214,9 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
 }
 
 export async function handleFastDaily(req, res) {
+  console.log('🚀 Fast Daily endpoint called!');
+  console.log('Request body:', JSON.stringify(req.body, null, 2));
+  
   const client = await pool.connect();
   
   try {
