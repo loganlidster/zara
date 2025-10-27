@@ -8,11 +8,14 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files first
 COPY processor/package*.json ./
 
 # Install Node dependencies
 RUN npm install
+
+# Install required packages explicitly
+RUN npm install pg dotenv
 
 # Copy processor files
 COPY processor/*.js ./
