@@ -96,9 +96,12 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
   `, [date, symbol]);
   
   if (dataResult.rows.length === 0) {
-    return null;
+    console.log(`  ❌ No minute data found for ${symbol} on ${date}`);
+       return null;
   }
   
+     console.log(`  ✅ Found ${dataResult.rows.length} minute bars for ${symbol} on ${date}`);
+     
      // Get baselines for the PREVIOUS trading day (lagging baseline strategy)
      // Use trading_calendar to get the correct previous trading day
      const baselineResult = await client.query(`
@@ -114,8 +117,10 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
     baselines[row.session] = parseFloat(row.baseline);
   }
   
+     console.log(`  Baselines for ${symbol} ${method} on ${date}:`, baselines);
+     
   if (Object.keys(baselines).length === 0) {
-    return null;
+    console.log(`  ❌ No baselines found for ${symbol} ${method} on ${date}`);\n       return null;
   }
   
   // Simulate trades
