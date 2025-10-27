@@ -154,13 +154,13 @@ async function processDayForSession(client, date, sessionConfig, stockData, btcD
             const ratio = stockPrice / baseline;
             
             // Calculate thresholds
-            const buyThr = baseline * (1 - buyThreshold / 100);
-            const sellThr = baseline * (1 + sellThreshold / 100);
+            const buyThr = baseline * (1 + buyThreshold / 100);
+            const sellThr = baseline * (1 - sellThreshold / 100);
             
             // Check for signals
             if (!state.hasPosition) {
               // Look for BUY signal (LONG only for now)
-              if (stockPrice <= buyThr) {
+              if (stockPrice >= buyThr) {
                 let entryPrice = applySlippage(stockPrice, true, SLIPPAGE);
                 if (CONSERVATIVE_PRICING) {
                   entryPrice = roundPrice(entryPrice, true);
@@ -182,7 +182,7 @@ async function processDayForSession(client, date, sessionConfig, stockData, btcD
               let shouldExit = false;
               
               if (state.positionType === 'LONG') {
-                shouldExit = stockPrice >= sellThr;
+                shouldExit = stockPrice <= sellThr;
               }
               
               // Force exit at end of session
