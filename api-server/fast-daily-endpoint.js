@@ -120,7 +120,7 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
      console.log(`  Baselines for ${symbol} ${method} on ${date}:`, baselines);
      
   if (Object.keys(baselines).length === 0) {
-    console.log(`  ❌ No baselines found for ${symbol} ${method} on ${date}`);\n       return null;
+       console.log(`  ❌ No baselines found for ${symbol} ${method} on ${date}`);
   }
   
   // Simulate trades
