@@ -47,12 +47,10 @@ const COMBINATIONS = generateCombinations();
 async function fetchMinuteData(symbol, method, session, startDate, endDate) {
   const client = await pool.connect();
   try {
-    let sessionFilter = '';
-    if (session === 'RTH') {
-      sessionFilter = "AND ms.session = 'RTH'";
-    } else if (session === 'AH') {
-      sessionFilter = "AND ms.session = 'AH'";
-    }
+    // Session filter - RTH or AH only (no ALL)
+    const sessionFilter = session === 'RTH' 
+      ? "AND ms.session = 'RTH'" 
+      : "AND ms.session = 'AH'";
 
     const query = `
       SELECT 
@@ -71,7 +69,7 @@ async function fetchMinuteData(symbol, method, session, startDate, endDate) {
         AND bd.trading_day = (
           SELECT prev_open_date 
           FROM trading_calendar 
-          WHERE open_date = ms.et_date
+          WHERE cal_date = ms.et_date
         )
       WHERE ms.symbol = $1
         AND ms.et_date BETWEEN $3 AND $4

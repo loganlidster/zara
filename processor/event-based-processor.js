@@ -36,7 +36,7 @@ const pool = new Pool({
 // Configuration
 const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
-const SESSIONS = ['ALL']; // Only process combined RTH+AH, query by time for specific sessions
+const SESSIONS = ['RTH', 'AH']; // Process RTH and AH separately
 const INITIAL_CASH = 10000;
 
 // Generate all buy/sell percentage combinations (0.1% to 3.0% in 0.1% increments)

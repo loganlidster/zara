@@ -13,7 +13,7 @@ const __dirname = dirname(__filename);
 
 const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
-const SESSIONS = ['ALL'];
+const SESSIONS = ['RTH', 'AH'];
 
 // Get command line args
 const args = process.argv.slice(2);
