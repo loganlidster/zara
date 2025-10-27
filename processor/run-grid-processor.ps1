@@ -9,24 +9,24 @@ param(
     [string]$EndDate
 )
 
-Write-Host "🚀 Starting Grid Processor" -ForegroundColor Green
+Write-Host "Starting Grid Processor" -ForegroundColor Green
 Write-Host "Date Range: $StartDate to $EndDate" -ForegroundColor Cyan
 Write-Host ""
 
 # Check if node_modules exists
 if (-not (Test-Path "node_modules")) {
-    Write-Host "📦 Installing dependencies..." -ForegroundColor Yellow
+    Write-Host "Installing dependencies..." -ForegroundColor Yellow
     npm install
     Write-Host ""
 }
 
-# Run the parallel processor
-Write-Host "⚡ Running parallel processor..." -ForegroundColor Green
-Write-Host "This will process 10 combinations at a time" -ForegroundColor Cyan
+# Run the continuous processor
+Write-Host "Running continuous processor..." -ForegroundColor Green
+Write-Host "This creates 3 separate continuous simulations (RTH, AH, ALL)" -ForegroundColor Cyan
 Write-Host "Progress is saved automatically - you can stop and resume anytime" -ForegroundColor Cyan
 Write-Host ""
 
-node grid-processor-parallel.js $StartDate $EndDate
+node grid-processor-continuous.js $StartDate $EndDate
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""
