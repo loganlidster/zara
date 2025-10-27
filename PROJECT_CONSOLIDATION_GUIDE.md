@@ -1,86 +1,79 @@
-# Project Consolidation Guide
+# Project Architecture Guide
 
 ## Current Situation
 
-You have **two Google Cloud projects** with similar names:
+You have **two Google Cloud projects** working together:
 
 1. **`tradiac-testing`** (Project ID: `tradiac-testing`)
 2. **`tradiac-testing-66f6e`** (Project ID: `tradiac-testing-66f6e`)
 
-## Recommended Configuration
+## Your Multi-Project Architecture ✅
 
-Use **`tradiac-testing-66f6e`** for everything. This is already configured in:
-- ✅ Firebase (`.firebaserc`)
-- ✅ Cloud Build (now updated in `cloudbuild.yaml`)
+This is a **valid and working setup**:
 
-## Steps to Consolidate
+### `tradiac-testing` Project (Backend)
+- ✅ **Cloud SQL Database** - PostgreSQL instance at `34.41.97.179`
+- ✅ **Cloud Run API** - `tradiac-api` service with your buy/sell logic fix
+- ✅ **Cloud Build** - Automatic deployment on GitHub push
 
-### 1. Verify Cloud Build Trigger Location
+### `tradiac-testing-66f6e` Project (Frontend)
+- ✅ **Firebase Hosting** - Web UI (configured in `.firebaserc`)
 
-Check which project has the Cloud Build trigger:
+## Current Configuration
 
-**Option A: Check `tradiac-testing-66f6e`**
-- Go to: https://console.cloud.google.com/cloud-build/triggers?project=tradiac-testing-66f6e
-- Look for a trigger connected to your GitHub repo
+- Cloud Build deploys API to: `tradiac-testing`
+- Firebase hosts frontend in: `tradiac-testing-66f6e`
+- API connects to database in: `tradiac-testing` (same project)
 
-**Option B: Check `tradiac-testing`**
+## Verify Your Setup
+
+### 1. Check Cloud Build Trigger
+
+Your Cloud Build trigger should be in the **`tradiac-testing`** project:
 - Go to: https://console.cloud.google.com/cloud-build/triggers?project=tradiac-testing
-- Look for a trigger connected to your GitHub repo
+- Verify trigger is connected to your GitHub repo
 
-### 2. If Trigger is in Wrong Project
+### 2. Check API Deployment
 
-If the trigger is in `tradiac-testing` (not `tradiac-testing-66f6e`):
-
-1. **Create new trigger in `tradiac-testing-66f6e`**:
-   - Go to: https://console.cloud.google.com/cloud-build/triggers?project=tradiac-testing-66f6e
-   - Click "Create Trigger"
-   - Connect to your GitHub repository
-   - Set branch: `main`
-   - Set build configuration: `cloudbuild.yaml`
-   - Save
-
-2. **Delete old trigger in `tradiac-testing`**:
-   - Go to: https://console.cloud.google.com/cloud-build/triggers?project=tradiac-testing
-   - Delete the old trigger
-
-### 3. Verify Cloud Run Service Location
-
-Check where your API is deployed:
-
-**Option A: Check `tradiac-testing-66f6e`**
-- Go to: https://console.cloud.google.com/run?project=tradiac-testing-66f6e
-- Look for `tradiac-api` service
-
-**Option B: Check `tradiac-testing`**
+Your API service is in the **`tradiac-testing`** project:
 - Go to: https://console.cloud.google.com/run?project=tradiac-testing
-- Look for `tradiac-api` service
+- Find `tradiac-api` service
+- **This is where your buy/sell logic fix is deployed!**
 
-### 4. Current Deployment Status
+### 3. Check Database
 
-After the latest push (commit `11195be`), Cloud Build will deploy to `tradiac-testing-66f6e`.
+Your Cloud SQL database is in the **`tradiac-testing`** project:
+- Go to: https://console.cloud.google.com/sql/instances?project=tradiac-testing
+- Database IP: `34.41.97.179`
 
-**Your buy/sell logic fix is already deployed** - just verify which project it's in!
+### 4. Check Frontend
 
-## Quick Check Commands
+Your Firebase hosting is in the **`tradiac-testing-66f6e`** project:
+- Configured in `.firebaserc`
+- Deploy manually with: `firebase deploy --only hosting`
 
-To see where everything is deployed, check:
+## Quick Access Links
 
-1. **Cloud Build History**:
-   - Project 1: https://console.cloud.google.com/cloud-build/builds?project=tradiac-testing-66f6e
-   - Project 2: https://console.cloud.google.com/cloud-build/builds?project=tradiac-testing
+### Backend (tradiac-testing)
+- **Cloud Build History**: https://console.cloud.google.com/cloud-build/builds?project=tradiac-testing
+- **Cloud Run API**: https://console.cloud.google.com/run?project=tradiac-testing
+- **Cloud SQL Database**: https://console.cloud.google.com/sql/instances?project=tradiac-testing
 
-2. **Cloud Run Services**:
-   - Project 1: https://console.cloud.google.com/run?project=tradiac-testing-66f6e
-   - Project 2: https://console.cloud.google.com/run?project=tradiac-testing
+### Frontend (tradiac-testing-66f6e)
+- **Firebase Console**: https://console.firebase.google.com/project/tradiac-testing-66f6e
 
-## Recommendation
+## What's Already Fixed ✅
 
-**Use `tradiac-testing-66f6e` for everything** and consider deleting or archiving `tradiac-testing` to avoid confusion.
-
-## What's Already Fixed
-
-✅ Your buy/sell logic fix is deployed (in one of these projects)
-✅ Cloud Build now explicitly targets `tradiac-testing-66f6e`
+✅ Your buy/sell logic fix is deployed to Cloud Run in `tradiac-testing`
+✅ Cloud Build now explicitly targets `tradiac-testing` for API deployment
+✅ Database connection is working (same project)
 ✅ Firebase is configured for `tradiac-testing-66f6e`
 
-Just verify which project has the active deployment and you're good to test!
+## Architecture Benefits
+
+This multi-project setup provides:
+- **Separation of concerns**: Backend and frontend in different projects
+- **Security**: Database and API in same project for better security
+- **Flexibility**: Can manage permissions independently
+
+Your setup is working correctly - no consolidation needed!
