@@ -124,8 +124,10 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
   }
   
   // Simulate trades
+           decision = 'SELL';
   let position = null;
   const trades = [];
+     const decisionLog = []; // Track every minute's decision
   
   for (const bar of dataResult.rows) {
     const barTime = bar.et_time;
@@ -136,9 +138,13 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
     
     const stockPrice = parseFloat(bar.stock_price);
     const btcPrice = parseFloat(bar.btc_price);
+       const ratio = stockPrice / btcPrice;
     
     const buyThr = baseline * (1 + buyThreshold / 100);
     const sellThr = baseline * (1 - sellThreshold / 100);
+       
+       let decision = 'HOLD';
+       let positionStatus = position ? position.type : 'FLAT';
     
     if (!position) {
       // Look for entry
@@ -156,6 +162,7 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
           entryBtcPrice: btcPrice,
           shares: Math.floor(10000 / entryPrice)
         };
+           decision = 'BUY';
       }
     } else {
       // Look for exit
@@ -188,6 +195,20 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
         position = null;
       }
     }
+       
+       // Log this minute's decision
+       decisionLog.push({
+         time: barTime,
+         session: barSession,
+         btc_price: btcPrice,
+         stock_price: stockPrice,
+         ratio: ratio,
+         baseline: baseline,
+         buy_threshold: buyThr,
+         sell_threshold: sellThr,
+         decision: decision,
+         position: positionStatus
+       });
   }
   
   // Calculate summary
@@ -209,7 +230,8 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
     avgReturn,
     tradeCount: trades.length,
     winRate,
-    trades
+    trades,
+       decisionLog  // Include minute-by-minute decisions
   };
 }
 
