@@ -406,6 +406,14 @@ app.post('/api/batch-daily', batchDaily);
 // Fast daily endpoint
 app.post('/api/fast-daily', handleFastDaily);
 
+   
+   // Event-based endpoints
+   const eventEndpoints = require('./event-endpoints');
+   app.use('/api/events', eventEndpoints);
+   
+   // Flexible query endpoints
+   const flexibleEndpoints = require('./flexible-query-endpoints');
+   app.use('/api/flexible', flexibleEndpoints);
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
