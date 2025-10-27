@@ -68,7 +68,11 @@ async function fetchMinuteData(symbol, method, session, startDate, endDate) {
         bd.symbol = ms.symbol 
         AND bd.method = $2
         AND bd.session = ms.session
-        AND bd.trading_day = ms.et_date
+        AND bd.trading_day = (
+          SELECT prev_open_date 
+          FROM trading_calendar 
+          WHERE open_date = ms.et_date
+        )
       WHERE ms.symbol = $1
         AND ms.et_date BETWEEN $3 AND $4
         ${sessionFilter}
