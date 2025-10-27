@@ -137,7 +137,7 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
     
     const stockPrice = parseFloat(bar.stock_price);
     const btcPrice = parseFloat(bar.btc_price);
-       const ratio = stockPrice / btcPrice;
+       const ratio = btcPrice / stockPrice;  // CORRECT: BTC / Stock
     
     const buyThr = baseline * (1 + buyThreshold / 100);
     const sellThr = baseline * (1 - sellThreshold / 100);
@@ -147,7 +147,7 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
     
     if (!position) {
       // Look for entry
-      if (stockPrice >= buyThr) {
+      if (ratio >= buyThr) {  // Compare RATIO to threshold
         let entryPrice = applySlippage(stockPrice, true, slippage);
         if (conservativePricing) {
           entryPrice = roundPrice(entryPrice, true);
@@ -168,7 +168,7 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
       let shouldExit = false;
       
       if (position.type === 'LONG') {
-        shouldExit = stockPrice <= sellThr;
+        shouldExit = ratio <= sellThr;  // Compare RATIO to threshold
       }
       
       if (shouldExit) {
