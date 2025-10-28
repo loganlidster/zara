@@ -18,9 +18,46 @@ export default function FastDailyReport() {
   const [startDate, setStartDate] = useState('2024-01-01');
   const [endDate, setEndDate] = useState('2025-10-22');
   const [loading, setLoading] = useState(false);
-  const [events, setEvents] = useState<TradeEvent[]>([]);
+  const [events, setEvents] = useState<any[]>([]);
   const [summary, setSummary] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const exportToCSV = () => {
+    if (events.length === 0) return;
+    
+    const headers = [
+      'Date', 'Time', 'Type', 'Stock Price', 'BTC Price', 'Ratio', 'Baseline',
+      'Shares Held', 'Cash Balance', 'Portfolio Value', 'ROI %', 'Trade ROI %'
+    ];
+    
+    const rows = events.map(e => [
+      e.event_date,
+      e.event_time,
+      e.event_type,
+      e.stock_price.toFixed(4),
+      e.btc_price.toFixed(2),
+      e.ratio.toFixed(2),
+      e.baseline.toFixed(2),
+      e.shares_held || 0,
+      e.cash_balance?.toFixed(2) || '0.00',
+      e.portfolio_value?.toFixed(2) || '0.00',
+      e.roi_pct?.toFixed(2) || '0.00',
+      e.trade_roi_pct?.toFixed(2) || 'N/A'
+    ]);
+    
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.join(','))
+    ].join('\n');
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `fast-daily-${symbol}-${method}-${session}-${startDate}-${endDate}.csv`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +70,41 @@ export default function FastDailyReport() {
         getSummary({ symbol, method, session, buyPct, sellPct, startDate, endDate })
       ]);
 
-      setEvents(eventsData);
+      // Sort events by date and time chronologically
+      const sortedEvents = eventsData.sort((a, b) => {
+        const dateCompare = a.event_date.localeCompare(b.event_date);
+        if (dateCompare !== 0) return dateCompare;
+        return a.event_time.localeCompare(b.event_time);
+      });
+
+      // Calculate wallet simulation
+      let cash = 10000;
+      let shares = 0;
+      const eventsWithWallet = sortedEvents.map((event) => {
+        if (event.event_type === 'BUY') {
+          const sharesToBuy = Math.floor(cash / event.stock_price);
+          const cost = sharesToBuy * event.stock_price;
+          cash -= cost;
+          shares += sharesToBuy;
+        } else if (event.event_type === 'SELL' &amp;&amp; shares > 0) {
+          const proceeds = shares * event.stock_price;
+          cash += proceeds;
+          shares = 0;
+        }
+        
+        const portfolioValue = cash + (shares * event.stock_price);
+        const roi = ((portfolioValue - 10000) / 10000) * 100;
+        
+        return {
+          ...event,
+          shares_held: shares,
+          cash_balance: cash,
+          portfolio_value: portfolioValue,
+          roi_pct: roi
+        };
+      });
+
+      setEvents(eventsWithWallet);
       setSummary(summaryData);
     } catch (err: any) {
       setError(err.message || 'Failed to fetch data');
@@ -162,6 +233,19 @@ export default function FastDailyReport() {
                 {loading ? 'Loading...' : 'Run Report'}
               </button>
             </div>
+            
+            {/* Export CSV Button */}
+            {events.length > 0 &amp;&amp; (
+              <div>
+                <button
+                  type="button"
+                  onClick={exportToCSV}
+                  className="w-full bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition-colors"
+                >
+                  Export to CSV
+                </button>
+              </div>
+            )}
           </form>
         </div>
 
@@ -226,7 +310,11 @@ export default function FastDailyReport() {
                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">BTC Price</th>
                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ratio</th>
                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Baseline</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Trade ROI</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Shares</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Cash</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Portfolio</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ROI %</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Trade ROI</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -246,7 +334,17 @@ export default function FastDailyReport() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.btc_price.toFixed(2)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.ratio.toFixed(2)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.baseline.toFixed(2)}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.shares_held || 0}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.cash_balance?.toFixed(2) || '0.00'}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.portfolio_value?.toFixed(2) || '0.00'}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                          <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            (event.roi_pct || 0) >= 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                          }`}>
+                            {event.roi_pct?.toFixed(2) || '0.00'}%
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
                         {event.trade_roi_pct !== null ? (
                           <span className={event.trade_roi_pct >= 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
                             {event.trade_roi_pct.toFixed(2)}%
