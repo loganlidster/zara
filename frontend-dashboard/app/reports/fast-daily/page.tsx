@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 
 const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
-const SESSIONS = ['RTH', 'AH'];
+const SESSIONS = ['RTH', 'AH', 'ALL'];
 
 // Helper function to determine session from time
 function getSessionFromTime(timeStr: string): string {
@@ -55,6 +55,11 @@ export default function FastDailyReport() {
   const [session, setSession] = useState('RTH');
   const [buyPct, setBuyPct] = useState(0.5);
   const [sellPct, setSellPct] = useState(0.5);
+  const [rthBuyPct, setRthBuyPct] = useState(0.5);
+  const [rthSellPct, setRthSellPct] = useState(0.5);
+  const [ahBuyPct, setAhBuyPct] = useState(0.5);
+  const [ahSellPct, setAhSellPct] = useState(0.5);
+  const [useSameValues, setUseSameValues] = useState(true);
   const [slippagePct, setSlippagePct] = useState(0);
   const [startDate, setStartDate] = useState('2024-09-01');
   const [endDate, setEndDate] = useState('2025-10-22');
@@ -108,9 +113,28 @@ export default function FastDailyReport() {
     setError(null);
 
     try {
-      const eventsData = await getTradeEvents({ 
-        symbol, method, session, buyPct, sellPct, startDate, endDate 
-      });
+      // Prepare API parameters based on session type
+      const apiParams: any = {
+        symbol,
+        method,
+        session,
+        startDate,
+        endDate
+      };
+
+      if (session === 'ALL') {
+        // Use separate RTH and AH values
+        apiParams.rthBuyPct = useSameValues ? buyPct : rthBuyPct;
+        apiParams.rthSellPct = useSameValues ? sellPct : rthSellPct;
+        apiParams.ahBuyPct = useSameValues ? buyPct : ahBuyPct;
+        apiParams.ahSellPct = useSameValues ? sellPct : ahSellPct;
+      } else {
+        // Single session - use regular buy/sell percentages
+        apiParams.buyPct = buyPct;
+        apiParams.sellPct = sellPct;
+      }
+
+      const eventsData = await getTradeEvents(apiParams);
 
       // Add session field to each event based on time
       const eventsWithSession = eventsData.map(event => ({
@@ -257,33 +281,143 @@ export default function FastDailyReport() {
               </select>
             </div>
 
-            {/* Buy % */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Buy %</label>
-              <input
-                type="number"
-                step="0.1"
-                min="0.1"
-                max="3.0"
-                value={buyPct}
-                onChange={(e) => setBuyPct(parseFloat(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+            {/* Conditional inputs based on session */}
+            {session === 'ALL' ? (
+              <>
+                {/* Use Same Values Checkbox */}
+                <div className="col-span-full">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={useSameValues}
+                      onChange={(e) => setUseSameValues(e.target.checked)}
+                      className="rounded border-gray-300 text-blue-500 focus:ring-blue-500"
+                    />
+                    <span className="text-sm font-medium text-gray-700">Use same values for RTH and AH</span>
+                  </label>
+                </div>
 
-            {/* Sell % */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Sell %</label>
-              <input
-                type="number"
-                step="0.1"
-                min="0.1"
-                max="3.0"
-                value={sellPct}
-                onChange={(e) => setSellPct(parseFloat(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+                {useSameValues ? (
+                  <>
+                    {/* Buy % */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Buy %</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        max="3.0"
+                        value={buyPct}
+                        onChange={(e) => setBuyPct(parseFloat(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    {/* Sell % */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Sell %</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        max="3.0"
+                        value={sellPct}
+                        onChange={(e) => setSellPct(parseFloat(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* RTH Buy % */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">RTH Buy %</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        max="3.0"
+                        value={rthBuyPct}
+                        onChange={(e) => setRthBuyPct(parseFloat(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    {/* RTH Sell % */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">RTH Sell %</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        max="3.0"
+                        value={rthSellPct}
+                        onChange={(e) => setRthSellPct(parseFloat(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    {/* AH Buy % */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">AH Buy %</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        max="3.0"
+                        value={ahBuyPct}
+                        onChange={(e) => setAhBuyPct(parseFloat(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    {/* AH Sell % */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">AH Sell %</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        min="0.1"
+                        max="3.0"
+                        value={ahSellPct}
+                        onChange={(e) => setAhSellPct(parseFloat(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                {/* Buy % */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Buy %</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    min="0.1"
+                    max="3.0"
+                    value={buyPct}
+                    onChange={(e) => setBuyPct(parseFloat(e.target.value))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                {/* Sell % */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Sell %</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    min="0.1"
+                    max="3.0"
+                    value={sellPct}
+                    onChange={(e) => setSellPct(parseFloat(e.target.value))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </>
+            )}
 
             {/* Slippage % */}
             <div>

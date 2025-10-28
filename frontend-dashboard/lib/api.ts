@@ -57,8 +57,12 @@ export async function getTradeEvents(params: {
   symbol: string;
   method: string;
   session: string;
-  buyPct: number;
-  sellPct: number;
+  buyPct?: number;
+  sellPct?: number;
+  rthBuyPct?: number;
+  rthSellPct?: number;
+  ahBuyPct?: number;
+  ahSellPct?: number;
   startDate: string;
   endDate: string;
 }): Promise<TradeEvent[]> {
@@ -79,8 +83,12 @@ export async function getSummary(params: {
   symbol: string;
   method: string;
   session: string;
-  buyPct: number;
-  sellPct: number;
+  buyPct?: number;
+  sellPct?: number;
+  rthBuyPct?: number;
+  rthSellPct?: number;
+  ahBuyPct?: number;
+  ahSellPct?: number;
   startDate: string;
   endDate: string;
 }) {
