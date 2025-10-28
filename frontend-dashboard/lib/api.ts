@@ -230,8 +230,8 @@ export async function getDailyCurve(params: {
 // Best Performers Range Testing
 export async function getTopPerformersRange(params: {
   symbol: string;
-  method: string;
-  session: string;
+  method?: string;
+  session?: string;
   buyMin: number;
   buyMax: number;
   sellMin: number;

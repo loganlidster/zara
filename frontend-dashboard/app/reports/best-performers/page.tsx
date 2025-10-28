@@ -89,27 +89,17 @@ export default function BestPerformersReport() {
       let response: TopPerformersResponse;
       
       if (mode === 'range') {
-        // Range testing mode
+        // Range testing mode - only symbol is required
         if (symbolFilter === 'All') {
-          setError('Range testing requires a specific symbol.');
-          setLoading(false);
-          return;
-        }
-        if (methodFilter === 'All') {
-          setError('Range testing requires a specific method.');
-          setLoading(false);
-          return;
-        }
-        if (sessionFilter === 'All') {
-          setError('Range testing requires a specific session.');
+          setError('Range testing requires a specific symbol. Please select a symbol.');
           setLoading(false);
           return;
         }
         
         response = await getTopPerformersRange({
           symbol: symbolFilter,
-          method: methodFilter,
-          session: sessionFilter,
+          method: methodFilter === 'All' ? undefined : methodFilter,
+          session: sessionFilter === 'All' ? undefined : sessionFilter,
           buyMin,
           buyMax,
           sellMin,
@@ -422,7 +412,22 @@ export default function BestPerformersReport() {
                     </div>
                   </div>
                   <div className="mt-3 text-sm text-blue-700">
-                    <strong>This will test:</strong> {Math.round((buyMax - buyMin) / 0.1) + 1} buy × {Math.round((sellMax - sellMin) / 0.1) + 1} sell = <strong>{(Math.round((buyMax - buyMin) / 0.1) + 1) * (Math.round((sellMax - sellMin) / 0.1) + 1)} combinations</strong>
+                    {(() => {
+                      const buyCount = Math.round((buyMax - buyMin) / 0.1) + 1;
+                      const sellCount = Math.round((sellMax - sellMin) / 0.1) + 1;
+                      const methodCount = methodFilter === 'All' ? 5 : 1;
+                      const sessionCount = sessionFilter === 'All' ? 2 : 1;
+                      const total = buyCount * sellCount * methodCount * sessionCount;
+                      return (
+                        <>
+                          <strong>This will test:</strong> {buyCount} buy × {sellCount} sell
+                          {methodCount > 1 && ` × ${methodCount} methods`}
+                          {sessionCount > 1 && ` × ${sessionCount} sessions`}
+                          {' = '}<strong>{total} combinations</strong>
+                          {total > 100 && <span className="ml-2 text-amber-600">(This may take a while)</span>}
+                        </>
+                      );
+                    })()}
                   </div>
                 </div>
               )}

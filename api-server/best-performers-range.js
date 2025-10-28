@@ -133,10 +133,10 @@ router.post('/best-performers-range', async (req, res) => {
     } = req.body;
     
     // Validate inputs
-    if (!symbol || !method || !session || !startDate || !endDate) {
+    if (!symbol || !startDate || !endDate) {
       return res.status(400).json({
         error: 'Missing required parameters',
-        required: ['symbol', 'method', 'session', 'buyMin', 'buyMax', 'sellMin', 'sellMax', 'startDate', 'endDate']
+        required: ['symbol', 'buyMin', 'buyMax', 'sellMin', 'sellMax', 'startDate', 'endDate']
       });
     }
     
@@ -150,9 +150,14 @@ router.post('/best-performers-range', async (req, res) => {
     // Generate ranges
     const buyValues = generateRange(parseFloat(buyMin), parseFloat(buyMax), 0.1);
     const sellValues = generateRange(parseFloat(sellMin), parseFloat(sellMax), 0.1);
-    const totalCombinations = buyValues.length * sellValues.length;
     
-    console.log(`Testing ${totalCombinations} combinations (${buyValues.length} buy × ${sellValues.length} sell)...`);
+    // Handle "All" for method and session
+    const methods = method ? [method.toUpperCase()] : ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
+    const sessions = session ? [session.toUpperCase()] : ['RTH', 'AH'];
+    
+    const totalCombinations = buyValues.length * sellValues.length * methods.length * sessions.length;
+    
+    console.log(`Testing ${totalCombinations} combinations (${buyValues.length} buy × ${sellValues.length} sell × ${methods.length} methods × ${sessions.length} sessions)...`);
     
     if (totalCombinations > 1000) {
       return res.status(400).json({
@@ -166,18 +171,20 @@ router.post('/best-performers-range', async (req, res) => {
     const results = [];
     let processed = 0;
     
-    // Test each combination
-    for (const buyPct of buyValues) {
-      for (const sellPct of sellValues) {
-        processed++;
-        
-        try {
-          // Fetch events
-          const events = await fetchEventsForCombination(
-            client, symbol, method, session,
-            buyPct, sellPct,
-            startDate, endDate
-          );
+    // Test each combination across methods and sessions
+    for (const meth of methods) {
+      for (const sess of sessions) {
+        for (const buyPct of buyValues) {
+          for (const sellPct of sellValues) {
+            processed++;
+            
+            try {
+              // Fetch events
+              const events = await fetchEventsForCombination(
+                client, symbol, meth, sess,
+                buyPct, sellPct,
+                startDate, endDate
+              );
           
           if (events.length === 0) {
             continue; // Skip if no events
@@ -191,8 +198,8 @@ router.post('/best-performers-range', async (req, res) => {
           
           results.push({
             symbol,
-            method,
-            session,
+            method: meth,
+            session: sess,
             buyPct,
             sellPct,
             roiPct: walletResult.portfolioROI,
@@ -209,8 +216,10 @@ router.post('/best-performers-range', async (req, res) => {
           }
           
         } catch (err) {
-          console.error(`Error testing ${buyPct}/${sellPct}:`, err.message);
-          // Continue with other combinations
+              console.error(`Error testing ${meth}/${sess}/${buyPct}/${sellPct}:`, err.message);
+              // Continue with other combinations
+            }
+          }
         }
       }
     }
