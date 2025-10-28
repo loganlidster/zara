@@ -424,11 +424,21 @@ app.use('/api/events', bestPerformersTwoStep);
 
 // Daily curve endpoint
 import dailyCurveEndpoint from './daily-curve-endpoint.js';
+import patternEndpoints from './pattern-endpoints.js';
 app.use('/api/events', dailyCurveEndpoint);
 
 // Best performers range testing
 import bestPerformersRange from './best-performers-range.js';
 app.use('/api/events', bestPerformersRange);
+
+// Pattern analysis endpoints
+app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
+app.get('/api/patterns/instances', patternEndpoints.getPatternInstances);
+app.get('/api/patterns/overreactions', patternEndpoints.getOverreactions);
+app.get('/api/patterns/details/:patternId', patternEndpoints.getPatternDetails);
+app.get('/api/patterns/types', patternEndpoints.getPatternTypes);
+app.get('/api/patterns/date-range', patternEndpoints.getPatternDateRange);
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
