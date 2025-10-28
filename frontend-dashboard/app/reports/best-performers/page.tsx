@@ -21,6 +21,9 @@ function formatDate(dateStr: string): string {
 export default function BestPerformersReport() {
   const router = useRouter();
   
+  // Version indicator for cache busting
+  console.log('Best Performers Report v2.0 - Fixed field names');
+  
   // Set default dates to yesterday and today
   const getYesterday = () => {
     const date = new Date();
