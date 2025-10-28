@@ -20,8 +20,21 @@ function formatDate(dateStr: string): string {
 
 export default function BestPerformersReport() {
   const router = useRouter();
-  const [startDate, setStartDate] = useState('2024-09-01');
-  const [endDate, setEndDate] = useState('2025-10-22');
+  
+  // Set default dates to yesterday and today
+  const getYesterday = () => {
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    return date.toISOString().split('T')[0];
+  };
+  
+  const getToday = () => {
+    const date = new Date();
+    return date.toISOString().split('T')[0];
+  };
+  
+  const [startDate, setStartDate] = useState(getYesterday());
+  const [endDate, setEndDate] = useState(getToday());
   const [symbolFilter, setSymbolFilter] = useState('All');
   const [methodFilter, setMethodFilter] = useState('All');
   const [sessionFilter, setSessionFilter] = useState('All');
