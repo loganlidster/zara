@@ -16,7 +16,11 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'https://tradiac-testing-66f6e.web.app',
-    'https://tradiac-testing-66f6e.firebaseapp.com'
+    'https://tradiac-testing-66f6e.firebaseapp.com',
+    'https://raas.help',
+    'https://www.raas.help',
+    'https://zara-report-ej9cikknp-logans-projects-57bfdedc.vercel.app',
+    'https://frontend-dashboard-epth6tc6e-logans-projects-57bfdedc.vercel.app'
   ],
   credentials: true
 }));
