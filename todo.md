@@ -1,18 +1,22 @@
-# Dashboard Updates Complete
+# Testing Specialized RTH Tables
 
-## ✅ Completed
-- [x] Authentication system with login page
-- [x] RAAS branding and logo integration
-- [x] Logo watermark backgrounds on all pages
-- [x] Updated all titles to "RAAS Tracking System"
-- [x] Logo in header and all pages
-- [x] Favicon updated
-- [x] Pushed to GitHub (commit 6469fac)
+## 1. Database Verification
+- [ ] Check row counts in RTH tables
+- [ ] Verify data structure matches expectations
+- [ ] Test a sample query on specialized table
 
-## 🚀 Ready for Deployment
-Vercel will auto-deploy in ~1 minute
+## 2. API Updates
+- [ ] Update event-endpoints.js to route RTH queries to specialized tables
+- [ ] Add table name resolver function
+- [ ] Test Fast Daily endpoint with new tables
 
-## ⏳ User Actions Needed
-- [ ] Set DASHBOARD_PASSWORD in Vercel environment variables
-- [ ] Test login flow after deployment
-- [ ] Optionally add custom domain (raas.help)
+## 3. Frontend Testing
+- [ ] Test Fast Daily report with RTH data
+- [ ] Verify performance improvement
+- [ ] Check data accuracy matches old queries
+
+## 4. Deploy & Verify
+- [ ] Commit changes to GitHub
+- [ ] Verify Cloud Build deployment
+- [ ] Test live API endpoint
+- [ ] Test live dashboard
