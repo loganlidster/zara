@@ -38,12 +38,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen relative bg-white flex items-center justify-center px-4">
+      {/* Logo Watermark Background */}
+      <div 
+        className="fixed inset-0 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/RAAS_primary_transparent_512.png)',
+          backgroundSize: '400px 400px',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      <div className="max-w-md w-full relative z-10">
         {/* Logo/Title */}
         <div className="text-center mb-8">
+          <div className="flex justify-center mb-4">
+            <img 
+              src="/RAAS_primary_transparent_256.png" 
+              alt="RAAS Logo" 
+              className="h-24 w-24"
+            />
+          </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Tradiac Dashboard
+            RAAS Tracking System
           </h1>
           <p className="text-gray-600">
             Enter password to access reports
@@ -90,7 +107,7 @@ export default function LoginPage() {
 
         {/* Footer */}
         <div className="text-center mt-6 text-gray-600 text-sm">
-          Event-based trading analysis powered by real-time data
+          Really Amazing Asset Tracking - Event-based trading analysis
         </div>
       </div>
     </div>

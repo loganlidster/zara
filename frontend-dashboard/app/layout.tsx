@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Tradiac Event Dashboard',
-  description: 'Event-based trading analysis dashboard',
+  title: 'RAAS Tracking System',
+  description: 'Really Amazing Asset Tracking - Event-based trading analysis',
 }
 
 export default function RootLayout({

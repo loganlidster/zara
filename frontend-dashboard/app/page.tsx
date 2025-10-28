@@ -6,16 +6,33 @@ import Header from '@/components/Header';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen relative bg-white">
+      {/* Logo Watermark Background */}
+      <div 
+        className="fixed inset-0 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/RAAS_primary_transparent_512.png)',
+          backgroundSize: '400px 400px',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
       <Header />
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/RAAS_primary_transparent_512.png" 
+              alt="RAAS Logo" 
+              className="h-32 w-32"
+            />
+          </div>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            Tradiac Event Dashboard
+            RAAS Tracking System
           </h1>
           <p className="text-xl text-gray-600">
-            Event-based trading analysis powered by real-time data
+            Really Amazing Asset Tracking - Event-based trading analysis powered by real-time data
           </p>
         </div>
 
