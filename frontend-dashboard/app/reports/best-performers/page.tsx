@@ -76,11 +76,11 @@ export default function BestPerformersReport() {
       
       // Filter out any invalid data
       const validData = data.filter(p => 
-        p &amp;&amp; 
-        typeof p.roi_pct === 'number' &amp;&amp; 
-        !isNaN(p.roi_pct) &amp;&amp;
-        p.symbol &amp;&amp; 
-        p.method &amp;&amp; 
+        p && 
+        typeof p.roi_pct === 'number' && 
+        !isNaN(p.roi_pct) &&
+        p.symbol && 
+        p.method && 
         p.session
       );
       
