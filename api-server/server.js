@@ -411,7 +411,7 @@ app.post('/api/batch-daily', batchDaily);
 app.post('/api/fast-daily', handleFastDaily);
 
 // Event-based endpoints
-import eventEndpoints from './event-endpoints-optimized.js';
+import eventEndpoints from './event-endpoints-with-separate-values.js';
 app.use('/api/events', eventEndpoints);
 
 // Flexible query endpoints
