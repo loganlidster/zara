@@ -86,7 +86,7 @@ export default function BestPerformersReport() {
       
       setPerformers(validData);
       
-      if (validData.length === 0 &amp;&amp; data.length > 0) {
+      if (validData.length === 0 && data.length > 0) {
         setError('No valid data returned. The query may have timed out or returned incomplete results.');
       }
     } catch (err: any) {
