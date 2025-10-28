@@ -50,6 +50,11 @@ export interface TopPerformer {
   totalEvents: number;
   buyEvents?: number;
   sellEvents: number;
+  totalTrades?: number;
+  finalEquity?: number;
+  endingShares?: number;
+  endingCash?: number;
+  sumScore?: number;
 }
 
 // Get trade events for a specific combination
@@ -97,6 +102,19 @@ export async function getSummary(params: {
 }
 
 // Get top performers
+export interface TopPerformersResponse {
+  success: boolean;
+  dateRange: { startDate: string; endDate: string };
+  count: number;
+  topPerformers: TopPerformer[];
+  timing?: {
+    step1: number;
+    step2: number;
+    total: number;
+    candidatesEvaluated: number;
+  };
+}
+
 export async function getTopPerformers(params: {
   startDate: string;
   endDate: string;
@@ -104,9 +122,9 @@ export async function getTopPerformers(params: {
   symbol?: string;
   method?: string;
   session?: string;
-}): Promise<TopPerformer[]> {
-  const response = await api.get('/api/events/top-performers', { params });
-  return response.data.topPerformers;
+}): Promise<TopPerformersResponse> {
+  const response = await api.get('/api/events/top-performers-v2', { params });
+  return response.data;
 }
 
 // Get metadata for all simulations

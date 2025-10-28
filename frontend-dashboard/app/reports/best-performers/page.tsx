@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getTopPerformers, TopPerformer } from '@/lib/api';
+import { getTopPerformers, TopPerformer, TopPerformersResponse } from '@/lib/api';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 
@@ -47,6 +47,7 @@ export default function BestPerformersReport() {
   const [sortColumn, setSortColumn] = useState<keyof TopPerformer>('roiPct');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [error, setError] = useState<string | null>(null);
+  const [timing, setTiming] = useState<{ step1: number; step2: number; total: number; candidatesEvaluated: number } | null>(null);
 
   const handleSort = (column: keyof TopPerformer) => {
     if (sortColumn === column) {
@@ -88,18 +89,28 @@ export default function BestPerformersReport() {
       if (methodFilter !== 'All') params.method = methodFilter;
       if (sessionFilter !== 'All') params.session = sessionFilter;
 
-      const data = await getTopPerformers(params);
+      const response = await getTopPerformers(params);
       
-              console.log('Raw API response:', data);
-        if (data && data.length > 0) {
-          console.log('First item:', data[0]);
-          console.log('First item keys:', Object.keys(data[0]));
-          console.log('roiPct value:', data[0].roiPct);
-          console.log('roiPct type:', typeof data[0].roiPct);
+              console.log('Raw API response:', response);
+        
+        // Extract timing info if available
+        if (response.timing) {
+          setTiming(response.timing);
+          console.log('Timing:', response.timing);
+        }
+        
+        // Get the actual performers array
+        const performersData = response.topPerformers || [];
+        
+        if (performersData && performersData.length > 0) {
+          console.log('First item:', performersData[0]);
+          console.log('First item keys:', Object.keys(performersData[0]));
+          console.log('roiPct value:', performersData[0].roiPct);
+          console.log('roiPct type:', typeof performersData[0].roiPct);
         }
         
         // Filter out any invalid data
-        const validData = data.filter(p => {
+        const validData = performersData.filter(p => {
           if (!p) {
             console.log('Null/undefined item');
             return false;
@@ -129,11 +140,11 @@ export default function BestPerformersReport() {
           return isValid;
         });
         
-        console.log('Valid data count:', validData.length, 'out of', data.length);
+        console.log('Valid data count:', validData.length, 'out of', performersData.length);
       
       setPerformers(validData);
       
-      if (validData.length === 0 && data.length > 0) {
+      if (validData.length === 0 && performersData.length > 0) {
         setError('No valid data returned. The query may have timed out or returned incomplete results.');
       }
     } catch (err: any) {
