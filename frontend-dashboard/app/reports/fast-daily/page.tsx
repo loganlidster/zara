@@ -7,16 +7,16 @@ import Header from '@/components/Header';
 
 const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
-const SESSIONS = ['ALL', 'RTH', 'AH'];
+const SESSIONS = ['RTH', 'AH'];
 
 export default function FastDailyReport() {
   const [symbol, setSymbol] = useState('HIVE');
   const [method, setMethod] = useState('EQUAL_MEAN');
-  const [session, setSession] = useState('ALL');
+  const [session, setSession] = useState('RTH');
   const [buyPct, setBuyPct] = useState(0.5);
   const [sellPct, setSellPct] = useState(0.5);
-  const [startDate, setStartDate] = useState('2025-09-01');
-  const [endDate, setEndDate] = useState('2025-09-30');
+  const [startDate, setStartDate] = useState('2024-01-01');
+  const [endDate, setEndDate] = useState('2025-10-22');
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState<TradeEvent[]>([]);
   const [summary, setSummary] = useState<any>(null);
