@@ -82,10 +82,10 @@ export default function FastDailyReport() {
       let expectingBuy = true;
       
       for (const event of sortedEvents) {
-        if (expectingBuy &amp;&amp; event.event_type === 'BUY') {
+        if (expectingBuy && event.event_type === 'BUY') {
           executedTrades.push(event);
           expectingBuy = false;
-        } else if (!expectingBuy &amp;&amp; event.event_type === 'SELL') {
+        } else if (!expectingBuy && event.event_type === 'SELL') {
           executedTrades.push(event);
           expectingBuy = true;
         }
@@ -100,7 +100,7 @@ export default function FastDailyReport() {
           const cost = sharesToBuy * event.stock_price;
           cash -= cost;
           shares += sharesToBuy;
-        } else if (event.event_type === 'SELL' &amp;&amp; shares > 0) {
+        } else if (event.event_type === 'SELL' && shares > 0) {
           const proceeds = shares * event.stock_price;
           cash += proceeds;
           shares = 0;
@@ -249,7 +249,7 @@ export default function FastDailyReport() {
             </div>
             
             {/* Export CSV Button */}
-            {events.length > 0 &amp;&amp; (
+            {events.length > 0 && (
               <div>
                 <button
                   type="button"
