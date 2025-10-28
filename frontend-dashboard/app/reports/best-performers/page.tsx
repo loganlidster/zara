@@ -87,26 +87,46 @@ export default function BestPerformersReport() {
 
       const data = await getTopPerformers(params);
       
-      console.log('Raw API response:', data);
-      console.log('First item:', data[0]);
-      
-      // Filter out any invalid data
-      const validData = data.filter(p => {
-        const isValid = p && 
-          typeof p.roiPct === 'number' && 
-          !isNaN(p.roiPct) &&
-          p.symbol && 
-          p.method && 
-          p.session;
-        
-        if (!isValid) {
-          console.log('Invalid performer data:', p);
+              console.log('Raw API response:', data);
+        if (data && data.length > 0) {
+          console.log('First item:', data[0]);
+          console.log('First item keys:', Object.keys(data[0]));
+          console.log('roiPct value:', data[0].roiPct);
+          console.log('roiPct type:', typeof data[0].roiPct);
         }
         
-        return isValid;
-      });
-      
-      console.log('Valid data count:', validData.length, 'out of', data.length);
+        // Filter out any invalid data
+        const validData = data.filter(p => {
+          if (!p) {
+            console.log('Null/undefined item');
+            return false;
+          }
+          
+          const hasRoiPct = p.roiPct !== undefined && p.roiPct !== null;
+          const isNumber = typeof p.roiPct === 'number';
+          const notNaN = !isNaN(p.roiPct);
+          const hasSymbol = !!p.symbol;
+          const hasMethod = !!p.method;
+          const hasSession = !!p.session;
+          
+          const isValid = hasRoiPct && isNumber && notNaN && hasSymbol && hasMethod && hasSession;
+          
+          if (!isValid) {
+            console.log('Invalid performer data:', {
+              item: p,
+              hasRoiPct,
+              isNumber,
+              notNaN,
+              hasSymbol,
+              hasMethod,
+              hasSession
+            });
+          }
+          
+          return isValid;
+        });
+        
+        console.log('Valid data count:', validData.length, 'out of', data.length);
       
       setPerformers(validData);
       
