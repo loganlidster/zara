@@ -469,9 +469,12 @@ router.get('/top-performers', async (req, res) => {
     const sessions = session ? [session.toUpperCase()] : ['RTH', 'AH'];
     const methods = method ? [method.toUpperCase()] : ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
     
-    const results = [];
+    console.log(`Querying ${sessions.length * methods.length} tables in parallel...`);
+    const startTime = Date.now();
 
-    // Query each relevant specialized table
+    // Create array of promises for parallel execution
+    const queryPromises = [];
+    
     for (const sess of sessions) {
       for (const meth of methods) {
         const tableName = getTableName(sess, meth);
@@ -513,10 +516,28 @@ router.get('/top-performers', async (req, res) => {
         `;
 
         const params = symbol ? [startDate, endDate, symbol] : [startDate, endDate];
-        const result = await client.query(query, params);
-        results.push(...result.rows);
+        
+        // Add promise to array instead of awaiting immediately
+        // Wrap in error handler so one failed table doesn't break everything
+        queryPromises.push(
+          client.query(query, params)
+            .then(result => result.rows)
+            .catch(err => {
+              console.error(`Error querying ${tableName}:`, err.message);
+              return []; // Return empty array on error so other queries continue
+            })
+        );
       }
     }
+
+    // Execute all queries in parallel
+    const allResults = await Promise.all(queryPromises);
+    
+    // Flatten results from all queries
+    const results = allResults.flat();
+    
+    const queryTime = Date.now() - startTime;
+    console.log(`Parallel query completed in ${queryTime}ms, returned ${results.length} results`);
 
     // Sort by ROI and limit
     results.sort((a, b) => parseFloat(b.roi_pct) - parseFloat(a.roi_pct));
