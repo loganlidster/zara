@@ -5,7 +5,7 @@
  * ultimate flexibility in querying and analyzing trading data.
  */
 
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 /**
@@ -510,4 +510,4 @@ router.post('/best-time-window', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

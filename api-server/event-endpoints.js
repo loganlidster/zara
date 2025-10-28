@@ -7,7 +7,7 @@
  * - Portfolio state at any point in time
  */
 
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 /**
@@ -434,4 +434,4 @@ router.get('/top-performers', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
