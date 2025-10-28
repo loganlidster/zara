@@ -77,10 +77,24 @@ export default function FastDailyReport() {
         return a.event_time.localeCompare(b.event_time);
       });
 
+      // Filter to only show executed trades (alternating BUY/SELL)
+      const executedTrades = [];
+      let expectingBuy = true;
+      
+      for (const event of sortedEvents) {
+        if (expectingBuy &amp;&amp; event.event_type === 'BUY') {
+          executedTrades.push(event);
+          expectingBuy = false;
+        } else if (!expectingBuy &amp;&amp; event.event_type === 'SELL') {
+          executedTrades.push(event);
+          expectingBuy = true;
+        }
+      }
+
       // Calculate wallet simulation
       let cash = 10000;
       let shares = 0;
-      const eventsWithWallet = sortedEvents.map((event) => {
+      const eventsWithWallet = executedTrades.map((event) => {
         if (event.event_type === 'BUY') {
           const sharesToBuy = Math.floor(cash / event.stock_price);
           const cost = sharesToBuy * event.stock_price;
