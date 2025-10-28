@@ -86,68 +86,103 @@ export default function BestPerformersReport() {
     setError(null);
 
     try {
-      const params: any = {
-        startDate,
-        endDate,
-        limit
-      };
-
-      if (symbolFilter !== 'All') params.symbol = symbolFilter;
-      if (methodFilter !== 'All') params.method = methodFilter;
-      if (sessionFilter !== 'All') params.session = sessionFilter;
-
-      const response = await getTopPerformers(params);
+      let response: TopPerformersResponse;
       
-              console.log('Raw API response:', response);
-        
-        // Extract timing info if available
-        if (response.timing) {
-          setTiming(response.timing);
-          console.log('Timing:', response.timing);
+      if (mode === 'range') {
+        // Range testing mode
+        if (symbolFilter === 'All') {
+          setError('Range testing requires a specific symbol.');
+          setLoading(false);
+          return;
+        }
+        if (methodFilter === 'All') {
+          setError('Range testing requires a specific method.');
+          setLoading(false);
+          return;
+        }
+        if (sessionFilter === 'All') {
+          setError('Range testing requires a specific session.');
+          setLoading(false);
+          return;
         }
         
-        // Get the actual performers array
-        const performersData = response.topPerformers || [];
-        
-        if (performersData && performersData.length > 0) {
-          console.log('First item:', performersData[0]);
-          console.log('First item keys:', Object.keys(performersData[0]));
-          console.log('roiPct value:', performersData[0].roiPct);
-          console.log('roiPct type:', typeof performersData[0].roiPct);
-        }
-        
-        // Filter out any invalid data
-        const validData = performersData.filter(p => {
-          if (!p) {
-            console.log('Null/undefined item');
-            return false;
-          }
-          
-          const hasRoiPct = p.roiPct !== undefined && p.roiPct !== null;
-          const isNumber = typeof p.roiPct === 'number';
-          const notNaN = !isNaN(p.roiPct);
-          const hasSymbol = !!p.symbol;
-          const hasMethod = !!p.method;
-          const hasSession = !!p.session;
-          
-          const isValid = hasRoiPct && isNumber && notNaN && hasSymbol && hasMethod && hasSession;
-          
-          if (!isValid) {
-            console.log('Invalid performer data:', {
-              item: p,
-              hasRoiPct,
-              isNumber,
-              notNaN,
-              hasSymbol,
-              hasMethod,
-              hasSession
-            });
-          }
-          
-          return isValid;
+        response = await getTopPerformersRange({
+          symbol: symbolFilter,
+          method: methodFilter,
+          session: sessionFilter,
+          buyMin,
+          buyMax,
+          sellMin,
+          sellMax,
+          startDate,
+          endDate,
+          limit
         });
+      } else {
+        // All mode
+        const params: any = {
+          startDate,
+          endDate,
+          limit
+        };
+  
+        if (symbolFilter !== 'All') params.symbol = symbolFilter;
+        if (methodFilter !== 'All') params.method = methodFilter;
+        if (sessionFilter !== 'All') params.session = sessionFilter;
+
+        response = await getTopPerformers(params);
+      }
         
-        console.log('Valid data count:', validData.length, 'out of', performersData.length);
+      console.log('Raw API response:', response);
+      
+      // Extract timing info if available
+      if (response.timing) {
+        setTiming(response.timing);
+        console.log('Timing:', response.timing);
+      }
+      
+      // Get the actual performers array
+      const performersData = response.topPerformers || [];
+      
+      if (performersData && performersData.length > 0) {
+        console.log('First item:', performersData[0]);
+        console.log('First item keys:', Object.keys(performersData[0]));
+        console.log('roiPct value:', performersData[0].roiPct);
+        console.log('roiPct type:', typeof performersData[0].roiPct);
+      }
+      
+      // Filter out any invalid data
+      const validData = performersData.filter(p => {
+        if (!p) {
+          console.log('Null/undefined item');
+          return false;
+        }
+        
+        const hasRoiPct = p.roiPct !== undefined && p.roiPct !== null;
+        const isNumber = typeof p.roiPct === 'number';
+        const notNaN = !isNaN(p.roiPct);
+        const hasSymbol = !!p.symbol;
+        const hasMethod = !!p.method;
+        const hasSession = !!p.session;
+        
+        const isValid = hasRoiPct && isNumber && notNaN && hasSymbol && hasMethod && hasSession;
+        
+        if (!isValid) {
+          console.log('Invalid performer data:', {
+            item: p,
+            hasRoiPct,
+            isNumber,
+            notNaN,
+            hasSymbol,
+            hasMethod,
+            hasSession
+          });
+        }
+        
+        return isValid;
+      });
+      
+      console.log('Valid data count:', validData.length, 'out of', performersData.length);
       
       setPerformers(validData);
       
@@ -155,12 +190,9 @@ export default function BestPerformersReport() {
         setError('No valid data returned. The query may have timed out or returned incomplete results.');
       }
     } catch (err: any) {
-      if (err.code === 'ECONNABORTED' || err.message.includes('timeout')) {
-        setError('Query timed out. Try using more specific filters (symbol, method, or session) or a smaller date range.');
-      } else {
-        setError(err.message || 'Failed to fetch data');
-      }
-      console.error('Error fetching data:', err);
+      console.error('Error fetching performers:', err);
+      setError(err.message || 'Failed to fetch data');
+      setPerformers([]);
     } finally {
       setLoading(false);
     }
