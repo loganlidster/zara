@@ -63,7 +63,15 @@ export async function getTradeEvents(params: {
   endDate: string;
 }): Promise<TradeEvent[]> {
   const response = await api.get('/api/events/query', { params });
-  return response.data.events;
+  // Convert string values to numbers
+  return response.data.events.map((event: any) => ({
+    ...event,
+    stock_price: parseFloat(event.stock_price),
+    btc_price: parseFloat(event.btc_price),
+    ratio: parseFloat(event.ratio),
+    baseline: parseFloat(event.baseline),
+    trade_roi_pct: event.trade_roi_pct ? parseFloat(event.trade_roi_pct) : null,
+  }));
 }
 
 // Get summary for a specific combination

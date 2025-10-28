@@ -242,14 +242,14 @@ export default function FastDailyReport() {
                           {event.event_type}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${parseFloat(event.stock_price).toFixed(4)}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${parseFloat(event.btc_price).toFixed(2)}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{parseFloat(event.ratio).toFixed(2)}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{parseFloat(event.baseline).toFixed(2)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.stock_price.toFixed(4)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.btc_price.toFixed(2)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.ratio.toFixed(2)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.baseline.toFixed(2)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
                         {event.trade_roi_pct !== null ? (
                           <span className={event.trade_roi_pct >= 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
-                            {parseFloat(event.trade_roi_pct).toFixed(2)}%
+                            {event.trade_roi_pct.toFixed(2)}%
                           </span>
                         ) : (
                           <span className="text-gray-400">-</span>
