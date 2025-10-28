@@ -73,9 +73,28 @@ export default function BestPerformersReport() {
       if (sessionFilter !== 'All') params.session = sessionFilter;
 
       const data = await getTopPerformers(params);
-      setPerformers(data);
+      
+      // Filter out any invalid data
+      const validData = data.filter(p => 
+        p &amp;&amp; 
+        typeof p.roi_pct === 'number' &amp;&amp; 
+        !isNaN(p.roi_pct) &amp;&amp;
+        p.symbol &amp;&amp; 
+        p.method &amp;&amp; 
+        p.session
+      );
+      
+      setPerformers(validData);
+      
+      if (validData.length === 0 &amp;&amp; data.length > 0) {
+        setError('No valid data returned. The query may have timed out or returned incomplete results.');
+      }
     } catch (err: any) {
-      setError(err.message || 'Failed to fetch data');
+      if (err.code === 'ECONNABORTED' || err.message.includes('timeout')) {
+        setError('Query timed out. Try using more specific filters (symbol, method, or session) or a smaller date range.');
+      } else {
+        setError(err.message || 'Failed to fetch data');
+      }
       console.error('Error fetching data:', err);
     } finally {
       setLoading(false);
@@ -158,6 +177,15 @@ export default function BestPerformersReport() {
 
         {/* Filter Form */}
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+          {/* Warning for large queries */}
+          {symbolFilter === 'All' && methodFilter === 'All' && sessionFilter === 'All' && (
+            <div className="mb-4 bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg">
+              <p className="text-sm">
+                <strong>Tip:</strong> Querying all symbols, methods, and sessions may take longer. 
+                For faster results, try filtering by a specific symbol, method, or session.
+              </p>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {/* Start Date */}
             <div>

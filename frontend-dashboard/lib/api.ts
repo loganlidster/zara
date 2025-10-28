@@ -5,7 +5,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tradiac-api-94125724
 
 const api = axios.create({
   baseURL: API_URL,
-  timeout: 30000,
+  timeout: 120000, // Increase to 2 minutes for large queries
 });
 
 export interface TradeEvent {
