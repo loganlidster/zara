@@ -450,7 +450,7 @@ export default function FastDailyReport() {
               <label className="block text-sm font-medium text-gray-700 mb-2">Slippage %</label>
               <input
                 type="number"
-                step="0.1"
+                step="0.01"
                 min="0"
                 max="5.0"
                 value={slippagePct}
