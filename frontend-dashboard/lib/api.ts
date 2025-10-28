@@ -181,3 +181,47 @@ export async function getHoldingPeriods(params: {
 }
 
 export default api;
+
+// Daily Curve interfaces
+export interface DailyCurveData {
+  dates: string[];
+  series: {
+    [symbol: string]: (number | null)[];
+  };
+}
+
+export interface DailyCurveMetrics {
+  symbol: string;
+  totalReturn: number;
+  totalTrades: number;
+  maxDrawdown: number;
+  finalEquity: number;
+}
+
+export interface DailyCurveResponse {
+  success: boolean;
+  dateRange: { startDate: string; endDate: string };
+  data: DailyCurveData;
+  metrics: DailyCurveMetrics[];
+  timing: {
+    total: number;
+    symbolsProcessed: number;
+  };
+}
+
+// Get daily curve data
+export async function getDailyCurve(params: {
+  symbols: string[];
+  method: string;
+  session: string;
+  buyPct: number;
+  sellPct: number;
+  startDate: string;
+  endDate: string;
+  alignmentMode?: string;
+  includeBtc?: boolean;
+}): Promise<DailyCurveResponse> {
+  const response = await api.post("/api/events/daily-curve", params);
+  return response.data;
+}
+

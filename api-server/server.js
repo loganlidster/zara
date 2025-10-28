@@ -421,6 +421,10 @@ app.use('/api/flexible', flexibleEndpoints);
 // Two-step best performers (accurate ROI)
 import bestPerformersTwoStep from './best-performers-two-step.js';
 app.use('/api/events', bestPerformersTwoStep);
+
+// Daily curve endpoint
+import dailyCurveEndpoint from './daily-curve-endpoint.js';
+app.use('/api/events', dailyCurveEndpoint);
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
