@@ -342,60 +342,66 @@ export default function FastDailyReport() {
                   </>
                 ) : (
                   <>
-                    {/* RTH Buy % */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">RTH Buy %</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        min="0.1"
-                        max="3.0"
-                        value={rthBuyPct}
-                        onChange={(e) => setRthBuyPct(parseFloat(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
+                    {/* RTH Settings Box */}
+                    <div className="col-span-2 bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+                      <h3 className="text-sm font-bold text-blue-800 mb-3">RTH Settings (9:30 AM - 4:00 PM)</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Buy %</label>
+                          <input
+                            type="number"
+                            step="0.1"
+                            min="0.1"
+                            max="3.0"
+                            value={rthBuyPct}
+                            onChange={(e) => setRthBuyPct(parseFloat(e.target.value))}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Sell %</label>
+                          <input
+                            type="number"
+                            step="0.1"
+                            min="0.1"
+                            max="3.0"
+                            value={rthSellPct}
+                            onChange={(e) => setRthSellPct(parseFloat(e.target.value))}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
                     </div>
 
-                    {/* RTH Sell % */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">RTH Sell %</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        min="0.1"
-                        max="3.0"
-                        value={rthSellPct}
-                        onChange={(e) => setRthSellPct(parseFloat(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                    </div>
-
-                    {/* AH Buy % */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">AH Buy %</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        min="0.1"
-                        max="3.0"
-                        value={ahBuyPct}
-                        onChange={(e) => setAhBuyPct(parseFloat(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                    </div>
-
-                    {/* AH Sell % */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">AH Sell %</label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        min="0.1"
-                        max="3.0"
-                        value={ahSellPct}
-                        onChange={(e) => setAhSellPct(parseFloat(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
+                    {/* AH Settings Box */}
+                    <div className="col-span-2 bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
+                      <h3 className="text-sm font-bold text-purple-800 mb-3">AH Settings (After Hours)</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Buy %</label>
+                          <input
+                            type="number"
+                            step="0.1"
+                            min="0.1"
+                            max="3.0"
+                            value={ahBuyPct}
+                            onChange={(e) => setAhBuyPct(parseFloat(e.target.value))}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Sell %</label>
+                          <input
+                            type="number"
+                            step="0.1"
+                            min="0.1"
+                            max="3.0"
+                            value={ahSellPct}
+                            onChange={(e) => setAhSellPct(parseFloat(e.target.value))}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </>
                 )}
@@ -431,19 +437,6 @@ export default function FastDailyReport() {
                 </div>
               </>
             )}
-
-            {/* Conservative Rounding Checkbox */}
-            <div className="flex items-center">
-              <label className="flex items-center space-x-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={useConservativeRounding}
-                  onChange={(e) => setUseConservativeRounding(e.target.checked)}
-                  className="rounded border-gray-300 text-blue-500 focus:ring-blue-500"
-                />
-                <span className="text-sm font-medium text-gray-700">Conservative Rounding</span>
-              </label>
-            </div>
 
             {/* Slippage % */}
             <div>
@@ -481,8 +474,8 @@ export default function FastDailyReport() {
               />
             </div>
 
-            {/* Submit Button */}
-            <div className="flex items-end">
+            {/* Submit Button and Conservative Rounding */}
+            <div className="flex flex-col gap-2">
               <button
                 type="submit"
                 disabled={loading}
@@ -490,6 +483,15 @@ export default function FastDailyReport() {
               >
                 {loading ? 'Loading...' : 'Run Report'}
               </button>
+              <label className="flex items-center space-x-2 cursor-pointer justify-center">
+                <input
+                  type="checkbox"
+                  checked={useConservativeRounding}
+                  onChange={(e) => setUseConservativeRounding(e.target.checked)}
+                  className="rounded border-gray-300 text-blue-500 focus:ring-blue-500"
+                />
+                <span className="text-sm font-medium text-gray-700">Conservative Rounding</span>
+              </label>
             </div>
           </form>
           
