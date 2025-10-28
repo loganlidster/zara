@@ -1,32 +1,32 @@
-# Fast Daily Report - COMPLETE! 🎉
+# Best Performers Report
 
-## All Features Implemented ✅
-- [x] Event count mismatch fixed
-- [x] Session column added (RTH/AH)
-- [x] Date format MM/DD/YYYY
-- [x] CSV export with session and adjusted price
-- [x] Conservative rounding (NOW OPTIONAL with checkbox!)
-- [x] Slippage factor input (0-5%)
-- [x] Background logo bigger (700px) and brighter (15% opacity)
-- [x] Separate RTH/AH values support
-- [x] All deployed to Vercel
+## 1. Page Structure ✅
+- [x] Create page at frontend-dashboard/app/reports/best-performers/page.tsx
+- [x] Add header with title and description
+- [x] Add filter form (date range, optional symbol/method/session filters)
+- [x] Add results limit selector (10, 20, 50, 100)
 
-## Conservative Rounding - Now Optional! ✅
-**Checkbox: "Conservative Rounding"**
-- **Checked (default)**: Round up for buys, down for sells
-  - Example: $12.766 → Buy: $12.77, Sell: $12.76
-- **Unchecked**: Use exact prices with fractions of cents
-  - Example: $12.766 → Buy: $12.766, Sell: $12.766
-- Slippage still applies in both modes
+## 2. Data Table ✅
+- [x] Create sortable table component
+- [x] Columns: Rank, Symbol, Method, Session, Buy%, Sell%, ROI%, Total Events, Trades
+- [x] Color coding for ROI (gradient from red to green)
+- [x] Click row to navigate to Fast Daily with those parameters
 
-## Separate RTH/AH Values ✅
-**Session Dropdown: RTH, AH, or ALL**
-- **RTH/AH**: Single buy/sell percentages
-- **ALL**: Checkbox "Use same values for RTH and AH"
-  - Checked: Single buy/sell for both
-  - Unchecked: Separate RTH and AH percentages
+## 3. Features ✅
+- [x] Sort by any column (default: ROI descending)
+- [x] Filter by symbol, method, session
+- [x] Date range picker
+- [x] Export to CSV
+- [x] Loading states and error handling
 
-## Performance Achievement 🚀
-- User confirmed: "WOW THIS IS FAST. The reports are almost instant."
-- 10x improvement from specialized tables!
-- User feedback: "You are killing it tonight! Great work. Feels like you are in a rhythm and get it."
+## 4. Visual Enhancements ✅
+- [x] Top 3 get medal icons (🥇🥈🥉)
+- [x] ROI percentage with color gradient (5 levels)
+- [x] Hover effects on rows (blue highlight)
+- [x] Responsive design
+- [x] Session badges (RTH blue, AH purple)
+
+## 5. Deploy
+- [ ] Commit and push
+- [ ] Deploy to Vercel
+- [ ] Test live
