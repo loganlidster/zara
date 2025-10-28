@@ -60,6 +60,7 @@ export default function FastDailyReport() {
   const [ahBuyPct, setAhBuyPct] = useState(0.5);
   const [ahSellPct, setAhSellPct] = useState(0.5);
   const [useSameValues, setUseSameValues] = useState(true);
+  const [useConservativeRounding, setUseConservativeRounding] = useState(true);
   const [slippagePct, setSlippagePct] = useState(0);
   const [startDate, setStartDate] = useState('2024-09-01');
   const [endDate, setEndDate] = useState('2025-10-22');
@@ -163,16 +164,28 @@ export default function FastDailyReport() {
         }
       }
 
-      // Calculate wallet simulation with conservative rounding
+      // Calculate wallet simulation
       let cash = 10000;
       let shares = 0;
       const eventsWithWallet = executedTrades.map((event) => {
-        // Apply conservative rounding with slippage
-        const adjustedPrice = applyConservativeRounding(
-          event.stock_price, 
-          event.event_type === 'BUY',
-          slippagePct
-        );
+        // Apply slippage and optional conservative rounding
+        let adjustedPrice = event.stock_price;
+        
+        if (useConservativeRounding) {
+          // Apply conservative rounding with slippage
+          adjustedPrice = applyConservativeRounding(
+            event.stock_price, 
+            event.event_type === 'BUY',
+            slippagePct
+          );
+        } else {
+          // Just apply slippage without rounding
+          if (slippagePct > 0) {
+            adjustedPrice = event.event_type === 'BUY'
+              ? event.stock_price * (1 + slippagePct / 100)
+              : event.stock_price * (1 - slippagePct / 100);
+          }
+        }
 
         if (event.event_type === 'BUY') {
           const sharesToBuy = Math.floor(cash / adjustedPrice);
@@ -239,7 +252,7 @@ export default function FastDailyReport() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Fast Daily Report</h1>
-          <p className="text-gray-600">Single simulation showing all BUY/SELL events with conservative rounding</p>
+          <p className="text-gray-600">Single simulation showing all BUY/SELL events with optional conservative rounding</p>
         </div>
 
         {/* Form */}
@@ -418,6 +431,19 @@ export default function FastDailyReport() {
                 </div>
               </>
             )}
+
+            {/* Conservative Rounding Checkbox */}
+            <div className="flex items-center">
+              <label className="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={useConservativeRounding}
+                  onChange={(e) => setUseConservativeRounding(e.target.checked)}
+                  className="rounded border-gray-300 text-blue-500 focus:ring-blue-500"
+                />
+                <span className="text-sm font-medium text-gray-700">Conservative Rounding</span>
+              </label>
+            </div>
 
             {/* Slippage % */}
             <div>

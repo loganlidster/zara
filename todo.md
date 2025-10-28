@@ -1,4 +1,4 @@
-# Fast Daily Report - Updates
+# Fast Daily Report - ALL FEATURES COMPLETE! 🎉
 
 ## Completed ✅
 - [x] Event count mismatch fixed
@@ -10,17 +10,24 @@
 - [x] Background logo bigger (700px) and brighter (15% opacity)
 - [x] Deployed to Vercel successfully
 
-## API Ready (Backend Complete) ✅
-- [x] Separate RTH/AH values API implemented
-- [x] Can query ALL session with different thresholds
-- [x] Tested and working
+## Separate RTH/AH Values - COMPLETE! ✅
+- [x] API backend implemented and tested
+- [x] Frontend form updated with ALL session option
+- [x] Conditional inputs show based on session selection
+- [x] "Use same values" checkbox for convenience
+- [x] API client updated to send separate parameters
+- [x] Deployed to Vercel
 
-## Frontend Update Needed
-- [ ] Add "ALL" option to session dropdown
-- [ ] Show separate RTH/AH inputs when ALL selected
-- [ ] Add "Use same values" checkbox for convenience
-- [ ] Update API calls to send separate parameters
-- [ ] Test with different RTH/AH values
+## How It Works
+**Single Session (RTH or AH):**
+- Shows regular Buy % and Sell % inputs
+- Works exactly as before
+
+**ALL Session:**
+- Checkbox: "Use same values for RTH and AH"
+  - If checked: Shows single Buy % and Sell % (applies to both)
+  - If unchecked: Shows RTH Buy %, RTH Sell %, AH Buy %, AH Sell %
+- Allows different strategies for different market hours
 
 ## Performance Achievement 🚀
 - User confirmed: "WOW THIS IS FAST. The reports are almost instant."
