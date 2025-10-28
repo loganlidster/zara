@@ -8,7 +8,25 @@
  */
 
 import express from 'express';
+import { Client } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const router = express.Router();
+
+// Database configuration
+const isCloudRun = process.env.K_SERVICE !== undefined;
+const dbConfig = {
+  host: isCloudRun 
+    ? `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME || 'tradiac-testing:us-central1:tradiac-testing-db'}`
+    : (process.env.DB_HOST || '34.41.97.179'),
+  port: isCloudRun ? undefined : parseInt(process.env.DB_PORT || '5432'),
+  database: process.env.DB_NAME || 'tradiac_testing',
+  user: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
+  ssl: isCloudRun ? false : { rejectUnauthorized: false }
+};
 
 /**
  * GET /api/events/query
@@ -25,7 +43,11 @@ const router = express.Router();
  * - endDate: End date (required)
  */
 router.get('/query', async (req, res) => {
+  const client = new Client(dbConfig);
+  
   try {
+    await client.connect();
+    
     const { symbol, method, session, buyPct, sellPct, startDate, endDate } = req.query;
 
     // Validate required parameters
@@ -40,7 +62,7 @@ router.get('/query', async (req, res) => {
       SELECT * FROM get_trade_events($1, $2, $3, $4, $5, $6, $7)
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol,
       method,
       session,
@@ -68,6 +90,8 @@ router.get('/query', async (req, res) => {
       error: 'Failed to query events',
       message: error.message
     });
+  } finally {
+    await client.end();
   }
 });
 
@@ -79,7 +103,10 @@ router.get('/query', async (req, res) => {
  * Query Parameters: Same as /query
  */
 router.get('/summary', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, buyPct, sellPct, startDate, endDate } = req.query;
 
     // Validate required parameters
@@ -94,7 +121,7 @@ router.get('/summary', async (req, res) => {
       SELECT * FROM calculate_roi($1, $2, $3, $4, $5, $6, $7)
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol,
       method,
       session,
@@ -139,7 +166,10 @@ router.get('/summary', async (req, res) => {
  * Get the current portfolio state for a specific combination
  */
 router.get('/portfolio-state', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, buyPct, sellPct } = req.query;
 
     // Validate required parameters
@@ -167,7 +197,7 @@ router.get('/portfolio-state', async (req, res) => {
         AND sell_pct = $5
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol,
       method,
       session,
@@ -227,7 +257,10 @@ router.get('/portfolio-state', async (req, res) => {
  * }
  */
 router.post('/batch-summary', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { combinations, startDate, endDate } = req.body;
 
     if (!combinations || !Array.isArray(combinations) || combinations.length === 0) {
@@ -253,7 +286,7 @@ router.post('/batch-summary', async (req, res) => {
         SELECT * FROM calculate_roi($1, $2, $3, $4, $5, $6, $7)
       `;
 
-      const result = await req.db.query(query, [
+      const result = await client.query(query, [
         symbol,
         method,
         session,
@@ -305,7 +338,10 @@ router.post('/batch-summary', async (req, res) => {
  * Get processing metadata for combinations
  */
 router.get('/metadata', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, status } = req.query;
 
     let query = 'SELECT * FROM simulation_metadata WHERE 1=1';
@@ -334,7 +370,7 @@ router.get('/metadata', async (req, res) => {
 
     query += ' ORDER BY symbol, method, session, buy_pct, sell_pct';
 
-    const result = await req.db.query(query, params);
+    const result = await client.query(query, params);
 
     res.json({
       success: true,
@@ -357,7 +393,10 @@ router.get('/metadata', async (req, res) => {
  * Get top performing combinations for a date range
  */
 router.get('/top-performers', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { startDate, endDate, limit = 20, symbol, method, session } = req.query;
 
     if (!startDate || !endDate) {
@@ -416,7 +455,7 @@ router.get('/top-performers', async (req, res) => {
       LIMIT $3
     `;
 
-    const result = await req.db.query(query, params);
+    const result = await client.query(query, params);
 
     res.json({
       success: true,

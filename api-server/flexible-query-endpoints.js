@@ -6,7 +6,25 @@
  */
 
 import express from 'express';
+import { Client } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const router = express.Router();
+
+// Database configuration
+const isCloudRun = process.env.K_SERVICE !== undefined;
+const dbConfig = {
+  host: isCloudRun 
+    ? `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME || 'tradiac-testing:us-central1:tradiac-testing-db'}`
+    : (process.env.DB_HOST || '34.41.97.179'),
+  port: isCloudRun ? undefined : parseInt(process.env.DB_PORT || '5432'),
+  database: process.env.DB_NAME || 'tradiac_testing',
+  user: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
+  ssl: isCloudRun ? false : { rejectUnauthorized: false }
+};
 
 /**
  * GET /api/flexible/custom-window
@@ -15,7 +33,10 @@ const router = express.Router();
  * Example: Analyze only 11am-2pm trading every day
  */
 router.get('/custom-window', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { 
       symbol, method, session, buyPct, sellPct,
       startDate, endDate,
@@ -52,7 +73,7 @@ router.get('/custom-window', async (req, res) => {
       ORDER BY event_timestamp
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol, method, session,
       parseFloat(buyPct), parseFloat(sellPct),
       startDate, endDate,
@@ -99,7 +120,10 @@ router.get('/custom-window', async (req, res) => {
  * Analyze how BTC price affects trading decisions
  */
 router.get('/btc-impact', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, buyPct, sellPct, startDate, endDate } = req.query;
 
     if (!symbol || !method || !session || !buyPct || !sellPct || !startDate || !endDate) {
@@ -143,7 +167,7 @@ router.get('/btc-impact', async (req, res) => {
         event_type
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol, method, session,
       parseFloat(buyPct), parseFloat(sellPct),
       startDate, endDate
@@ -173,7 +197,10 @@ router.get('/btc-impact', async (req, res) => {
  * Analyze trading patterns by hour of day
  */
 router.get('/intraday-patterns', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, buyPct, sellPct, startDate, endDate } = req.query;
 
     if (!symbol || !method || !session || !buyPct || !sellPct || !startDate || !endDate) {
@@ -202,7 +229,7 @@ router.get('/intraday-patterns', async (req, res) => {
       ORDER BY hour, event_type
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol, method, session,
       parseFloat(buyPct), parseFloat(sellPct),
       startDate, endDate
@@ -232,7 +259,10 @@ router.get('/intraday-patterns', async (req, res) => {
  * Analyze how long positions are typically held
  */
 router.get('/holding-periods', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, buyPct, sellPct, startDate, endDate } = req.query;
 
     if (!symbol || !method || !session || !buyPct || !sellPct || !startDate || !endDate) {
@@ -288,7 +318,7 @@ router.get('/holding-periods', async (req, res) => {
       FROM buy_sell_pairs
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol, method, session,
       parseFloat(buyPct), parseFloat(sellPct),
       startDate, endDate
@@ -335,7 +365,10 @@ router.get('/holding-periods', async (req, res) => {
  * Get portfolio state at a specific moment in time
  */
 router.get('/portfolio-at-time', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, buyPct, sellPct, timestamp } = req.query;
 
     if (!symbol || !method || !session || !buyPct || !sellPct || !timestamp) {
@@ -367,7 +400,7 @@ router.get('/portfolio-at-time', async (req, res) => {
       LIMIT 1
     `;
 
-    const result = await req.db.query(query, [
+    const result = await client.query(query, [
       symbol, method, session,
       parseFloat(buyPct), parseFloat(sellPct),
       timestamp
@@ -423,7 +456,10 @@ router.get('/portfolio-at-time', async (req, res) => {
  * Find the best performing time window for trading
  */
 router.post('/best-time-window', async (req, res) => {
-  try {
+    const client = new Client(dbConfig);
+    
+    try {
+      await client.connect();
     const { symbol, method, session, buyPct, sellPct, startDate, endDate, windowSizeHours } = req.body;
 
     if (!symbol || !method || !session || !buyPct || !sellPct || !startDate || !endDate) {
@@ -470,7 +506,7 @@ router.post('/best-time-window', async (req, res) => {
           AND event_timestamp::time BETWEEN $8 AND $9
       `;
 
-      const result = await req.db.query(query, [
+      const result = await client.query(query, [
         symbol, method, session,
         parseFloat(buyPct), parseFloat(sellPct),
         startDate, endDate,
