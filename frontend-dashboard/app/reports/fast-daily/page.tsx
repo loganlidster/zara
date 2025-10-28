@@ -52,6 +52,8 @@ function applyConservativeRounding(price: number, isBuy: boolean, slippagePct: n
 export default function FastDailyReport() {
   const [symbol, setSymbol] = useState('HIVE');
   const [method, setMethod] = useState('EQUAL_MEAN');
+  const [rthMethod, setRthMethod] = useState('EQUAL_MEAN');
+  const [ahMethod, setAhMethod] = useState('EQUAL_MEAN');
   const [session, setSession] = useState('RTH');
   const [buyPct, setBuyPct] = useState(0.5);
   const [sellPct, setSellPct] = useState(0.5);

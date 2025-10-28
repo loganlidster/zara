@@ -74,15 +74,26 @@ export default function BestPerformersReport() {
 
       const data = await getTopPerformers(params);
       
+      console.log('Raw API response:', data);
+      console.log('First item:', data[0]);
+      
       // Filter out any invalid data
-      const validData = data.filter(p => 
-        p && 
-        typeof p.roi_pct === 'number' && 
-        !isNaN(p.roi_pct) &&
-        p.symbol && 
-        p.method && 
-        p.session
-      );
+      const validData = data.filter(p => {
+        const isValid = p && 
+          typeof p.roi_pct === 'number' && 
+          !isNaN(p.roi_pct) &&
+          p.symbol && 
+          p.method && 
+          p.session;
+        
+        if (!isValid) {
+          console.log('Invalid performer data:', p);
+        }
+        
+        return isValid;
+      });
+      
+      console.log('Valid data count:', validData.length, 'out of', data.length);
       
       setPerformers(validData);
       
@@ -124,14 +135,14 @@ export default function BestPerformersReport() {
     
     const rows = sortedPerformers.map((p, idx) => [
       idx + 1,
-      p.symbol,
-      p.method,
-      p.session,
-      p.buy_pct,
-      p.sell_pct,
-      p.roi_pct.toFixed(2),
-      p.total_events,
-      p.sell_events
+      p.symbol || '',
+      p.method || '',
+      p.session || '',
+      p.buy_pct || 0,
+      p.sell_pct || 0,
+      (p.roi_pct || 0).toFixed(2),
+      p.total_events || 0,
+      p.sell_events || 0
     ]);
     
     const csvContent = [
@@ -389,27 +400,27 @@ export default function BestPerformersReport() {
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.buy_pct.toFixed(1)}%
+                          {(performer.buy_pct || 0).toFixed(1)}%
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.sell_pct.toFixed(1)}%
+                          {(performer.sell_pct || 0).toFixed(1)}%
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
                           <span className={`px-3 py-1 text-sm font-bold rounded-full ${
-                            performer.roi_pct >= 10 ? 'bg-green-100 text-green-800' :
-                            performer.roi_pct >= 5 ? 'bg-green-50 text-green-700' :
-                            performer.roi_pct >= 0 ? 'bg-gray-100 text-gray-700' :
-                            performer.roi_pct >= -5 ? 'bg-red-50 text-red-700' :
+                            (performer.roi_pct || 0) >= 10 ? 'bg-green-100 text-green-800' :
+                            (performer.roi_pct || 0) >= 5 ? 'bg-green-50 text-green-700' :
+                            (performer.roi_pct || 0) >= 0 ? 'bg-gray-100 text-gray-700' :
+                            (performer.roi_pct || 0) >= -5 ? 'bg-red-50 text-red-700' :
                             'bg-red-100 text-red-800'
                           }`}>
-                            {performer.roi_pct.toFixed(2)}%
+                            {(performer.roi_pct || 0).toFixed(2)}%
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.total_events}
+                          {performer.total_events || 0}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.sell_events}
+                          {performer.sell_events || 0}
                         </td>
                       </tr>
                     );
