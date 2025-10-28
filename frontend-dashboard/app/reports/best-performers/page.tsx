@@ -28,7 +28,7 @@ export default function BestPerformersReport() {
   const [limit, setLimit] = useState(20);
   const [loading, setLoading] = useState(false);
   const [performers, setPerformers] = useState<TopPerformer[]>([]);
-  const [sortColumn, setSortColumn] = useState<keyof TopPerformer>('roi_pct');
+  const [sortColumn, setSortColumn] = useState<keyof TopPerformer>('roiPct');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [error, setError] = useState<string | null>(null);
 
@@ -80,8 +80,8 @@ export default function BestPerformersReport() {
       // Filter out any invalid data
       const validData = data.filter(p => {
         const isValid = p && 
-          typeof p.roi_pct === 'number' && 
-          !isNaN(p.roi_pct) &&
+          typeof p.roiPct === 'number' && 
+          !isNaN(p.roiPct) &&
           p.symbol && 
           p.method && 
           p.session;
@@ -118,8 +118,8 @@ export default function BestPerformersReport() {
       symbol: performer.symbol,
       method: performer.method,
       session: performer.session,
-      buyPct: performer.buy_pct.toString(),
-      sellPct: performer.sell_pct.toString(),
+      buyPct: performer.buyPct.toString(),
+      sellPct: performer.sellPct.toString(),
       startDate,
       endDate
     });
@@ -138,11 +138,11 @@ export default function BestPerformersReport() {
       p.symbol || '',
       p.method || '',
       p.session || '',
-      p.buy_pct || 0,
-      p.sell_pct || 0,
-      (p.roi_pct || 0).toFixed(2),
-      p.total_events || 0,
-      p.sell_events || 0
+      p.buyPct || 0,
+      p.sellPct || 0,
+      (p.roiPct || 0).toFixed(2),
+      p.totalEvents || 0,
+      p.sellEvents || 0
     ]);
     
     const csvContent = [
@@ -343,33 +343,33 @@ export default function BestPerformersReport() {
                     </th>
                     <th 
                       className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('buy_pct')}
+                      onClick={() => handleSort('buyPct')}
                     >
-                      Buy % {sortColumn === 'buy_pct' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      Buy % {sortColumn === 'buyPct' && (sortDirection === 'asc' ? '↑' : '↓')}
                     </th>
                     <th 
                       className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('sell_pct')}
+                      onClick={() => handleSort('sellPct')}
                     >
-                      Sell % {sortColumn === 'sell_pct' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      Sell % {sortColumn === 'sellPct' && (sortDirection === 'asc' ? '↑' : '↓')}
                     </th>
                     <th 
                       className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('roi_pct')}
+                      onClick={() => handleSort('roiPct')}
                     >
-                      ROI % {sortColumn === 'roi_pct' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      ROI % {sortColumn === 'roiPct' && (sortDirection === 'asc' ? '↑' : '↓')}
                     </th>
                     <th 
                       className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('total_events')}
+                      onClick={() => handleSort('totalEvents')}
                     >
-                      Events {sortColumn === 'total_events' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      Events {sortColumn === 'totalEvents' && (sortDirection === 'asc' ? '↑' : '↓')}
                     </th>
                     <th 
                       className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('sell_events')}
+                      onClick={() => handleSort('sellEvents')}
                     >
-                      Trades {sortColumn === 'sell_events' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      Trades {sortColumn === 'sellEvents' && (sortDirection === 'asc' ? '↑' : '↓')}
                     </th>
                   </tr>
                 </thead>
@@ -379,7 +379,7 @@ export default function BestPerformersReport() {
                     const medal = getMedalIcon(rank);
                     return (
                       <tr 
-                        key={`${performer.symbol}-${performer.method}-${performer.session}-${performer.buy_pct}-${performer.sell_pct}`}
+                        key={`${performer.symbol}-${performer.method}-${performer.session}-${performer.buyPct}-${performer.sellPct}`}
                         onClick={() => handleRowClick(performer)}
                         className="hover:bg-blue-50 cursor-pointer transition-colors"
                       >
@@ -400,27 +400,27 @@ export default function BestPerformersReport() {
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {(performer.buy_pct || 0).toFixed(1)}%
+                          {(performer.buyPct || 0).toFixed(1)}%
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {(performer.sell_pct || 0).toFixed(1)}%
+                          {(performer.sellPct || 0).toFixed(1)}%
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
                           <span className={`px-3 py-1 text-sm font-bold rounded-full ${
-                            (performer.roi_pct || 0) >= 10 ? 'bg-green-100 text-green-800' :
-                            (performer.roi_pct || 0) >= 5 ? 'bg-green-50 text-green-700' :
-                            (performer.roi_pct || 0) >= 0 ? 'bg-gray-100 text-gray-700' :
-                            (performer.roi_pct || 0) >= -5 ? 'bg-red-50 text-red-700' :
+                            (performer.roiPct || 0) >= 10 ? 'bg-green-100 text-green-800' :
+                            (performer.roiPct || 0) >= 5 ? 'bg-green-50 text-green-700' :
+                            (performer.roiPct || 0) >= 0 ? 'bg-gray-100 text-gray-700' :
+                            (performer.roiPct || 0) >= -5 ? 'bg-red-50 text-red-700' :
                             'bg-red-100 text-red-800'
                           }`}>
-                            {(performer.roi_pct || 0).toFixed(2)}%
+                            {(performer.roiPct || 0).toFixed(2)}%
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.total_events || 0}
+                          {performer.totalEvents || 0}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.sell_events || 0}
+                          {performer.sellEvents || 0}
                         </td>
                       </tr>
                     );

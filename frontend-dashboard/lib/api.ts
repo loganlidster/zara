@@ -44,12 +44,12 @@ export interface TopPerformer {
   symbol: string;
   method: string;
   session: string;
-  buy_pct: number;
-  sell_pct: number;
-  roi_pct: number;
-  total_events: number;
-  buy_events: number;
-  sell_events: number;
+  buyPct: number;
+  sellPct: number;
+  roiPct: number;
+  totalEvents: number;
+  buyEvents?: number;
+  sellEvents: number;
 }
 
 // Get trade events for a specific combination
