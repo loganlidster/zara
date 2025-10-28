@@ -425,6 +425,10 @@ app.use('/api/events', bestPerformersTwoStep);
 // Daily curve endpoint
 import dailyCurveEndpoint from './daily-curve-endpoint.js';
 app.use('/api/events', dailyCurveEndpoint);
+
+// Best performers range testing
+import bestPerformersRange from './best-performers-range.js';
+app.use('/api/events', bestPerformersRange);
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });

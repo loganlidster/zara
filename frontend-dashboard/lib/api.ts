@@ -225,3 +225,22 @@ export async function getDailyCurve(params: {
   return response.data;
 }
 
+
+
+// Best Performers Range Testing
+export async function getTopPerformersRange(params: {
+  symbol: string;
+  method: string;
+  session: string;
+  buyMin: number;
+  buyMax: number;
+  sellMin: number;
+  sellMax: number;
+  startDate: string;
+  endDate: string;
+  limit?: number;
+}): Promise<TopPerformersResponse> {
+  const response = await api.post("/api/events/best-performers-range", params);
+  return response.data;
+}
+
