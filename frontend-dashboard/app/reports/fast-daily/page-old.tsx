@@ -9,54 +9,13 @@ const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', '
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
 const SESSIONS = ['RTH', 'AH'];
 
-// Helper function to determine session from time
-function getSessionFromTime(timeStr: string): string {
-  const [hours, minutes] = timeStr.split(':').map(Number);
-  const totalMinutes = hours * 60 + minutes;
-  
-  // RTH is 9:30 AM to 4:00 PM (570 to 960 minutes)
-  if (totalMinutes >= 570 && totalMinutes < 960) {
-    return 'RTH';
-  }
-  return 'AH';
-}
-
-// Helper function to format date as MM/DD/YYYY
-function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  const year = date.getFullYear();
-  return `${month}/${day}/${year}`;
-}
-
-// Conservative rounding with slippage
-function applyConservativeRounding(price: number, isBuy: boolean, slippagePct: number = 0): number {
-  // Apply slippage first
-  const priceWithSlippage = isBuy 
-    ? price * (1 + slippagePct / 100)  // Increase price for buys
-    : price * (1 - slippagePct / 100); // Decrease price for sells
-  
-  // Round to nearest cent
-  const cents = Math.round(priceWithSlippage * 100);
-  
-  if (isBuy) {
-    // Round UP for buys (conservative - pay more)
-    return Math.ceil(cents) / 100;
-  } else {
-    // Round DOWN for sells (conservative - receive less)
-    return Math.floor(cents) / 100;
-  }
-}
-
 export default function FastDailyReport() {
   const [symbol, setSymbol] = useState('HIVE');
   const [method, setMethod] = useState('EQUAL_MEAN');
   const [session, setSession] = useState('RTH');
   const [buyPct, setBuyPct] = useState(0.5);
   const [sellPct, setSellPct] = useState(0.5);
-  const [slippagePct, setSlippagePct] = useState(0);
-  const [startDate, setStartDate] = useState('2024-09-01');
+  const [startDate, setStartDate] = useState('2024-01-01');
   const [endDate, setEndDate] = useState('2025-10-22');
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState<any[]>([]);
@@ -67,17 +26,15 @@ export default function FastDailyReport() {
     if (events.length === 0) return;
     
     const headers = [
-      'Date', 'Time', 'Session', 'Type', 'Stock Price', 'Adjusted Price', 'BTC Price', 'Ratio', 'Baseline',
+      'Date', 'Time', 'Type', 'Stock Price', 'BTC Price', 'Ratio', 'Baseline',
       'Shares Held', 'Cash Balance', 'Portfolio Value', 'ROI %', 'Trade ROI %'
     ];
     
     const rows = events.map(e => [
-      formatDate(e.event_date),
+      e.event_date,
       e.event_time,
-      e.session,
       e.event_type,
       e.stock_price.toFixed(4),
-      e.adjusted_price.toFixed(2),
       e.btc_price.toFixed(2),
       e.ratio.toFixed(2),
       e.baseline.toFixed(2),
@@ -108,18 +65,13 @@ export default function FastDailyReport() {
     setError(null);
 
     try {
-      const eventsData = await getTradeEvents({ 
-        symbol, method, session, buyPct, sellPct, startDate, endDate 
-      });
-
-      // Add session field to each event based on time
-      const eventsWithSession = eventsData.map(event => ({
-        ...event,
-        session: getSessionFromTime(event.event_time)
-      }));
+      const [eventsData, summaryData] = await Promise.all([
+        getTradeEvents({ symbol, method, session, buyPct, sellPct, startDate, endDate }),
+        getSummary({ symbol, method, session, buyPct, sellPct, startDate, endDate })
+      ]);
 
       // Sort events by date and time chronologically
-      const sortedEvents = eventsWithSession.sort((a, b) => {
+      const sortedEvents = eventsData.sort((a, b) => {
         const dateCompare = a.event_date.localeCompare(b.event_date);
         if (dateCompare !== 0) return dateCompare;
         return a.event_time.localeCompare(b.event_time);
@@ -139,34 +91,26 @@ export default function FastDailyReport() {
         }
       }
 
-      // Calculate wallet simulation with conservative rounding
+      // Calculate wallet simulation
       let cash = 10000;
       let shares = 0;
       const eventsWithWallet = executedTrades.map((event) => {
-        // Apply conservative rounding with slippage
-        const adjustedPrice = applyConservativeRounding(
-          event.stock_price, 
-          event.event_type === 'BUY',
-          slippagePct
-        );
-
         if (event.event_type === 'BUY') {
-          const sharesToBuy = Math.floor(cash / adjustedPrice);
-          const cost = sharesToBuy * adjustedPrice;
+          const sharesToBuy = Math.floor(cash / event.stock_price);
+          const cost = sharesToBuy * event.stock_price;
           cash -= cost;
           shares += sharesToBuy;
         } else if (event.event_type === 'SELL' && shares > 0) {
-          const proceeds = shares * adjustedPrice;
+          const proceeds = shares * event.stock_price;
           cash += proceeds;
           shares = 0;
         }
         
-        const portfolioValue = cash + (shares * adjustedPrice);
+        const portfolioValue = cash + (shares * event.stock_price);
         const roi = ((portfolioValue - 10000) / 10000) * 100;
         
         return {
           ...event,
-          adjusted_price: adjustedPrice,
           shares_held: shares,
           cash_balance: cash,
           portfolio_value: portfolioValue,
@@ -174,22 +118,8 @@ export default function FastDailyReport() {
         };
       });
 
-      // Calculate summary from filtered events
-      const buyEvents = eventsWithWallet.filter(e => e.event_type === 'BUY').length;
-      const sellEvents = eventsWithWallet.filter(e => e.event_type === 'SELL').length;
-      const finalEvent = eventsWithWallet[eventsWithWallet.length - 1];
-      const finalValue = finalEvent?.portfolio_value || 10000;
-      const finalROI = ((finalValue - 10000) / 10000) * 100;
-
       setEvents(eventsWithWallet);
-      setSummary({
-        startValue: 10000,
-        endValue: finalValue,
-        roiPct: finalROI,
-        totalEvents: eventsWithWallet.length,
-        buyEvents,
-        sellEvents
-      });
+      setSummary(summaryData);
     } catch (err: any) {
       setError(err.message || 'Failed to fetch data');
       console.error('Error fetching data:', err);
@@ -215,7 +145,7 @@ export default function FastDailyReport() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Fast Daily Report</h1>
-          <p className="text-gray-600">Single simulation showing all BUY/SELL events with conservative rounding</p>
+          <p className="text-gray-600">Single simulation showing all BUY/SELL events</p>
         </div>
 
         {/* Form */}
@@ -285,20 +215,6 @@ export default function FastDailyReport() {
               />
             </div>
 
-            {/* Slippage % */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Slippage %</label>
-              <input
-                type="number"
-                step="0.1"
-                min="0"
-                max="5.0"
-                value={slippagePct}
-                onChange={(e) => setSlippagePct(parseFloat(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
             {/* Start Date */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
@@ -331,20 +247,20 @@ export default function FastDailyReport() {
                 {loading ? 'Loading...' : 'Run Report'}
               </button>
             </div>
+            
+            {/* Export CSV Button */}
+            {events.length > 0 && (
+              <div>
+                <button
+                  type="button"
+                  onClick={exportToCSV}
+                  className="w-full bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition-colors"
+                >
+                  Export to CSV
+                </button>
+              </div>
+            )}
           </form>
-          
-          {/* Export CSV Button - Separate row */}
-          {events.length > 0 && (
-            <div className="mt-4">
-              <button
-                type="button"
-                onClick={exportToCSV}
-                className="w-full bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition-colors"
-              >
-                Export to CSV
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Error */}
@@ -409,16 +325,16 @@ export default function FastDailyReport() {
                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ratio</th>
                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Baseline</th>
                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Shares</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Cash</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Portfolio</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ROI %</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Trade ROI</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Cash</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Portfolio</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ROI %</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Trade ROI</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {events.map((event, idx) => (
                     <tr key={idx} className={event.event_type === 'BUY' ? 'bg-blue-50' : 'bg-orange-50'}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{formatDate(event.event_date)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{event.event_date}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{event.event_time}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{event.session}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -428,21 +344,21 @@ export default function FastDailyReport() {
                           {event.event_type}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.adjusted_price.toFixed(2)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.stock_price.toFixed(4)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.btc_price.toFixed(2)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.ratio.toFixed(2)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.baseline.toFixed(2)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{event.shares_held || 0}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.cash_balance?.toFixed(2) || '0.00'}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.portfolio_value?.toFixed(2) || '0.00'}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
-                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          (event.roi_pct || 0) >= 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                        }`}>
-                          {event.roi_pct?.toFixed(2) || '0.00'}%
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.cash_balance?.toFixed(2) || '0.00'}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">${event.portfolio_value?.toFixed(2) || '0.00'}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                          <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            (event.roi_pct || 0) >= 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                          }`}>
+                            {event.roi_pct?.toFixed(2) || '0.00'}%
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
                         {event.trade_roi_pct !== null ? (
                           <span className={event.trade_roi_pct >= 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
                             {event.trade_roi_pct.toFixed(2)}%
