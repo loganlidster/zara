@@ -23,5 +23,6 @@
    - Buy: Math.ceil (round up)
    - Sell: Math.floor (round down)
 7. [x] Add slippage factor input and calculation
-8. [ ] Test all changes locally
-9. [ ] Deploy to Vercel
+8. [x] Committed and pushed to GitHub
+9. [ ] Wait for Vercel deployment
+10. [ ] Test on live dashboard

@@ -202,10 +202,10 @@ export default function FastDailyReport() {
     <div className="min-h-screen relative bg-white">
       {/* Logo Watermark Background */}
       <div 
-        className="fixed inset-0 opacity-5 pointer-events-none"
+        className="fixed inset-0 opacity-15 pointer-events-none"
         style={{
           backgroundImage: 'url(/RAAS_primary_transparent_512.png)',
-          backgroundSize: '400px 400px',
+          backgroundSize: '700px 700px',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}
