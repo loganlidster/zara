@@ -5,6 +5,13 @@ import { Client } from 'pg';
 import { batchSimulate } from './batch-endpoint.js';
 import { batchDaily } from './batch-daily-endpoint.js';
 import { handleFastDaily } from './fast-daily-endpoint.js';
+import eventEndpoints from './event-endpoints-with-separate-values.js';
+import flexibleEndpoints from './flexible-query-endpoints.js';
+import bestPerformersTwoStep from './best-performers-two-step.js';
+import dailyCurveEndpoint from './daily-curve-endpoint.js';
+import patternEndpoints from './pattern-endpoints.js';
+import customPatternEndpoints from './custom-pattern-endpoints.js';
+import bestPerformersRange from './best-performers-range.js';
 
 dotenv.config();
 
@@ -411,25 +418,18 @@ app.post('/api/batch-daily', batchDaily);
 app.post('/api/fast-daily', handleFastDaily);
 
 // Event-based endpoints
-import eventEndpoints from './event-endpoints-with-separate-values.js';
 app.use('/api/events', eventEndpoints);
 
 // Flexible query endpoints
-import flexibleEndpoints from './flexible-query-endpoints.js';
 app.use('/api/flexible', flexibleEndpoints);
 
 // Two-step best performers (accurate ROI)
-import bestPerformersTwoStep from './best-performers-two-step.js';
 app.use('/api/events', bestPerformersTwoStep);
 
 // Daily curve endpoint
-import dailyCurveEndpoint from './daily-curve-endpoint.js';
-import patternEndpoints from './pattern-endpoints.js';
-import customPatternEndpoints from './custom-pattern-endpoints.js';
 app.use('/api/events', dailyCurveEndpoint);
 
 // Best performers range testing
-import bestPerformersRange from './best-performers-range.js';
 app.use('/api/events', bestPerformersRange);
 
 // Pattern analysis endpoints
