@@ -164,7 +164,8 @@ gcloud scheduler jobs resume event-update-daily --location=us-central1
 
 ## Key Points
 
-✅ **Wallet Continuity:** System correctly handles positions that carry overnight
+✅ **Alternating Pattern:** Logs BUY/SELL signals in alternating pattern (BUY→SELL→BUY→SELL)
+✅ **Frontend Builds Wallet:** Reports build wallet from scratch starting at $10,000
 ✅ **Incremental:** Only processes new days, doesn't reprocess everything
 ✅ **Safe:** Uses ON CONFLICT DO NOTHING to prevent duplicates
 ✅ **Fast:** 2-3 minutes per day for all 10 tables

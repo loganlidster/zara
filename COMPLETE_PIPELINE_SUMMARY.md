@@ -192,10 +192,10 @@ Go to https://raas.help and check any report shows data through Oct 28, 2025.
 
 ## Key Features
 
-### Wallet Continuity
-- Positions carry overnight correctly
-- System checks last event to determine starting state
-- No artificial resets between days
+### Alternating Signal Pattern
+- Logs BUY and SELL signals in alternating pattern
+- System checks last event to determine if expecting BUY or SELL next
+- Frontend builds wallet from scratch for each report
 
 ### Incremental Processing
 - Only processes new days

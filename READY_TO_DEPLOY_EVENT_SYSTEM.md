@@ -115,8 +115,8 @@ All these tables will be updated daily:
 
 ## Key Features
 
-### ✅ Wallet Continuity
-Positions carry overnight correctly. The system checks the last event to determine if you're holding shares or cash, then continues from that state.
+### ✅ Alternating Signal Pattern
+Logs BUY and SELL signals in alternating pattern. The system checks the last event to determine if expecting BUY or SELL next. Frontend builds wallet from scratch starting at $10,000.
 
 ### ✅ Incremental Processing
 Only processes new days. Doesn't reprocess existing data. Safe to re-run (uses ON CONFLICT DO NOTHING).

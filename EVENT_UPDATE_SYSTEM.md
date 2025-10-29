@@ -43,12 +43,12 @@ The Event Update System is an automated pipeline that processes daily trading da
 
 ## Key Features
 
-### 1. Wallet Continuity
-The system handles positions that carry overnight:
-- Checks the last event in each table to determine starting state
-- If last event was BUY → starts with shares held
-- If last event was SELL → starts with cash
-- Continues simulation from that state
+### 1. Alternating Signal Pattern
+The system logs BUY and SELL signals in alternating pattern:
+- Checks the last event to determine if expecting BUY or SELL next
+- If last event was BUY → next logged event must be SELL
+- If last event was SELL → next logged event must be BUY
+- Frontend builds wallet from scratch starting at $10,000
 
 ### 2. Incremental Processing
 - Processes ONE day at a time
