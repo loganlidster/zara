@@ -4,8 +4,10 @@
  * Event Update Job - Daily Incremental Processor
  * 
  * This job processes ONE day of new data and extends the existing trade_events tables.
- * It handles wallet continuity by checking the last event in each table to determine
- * the starting state (cash vs shares held).
+ * It logs ALL BUY and SELL signals in alternating pattern (BUY→SELL→BUY→SELL).
+ * 
+ * The frontend (Fast Daily report) builds the wallet from scratch starting at $10,000,
+ * filtering events to alternating pattern and calculating ROI during wallet simulation.
  * 
  * Usage:
  *   TARGET_DATE=2025-10-24 node event-update-job.js
@@ -70,33 +72,31 @@ function getTableName(method, session) {
 
 /**
  * Get the last event for a specific combination to determine starting state
+ * This determines if we start the day with cash or shares
  */
-async function getLastEventState(client, tableName, symbol, buyPct, sellPct) {
+async function getLastEventState(client, tableName, symbol, buyPct, sellPct, targetDate) {
   const query = `
-    SELECT event_type, stock_price, event_date, event_time
+    SELECT event_type, stock_price
     FROM ${tableName}
     WHERE symbol = $1 
       AND buy_pct = $2 
       AND sell_pct = $3
+      AND event_date < $4
     ORDER BY event_date DESC, event_time DESC
     LIMIT 1
   `;
   
-  const result = await client.query(query, [symbol, buyPct, sellPct]);
+  const result = await client.query(query, [symbol, buyPct, sellPct, targetDate]);
   
   if (result.rows.length === 0) {
-    // No previous events - start with cash
-    return { hasCash: true, hasShares: false, lastPrice: null };
+    // No previous events - start with cash (first BUY)
+    return { expectingBuy: true };
   }
   
   const lastEvent = result.rows[0];
-  if (lastEvent.event_type === 'BUY') {
-    // Last event was BUY - we're holding shares
-    return { hasCash: false, hasShares: true, lastPrice: parseFloat(lastEvent.stock_price) };
-  } else {
-    // Last event was SELL - we have cash
-    return { hasCash: true, hasShares: false, lastPrice: null };
-  }
+  // If last event was BUY, we're expecting SELL next
+  // If last event was SELL, we're expecting BUY next
+  return { expectingBuy: lastEvent.event_type === 'SELL' };
 }
 
 /**
@@ -131,12 +131,13 @@ async function fetchDayData(client, symbol, method, session, targetDate) {
 }
 
 /**
- * Simulate one day for a single combination, starting from previous state
+ * Simulate one day for a single combination
+ * Logs ALL BUY and SELL signals that occur in alternating pattern
+ * Frontend will build wallet from scratch starting at $10,000
  */
 function simulateDay(minuteData, buyPct, sellPct, startState) {
   const events = [];
-  let cash = startState.hasCash ? INITIAL_CASH : 0;
-  let shares = startState.hasShares ? Math.floor(INITIAL_CASH / startState.lastPrice) : 0;
+  let expectingBuy = startState.expectingBuy;
   
   for (const bar of minuteData) {
     const stockPrice = parseFloat(bar.stock_price);
@@ -147,32 +148,22 @@ function simulateDay(minuteData, buyPct, sellPct, startState) {
     const buyThreshold = baseline * (1 + buyPct / 100);
     const sellThreshold = baseline * (1 - sellPct / 100);
     
-    // BUY signal
-    if (shares === 0 && ratio >= buyThreshold && cash > 0) {
-      const sharesToBuy = Math.floor(cash / stockPrice);
-      if (sharesToBuy > 0) {
-        cash = 0;
-        shares = sharesToBuy;
-        
-        events.push({
-          event_date: bar.et_date,
-          event_time: bar.et_time,
-          event_type: 'BUY',
-          stock_price: Math.round(stockPrice * 10000) / 10000,
-          btc_price: Math.round(btcPrice * 100) / 100,
-          ratio: Math.round(ratio * 10000) / 10000,
-          baseline: Math.round(baseline * 10000) / 10000,
-          trade_roi_pct: null
-        });
-      }
+    // BUY signal - only log if we're expecting a BUY
+    if (expectingBuy && ratio >= buyThreshold) {
+      events.push({
+        event_date: bar.et_date,
+        event_time: bar.et_time,
+        event_type: 'BUY',
+        stock_price: Math.round(stockPrice * 10000) / 10000,
+        btc_price: Math.round(btcPrice * 100) / 100,
+        ratio: Math.round(ratio * 10000) / 10000,
+        baseline: Math.round(baseline * 10000) / 10000,
+        trade_roi_pct: null
+      });
+      expectingBuy = false; // Now expecting SELL
     }
-    // SELL signal
-    else if (shares > 0 && ratio <= sellThreshold) {
-      const saleValue = shares * stockPrice;
-      const roi = ((saleValue - INITIAL_CASH) / INITIAL_CASH) * 100;
-      cash = saleValue;
-      shares = 0;
-      
+    // SELL signal - only log if we're expecting a SELL
+    else if (!expectingBuy && ratio <= sellThreshold) {
       events.push({
         event_date: bar.et_date,
         event_time: bar.et_time,
@@ -181,8 +172,9 @@ function simulateDay(minuteData, buyPct, sellPct, startState) {
         btc_price: Math.round(btcPrice * 100) / 100,
         ratio: Math.round(ratio * 10000) / 10000,
         baseline: Math.round(baseline * 10000) / 10000,
-        trade_roi_pct: Math.round(roi * 100) / 100
+        trade_roi_pct: null // Frontend calculates ROI during wallet simulation
       });
+      expectingBuy = true; // Now expecting BUY
     }
   }
   
@@ -253,10 +245,10 @@ async function processGroup(symbol, method, session, targetDate) {
     await client.query('BEGIN');
     
     for (const combo of COMBINATIONS) {
-      // Get starting state from last event
-      const startState = await getLastEventState(client, tableName, symbol, combo.buy_pct, combo.sell_pct);
+      // Get starting state from last event (are we expecting BUY or SELL?)
+      const startState = await getLastEventState(client, tableName, symbol, combo.buy_pct, combo.sell_pct, targetDate);
       
-      // Simulate this day
+      // Simulate this day (logs alternating BUY/SELL events)
       const events = simulateDay(minuteData, combo.buy_pct, combo.sell_pct, startState);
       
       // Insert events
