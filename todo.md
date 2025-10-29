@@ -35,7 +35,7 @@
 - [x] Deploy to Vercel (https://raas.help)
 - [ ] User testing and feedback
 
-## Phase 4: Custom Pattern Builder & Forward Testing ✅ COMPLETE
+## Phase 4: Custom Pattern Builder & Forward Testing ⏳ DEPLOYING
 - [x] Build custom pattern detection API endpoint
   - [x] POST /api/patterns/custom-detect (find matches for user-defined patterns)
   - [x] Support direction (surge/drop), magnitude (%), timeframe (hours)
@@ -52,7 +52,8 @@
   - [x] Strategy analysis tabs (During, +1, +2, +3)
   - [x] Best/worst performers by stock and session
   - [x] Win rate and consistency metrics
-- [x] Deploy API to Cloud Run
+- [x] Fix ES module import issues (all imports moved to top)
+- [ ] Deploy API to Cloud Run (in progress - Cloud Build running)
 - [x] Deploy dashboard to Vercel (https://raas.help)
 - [ ] User testing and feedback
 
