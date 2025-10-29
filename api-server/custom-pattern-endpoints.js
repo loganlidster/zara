@@ -53,37 +53,37 @@ export async function detectCustomPattern(req, res) {
 
     console.log(`Detecting custom pattern: ${direction} ${magnitude}% in ${timeframe} hours`);
 
-    // Use btc_hourly with optimized window function approach
+    // Use btc_aggregated (10-minute bars) with optimized window function approach
     // Only return ONE match per starting date (no overlapping windows)
-    const barsNeeded = Math.ceil(timeframe); // 1-hour bars
+    const barsNeeded = Math.ceil((timeframe * 60) / 10); // 10-minute bars
     
     const query = `
       WITH price_windows AS (
         SELECT 
           bar_date as start_date,
-          bar_hour as start_hour,
+          bar_time as start_time,
           close_price as start_price,
-          LEAD(bar_date, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_date,
-          LEAD(bar_hour, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_hour,
-          LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_price,
-          ((LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) - close_price) / close_price * 100) as change_pct,
-          ROW_NUMBER() OVER (PARTITION BY bar_date ORDER BY bar_hour) as hour_rank
-        FROM btc_hourly
+          LEAD(bar_date, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_date,
+          LEAD(bar_time, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_time,
+          LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_price,
+          ((LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) - close_price) / close_price * 100) as change_pct,
+          ROW_NUMBER() OVER (PARTITION BY bar_date ORDER BY bar_time) as time_rank
+        FROM btc_aggregated
         WHERE bar_date >= '${startDate || '2024-01-01'}'
           AND bar_date <= '${endDate || '2025-12-31'}'
       ),
       filtered_windows AS (
         SELECT 
           start_date,
-          start_hour,
+          start_time,
           end_date,
-          end_hour,
+          end_time,
           start_price,
           end_price,
           change_pct
         FROM price_windows
         WHERE end_price IS NOT NULL
-          AND hour_rank = 1  -- Only take first hour of each day
+          AND time_rank = 1  -- Only take first time of each day
           AND ${direction === 'surge' 
             ? `change_pct >= ${magnitude}` 
             : `change_pct <= -${magnitude}`
@@ -91,9 +91,9 @@ export async function detectCustomPattern(req, res) {
       )
       SELECT 
         start_date,
-        (start_hour || ':00:00')::TIME as start_time,
+        start_time,
         end_date,
-        (end_hour || ':00:00')::TIME as end_time,
+        end_time,
         ROUND(start_price, 2) as start_price,
         ROUND(end_price, 2) as end_price,
         ROUND(change_pct, 2) as change_pct,
@@ -113,12 +113,12 @@ export async function detectCustomPattern(req, res) {
     } catch (queryError) {
       console.error('Query error:', queryError.message);
       
-      // If btc_hourly doesn't exist, return helpful error
-      if (queryError.message.includes('btc_hourly') || queryError.message.includes('does not exist')) {
+      // If btc_aggregated doesn't exist, return helpful error
+      if (queryError.message.includes('btc_aggregated') || queryError.message.includes('does not exist')) {
         return res.status(500).json({
           success: false,
-          error: 'The btc_hourly table has not been created yet. Please run database/create_btc_hourly.sql in Cloud SQL first.',
-          hint: 'This table needs to be created once to enable custom pattern detection.'
+          error: 'The btc_aggregated table does not exist in the database.',
+          hint: 'This table should have been created during pattern analysis setup.'
         });
       }
       
