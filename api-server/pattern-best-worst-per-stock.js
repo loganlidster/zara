@@ -54,7 +54,7 @@ export async function bestWorstPerStock(req, res) {
         console.log(`  [${i + 1}/${matches.length}] Analyzing ${analysisStartDate} to ${analysisEndDate}`);
 
         // Call Best Performers API for RTH
-        const rthUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&symbol=All&method=All&session=RTH&limit=500`;
+        const rthUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=RTH&limit=500`;
         const rthResponse = await fetch(rthUrl, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
@@ -84,7 +84,7 @@ export async function bestWorstPerStock(req, res) {
         }
 
         // Call Best Performers API for AH
-        const ahUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&symbol=All&method=All&session=AH&limit=500`;
+        const ahUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=AH&limit=500`;
         const ahResponse = await fetch(ahUrl, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
