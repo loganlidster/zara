@@ -21,6 +21,7 @@ export async function bestWorstPerStock(req, res) {
     }
 
     console.log(`Analyzing best/worst per stock for ${matches.length} pattern matches with offset ${offset}`);
+    console.log(`minInstances: ${minInstances}`);
 
     const API_BASE_URL = 'https://tradiac-api-941257247637.us-central1.run.app';
     const allResults = [];
@@ -123,6 +124,8 @@ export async function bestWorstPerStock(req, res) {
     // Aggregate results by strategy (symbol, method, session, buy_pct, sell_pct)
     const aggregated = {};
     
+    console.log(`Total results collected from API calls: ${allResults.length}`);
+    
     allResults.forEach(result => {
       const key = `${result.symbol}_${result.method}_${result.session}_${result.buyPct}_${result.sellPct}`;
       
@@ -155,6 +158,8 @@ export async function bestWorstPerStock(req, res) {
     });
 
     // Calculate final metrics for all strategies (don't filter by minInstances yet)
+    console.log(`Unique strategies aggregated: ${Object.keys(aggregated).length}`);
+    
     const allStrategies = Object.values(aggregated)
       .map(strategy => ({
         symbol: strategy.symbol,
@@ -176,6 +181,8 @@ export async function bestWorstPerStock(req, res) {
     // Group by stock and session, find best and worst for each
     const stockSessions = {};
     
+    console.log(`Total strategies before grouping: ${allStrategies.length}`);
+    
     allStrategies.forEach(strategy => {
       const key = `${strategy.symbol}_${strategy.session}`;
       
@@ -193,13 +200,20 @@ export async function bestWorstPerStock(req, res) {
     // Find best and worst for each stock+session
     const results = [];
     
+    console.log(`Stock+Session groups: ${Object.keys(stockSessions).length}`);
+    
     Object.values(stockSessions).forEach(group => {
+      console.log(`Processing ${group.symbol} ${group.session}: ${group.strategies.length} strategies`);
+      
       // Filter strategies that meet minInstances requirement
-      const validStrategies = group.strategies.filter(s => s.instances >= minInstances);
+      let validStrategies = group.strategies.filter(s => s.instances >= minInstances);
+      
+      console.log(`  After minInstances filter (>=${minInstances}): ${validStrategies.length} strategies`);
       
       if (validStrategies.length === 0) {
         // If no strategies meet minInstances, just use all strategies for this stock+session
-        validStrategies.push(...group.strategies);
+        console.log(`  No strategies meet minInstances, using all ${group.strategies.length} strategies`);
+        validStrategies = [...group.strategies];
       }
       
       // Sort by avgRoi
