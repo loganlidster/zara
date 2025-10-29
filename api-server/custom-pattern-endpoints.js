@@ -53,56 +53,86 @@ export async function detectCustomPattern(req, res) {
 
     console.log(`Detecting custom pattern: ${direction} ${magnitude}% in ${timeframe} hours`);
 
-    // Build query to find matching patterns
-    // We'll look at rolling windows of the specified timeframe
-    const query = `
-      WITH time_windows AS (
-        SELECT 
-          start_bar.bar_date as start_date,
-          start_bar.bar_time as start_time,
-          start_bar.close_price as start_price,
-          end_bar.bar_date as end_date,
-          end_bar.bar_time as end_time,
-          end_bar.close_price as end_price,
-          ((end_bar.close_price - start_bar.close_price) / start_bar.close_price * 100) as change_pct,
-          (SELECT MAX(high_price) FROM btc_aggregated 
-           WHERE (bar_date > start_bar.bar_date OR (bar_date = start_bar.bar_date AND bar_time >= start_bar.bar_time))
-           AND (bar_date < end_bar.bar_date OR (bar_date = end_bar.bar_date AND bar_time <= end_bar.bar_time))
-          ) as high_price,
-          (SELECT MIN(low_price) FROM btc_aggregated 
-           WHERE (bar_date > start_bar.bar_date OR (bar_date = start_bar.bar_date AND bar_time >= start_bar.bar_time))
-           AND (bar_date < end_bar.bar_date OR (bar_date = end_bar.bar_date AND bar_time <= end_bar.bar_time))
-          ) as low_price
-        FROM btc_aggregated start_bar
-        JOIN btc_aggregated end_bar ON 
-          end_bar.bar_date + end_bar.bar_time = start_bar.bar_date + start_bar.bar_time + INTERVAL '${timeframe} hours'
-        WHERE 1=1
-          ${startDate ? `AND start_bar.bar_date >= '${startDate}'` : ''}
-          ${endDate ? `AND start_bar.bar_date <= '${endDate}'` : ''}
-      )
-      SELECT 
-        start_date,
-        start_time,
-        end_date,
-        end_time,
-        ROUND(start_price, 2) as start_price,
-        ROUND(end_price, 2) as end_price,
-        ROUND(change_pct, 2) as change_pct,
-        ROUND(high_price, 2) as high_price,
-        ROUND(low_price, 2) as low_price,
-        ROUND(((high_price - start_price) / start_price * 100), 2) as max_gain_pct,
-        ROUND(((low_price - start_price) / start_price * 100), 2) as max_drawdown_pct
-      FROM time_windows
-      WHERE 
-        ${direction === 'surge' 
-          ? `change_pct >= ${magnitude}` 
-          : `change_pct <= -${magnitude}`
-        }
-      ORDER BY start_date DESC, start_time DESC
-      LIMIT 1000
-    `;
+    // Simplified approach: Use existing pattern data from btc_patterns table
+    // This is much faster than scanning btc_aggregated
+    let patternType;
+    if (direction === 'drop' && timeframe == 72 && magnitude >= 3) {
+      patternType = 'CRASH';
+    } else if (direction === 'surge' && timeframe == 24 && magnitude >= 5) {
+      patternType = 'SURGE';
+    }
 
-    const matches = await executeQuery(query);
+    let matches;
+    
+    if (patternType) {
+      // Use existing pattern data (much faster!)
+      const query = `
+        SELECT 
+          start_date,
+          start_time,
+          end_date,
+          end_time,
+          ROUND(btc_start_price, 2) as start_price,
+          ROUND(btc_end_price, 2) as end_price,
+          ROUND(btc_change_pct, 2) as change_pct,
+          ROUND(btc_high_price, 2) as high_price,
+          ROUND(btc_low_price, 2) as low_price,
+          ROUND(((btc_high_price - btc_start_price) / btc_start_price * 100), 2) as max_gain_pct,
+          ROUND(((btc_low_price - btc_start_price) / btc_start_price * 100), 2) as max_drawdown_pct
+        FROM btc_patterns
+        WHERE pattern_type = $1
+          ${startDate ? `AND start_date >= '${startDate}'` : ''}
+          ${endDate ? `AND start_date <= '${endDate}'` : ''}
+          AND ABS(btc_change_pct) >= ${magnitude}
+        ORDER BY start_date DESC
+        LIMIT 500
+      `;
+      matches = await executeQuery(query, [patternType]);
+    } else {
+      // For custom patterns, use daily_btc_context (much simpler and faster)
+      const daysNeeded = Math.ceil(timeframe / 24);
+      const query = `
+        WITH rolling_changes AS (
+          SELECT 
+            context_date as start_date,
+            '00:00:00'::TIME as start_time,
+            context_date + INTERVAL '${daysNeeded} days' as end_date,
+            '00:00:00'::TIME as end_time,
+            open_price as start_price,
+            LEAD(close_price, ${daysNeeded}) OVER (ORDER BY context_date) as end_price,
+            high_price,
+            low_price,
+            ((LEAD(close_price, ${daysNeeded}) OVER (ORDER BY context_date) - open_price) / open_price * 100) as change_pct
+          FROM daily_btc_context
+          WHERE context_date >= '${startDate || '2024-01-01'}'
+            AND context_date <= '${endDate || '2025-12-31'}'
+        )
+        SELECT 
+          start_date,
+          start_time,
+          end_date,
+          end_time,
+          ROUND(start_price, 2) as start_price,
+          ROUND(end_price, 2) as end_price,
+          ROUND(change_pct, 2) as change_pct,
+          ROUND(high_price, 2) as high_price,
+          ROUND(low_price, 2) as low_price,
+          ROUND(((high_price - start_price) / start_price * 100), 2) as max_gain_pct,
+          ROUND(((low_price - start_price) / start_price * 100), 2) as max_drawdown_pct
+        FROM rolling_changes
+        WHERE end_price IS NOT NULL
+          AND ${direction === 'surge' 
+            ? `change_pct >= ${magnitude}` 
+            : `change_pct <= -${magnitude}`
+          }
+        ORDER BY start_date DESC
+        LIMIT 500
+      `;
+      matches = await executeQuery(query);
+    }
+
+    // Filter out null values
+    matches = matches.filter(m => m.end_price !== null && m.change_pct !== null);
 
     console.log(`Found ${matches.length} matches`);
 
