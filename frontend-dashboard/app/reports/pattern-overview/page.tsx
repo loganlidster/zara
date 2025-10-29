@@ -146,7 +146,15 @@ export default function PatternOverview() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Pattern Analysis Overview</h1>
+          <div className="flex items-center justify-between mb-4">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Pattern Analysis Overview</h1>
+              <a
+                href="/"
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                ← Back to Home
+              </a>
+            </div>
           <p className="text-gray-600">
             Detected {totalPatterns.toLocaleString()} pattern instances across 6 pattern types from Jan 2024 - Oct 2025
           </p>

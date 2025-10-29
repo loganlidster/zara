@@ -130,7 +130,15 @@ export default function OverreactionAnalysis() {
           <div className="flex items-center gap-4 mb-4">
             <span className="text-5xl">⭐</span>
             <div>
+              <div className="flex items-center justify-between mb-4">
               <h1 className="text-3xl font-bold text-gray-900">Overreaction Analysis</h1>
+              <a
+                href="/"
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                ← Back to Home
+              </a>
+            </div>
               <p className="text-gray-600">
                 Record high drops ranked by overreaction magnitude - Your special pattern!
               </p>

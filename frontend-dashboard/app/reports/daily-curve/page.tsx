@@ -7,7 +7,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
 const METHODS = ['EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
-const SESSIONS = ['RTH', 'AH'];
+const SESSIONS = ['RTH', 'AH', 'ALL'];
 
 // Color palette for symbols
 const COLORS = [
@@ -32,6 +32,11 @@ export default function DailyCurveReport() {
   const [session, setSession] = useState('RTH');
   const [buyPct, setBuyPct] = useState(2.9);
   const [sellPct, setSellPct] = useState(0.7);
+  const [rthBuyPct, setRthBuyPct] = useState(2.9);
+  const [rthSellPct, setRthSellPct] = useState(0.7);
+  const [ahBuyPct, setAhBuyPct] = useState(2.9);
+  const [ahSellPct, setAhSellPct] = useState(0.7);
+  const [useSameValues, setUseSameValues] = useState(true);
   const [startDate, setStartDate] = useState('2025-09-01');
   const [endDate, setEndDate] = useState('2025-09-22');
   const [alignmentMode, setAlignmentMode] = useState('union');
@@ -122,7 +127,15 @@ export default function DailyCurveReport() {
       <Header />
       
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Daily Curve & ROI</h1>
+        <div className="flex items-center justify-between mb-4">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Daily Curve & ROI</h1>
+              <a
+                href="/"
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                ← Back to Home
+              </a>
+            </div>
         <p className="text-gray-600 mb-8">Multi-symbol performance comparison with BTC benchmark</p>
 
         {/* Filters */}
@@ -208,6 +221,88 @@ export default function DailyCurveReport() {
             </div>
           </div>
 
+
+            {/* Separate RTH/AH Settings (when session is ALL) */}
+            {session === 'ALL' && (
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <input
+                    type="checkbox"
+                    id="useSameValues"
+                    checked={useSameValues}
+                    onChange={(e) => setUseSameValues(e.target.checked)}
+                    className="w-4 h-4"
+                  />
+                  <label htmlFor="useSameValues" className="text-sm font-medium text-gray-700">
+                    Use same values for RTH and AH
+                  </label>
+                </div>
+
+                {!useSameValues && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                      <h4 className="font-semibold text-blue-900 mb-3">RTH (Regular Trading Hours)</h4>
+                      <div className="space-y-3">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Buy %</label>
+                          <input
+                            type="number"
+                            value={rthBuyPct}
+                            onChange={(e) => setRthBuyPct(parseFloat(e.target.value))}
+                            step="0.1"
+                            min="0"
+                            max="10"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Sell %</label>
+                          <input
+                            type="number"
+                            value={rthSellPct}
+                            onChange={(e) => setRthSellPct(parseFloat(e.target.value))}
+                            step="0.1"
+                            min="0"
+                            max="10"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                      <h4 className="font-semibold text-purple-900 mb-3">AH (After Hours)</h4>
+                      <div className="space-y-3">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Buy %</label>
+                          <input
+                            type="number"
+                            value={ahBuyPct}
+                            onChange={(e) => setAhBuyPct(parseFloat(e.target.value))}
+                            step="0.1"
+                            min="0"
+                            max="10"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Sell %</label>
+                          <input
+                            type="number"
+                            value={ahSellPct}
+                            onChange={(e) => setAhSellPct(parseFloat(e.target.value))}
+                            step="0.1"
+                            min="0"
+                            max="10"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           {/* Date Range */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div>
