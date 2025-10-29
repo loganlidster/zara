@@ -53,86 +53,58 @@ export async function detectCustomPattern(req, res) {
 
     console.log(`Detecting custom pattern: ${direction} ${magnitude}% in ${timeframe} hours`);
 
-    // Simplified approach: Use existing pattern data from btc_patterns table
-    // This is much faster than scanning btc_aggregated
-    let patternType;
-    if (direction === 'drop' && timeframe == 72 && magnitude >= 3) {
-      patternType = 'CRASH';
-    } else if (direction === 'surge' && timeframe == 24 && magnitude >= 5) {
-      patternType = 'SURGE';
-    }
-
-    let matches;
+    // Use btc_aggregated with optimized window function approach
+    // This avoids the expensive self-join
+    const barsNeeded = Math.ceil((timeframe * 60) / 10); // 10-minute bars
     
-    if (patternType) {
-      // Use existing pattern data (much faster!)
-      const query = `
+    const query = `
+      WITH price_windows AS (
+        SELECT 
+          bar_date as start_date,
+          bar_time as start_time,
+          close_price as start_price,
+          LEAD(bar_date, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_date,
+          LEAD(bar_time, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_time,
+          LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_price,
+          ((LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) - close_price) / close_price * 100) as change_pct
+        FROM btc_aggregated
+        WHERE bar_date >= '${startDate || '2024-01-01'}'
+          AND bar_date <= '${endDate || '2025-12-31'}'
+      ),
+      filtered_windows AS (
         SELECT 
           start_date,
           start_time,
           end_date,
           end_time,
-          ROUND(btc_start_price, 2) as start_price,
-          ROUND(btc_end_price, 2) as end_price,
-          ROUND(btc_change_pct, 2) as change_pct,
-          ROUND(btc_high_price, 2) as high_price,
-          ROUND(btc_low_price, 2) as low_price,
-          ROUND(((btc_high_price - btc_start_price) / btc_start_price * 100), 2) as max_gain_pct,
-          ROUND(((btc_low_price - btc_start_price) / btc_start_price * 100), 2) as max_drawdown_pct
-        FROM btc_patterns
-        WHERE pattern_type = $1
-          ${startDate ? `AND start_date >= '${startDate}'` : ''}
-          ${endDate ? `AND start_date <= '${endDate}'` : ''}
-          AND ABS(btc_change_pct) >= ${magnitude}
-        ORDER BY start_date DESC
-        LIMIT 500
-      `;
-      matches = await executeQuery(query, [patternType]);
-    } else {
-      // For custom patterns, use daily_btc_context (much simpler and faster)
-      const daysNeeded = Math.ceil(timeframe / 24);
-      const query = `
-        WITH rolling_changes AS (
-          SELECT 
-            context_date as start_date,
-            '00:00:00'::TIME as start_time,
-            context_date + INTERVAL '${daysNeeded} days' as end_date,
-            '00:00:00'::TIME as end_time,
-            open_price as start_price,
-            LEAD(close_price, ${daysNeeded}) OVER (ORDER BY context_date) as end_price,
-            high_price,
-            low_price,
-            ((LEAD(close_price, ${daysNeeded}) OVER (ORDER BY context_date) - open_price) / open_price * 100) as change_pct
-          FROM daily_btc_context
-          WHERE context_date >= '${startDate || '2024-01-01'}'
-            AND context_date <= '${endDate || '2025-12-31'}'
-        )
-        SELECT 
-          start_date,
-          start_time,
-          end_date,
-          end_time,
-          ROUND(start_price, 2) as start_price,
-          ROUND(end_price, 2) as end_price,
-          ROUND(change_pct, 2) as change_pct,
-          ROUND(high_price, 2) as high_price,
-          ROUND(low_price, 2) as low_price,
-          ROUND(((high_price - start_price) / start_price * 100), 2) as max_gain_pct,
-          ROUND(((low_price - start_price) / start_price * 100), 2) as max_drawdown_pct
-        FROM rolling_changes
+          start_price,
+          end_price,
+          change_pct
+        FROM price_windows
         WHERE end_price IS NOT NULL
           AND ${direction === 'surge' 
             ? `change_pct >= ${magnitude}` 
             : `change_pct <= -${magnitude}`
           }
-        ORDER BY start_date DESC
-        LIMIT 500
-      `;
-      matches = await executeQuery(query);
-    }
+      )
+      SELECT 
+        start_date,
+        start_time,
+        end_date,
+        end_time,
+        ROUND(start_price, 2) as start_price,
+        ROUND(end_price, 2) as end_price,
+        ROUND(change_pct, 2) as change_pct,
+        ROUND(start_price, 2) as high_price,
+        ROUND(end_price, 2) as low_price,
+        ROUND(change_pct, 2) as max_gain_pct,
+        ROUND(change_pct, 2) as max_drawdown_pct
+      FROM filtered_windows
+      ORDER BY start_date DESC, start_time DESC
+      LIMIT 500
+    `;
 
-    // Filter out null values
-    matches = matches.filter(m => m.end_price !== null && m.change_pct !== null);
+    const matches = await executeQuery(query);
 
     console.log(`Found ${matches.length} matches`);
 
