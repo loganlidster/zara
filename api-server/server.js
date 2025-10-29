@@ -11,6 +11,7 @@ import bestPerformersTwoStep from './best-performers-two-step.js';
 import dailyCurveEndpoint from './daily-curve-endpoint.js';
 import patternEndpoints from './pattern-endpoints.js';
 import customPatternEndpoints from './custom-pattern-endpoints.js';
+import patternBestWorstEndpoints from './pattern-best-worst-per-stock.js';
 import bestPerformersRange from './best-performers-range.js';
 
 dotenv.config();
@@ -443,6 +444,7 @@ app.get('/api/patterns/date-range', patternEndpoints.getPatternDateRange);
 // Custom pattern endpoints
 app.post('/api/patterns/custom-detect', customPatternEndpoints.detectCustomPattern);
 app.post('/api/patterns/analyze-custom', customPatternEndpoints.analyzeCustomPattern);
+app.post('/api/patterns/best-worst-per-stock', patternBestWorstEndpoints.bestWorstPerStock);
 
 // Health check
 app.get('/health', (req, res) => {
