@@ -154,9 +154,8 @@ export async function bestWorstPerStock(req, res) {
       aggregated[key].winningTrades += result.winningTrades || 0;
     });
 
-    // Calculate final metrics for all strategies
+    // Calculate final metrics for all strategies (don't filter by minInstances yet)
     const allStrategies = Object.values(aggregated)
-      .filter(strategy => strategy.instances >= minInstances)
       .map(strategy => ({
         symbol: strategy.symbol,
         method: strategy.method,
@@ -195,8 +194,16 @@ export async function bestWorstPerStock(req, res) {
     const results = [];
     
     Object.values(stockSessions).forEach(group => {
+      // Filter strategies that meet minInstances requirement
+      const validStrategies = group.strategies.filter(s => s.instances >= minInstances);
+      
+      if (validStrategies.length === 0) {
+        // If no strategies meet minInstances, just use all strategies for this stock+session
+        validStrategies.push(...group.strategies);
+      }
+      
       // Sort by avgRoi
-      const sorted = group.strategies.sort((a, b) => b.avgRoi - a.avgRoi);
+      const sorted = validStrategies.sort((a, b) => b.avgRoi - a.avgRoi);
       
       if (sorted.length > 0) {
         // Best strategy
