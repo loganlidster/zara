@@ -26,99 +26,121 @@ export async function bestWorstPerStock(req, res) {
     const API_BASE_URL = 'https://tradiac-api-941257247637.us-central1.run.app';
     const allResults = [];
 
-    // Process each match
-    for (let i = 0; i < matches.length; i++) {
-      const match = matches[i];
+    // Process matches in parallel batches of 10
+    const batchSize = 10;
+    const batches = [];
+    for (let i = 0; i < matches.length; i += batchSize) {
+      batches.push(matches.slice(i, i + batchSize));
+    }
+
+    console.log(`Processing ${matches.length} matches in ${batches.length} batches of ${batchSize}`);
+
+    for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+      const batch = batches[batchIndex];
+      console.log(`Processing batch ${batchIndex + 1}/${batches.length} (${batch.length} matches)`);
+
+      // Process all matches in this batch in parallel
+      const batchPromises = batch.map(async (match, i) => {
+        const actualIndex = batchIndex * batchSize + i;
       
       try {
-        // Calculate analysis date range based on offset
-        let analysisStartDate, analysisEndDate;
-        
-        if (offset === 0) {
-          // During the pattern
-          analysisStartDate = match.start_date;
-          analysisEndDate = match.end_date;
-        } else {
-          // After the pattern (offset days)
-          const endDate = new Date(match.end_date);
-          analysisStartDate = new Date(endDate);
-          analysisStartDate.setDate(analysisStartDate.getDate() + offset);
+          // Calculate analysis date range based on offset
+          let analysisStartDate, analysisEndDate;
           
-          analysisEndDate = new Date(analysisStartDate);
-          analysisEndDate.setDate(analysisEndDate.getDate() + 1); // Analyze 1 day
-          
-          analysisStartDate = analysisStartDate.toISOString().split('T')[0];
-          analysisEndDate = analysisEndDate.toISOString().split('T')[0];
-        }
+          if (offset === 0) {
+            // During the pattern
+            analysisStartDate = match.start_date;
+            analysisEndDate = match.end_date;
+          } else {
+            // After the pattern (offset days)
+            const endDate = new Date(match.end_date);
+            analysisStartDate = new Date(endDate);
+            analysisStartDate.setDate(analysisStartDate.getDate() + offset);
+            
+            analysisEndDate = new Date(analysisStartDate);
+            analysisEndDate.setDate(analysisEndDate.getDate() + 1); // Analyze 1 day
+            
+            analysisStartDate = analysisStartDate.toISOString().split('T')[0];
+            analysisEndDate = analysisEndDate.toISOString().split('T')[0];
+          }
 
-        console.log(`  [${i + 1}/${matches.length}] Analyzing ${analysisStartDate} to ${analysisEndDate}`);
+          console.log(`  [${actualIndex + 1}/${matches.length}] Analyzing ${analysisStartDate} to ${analysisEndDate}`);
 
-        // Call Best Performers API for RTH
-        const rthUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=RTH&limit=500`;
-        const rthResponse = await fetch(rthUrl, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
+        // Call both RTH and AH in parallel
+          const rthUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=RTH&limit=500`;
+          const ahUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=AH&limit=500`;
 
-        const rthResult = await rthResponse.json();
+          const [rthResponse, ahResponse] = await Promise.all([
+            fetch(rthUrl, { method: 'GET', headers: { 'Content-Type': 'application/json' } }),
+            fetch(ahUrl, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+          ]);
 
-        if (rthResult.success && rthResult.topPerformers) {
-          rthResult.topPerformers.forEach(strategy => {
-            allResults.push({
-              symbol: strategy.symbol,
-              method: strategy.method,
-              session: strategy.session,
-              buyPct: strategy.buyPct,
-              sellPct: strategy.sellPct,
-              totalRoi: strategy.roiPct,
-              totalTrades: strategy.totalTrades,
-              winningTrades: strategy.totalTrades > 0 ? Math.round(strategy.totalTrades * 0.5) : 0, // Estimate
-              matchStartDate: match.start_date,
-              matchEndDate: match.end_date,
-              matchChangePct: match.change_pct,
-              analysisStartDate,
-              analysisEndDate,
-              offset
+          const [rthResult, ahResult] = await Promise.all([
+            rthResponse.json(),
+            ahResponse.json()
+          ]);
+
+          const matchResults = [];
+
+          if (rthResult.success && rthResult.topPerformers) {
+            rthResult.topPerformers.forEach(strategy => {
+              matchResults.push({
+                symbol: strategy.symbol,
+                method: strategy.method,
+                session: strategy.session,
+                buyPct: strategy.buyPct,
+                sellPct: strategy.sellPct,
+                totalRoi: strategy.roiPct,
+                totalTrades: strategy.totalTrades,
+                winningTrades: strategy.totalTrades > 0 ? Math.round(strategy.totalTrades * 0.5) : 0,
+                matchStartDate: match.start_date,
+                matchEndDate: match.end_date,
+                matchChangePct: match.change_pct,
+                analysisStartDate,
+                analysisEndDate,
+                offset
+              });
             });
-          });
-        }
+          }
 
-        // Call Best Performers API for AH
-        const ahUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=AH&limit=500`;
-        const ahResponse = await fetch(ahUrl, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
-
-        const ahResult = await ahResponse.json();
-
-        if (ahResult.success && ahResult.topPerformers) {
-          ahResult.topPerformers.forEach(strategy => {
-            allResults.push({
-              symbol: strategy.symbol,
-              method: strategy.method,
-              session: strategy.session,
-              buyPct: strategy.buyPct,
-              sellPct: strategy.sellPct,
-              totalRoi: strategy.roiPct,
-              totalTrades: strategy.totalTrades,
-              winningTrades: strategy.totalTrades > 0 ? Math.round(strategy.totalTrades * 0.5) : 0, // Estimate
-              matchStartDate: match.start_date,
-              matchEndDate: match.end_date,
-              matchChangePct: match.change_pct,
-              analysisStartDate,
-              analysisEndDate,
-              offset
+          if (ahResult.success && ahResult.topPerformers) {
+            ahResult.topPerformers.forEach(strategy => {
+              matchResults.push({
+                symbol: strategy.symbol,
+                method: strategy.method,
+                session: strategy.session,
+                buyPct: strategy.buyPct,
+                sellPct: strategy.sellPct,
+                totalRoi: strategy.roiPct,
+                totalTrades: strategy.totalTrades,
+                winningTrades: strategy.totalTrades > 0 ? Math.round(strategy.totalTrades * 0.5) : 0,
+                matchStartDate: match.start_date,
+                matchEndDate: match.end_date,
+                matchChangePct: match.change_pct,
+                analysisStartDate,
+                analysisEndDate,
+                offset
+              });
             });
-          });
+          }
+
+          return matchResults;
+
+        } catch (error) {
+          console.error(`  Error processing match ${actualIndex + 1}:`, error.message);
+          return [];
         }
+      });
 
-        // Small delay to avoid overwhelming the API
-        await new Promise(resolve => setTimeout(resolve, 100));
+      // Wait for all matches in this batch to complete
+      const batchResults = await Promise.all(batchPromises);
+      
+      // Flatten and add to allResults
+      batchResults.forEach(results => {
+        allResults.push(...results);
+      });
 
-      } catch (error) {
-        console.error(`  Error processing match ${i + 1}:`, error.message);
-      }
+      console.log(`Batch ${batchIndex + 1} complete. Total results so far: ${allResults.length}`);
     }
 
     // Aggregate results by strategy (symbol, method, session, buy_pct, sell_pct)
