@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 interface PatternMatch {
   start_date: string;
@@ -335,6 +336,51 @@ export default function CustomPatternAnalyzer() {
                 <div className="text-sm text-orange-700">Avg Duration</div>
               </div>
             </div>
+
+               {/* BTC Price Chart */}
+               <div className="mb-6 bg-white rounded-lg border border-gray-200 p-4">
+                 <h3 className="text-lg font-semibold text-gray-900 mb-4">BTC Price Movement During Patterns</h3>
+                 <ResponsiveContainer width="100%" height={300}>
+                   <LineChart data={matches.map(m => ({
+                     date: new Date(m.start_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                     startPrice: m.start_price,
+                     endPrice: m.end_price,
+                     change: m.change_pct
+                   }))}>
+                     <CartesianGrid strokeDasharray="3 3" />
+                     <XAxis 
+                       dataKey="date" 
+                       angle={-45}
+                       textAnchor="end"
+                       height={80}
+                       tick={{ fontSize: 10 }}
+                     />
+                     <YAxis 
+                       label={{ value: 'BTC Price ($)', angle: -90, position: 'insideLeft' }}
+                       tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+                     />
+                     <Tooltip 
+                       formatter={(value: any) => `$${parseFloat(value).toLocaleString()}`}
+                       labelFormatter={(label) => `Date: ${label}`}
+                     />
+                     <Legend />
+                     <Line 
+                       type="monotone" 
+                       dataKey="startPrice" 
+                       stroke="#3b82f6" 
+                       name="Start Price"
+                       dot={{ r: 3 }}
+                     />
+                     <Line 
+                       type="monotone" 
+                       dataKey="endPrice" 
+                       stroke="#ef4444" 
+                       name="End Price"
+                       dot={{ r: 3 }}
+                     />
+                   </LineChart>
+                 </ResponsiveContainer>
+               </div>
 
             {/* Analyze Buttons */}
             <div className="mb-6">
