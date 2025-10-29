@@ -122,7 +122,7 @@ export default function CustomPatternAnalyzer() {
       console.log('Analysis result:', result);
 
       if (result.success) {
-        if (result.data &amp;&amp; result.data.length > 0) {
+        if (result.data && result.data.length > 0) {
           setBestWorstResults(result.data);
           setStep('analyze');
         } else {
