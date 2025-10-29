@@ -66,7 +66,17 @@ export default function CustomPatternAnalyzer() {
       const result = await response.json();
 
       if (result.success) {
-        setMatches(result.matches || result.data || []);
+        // Convert string values to numbers
+        const parsedMatches = (result.matches || result.data || []).map((match: any) => ({
+          ...match,
+          start_price: parseFloat(match.start_price),
+          end_price: parseFloat(match.end_price),
+          change_pct: parseFloat(match.change_pct),
+          duration_hours: parseInt(match.duration_hours) || 48,
+          high_price: parseFloat(match.high_price),
+          low_price: parseFloat(match.low_price)
+        }));
+        setMatches(parsedMatches);
         setStep('matches');
       } else {
         throw new Error(result.error || 'Failed to find patterns');
