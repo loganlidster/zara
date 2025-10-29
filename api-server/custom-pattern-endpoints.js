@@ -53,30 +53,30 @@ export async function detectCustomPattern(req, res) {
 
     console.log(`Detecting custom pattern: ${direction} ${magnitude}% in ${timeframe} hours`);
 
-    // Use btc_aggregated with optimized window function approach
-    // This avoids the expensive self-join
-    const barsNeeded = Math.ceil((timeframe * 60) / 10); // 10-minute bars
+    // Use btc_hourly with optimized window function approach
+    // This avoids the expensive self-join and uses 1-hour bars for speed
+    const barsNeeded = Math.ceil(timeframe); // 1-hour bars
     
     const query = `
       WITH price_windows AS (
         SELECT 
           bar_date as start_date,
-          bar_time as start_time,
+          bar_hour as start_hour,
           close_price as start_price,
-          LEAD(bar_date, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_date,
-          LEAD(bar_time, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_time,
-          LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) as end_price,
-          ((LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_time) - close_price) / close_price * 100) as change_pct
-        FROM btc_aggregated
+          LEAD(bar_date, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_date,
+          LEAD(bar_hour, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_hour,
+          LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_price,
+          ((LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) - close_price) / close_price * 100) as change_pct
+        FROM btc_hourly
         WHERE bar_date >= '${startDate || '2024-01-01'}'
           AND bar_date <= '${endDate || '2025-12-31'}'
       ),
       filtered_windows AS (
         SELECT 
           start_date,
-          start_time,
+          start_hour,
           end_date,
-          end_time,
+          end_hour,
           start_price,
           end_price,
           change_pct
@@ -89,9 +89,9 @@ export async function detectCustomPattern(req, res) {
       )
       SELECT 
         start_date,
-        start_time,
+        (start_hour || ':00:00')::TIME as start_time,
         end_date,
-        end_time,
+        (end_hour || ':00:00')::TIME as end_time,
         ROUND(start_price, 2) as start_price,
         ROUND(end_price, 2) as end_price,
         ROUND(change_pct, 2) as change_pct,
@@ -100,7 +100,7 @@ export async function detectCustomPattern(req, res) {
         ROUND(change_pct, 2) as max_gain_pct,
         ROUND(change_pct, 2) as max_drawdown_pct
       FROM filtered_windows
-      ORDER BY start_date DESC, start_time DESC
+      ORDER BY start_date DESC, start_hour DESC
       LIMIT 500
     `;
 
