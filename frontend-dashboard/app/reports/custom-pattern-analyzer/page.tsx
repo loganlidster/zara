@@ -99,7 +99,7 @@ export default function CustomPatternAnalyzer() {
 
       // Call the new best-worst-per-stock endpoint with extended timeout
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minute timeout
+      const timeoutId = setTimeout(() => controller.abort(), 180000); // 3 minute timeout
 
       const response = await fetch('https://tradiac-api-941257247637.us-central1.run.app/api/patterns/best-worst-per-stock', {
         method: 'POST',
@@ -135,7 +135,7 @@ export default function CustomPatternAnalyzer() {
       console.error('Error analyzing strategies:', err);
       if (err instanceof Error) {
         if (err.name === 'AbortError') {
-          setError('Request timed out after 2 minutes. This usually means the analysis is taking too long. Try reducing the date range or number of pattern matches.');
+          setError('Request timed out after 3 minutes. This usually means the analysis is taking too long. Try reducing the date range or number of pattern matches.');
         } else {
           setError(err.message);
         }
