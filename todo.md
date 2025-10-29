@@ -35,24 +35,26 @@
 - [x] Deploy to Vercel (https://raas.help)
 - [ ] User testing and feedback
 
-## Phase 4: Custom Pattern Builder & Forward Testing ⏳ IN PROGRESS
-- [ ] Build custom pattern detection API endpoint
-  - [ ] POST /api/patterns/custom-detect (find matches for user-defined patterns)
-  - [ ] Support direction (surge/drop), magnitude (%), timeframe (hours)
-  - [ ] Query btc_aggregated for matching date ranges
-- [ ] Build strategy analysis with offset support
-  - [ ] POST /api/patterns/analyze-custom (analyze strategies for matches)
-  - [ ] Support offset: 0 (during), +1 (day after), +2 (2 days after), +3 (3 days after)
-  - [ ] Run Best Performers for each match + offset
-  - [ ] Aggregate results and calculate win rates
-- [ ] Build Custom Pattern Analyzer dashboard
-  - [ ] Pattern builder form (direction, magnitude, timeframe)
-  - [ ] "Find Patterns" button to detect matches
-  - [ ] Results table showing all matching dates
-  - [ ] Strategy analysis tabs (During, +1, +2, +3)
-  - [ ] Best/worst performers by stock and session
-  - [ ] Win rate and consistency metrics
-- [ ] Deploy and test
+## Phase 4: Custom Pattern Builder & Forward Testing ✅ COMPLETE
+- [x] Build custom pattern detection API endpoint
+  - [x] POST /api/patterns/custom-detect (find matches for user-defined patterns)
+  - [x] Support direction (surge/drop), magnitude (%), timeframe (hours)
+  - [x] Query btc_aggregated for matching date ranges
+- [x] Build strategy analysis with offset support
+  - [x] POST /api/patterns/analyze-custom (analyze strategies for matches)
+  - [x] Support offset: 0 (during), +1 (day after), +2 (2 days after), +3 (3 days after)
+  - [x] Run Best Performers for each match + offset
+  - [x] Aggregate results and calculate win rates
+- [x] Build Custom Pattern Analyzer dashboard
+  - [x] Pattern builder form (direction, magnitude, timeframe)
+  - [x] "Find Patterns" button to detect matches
+  - [x] Results table showing all matching dates
+  - [x] Strategy analysis tabs (During, +1, +2, +3)
+  - [x] Best/worst performers by stock and session
+  - [x] Win rate and consistency metrics
+- [x] Deploy API to Cloud Run
+- [x] Deploy dashboard to Vercel (https://raas.help)
+- [ ] User testing and feedback
 
 ## Phase 5: Refinement (Ongoing)
 - [ ] Adjust pattern thresholds based on results

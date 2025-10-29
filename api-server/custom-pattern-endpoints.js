@@ -147,7 +147,7 @@ export async function analyzeCustomPattern(req, res) {
 
     console.log(`Analyzing ${matches.length} pattern matches with offset ${offset}`);
 
-    const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:8080';
+    const API_BASE_URL = 'https://tradiac-api-941257247637.us-central1.run.app';
     const allResults = [];
 
     // Process each match
