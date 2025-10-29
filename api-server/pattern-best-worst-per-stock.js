@@ -26,8 +26,8 @@ export async function bestWorstPerStock(req, res) {
     const API_BASE_URL = 'https://tradiac-api-941257247637.us-central1.run.app';
     const allResults = [];
 
-    // Process matches in parallel batches of 10
-    const batchSize = 10;
+    // Process matches in parallel batches of 25 (faster processing)
+    const batchSize = 25;
     const batches = [];
     for (let i = 0; i < matches.length; i += batchSize) {
       batches.push(matches.slice(i, i + batchSize));
