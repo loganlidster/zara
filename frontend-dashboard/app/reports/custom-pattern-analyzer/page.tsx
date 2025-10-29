@@ -254,19 +254,19 @@ export default function CustomPatternAnalyzer() {
               </div>
               <div className="bg-green-50 rounded-lg p-4">
                 <div className="text-2xl font-bold text-green-900">
-                  {matches &amp;&amp; matches.length > 0 ? (matches.reduce((sum, m) => sum + Math.abs(m.change_pct), 0) / matches.length).toFixed(2) : '0.00'}%
+                  {matches && matches.length > 0 ? (matches.reduce((sum, m) => sum + Math.abs(m.change_pct), 0) / matches.length).toFixed(2) : '0.00'}%
                 </div>
                 <div className="text-sm text-green-700">Avg Change</div>
               </div>
               <div className="bg-purple-50 rounded-lg p-4">
                 <div className="text-2xl font-bold text-purple-900">
-                  {matches &amp;&amp; matches.length > 0 ? Math.max(...matches.map(m => Math.abs(m.change_pct))).toFixed(2) : '0.00'}%
+                  {matches && matches.length > 0 ? Math.max(...matches.map(m => Math.abs(m.change_pct))).toFixed(2) : '0.00'}%
                 </div>
                 <div className="text-sm text-purple-700">Max Change</div>
               </div>
               <div className="bg-orange-50 rounded-lg p-4">
                 <div className="text-2xl font-bold text-orange-900">
-                  {matches &amp;&amp; matches.length > 0 ? (matches.reduce((sum, m) => sum + m.duration_hours, 0) / matches.length).toFixed(1) : '0.0'}h
+                  {matches && matches.length > 0 ? (matches.reduce((sum, m) => sum + m.duration_hours, 0) / matches.length).toFixed(1) : '0.0'}h
                 </div>
                 <div className="text-sm text-orange-700">Avg Duration</div>
               </div>
