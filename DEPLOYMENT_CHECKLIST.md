@@ -1,214 +1,307 @@
-# Event-Based System Deployment Checklist
+# Event Update System - Deployment Checklist
 
 ## Pre-Deployment Verification
 
-- [x] Database schema created (`database/create_event_tables.sql`)
-- [x] Event processor implemented (`processor/event-based-processor.js`)
-- [x] API endpoints implemented (`api-server/event-endpoints.js`)
-- [x] API integration complete (`api-server/server.js`)
-- [x] Deployment scripts created
-- [x] Testing scripts created
-- [x] Documentation complete
+- [x] Daily Update Job is deployed and running (1 AM EST)
+- [x] Minute data exists in database (minute_stock, minute_btc)
+- [x] Baselines are being calculated (baseline_daily)
+- [x] 10 specialized tables exist in database
+- [x] Docker is installed and running
+- [x] Google Cloud SDK is installed and authenticated
+- [x] You have access to tradiac-testing project
 
 ## Deployment Steps
 
-### Step 1: Deploy Database Schema
-```bash
-# Connect to Cloud SQL and run schema
-gcloud sql connect tradiac-db --project=tradiac-testing --database=tradiac < database/create_event_tables.sql
+### Step 1: Deploy Event Update Job
+
+**Windows:**
+```powershell
+cd C:\tradiac-cloud\processor
+.\setup-event-job.ps1
 ```
+
+**Linux/Mac:**
+```bash
+cd /path/to/tradiac-cloud/processor
+./setup-event-job.sh
+```
+
+**Expected Output:**
+- ✅ Docker image builds successfully
+- ✅ Image pushes to GCR
+- ✅ Cloud Run Job created/updated
+- ✅ Cloud Scheduler configured (if you said yes)
+
+**Verification:**
+```bash
+gcloud run jobs describe event-update-job --region=us-central1
+```
+
+Should show:
+- Status: Ready
+- Memory: 4Gi
+- CPU: 2
+- Timeout: 3600s
+
+### Step 2: Test Manual Execution
+
+**Run for yesterday:**
+```bash
+gcloud run jobs execute event-update-job --region=us-central1 --wait
+```
+
+**Expected Output:**
+- Processing messages for each symbol/method/session
+- Progress updates every 100 combinations
+- Summary showing events inserted
+- Duration: ~2-3 minutes
+- Exit code: 0
 
 **Verification:**
 ```sql
--- Check tables exist
-SELECT table_name FROM information_schema.tables 
-WHERE table_schema = 'public' 
-AND table_name IN ('trade_events', 'simulation_metadata', 'processing_queue');
-
--- Should return 3 rows
+-- Check if events were inserted
+SELECT COUNT(*) FROM trade_events_rth_equal_mean 
+WHERE event_date = (CURRENT_DATE - INTERVAL '1 day');
 ```
 
-- [ ] Tables created successfully
-- [ ] Functions created successfully
-- [ ] Views created successfully
-- [ ] Indexes created successfully
+Should return > 0 events.
 
-### Step 2: Deploy API Code
+### Step 3: Backfill Missing Data
+
+**Windows:**
+```powershell
+cd C:\tradiac-cloud\processor
+.\backfill-events-oct-24-28.ps1
+```
+
+**Linux/Mac:**
 ```bash
-# Commit and push changes
-git add .
-git commit -m "Add event-based trade logging system"
-git push origin main
-
-# Monitor Cloud Build
-gcloud builds list --project=tradiac-testing --limit=1
+cd /path/to/tradiac-cloud/processor
+./backfill-events-oct-24-28.sh
 ```
+
+**Expected Output:**
+- Processing Oct 24... ✓
+- Processing Oct 25... ✓
+- Processing Oct 28... ✓
+- Total time: ~6-9 minutes
 
 **Verification:**
-- [ ] Cloud Build triggered
-- [ ] Build completed successfully
-- [ ] Cloud Run service updated
-- [ ] No errors in logs
-
-### Step 3: Test API Endpoints
-```bash
-# Set API URL
-export API_URL="https://your-cloud-run-url"
-
-# Run tests
-bash scripts/test-event-system.sh
+```sql
+-- Check event counts for backfilled dates
+SELECT 
+  event_date,
+  COUNT(*) as event_count
+FROM trade_events_rth_equal_mean
+WHERE event_date BETWEEN '2025-10-24' AND '2025-10-28'
+GROUP BY event_date
+ORDER BY event_date;
 ```
 
-**Verification:**
-- [ ] Health check passes
-- [ ] Metadata endpoint works
-- [ ] Query endpoint works
-- [ ] Summary endpoint works
-- [ ] Portfolio state endpoint works
-- [ ] Top performers endpoint works
-- [ ] Batch summary endpoint works
+Should show data for Oct 24, 25, and 28.
 
-### Step 4: Test Processor Locally (Small Dataset)
-```bash
-# Test with 1 week of data first
-cd processor
-node event-based-processor.js 2024-01-01 2024-01-07
+### Step 4: Verify All Tables
+
+**Check all 10 tables:**
+```sql
+SELECT 'trade_events_rth_equal_mean' as table_name, COUNT(*) as events FROM trade_events_rth_equal_mean WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_rth_vwap_ratio', COUNT(*) FROM trade_events_rth_vwap_ratio WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_rth_vol_weighted', COUNT(*) FROM trade_events_rth_vol_weighted WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_rth_winsorized', COUNT(*) FROM trade_events_rth_winsorized WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_rth_weighted_median', COUNT(*) FROM trade_events_rth_weighted_median WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_ah_equal_mean', COUNT(*) FROM trade_events_ah_equal_mean WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_ah_vwap_ratio', COUNT(*) FROM trade_events_ah_vwap_ratio WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_ah_vol_weighted', COUNT(*) FROM trade_events_ah_vol_weighted WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_ah_winsorized', COUNT(*) FROM trade_events_ah_winsorized WHERE event_date >= '2025-10-24'
+UNION ALL
+SELECT 'trade_events_ah_weighted_median', COUNT(*) FROM trade_events_ah_weighted_median WHERE event_date >= '2025-10-24';
 ```
 
-**Verification:**
-- [ ] Processor runs without errors
-- [ ] Events inserted into database
-- [ ] Metadata updated correctly
-- [ ] Processing time reasonable (~5 minutes for 1 week)
+All tables should show > 0 events.
 
-### Step 5: Verify Test Data
+### Step 5: Verify Reports
+
+**Go to https://raas.help and test:**
+
+1. **Fast Daily Report:**
+   - Select: HIVE, EQUAL_MEAN, RTH
+   - Date range: Oct 24-28, 2025
+   - Should show trade events
+
+2. **Best Performers Report:**
+   - Date range: Oct 24-28, 2025
+   - Should show results for all symbols
+
+3. **Daily Curve Report:**
+   - Select: HIVE, MARA, RIOT
+   - Date range: Oct 24-28, 2025
+   - Should show chart with data
+
+### Step 6: Verify Cloud Scheduler
+
+**Check scheduler status:**
 ```bash
-# Run verification queries
-gcloud sql connect tradiac-db --project=tradiac-testing --database=tradiac < scripts/verify-data.sql
+gcloud scheduler jobs describe event-update-daily --location=us-central1
 ```
 
-**Verification:**
-- [ ] Events exist in trade_events table
-- [ ] Metadata shows completed status
-- [ ] ROI calculations look reasonable
-- [ ] No failed simulations
-- [ ] Buy/Sell events balanced
+**Expected:**
+- Schedule: 0 7 * * * (2 AM EST / 7 AM UTC)
+- State: ENABLED
+- Next run time: Should be scheduled
 
-### Step 6: Run Full Historical Backfill
+**View upcoming runs:**
 ```bash
-# Run full backfill (this will take ~2 hours)
-cd processor
-node event-based-processor.js 2024-01-01 2024-12-31
+gcloud scheduler jobs list --location=us-central1
 ```
 
-**Verification:**
-- [ ] All 165 groups processed
-- [ ] 148,500 combinations completed
-- [ ] ~7.4 million events inserted
-- [ ] No critical errors
-- [ ] Processing time < 3 hours
+## Post-Deployment Monitoring
 
-### Step 7: Final Verification
+### Daily Checks (First Week)
+
+**Check execution status:**
 ```bash
-# Run full verification suite
-gcloud sql connect tradiac-db --project=tradiac-testing --database=tradiac < scripts/verify-data.sql
+gcloud run jobs executions list \
+  --job=event-update-job \
+  --region=us-central1 \
+  --limit=5
 ```
 
-**Verification:**
-- [ ] Total events: ~7.4 million
-- [ ] All symbols present (11)
-- [ ] All methods present (5)
-- [ ] All sessions present (3)
-- [ ] Metadata shows 148,500 completed
-- [ ] ROI distribution looks normal
-- [ ] Top performers identified
-- [ ] No failed simulations
-
-### Step 8: Test API with Real Data
+**Check logs:**
 ```bash
-# Test various queries
-export API_URL="https://your-cloud-run-url"
-
-# Test single query
-curl "$API_URL/api/events/summary?symbol=HIVE&method=EQUAL_MEAN&session=RTH&buyPct=0.5&sellPct=0.5&startDate=2024-01-01&endDate=2024-12-31"
-
-# Test top performers
-curl "$API_URL/api/events/top-performers?startDate=2024-01-01&endDate=2024-12-31&limit=10"
+gcloud logging read \
+  'resource.type=cloud_run_job AND resource.labels.job_name=event-update-job' \
+  --limit=50 \
+  --format=json
 ```
 
-**Verification:**
-- [ ] Queries return data
-- [ ] Response times < 2 seconds
-- [ ] Data looks accurate
-- [ ] No errors in logs
+**Check event counts:**
+```sql
+SELECT 
+  event_date,
+  COUNT(*) as events
+FROM trade_events_rth_equal_mean
+WHERE event_date >= CURRENT_DATE - INTERVAL '7 days'
+GROUP BY event_date
+ORDER BY event_date DESC;
+```
 
-## Post-Deployment Tasks
+Should show increasing counts each day.
 
-### Immediate
-- [ ] Update frontend to add event-based query option
-- [ ] Document new endpoints for frontend team
-- [ ] Monitor API performance for 24 hours
-- [ ] Check Cloud Run logs for errors
+### Weekly Checks (Ongoing)
 
-### This Week
-- [ ] Compare results with old system
-- [ ] Gather user feedback
-- [ ] Optimize slow queries if needed
-- [ ] Add caching if needed
+- [ ] Verify Cloud Scheduler is running
+- [ ] Check for failed executions
+- [ ] Verify event counts are growing
+- [ ] Check reports show fresh data
+- [ ] Review logs for errors
 
-### Next Week
-- [ ] Set up nightly automation
-- [ ] Configure Cloud Scheduler
-- [ ] Set up monitoring alerts
-- [ ] Create backup strategy
+## Troubleshooting
 
-## Rollback Plan
+### Job Failed
 
-If issues occur:
+**Check logs:**
+```bash
+gcloud logging read \
+  'resource.type=cloud_run_job AND resource.labels.job_name=event-update-job AND severity>=ERROR' \
+  --limit=50
+```
 
-1. **API Issues:**
-   ```bash
-   # Revert to previous Cloud Run revision
-   gcloud run services update-traffic tradiac-api \
-     --to-revisions=PREVIOUS_REVISION=100 \
-     --project=tradiac-testing
-   ```
+**Common issues:**
+- Database connection timeout → Check Cloud SQL is running
+- No minute data → Check daily-update-job ran successfully
+- No baselines → Check baseline_daily table has data
 
-2. **Database Issues:**
-   ```sql
-   -- Drop new tables if needed
-   DROP TABLE IF EXISTS trade_events CASCADE;
-   DROP TABLE IF EXISTS simulation_metadata CASCADE;
-   DROP TABLE IF EXISTS processing_queue CASCADE;
-   ```
+### No Events Inserted
 
-3. **Data Issues:**
-   - Old system still running
-   - No data loss
-   - Can reprocess at any time
+**Check source data:**
+```sql
+-- Check minute data exists
+SELECT COUNT(*) FROM minute_stock WHERE et_date = '2025-10-24';
+
+-- Check baselines exist
+SELECT COUNT(*) FROM baseline_daily WHERE trading_day = '2025-10-23';
+
+-- Check trading calendar
+SELECT * FROM trading_calendar WHERE cal_date = '2025-10-24';
+```
+
+### Reports Show Old Data
+
+**Check last event date:**
+```sql
+SELECT MAX(event_date) FROM trade_events_rth_equal_mean;
+```
+
+**If behind, run manual backfill:**
+```bash
+gcloud run jobs execute event-update-job \
+  --region=us-central1 \
+  --update-env-vars=TARGET_DATE=2025-10-29 \
+  --wait
+```
 
 ## Success Criteria
 
-- [x] All code implemented
-- [ ] Database schema deployed
-- [ ] API deployed and tested
-- [ ] Historical data backfilled
-- [ ] All verification checks pass
-- [ ] Performance meets expectations
-- [ ] No critical errors
+✅ **Deployment Successful:**
+- Event Update Job deployed to Cloud Run
+- Cloud Scheduler configured for 2 AM EST
+- Manual test run completes successfully
+- Backfill processes Oct 24, 25, 28
+- All 10 tables have events for Oct 24-28
+- Reports show data through Oct 28
+- Daily automation runs successfully
 
-## Notes
+✅ **System Operational:**
+- Jobs run automatically every night
+- Event counts increase daily
+- Reports show fresh data every morning
+- No failed executions
+- Logs show no errors
 
-- Keep old system running during transition
-- Monitor performance closely
-- Be ready to rollback if needed
-- Document any issues encountered
-- Update documentation as needed
+## Rollback Plan
 
-## Contact
+If something goes wrong:
 
-If issues arise:
-1. Check logs: `gcloud logs read --project=tradiac-testing`
-2. Check database: `gcloud sql connect tradiac-db`
-3. Review documentation: `EVENT_BASED_SYSTEM.md`
-4. Check implementation: `IMPLEMENTATION_SUMMARY.md`
+**Pause automation:**
+```bash
+gcloud scheduler jobs pause event-update-daily --location=us-central1
+```
+
+**Delete job:**
+```bash
+gcloud run jobs delete event-update-job --region=us-central1
+```
+
+**Restore from backup:**
+- Event tables can be truncated and repopulated
+- Source data (minute_stock, minute_btc, baseline_daily) is preserved
+- Re-run backfill scripts to restore data
+
+## Support
+
+If you need help:
+1. Check logs first
+2. Verify source data exists
+3. Test with single date manually
+4. Review EVENT_UPDATE_SYSTEM.md
+5. Check QUICK_START_EVENT_UPDATES.md
+
+## Summary
+
+This checklist ensures:
+- ✅ Event Update Job is deployed correctly
+- ✅ System processes data successfully
+- ✅ All tables are populated
+- ✅ Reports show fresh data
+- ✅ Automation runs daily
+- ✅ Monitoring is in place
+
+**Ready to deploy?** Start with Step 1!
