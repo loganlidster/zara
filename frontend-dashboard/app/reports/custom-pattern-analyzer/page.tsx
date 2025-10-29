@@ -66,7 +66,7 @@ export default function CustomPatternAnalyzer() {
       const result = await response.json();
 
       if (result.success) {
-        setMatches(result.data);
+        setMatches(result.matches || result.data || []);
         setStep('matches');
       } else {
         throw new Error(result.error || 'Failed to find patterns');
