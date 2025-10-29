@@ -22,7 +22,7 @@ CREATE INDEX idx_btc_hourly_date ON btc_hourly(bar_date);
 CREATE INDEX idx_btc_hourly_datetime ON btc_hourly(bar_date, bar_hour);
 
 -- Populate from minute_btc
--- Column names: o (open), h (high), l (low), c (close), v (volume)
+-- TEST DATABASE column names: open, high, low, close, volume
 INSERT INTO btc_hourly (
     bar_date,
     bar_hour,
@@ -38,22 +38,22 @@ SELECT
     et_date as bar_date,
     EXTRACT(HOUR FROM et_time)::INTEGER as bar_hour,
     
-    -- OHLC aggregation (using single-letter column names)
-    (ARRAY_AGG(c ORDER BY et_time ASC))[1] as open_price,
-    MAX(h) as high_price,
-    MIN(l) as low_price,
-    (ARRAY_AGG(c ORDER BY et_time DESC))[1] as close_price,
+    -- OHLC aggregation
+    (ARRAY_AGG(close ORDER BY et_time ASC))[1] as open_price,
+    MAX(high) as high_price,
+    MIN(low) as low_price,
+    (ARRAY_AGG(close ORDER BY et_time DESC))[1] as close_price,
     
     -- Volume sum
-    SUM(v) as volume,
+    SUM(volume) as volume,
     
     -- Derived metrics
-    (ARRAY_AGG(c ORDER BY et_time DESC))[1] - 
-    (ARRAY_AGG(c ORDER BY et_time ASC))[1] as price_change,
+    (ARRAY_AGG(close ORDER BY et_time DESC))[1] - 
+    (ARRAY_AGG(close ORDER BY et_time ASC))[1] as price_change,
     
-    ((ARRAY_AGG(c ORDER BY et_time DESC))[1] - 
-     (ARRAY_AGG(c ORDER BY et_time ASC))[1]) / 
-    (ARRAY_AGG(c ORDER BY et_time ASC))[1] * 100 as price_change_pct
+    ((ARRAY_AGG(close ORDER BY et_time DESC))[1] - 
+     (ARRAY_AGG(close ORDER BY et_time ASC))[1]) / 
+    (ARRAY_AGG(close ORDER BY et_time ASC))[1] * 100 as price_change_pct
     
 FROM minute_btc
 WHERE et_date >= '2024-01-01'  -- Start from Jan 2024
