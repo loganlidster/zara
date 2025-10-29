@@ -169,6 +169,35 @@ export default function CustomPatternAnalyzer() {
     return `${offset} Days After (+${offset})`;
   };
 
+
+  const exportToCSV = () => {
+    if (!bestWorstResults || bestWorstResults.length === 0) return;
+
+    const headers = [
+      'Symbol', 'Session', 'Category', 'Method', 'Buy %', 'Sell %',
+      'Avg ROI %', 'Consistency %', 'Instances', 'Win Rate %', 'Min ROI %', 'Max ROI %'
+    ];
+
+    const rows = bestWorstResults.map(result => [
+      result.symbol, result.session, result.category, result.method,
+      result.buyPct, result.sellPct, result.avgRoi.toFixed(2),
+      result.consistency.toFixed(1), result.instances, result.avgWinRate.toFixed(1),
+      result.minRoi?.toFixed(2) || 'N/A', result.maxRoi?.toFixed(2) || 'N/A'
+    ]);
+
+    const csvContent = [headers.join(','), ...rows.map(row => row.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    const filename = `pattern_analysis_${direction}_${magnitude}pct_${timeframe}h_offset${selectedOffset}_${new Date().toISOString().split('T')[0]}.csv`;
+    link.setAttribute('href', url);
+    link.setAttribute('download', filename);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
