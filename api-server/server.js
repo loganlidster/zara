@@ -439,6 +439,11 @@ app.get('/api/patterns/details/:patternId', patternEndpoints.getPatternDetails);
 app.get('/api/patterns/types', patternEndpoints.getPatternTypes);
 app.get('/api/patterns/date-range', patternEndpoints.getPatternDateRange);
 
+// Custom pattern endpoints
+import customPatternEndpoints from './custom-pattern-endpoints.js';
+app.post('/api/patterns/custom-detect', customPatternEndpoints.detectCustomPattern);
+app.post('/api/patterns/analyze-custom', customPatternEndpoints.analyzeCustomPattern);
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });

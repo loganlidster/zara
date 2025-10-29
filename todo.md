@@ -16,7 +16,7 @@
   - MONDAY_GAP: 11 instances
   - HIGH_VOL: 3 instances
 
-## Phase 2: API Endpoints ⏳ IN PROGRESS
+## Phase 2: API Endpoints ✅ COMPLETE
 - [x] Create `/api/patterns/summary` endpoint (get all pattern types with stats)
 - [x] Create `/api/patterns/instances` endpoint (get instances of a pattern type)
 - [x] Create `/api/patterns/overreactions` endpoint (record high drops ranked by overreaction score)
@@ -24,24 +24,35 @@
 - [x] Create `/api/patterns/types` endpoint (list available pattern types)
 - [x] Create `/api/patterns/date-range` endpoint (get date range of patterns)
 - [x] Add pattern endpoints to server.js
-- [ ] Test all endpoints locally
-- [ ] Deploy to Cloud Run
-- [ ] Verify endpoints work in production
+- [x] Commit and push to GitHub
+- [x] Auto-deploy to Cloud Run via Cloud Build (in progress)
 
-## Phase 3: Dashboard Reports (After Phase 2 Complete)
-- [ ] Create Pattern Overview report (list all 6 pattern types)
-- [ ] Create Pattern Deep Dive report (drill down into specific pattern)
-- [ ] Create Overreaction Analysis report (focus on RECORD_HIGH_DROP)
-- [ ] Add Pattern Analysis card to home page
-- [ ] Deploy to Vercel
+## Phase 3: Dashboard Reports ✅ COMPLETE
+- [x] Create Pattern Overview report (list all 6 pattern types)
+- [x] Create Pattern Deep Dive report (drill down into specific pattern)
+- [x] Create Overreaction Analysis report (focus on RECORD_HIGH_DROP)
+- [x] Add Pattern Analysis card to home page
+- [x] Deploy to Vercel (https://raas.help)
 - [ ] User testing and feedback
 
-## Phase 4: Performance Analysis (After Phase 3 Complete)
-- [ ] Build script to run Best Performers for each pattern instance
-- [ ] Populate `pattern_performance` table with results
-- [ ] Calculate consistency scores across patterns
-- [ ] Generate insights and recommendations
-- [ ] Update dashboard with performance data
+## Phase 4: Custom Pattern Builder & Forward Testing ⏳ IN PROGRESS
+- [ ] Build custom pattern detection API endpoint
+  - [ ] POST /api/patterns/custom-detect (find matches for user-defined patterns)
+  - [ ] Support direction (surge/drop), magnitude (%), timeframe (hours)
+  - [ ] Query btc_aggregated for matching date ranges
+- [ ] Build strategy analysis with offset support
+  - [ ] POST /api/patterns/analyze-custom (analyze strategies for matches)
+  - [ ] Support offset: 0 (during), +1 (day after), +2 (2 days after), +3 (3 days after)
+  - [ ] Run Best Performers for each match + offset
+  - [ ] Aggregate results and calculate win rates
+- [ ] Build Custom Pattern Analyzer dashboard
+  - [ ] Pattern builder form (direction, magnitude, timeframe)
+  - [ ] "Find Patterns" button to detect matches
+  - [ ] Results table showing all matching dates
+  - [ ] Strategy analysis tabs (During, +1, +2, +3)
+  - [ ] Best/worst performers by stock and session
+  - [ ] Win rate and consistency metrics
+- [ ] Deploy and test
 
 ## Phase 5: Refinement (Ongoing)
 - [ ] Adjust pattern thresholds based on results
