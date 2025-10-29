@@ -38,21 +38,21 @@ SELECT
     EXTRACT(HOUR FROM et_time)::INTEGER as bar_hour,
     
     -- OHLC aggregation
-    (ARRAY_AGG(close ORDER BY et_time ASC))[1] as open_price,
-    MAX(high) as high_price,
-    MIN(low) as low_price,
-    (ARRAY_AGG(close ORDER BY et_time DESC))[1] as close_price,
+    (ARRAY_AGG(minute_btc.close ORDER BY et_time ASC))[1] as open_price,
+    MAX(minute_btc.high) as high_price,
+    MIN(minute_btc.low) as low_price,
+    (ARRAY_AGG(minute_btc.close ORDER BY et_time DESC))[1] as close_price,
     
     -- Volume sum
-    SUM(volume) as volume,
+    SUM(minute_btc.volume) as volume,
     
     -- Derived metrics
-    (ARRAY_AGG(close ORDER BY et_time DESC))[1] - 
-    (ARRAY_AGG(close ORDER BY et_time ASC))[1] as price_change,
+    (ARRAY_AGG(minute_btc.close ORDER BY et_time DESC))[1] - 
+    (ARRAY_AGG(minute_btc.close ORDER BY et_time ASC))[1] as price_change,
     
-    ((ARRAY_AGG(close ORDER BY et_time DESC))[1] - 
-     (ARRAY_AGG(close ORDER BY et_time ASC))[1]) / 
-    (ARRAY_AGG(close ORDER BY et_time ASC))[1] * 100 as price_change_pct
+    ((ARRAY_AGG(minute_btc.close ORDER BY et_time DESC))[1] - 
+     (ARRAY_AGG(minute_btc.close ORDER BY et_time ASC))[1]) / 
+    (ARRAY_AGG(minute_btc.close ORDER BY et_time ASC))[1] * 100 as price_change_pct
     
 FROM minute_btc
 WHERE et_date >= '2024-01-01'  -- Start from Jan 2024
