@@ -425,6 +425,7 @@ app.use('/api/events', bestPerformersTwoStep);
 // Daily curve endpoint
 import dailyCurveEndpoint from './daily-curve-endpoint.js';
 import patternEndpoints from './pattern-endpoints.js';
+import customPatternEndpoints from './custom-pattern-endpoints.js';
 app.use('/api/events', dailyCurveEndpoint);
 
 // Best performers range testing
@@ -440,7 +441,6 @@ app.get('/api/patterns/types', patternEndpoints.getPatternTypes);
 app.get('/api/patterns/date-range', patternEndpoints.getPatternDateRange);
 
 // Custom pattern endpoints
-import customPatternEndpoints from './custom-pattern-endpoints.js';
 app.post('/api/patterns/custom-detect', customPatternEndpoints.detectCustomPattern);
 app.post('/api/patterns/analyze-custom', customPatternEndpoints.analyzeCustomPattern);
 
