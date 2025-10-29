@@ -67,8 +67,8 @@ export async function bestWorstPerStock(req, res) {
           console.log(`  [${actualIndex + 1}/${matches.length}] Analyzing ${analysisStartDate} to ${analysisEndDate}`);
 
         // Call both RTH and AH in parallel
-          const rthUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=RTH&limit=500`;
-          const ahUrl = `${API_BASE_URL}/api/events/top-performers-v2?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=AH&limit=500`;
+          const rthUrl = `${API_BASE_URL}/api/events/fast-aggregated-performers?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=RTH&limit=500`;
+          const ahUrl = `${API_BASE_URL}/api/events/fast-aggregated-performers?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=AH&limit=500`;
 
           const [rthResponse, ahResponse] = await Promise.all([
             fetch(rthUrl, { method: 'GET', headers: { 'Content-Type': 'application/json' } }),
@@ -82,17 +82,17 @@ export async function bestWorstPerStock(req, res) {
 
           const matchResults = [];
 
-          if (rthResult.success && rthResult.topPerformers) {
-            rthResult.topPerformers.forEach(strategy => {
+          if (rthResult.success && rthResult.performers) {
+            rthResult.performers.forEach(strategy => {
               matchResults.push({
                 symbol: strategy.symbol,
                 method: strategy.method,
                 session: strategy.session,
                 buyPct: strategy.buyPct,
                 sellPct: strategy.sellPct,
-                totalRoi: strategy.roiPct,
+                totalRoi: strategy.totalRoi,
                 totalTrades: strategy.totalTrades,
-                winningTrades: strategy.totalTrades > 0 ? Math.round(strategy.totalTrades * 0.5) : 0,
+                winningTrades: strategy.winningTrades,
                 matchStartDate: match.start_date,
                 matchEndDate: match.end_date,
                 matchChangePct: match.change_pct,
@@ -103,17 +103,17 @@ export async function bestWorstPerStock(req, res) {
             });
           }
 
-          if (ahResult.success && ahResult.topPerformers) {
-            ahResult.topPerformers.forEach(strategy => {
+          if (ahResult.success && ahResult.performers) {
+            ahResult.performers.forEach(strategy => {
               matchResults.push({
                 symbol: strategy.symbol,
                 method: strategy.method,
                 session: strategy.session,
                 buyPct: strategy.buyPct,
                 sellPct: strategy.sellPct,
-                totalRoi: strategy.roiPct,
+                totalRoi: strategy.totalRoi,
                 totalTrades: strategy.totalTrades,
-                winningTrades: strategy.totalTrades > 0 ? Math.round(strategy.totalTrades * 0.5) : 0,
+                winningTrades: strategy.winningTrades,
                 matchStartDate: match.start_date,
                 matchEndDate: match.end_date,
                 matchChangePct: match.change_pct,

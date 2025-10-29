@@ -13,6 +13,7 @@ import patternEndpoints from './pattern-endpoints.js';
 import customPatternEndpoints from './custom-pattern-endpoints.js';
 import patternBestWorstEndpoints from './pattern-best-worst-per-stock.js';
 import bestPerformersRange from './best-performers-range.js';
+import fastAggregatedPerformers from './fast-aggregated-performers.js';
 
 dotenv.config();
 
@@ -432,6 +433,9 @@ app.use('/api/events', dailyCurveEndpoint);
 
 // Best performers range testing
 app.use('/api/events', bestPerformersRange);
+
+// Fast aggregated performers (no wallet simulation)
+app.use('/api/events', fastAggregatedPerformers);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
