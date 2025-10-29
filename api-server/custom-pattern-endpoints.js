@@ -54,7 +54,7 @@ export async function detectCustomPattern(req, res) {
     console.log(`Detecting custom pattern: ${direction} ${magnitude}% in ${timeframe} hours`);
 
     // Use btc_hourly with optimized window function approach
-    // This avoids the expensive self-join and uses 1-hour bars for speed
+    // Only return ONE match per starting date (no overlapping windows)
     const barsNeeded = Math.ceil(timeframe); // 1-hour bars
     
     const query = `
@@ -66,7 +66,8 @@ export async function detectCustomPattern(req, res) {
           LEAD(bar_date, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_date,
           LEAD(bar_hour, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_hour,
           LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) as end_price,
-          ((LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) - close_price) / close_price * 100) as change_pct
+          ((LEAD(close_price, ${barsNeeded}) OVER (ORDER BY bar_date, bar_hour) - close_price) / close_price * 100) as change_pct,
+          ROW_NUMBER() OVER (PARTITION BY bar_date ORDER BY bar_hour) as hour_rank
         FROM btc_hourly
         WHERE bar_date >= '${startDate || '2024-01-01'}'
           AND bar_date <= '${endDate || '2025-12-31'}'
@@ -82,6 +83,7 @@ export async function detectCustomPattern(req, res) {
           change_pct
         FROM price_windows
         WHERE end_price IS NOT NULL
+          AND hour_rank = 1  -- Only take first hour of each day
           AND ${direction === 'surge' 
             ? `change_pct >= ${magnitude}` 
             : `change_pct <= -${magnitude}`
@@ -100,7 +102,7 @@ export async function detectCustomPattern(req, res) {
         ROUND(change_pct, 2) as max_gain_pct,
         ROUND(change_pct, 2) as max_drawdown_pct
       FROM filtered_windows
-      ORDER BY start_date DESC, start_hour DESC
+      ORDER BY start_date DESC
       LIMIT 500
     `;
 
