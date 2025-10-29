@@ -240,7 +240,7 @@ export default function CustomPatternAnalyzer() {
         </div>
 
         {/* Step 2: Pattern Matches */}
-        {step !== 'define' && matches.length > 0 && (
+        {step !== 'define' && matches && matches.length > 0 && (
           <div className="bg-white rounded-lg shadow-md p-6 mb-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
               Step 2: Pattern Matches ({matches.length} found)
@@ -254,19 +254,19 @@ export default function CustomPatternAnalyzer() {
               </div>
               <div className="bg-green-50 rounded-lg p-4">
                 <div className="text-2xl font-bold text-green-900">
-                  {(matches.reduce((sum, m) => sum + Math.abs(m.change_pct), 0) / matches.length).toFixed(2)}%
+                  {matches &amp;&amp; matches.length > 0 ? (matches.reduce((sum, m) => sum + Math.abs(m.change_pct), 0) / matches.length).toFixed(2) : '0.00'}%
                 </div>
                 <div className="text-sm text-green-700">Avg Change</div>
               </div>
               <div className="bg-purple-50 rounded-lg p-4">
                 <div className="text-2xl font-bold text-purple-900">
-                  {Math.max(...matches.map(m => Math.abs(m.change_pct))).toFixed(2)}%
+                  {matches &amp;&amp; matches.length > 0 ? Math.max(...matches.map(m => Math.abs(m.change_pct))).toFixed(2) : '0.00'}%
                 </div>
                 <div className="text-sm text-purple-700">Max Change</div>
               </div>
               <div className="bg-orange-50 rounded-lg p-4">
                 <div className="text-2xl font-bold text-orange-900">
-                  {(matches.reduce((sum, m) => sum + m.duration_hours, 0) / matches.length).toFixed(1)}h
+                  {matches &amp;&amp; matches.length > 0 ? (matches.reduce((sum, m) => sum + m.duration_hours, 0) / matches.length).toFixed(1) : '0.0'}h
                 </div>
                 <div className="text-sm text-orange-700">Avg Duration</div>
               </div>
@@ -320,7 +320,7 @@ export default function CustomPatternAnalyzer() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {matches.slice(0, 50).map((match, index) => (
+                  {matches && matches.slice(0, 50).map((match, index) => (
                     <tr key={index} className="hover:bg-gray-50">
                       <td className="px-4 py-2 text-sm text-gray-900">
                         {formatDate(match.start_date)} to {formatDate(match.end_date)}
@@ -345,7 +345,7 @@ export default function CustomPatternAnalyzer() {
                   ))}
                 </tbody>
               </table>
-              {matches.length > 50 && (
+              {matches && matches.length > 50 && (
                 <p className="text-center text-sm text-gray-500 mt-2">
                   Showing first 50 of {matches.length} matches
                 </p>
@@ -355,7 +355,7 @@ export default function CustomPatternAnalyzer() {
         )}
 
         {/* Step 3: Strategy Analysis Results */}
-        {step === 'analyze' && bestWorstResults.length > 0 && (
+        {step === 'analyze' && bestWorstResults && bestWorstResults.length > 0 && (
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
               Step 3: Best & Worst Strategies Per Stock - {getOffsetLabel(selectedOffset)}
@@ -387,7 +387,7 @@ export default function CustomPatternAnalyzer() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {bestWorstResults.map((result, index) => (
+                  {bestWorstResults && bestWorstResults.map((result, index) => (
                     <tr key={index} className={`hover:bg-gray-50 ${
                       result.category === 'BEST' ? 'bg-green-50' : 'bg-red-50'
                     }`}>
