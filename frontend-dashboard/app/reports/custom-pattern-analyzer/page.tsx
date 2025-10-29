@@ -95,7 +95,12 @@ export default function CustomPatternAnalyzer() {
       setError(null);
       setSelectedOffset(offset);
 
-      // Call the new best-worst-per-stock endpoint
+      console.log(`Analyzing ${matches.length} pattern matches with offset ${offset}...`);
+
+      // Call the new best-worst-per-stock endpoint with extended timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minute timeout
+
       const response = await fetch('https://tradiac-api-941257247637.us-central1.run.app/api/patterns/best-worst-per-stock', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -103,20 +108,40 @@ export default function CustomPatternAnalyzer() {
           matches,
           offset,
           minInstances: 3
-        })
+        }),
+        signal: controller.signal
       });
 
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
+      console.log('Analysis result:', result);
 
       if (result.success) {
-        setBestWorstResults(result.data);
-        setStep('analyze');
+        if (result.data &amp;&amp; result.data.length > 0) {
+          setBestWorstResults(result.data);
+          setStep('analyze');
+        } else {
+          setError(`No results found. The analysis completed but found 0 strategies meeting the criteria (minimum ${result.minInstances || 3} instances).`);
+        }
       } else {
         throw new Error(result.error || 'Failed to analyze strategies');
       }
     } catch (err) {
       console.error('Error analyzing strategies:', err);
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      if (err instanceof Error) {
+        if (err.name === 'AbortError') {
+          setError('Request timed out after 2 minutes. This usually means the analysis is taking too long. Try reducing the date range or number of pattern matches.');
+        } else {
+          setError(err.message);
+        }
+      } else {
+        setError('An error occurred during analysis');
+      }
     } finally {
       setAnalyzing(false);
     }
