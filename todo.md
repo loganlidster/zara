@@ -111,6 +111,15 @@ Then backfill:
 
 **Everything is ready. Just deploy!** 🚀
 
+## Current Task: Add Multi-User Authentication
+
+### [ ] Add User Management System
+- [ ] Create users configuration with multiple username/password pairs
+- [ ] Update login logic to support multiple users
+- [ ] Add Aaron's credentials (aaronstubblefield@gmail.com / Wohler1)
+- [ ] Test login with both users
+- [ ] Deploy to Vercel
+
 ## Critical Design Decisions
 
 ### Wallet Continuity Problem
