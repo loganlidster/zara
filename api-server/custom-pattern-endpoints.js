@@ -104,9 +104,24 @@ export async function detectCustomPattern(req, res) {
       LIMIT 500
     `;
 
-    const matches = await executeQuery(query);
-
-    console.log(`Found ${matches.length} matches`);
+    let matches;
+    try {
+      matches = await executeQuery(query);
+      console.log(`Found ${matches.length} matches`);
+    } catch (queryError) {
+      console.error('Query error:', queryError.message);
+      
+      // If btc_hourly doesn't exist, return helpful error
+      if (queryError.message.includes('btc_hourly') || queryError.message.includes('does not exist')) {
+        return res.status(500).json({
+          success: false,
+          error: 'The btc_hourly table has not been created yet. Please run database/create_btc_hourly.sql in Cloud SQL first.',
+          hint: 'This table needs to be created once to enable custom pattern detection.'
+        });
+      }
+      
+      throw queryError;
+    }
 
     res.json({
       success: true,
