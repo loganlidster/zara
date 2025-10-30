@@ -14,7 +14,7 @@ const isCloudRun = process.env.K_SERVICE !== undefined;
 
 const pool = new pg.Pool({
   host: isCloudRun 
-    ? '/cloudsql/tradiac-testing:us-central1:tradiac-testing'
+    ? '/cloudsql/tradiac-testing:us-central1:tradiac-testing-db'
     : (process.env.DB_HOST || '34.41.97.179'),
   port: isCloudRun ? undefined : parseInt(process.env.DB_PORT || '5432'),
   database: process.env.DB_NAME || 'tradiac_testing',
