@@ -201,7 +201,7 @@ export async function handleMethodComparison(req, res) {
     }
 
     // Calculate summary statistics
-    const methodStats: { [key: string]: { returns: number[], winRates: number[] } } = {};
+    const methodStats = {};
     
     methods.forEach(method => {
       methodStats[method] = { returns: [], winRates: [] };

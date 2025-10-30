@@ -1,0 +1,3487 @@
+[
+  {
+    "textPayload": "Step #2 - \"post-buildpack\": 462b252e8317: Pull complete",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1545",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:44.464152103Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #2 - \"post-buildpack\"",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:44.314029901Z"
+  },
+  {
+    "textPayload": "Step #2 - \"post-buildpack\": eef5635a06de: Pull complete",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1546",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:44.544226658Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "Step #2 - \"post-buildpack\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:45.314462902Z"
+  },
+  {
+    "textPayload": "Step #2 - \"post-buildpack\": 3f90ea6e3dcf: Pull complete",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1547",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:44.594252335Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #2 - \"post-buildpack\"",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:45.314462902Z"
+  },
+  {
+    "textPayload": "Step #2 - \"post-buildpack\": 5a44e4f7b58d: Pull complete",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1548",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:44.646286231Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "Step #2 - \"post-buildpack\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:45.314462902Z"
+  },
+  {
+    "textPayload": "Step #2 - \"post-buildpack\": Digest: sha256:8b1f5fa1fc300d925cb99cc1cc84cab3f6b5063a14139bccd052f0799874e4f9",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1549",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:44.653955961Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #2 - \"post-buildpack\"",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:45.314462902Z"
+  },
+  {
+    "textPayload": "Step #2 - \"post-buildpack\": Status: Downloaded newer image for us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:8b1f5fa1fc300d925cb99cc1cc84cab3f6b5063a14139bccd052f0799874e4f9",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1550",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:44.656432291Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #2 - \"post-buildpack\"",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:45.314462902Z"
+  },
+  {
+    "textPayload": "Step #2 - \"post-buildpack\": us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:8b1f5fa1fc300d925cb99cc1cc84cab3f6b5063a14139bccd052f0799874e4f9",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1551",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:44.663083140Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #2 - \"post-buildpack\"",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:45.314462902Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:45.200 UTC [207503]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=8253f;b=8716cf07157f417e87601525b75667e2;m=373ba89ab1;t=642603c9f50fc;x=b315f87b76a11cb9-0@as",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:45.201321Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:29:46.793835887Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:45.200 UTC [207503]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=8253f;b=8716cf07157f417e87601525b75667e2;m=373ba89ab1;t=642603c9f50fc;x=b315f87b76a11cb9-0@at",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:45.202102Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:29:46.793835887Z"
+  },
+  {
+    "textPayload": "Finished Step #2 - \"post-buildpack\"",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1552",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:45.753598701Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "PUSH",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1553",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:45.780953859Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "Pushing us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api:latest",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1554",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:45.780986090Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "insertId": "69036849000d1530aed5e2a9",
+    "httpRequest": {
+      "requestMethod": "OPTIONS",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/session-analysis",
+      "requestSize": "688",
+      "status": 204,
+      "responseSize": "321",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:b812:b7ef:6e64:be4",
+      "referer": "https://raas.help/",
+      "serverIp": "2600:1900:4240:200::",
+      "latency": "0.002538389s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00207-zgk",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:45.853525Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "0014778296e795374bd9af8ffc9efe48632a37854e21bb2483b677d3af06f40bc3b1ca000f289048538456a9a0a4ff873b137a1d79e675a1f5a7304bb31fda7222f7ba901d571ac74d44ac50b0ea04"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/d91f83e867d44f385ae9c1e6f98a31c7",
+    "receiveTimestamp": "2025-10-30T13:29:46.012289180Z",
+    "spanId": "b02b2aa1859eacf7"
+  },
+  {
+    "insertId": "6903684a000073f1020b1c17",
+    "httpRequest": {
+      "requestMethod": "POST",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/session-analysis",
+      "requestSize": "916",
+      "status": 404,
+      "responseSize": "474",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:b812:b7ef:6e64:be4",
+      "referer": "https://raas.help/",
+      "serverIp": "2600:1900:4240:200::",
+      "latency": "0.002948050s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00207-zgk"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.025707Z",
+    "severity": "WARNING",
+    "labels": {
+      "instanceId": "0014778296e795374bd9af8ffc9efe48632a37854e21bb2483b677d3af06f40bc3b1ca000f289048538456a9a0a4ff873b137a1d79e675a1f5a7304bb31fda7222f7ba901d571ac74d44ac50b0ea04"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/f513076b4c96afe85ae9c1e6f98a3538",
+    "receiveTimestamp": "2025-10-30T13:29:46.343106636Z",
+    "spanId": "e63b984cb4b906c2"
+  },
+  {
+    "textPayload": "The push refers to repository [us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api]",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1555",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.103066229Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "83d85471d9f8: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1556",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112874798Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "bbf47efaac15: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1557",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112884249Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "b95feea05494: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1558",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112884989Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7d727ff04f12: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1559",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112885458Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "769cb5c73916: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1560",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112885758Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "8802793b6163: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1561",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112886018Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7a0a5a015449: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1562",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112886298Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "3a89c70dd5f1: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1563",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112886569Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "dbc656bffd76: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1564",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112886838Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "60871058d81d: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1565",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112890109Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7c85c568c90b: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1566",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.112890478Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "767e56ba346a: Preparing",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1567",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113287569Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "8802793b6163: Waiting",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1568",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113293558Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7a0a5a015449: Waiting",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1569",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113294178Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "3a89c70dd5f1: Waiting",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1570",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113294558Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "dbc656bffd76: Waiting",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1571",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113294818Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "60871058d81d: Waiting",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1572",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113295178Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7c85c568c90b: Waiting",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1573",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113295429Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "767e56ba346a: Waiting",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1574",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.113298338Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:46.189 UTC [207505]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82571;b=8716cf07157f417e87601525b75667e2;m=373d1f55e2;t=642603e160c2d;x=a70606ccc4d02db9-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.189869Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:29:47.887189218Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:46.189 UTC [207505]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82572;b=8716cf07157f417e87601525b75667e2;m=373d1f56fd;t=642603e160d49;x=fa0aafeb4196febd-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.190153Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:29:48.587283892Z"
+  },
+  {
+    "textPayload": "bbf47efaac15: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1575",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.209653702Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "83d85471d9f8: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1576",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.214453862Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7d727ff04f12: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1577",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.220028841Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "769cb5c73916: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1578",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.224595011Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "b95feea05494: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1579",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.229591791Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "8802793b6163: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1580",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.273750087Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7a0a5a015449: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1581",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.278085777Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "3a89c70dd5f1: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1582",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.289044996Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "dbc656bffd76: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1583",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.293393136Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "60871058d81d: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1584",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.297677016Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "7c85c568c90b: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1585",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.328186024Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "767e56ba346a: Layer already exists",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1586",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.339674653Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "PUSH:STDOUT",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.315157957Z"
+  },
+  {
+    "textPayload": "latest: digest: sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3 size: 2831",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1587",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.525114042Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api",
+      "build_step": "PUSH:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.681773303Z"
+  },
+  {
+    "textPayload": "DONE",
+    "insertId": "108ca81b-926e-4239-a59d-901e751c0420-1588",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.721485109Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "MAIN",
+      "build_tags": "p-run,r-buildpacks,b-universal_builder_20251026_RC00,bt-LIFECYCLE,service_tradiac-api"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:29:46.681773303Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "941257247637-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:941257247637-compute@developer.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "109322198787325288531"
+        }
+      },
+      "requestMetadata": {
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "cloudbuild.googleapis.com",
+      "methodName": "google.devtools.cloudbuild.v1.CloudBuild.CreateBuild",
+      "authorizationInfo": [
+        {
+          "resource": "projects/tradiac-testing",
+          "permission": "cloudbuild.builds.create",
+          "granted": true,
+          "resourceAttributes": {
+            "service": "cloudbuild.googleapis.com",
+            "name": "projects/tradiac-testing/locations/us-central1/builds",
+            "type": "cloudbuild.googleapis.com/Build"
+          },
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "projects/tradiac-testing/builds",
+      "resourceLocation": {
+        "currentLocations": [
+          "us-central1"
+        ]
+      }
+    },
+    "insertId": "-3tthype1jb7e",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.792572Z",
+    "severity": "NOTICE",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "id": "operations/build/tradiac-testing/MTA4Y2E4MWItOTI2ZS00MjM5LWE1OWQtOTAxZTc1MWMwNDIw",
+      "producer": "cloudbuild.googleapis.com",
+      "last": true
+    },
+    "receiveTimestamp": "2025-10-30T13:29:47.674674200Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "941257247637-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:941257247637-compute@developer.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "109322198787325288531"
+        }
+      },
+      "requestMetadata": {
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "cloudbuild.googleapis.com",
+      "methodName": "google.devtools.cloudbuild.v1.CloudBuild.CreateBuild",
+      "authorizationInfo": [
+        {
+          "resource": "projects/tradiac-testing",
+          "permission": "cloudbuild.builds.create",
+          "granted": true,
+          "resourceAttributes": {
+            "service": "cloudbuild.googleapis.com",
+            "name": "projects/tradiac-testing/locations/us-central1/builds",
+            "type": "cloudbuild.googleapis.com/Build"
+          },
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "projects/tradiac-testing/builds",
+      "resourceLocation": {
+        "currentLocations": [
+          "us-central1"
+        ]
+      }
+    },
+    "insertId": "-hh04mwdhkzk",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "",
+        "project_id": "tradiac-testing",
+        "build_id": "108ca81b-926e-4239-a59d-901e751c0420"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:46.969499Z",
+    "severity": "NOTICE",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "id": "operations/build/tradiac-testing/MTA4Y2E4MWItOTI2ZS00MjM5LWE1OWQtOTAxZTc1MWMwNDIw",
+      "producer": "cloudbuild.googleapis.com",
+      "last": true
+    },
+    "receiveTimestamp": "2025-10-30T13:29:47.854952006Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:47.498 UTC [207507]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82572;b=8716cf07157f417e87601525b75667e2;m=373d1f56fd;t=642603e160d49;x=fa0aafeb4196febd-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:47.499166Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:29:48.587283892Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:47.498 UTC [207507]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82574;b=8716cf07157f417e87601525b75667e2;m=373d335344;t=642603e2a0990;x=f8725e2b0d4ebfc7-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:47.499920Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:29:49.951553265Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:49.047 UTC [207508]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82574;b=8716cf07157f417e87601525b75667e2;m=373d335344;t=642603e2a0990;x=f8725e2b0d4ebfc7-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:49.048290Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:29:49.951553265Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:49.047 UTC [207508]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:49.049227Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "insertId": "6903684d000e4b0587689d29",
+    "httpRequest": {
+      "requestMethod": "OPTIONS",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/trade-analysis",
+      "requestSize": "686",
+      "status": 204,
+      "responseSize": "321",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:b812:b7ef:6e64:be4",
+      "referer": "https://raas.help/",
+      "serverIp": "2600:1900:4240:200::",
+      "latency": "0.001754720s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00207-zgk"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:49.933879Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "0014778296e795374bd9af8ffc9efe48632a37854e21bb2483b677d3af06f40bc3b1ca000f289048538456a9a0a4ff873b137a1d79e675a1f5a7304bb31fda7222f7ba901d571ac74d44ac50b0ea04"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/b1114f6a0749e41773acd7874cd35ef9",
+    "receiveTimestamp": "2025-10-30T13:29:50.008411182Z",
+    "spanId": "3868b982e7b6f87c"
+  },
+  {
+    "insertId": "6903684e00006381b66c0c82",
+    "httpRequest": {
+      "requestMethod": "POST",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/trade-analysis",
+      "requestSize": "916",
+      "status": 404,
+      "responseSize": "472",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:b812:b7ef:6e64:be4",
+      "referer": "https://raas.help/",
+      "serverIp": "2600:1900:4240:200::",
+      "latency": "0.002172800s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00207-zgk",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:50.022392Z",
+    "severity": "WARNING",
+    "labels": {
+      "instanceId": "0014778296e795374bd9af8ffc9efe48632a37854e21bb2483b677d3af06f40bc3b1ca000f289048538456a9a0a4ff873b137a1d79e675a1f5a7304bb31fda7222f7ba901d571ac74d44ac50b0ea04"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/537c938ec58435a973acd7874cd356f1",
+    "receiveTimestamp": "2025-10-30T13:29:50.339575959Z",
+    "spanId": "d6b4ce6e140ce539"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:50.876 UTC [207510]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:50.876851Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:50.876 UTC [207510]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:50.877569Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:52.279 UTC [207512]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:52.280514Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:52.279 UTC [207512]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a5",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:52.281241Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:53.536 UTC [207513]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a6",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:53.537269Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:53.536 UTC [207513]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a7",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:53.537934Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:54.832 UTC [207514]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a8",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:54.833277Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:54.832 UTC [207514]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@a9",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:54.833988Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:56.738 UTC [207516]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@aa",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:56.741125Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:56.738 UTC [207516]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ab",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:56.742098Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:57.888 UTC [207517]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ac",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:57.888699Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:57.888 UTC [207517]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ad",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:57.889415Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:59.282 UTC [207519]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ae",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:59.283314Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:29:59.282 UTC [207519]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@af",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:29:59.284079Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:00.449 UTC [207521]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ag",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:00.450067Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:00.449 UTC [207521]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ah",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:00.450690Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Building Container.............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................done",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-72",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:01.489000992Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:02.434750607Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "principalEmail": "941257247637-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:941257247637-compute@developer.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "109322198787325288531"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "35.221.47.61",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/545.0.0 command/gcloud.run.deploy invocation-id/5c367eb1f2324f0082b7caad572ffba0 environment/GCE environment-version/None client-os/LINUX client-os-ver/5.10.0 client-pltf-arch/x86_64 interactive/False from-script/False python/3.12.10 term/  (Linux 5.10.0-32-cloud-amd64),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2025-10-30T13:30:02.114419Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "authorizationInfo": [
+        {
+          "resource": "namespaces/tradiac-testing/services/tradiac-api",
+          "permission": "run.services.update",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        },
+        {
+          "resource": "namespaces/tradiac-testing/services/tradiac-api",
+          "permission": "run.services.update",
+          "granted": true,
+          "resourceAttributes": {
+            "service": "run.googleapis.com/",
+            "name": "namespaces/tradiac-testing/services/tradiac-api",
+            "type": "run.googleapis.com/Service"
+          },
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "namespaces/tradiac-testing/services/tradiac-api",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/tradiac-testing/services/tradiac-api",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "spec": {
+            "template": {
+              "spec": {
+                "containers": [
+                  {
+                    "image": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3",
+                    "resources": {
+                      "limits": {
+                        "memory": "512Mi",
+                        "cpu": "1000m"
+                      }
+                    }
+                  }
+                ],
+                "containerConcurrency": 80,
+                "serviceAccountName": "941257247637-compute@developer.gserviceaccount.com",
+                "timeoutSeconds": 300
+              },
+              "metadata": {
+                "labels": {
+                  "run.googleapis.com/startupProbeType": "Default",
+                  "client.knative.dev/nonce": "dohqocijhi"
+                },
+                "annotations": {
+                  "run.googleapis.com/client-version": "545.0.0",
+                  "run.googleapis.com/cloudsql-instances": "tradiac-testing:us-central1:tradiac-testing,tradiac-testing:us-central1:tradiac-testing-db",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "autoscaling.knative.dev/maxScale": "20",
+                  "run.googleapis.com/startup-cpu-boost": "true"
+                }
+              }
+            },
+            "traffic": [
+              {
+                "percent": 100,
+                "latestRevision": true
+              }
+            ]
+          },
+          "metadata": {
+            "labels": {
+              "cloud.googleapis.com/location": "us-central1"
+            },
+            "annotations": {
+              "run.googleapis.com/urls": "[\"https://tradiac-api-941257247637.us-central1.run.app\",\"https://tradiac-api-4v5l7um5lq-uc.a.run.app\"]",
+              "run.googleapis.com/build-image-uri": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api",
+              "serving.knative.dev/creator": "941257247637-compute@developer.gserviceaccount.com",
+              "run.googleapis.com/build-base-image": "us-central1-docker.pkg.dev/serverless-runtimes/google-22/run/universal:public-image-next",
+              "serving.knative.dev/lastModifier": "941257247637-compute@developer.gserviceaccount.com",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/client-version": "545.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/build-enable-automatic-updates": "false",
+              "run.googleapis.com/build-source-location": "gs://run-sources-tradiac-testing-us-central1/services/tradiac-api/1761830945.399495-32820ed1dd75495598d04352c348c04d.zip#1761830946786090",
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/build-name": "projects/941257247637/locations/us-central1/builds/108ca81b-926e-4239-a59d-901e751c0420",
+              "run.googleapis.com/operation-id": "e100638e-4d86-4e12-aee6-07b6b30aa743",
+              "run.googleapis.com/build-id": "108ca81b-926e-4239-a59d-901e751c0420"
+            },
+            "uid": "d63b335e-aeda-4f55-9b40-80daaa39a116",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/941257247637/services/tradiac-api",
+            "generation": 211,
+            "resourceVersion": "AAZCYDBTKx8",
+            "namespace": "941257247637",
+            "name": "tradiac-api",
+            "creationTimestamp": "2025-10-26T15:19:06.142195Z"
+          },
+          "kind": "Service",
+          "status": {
+            "conditions": [
+              {
+                "lastTransitionTime": "2025-10-30T13:25:55.245853Z",
+                "status": "False",
+                "type": "Ready",
+                "reason": "HealthCheckContainerError"
+              },
+              {
+                "reason": "HealthCheckContainerError",
+                "type": "ConfigurationsReady",
+                "status": "False",
+                "lastTransitionTime": "2025-10-30T13:25:55.163711Z"
+              },
+              {
+                "lastTransitionTime": "2025-10-30T13:25:55.245853Z",
+                "reason": "HealthCheckContainerError",
+                "type": "RoutesReady",
+                "status": "False"
+              }
+            ],
+            "observedGeneration": 211,
+            "url": "https://tradiac-api-4v5l7um5lq-uc.a.run.app",
+            "latestCreatedRevisionName": "tradiac-api-00211-r4g",
+            "latestReadyRevisionName": "tradiac-api-00207-zgk",
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100,
+                "revisionName": "tradiac-api-00207-zgk"
+              }
+            ]
+          }
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "us-central1"
+        ]
+      }
+    },
+    "insertId": "1ubembyd9iiv",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "",
+        "revision_name": "",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:01.924821Z",
+    "severity": "NOTICE",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2025-10-30T13:30:02.582391982Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:02.121 UTC [207523]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ai",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:02.122464Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:02.121 UTC [207523]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@aj",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:02.123198Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "principalEmail": "941257247637-compute@developer.gserviceaccount.com"
+      },
+      "serviceName": "iam.googleapis.com",
+      "methodName": "iam.serviceAccounts.actAs",
+      "authorizationInfo": [
+        {
+          "resource": "projects/-/serviceAccounts/941257247637-compute@developer.gserviceaccount.com",
+          "permission": "iam.serviceAccounts.actAs",
+          "granted": true,
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "projects/-/serviceAccounts/941257247637-compute@developer.gserviceaccount.com",
+      "request": {
+        "project_number": "941257247637",
+        "@type": "type.googleapis.com/CanActAsServiceAccountRequest",
+        "name": "941257247637-compute@developer.gserviceaccount.com"
+      },
+      "response": {
+        "success": true,
+        "@type": "type.googleapis.com/CanActAsServiceAccountResponse"
+      }
+    },
+    "insertId": "ldhicnf87611k",
+    "resource": {
+      "type": "audited_resource",
+      "labels": {
+        "service": "iam.googleapis.com",
+        "project_id": "tradiac-testing",
+        "method": "iam.serviceAccounts.actAs"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:02.402878151Z",
+    "severity": "NOTICE",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2025-10-30T13:30:02.402878151Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "principalEmail": "941257247637-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:941257247637-compute@developer.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "109322198787325288531"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "35.221.47.61",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/545.0.0 command/gcloud.run.deploy invocation-id/5c367eb1f2324f0082b7caad572ffba0 environment/GCE environment-version/None client-os/LINUX client-os-ver/5.10.0 client-pltf-arch/x86_64 interactive/False from-script/False python/3.12.10 term/  (Linux 5.10.0-32-cloud-amd64),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2025-10-30T13:30:02.685609Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.SetIamPolicy",
+      "authorizationInfo": [
+        {
+          "resource": "projects/tradiac-testing/locations/us-central1/services/tradiac-api",
+          "permission": "run.services.setIamPolicy",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        },
+        {
+          "permission": "run.services.setIamPolicy",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "projects/tradiac-testing/locations/us-central1/services/tradiac-api",
+      "request": {
+        "@type": "type.googleapis.com/google.iam.v1.SetIamPolicyRequest",
+        "policy": {
+          "etag": "BwZCYC/enQI=",
+          "bindings": [
+            {
+              "role": "roles/run.invoker",
+              "members": [
+                "allUsers"
+              ]
+            }
+          ]
+        },
+        "resource": "projects/tradiac-testing/locations/us-central1/services/tradiac-api"
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "us-central1"
+        ]
+      }
+    },
+    "insertId": "aa610zdg9g9",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "",
+        "service_name": "",
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "configuration_name": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:30:02.476063Z",
+    "severity": "NOTICE",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2025-10-30T13:30:03.123861616Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Setting IAM Policy..........done",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-73",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:02.763721714Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:03.438597141Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:03.720 UTC [207524]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@ak",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:03.720791Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:03.720 UTC [207524]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@al",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:03.721495Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Revision tradiac-api-00212-4ql."
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/tradiac-testing/revisions/tradiac-api-00212-4ql",
+      "response": {
+        "metadata": {
+          "name": "tradiac-api-00212-4ql",
+          "namespace": "941257247637",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/941257247637/revisions/tradiac-api-00212-4ql",
+          "uid": "a6c88b31-e9c7-4dae-9977-9d9c378986ec",
+          "resourceVersion": "AAZCYD8qxoE",
+          "generation": 1,
+          "creationTimestamp": "2025-10-30T13:30:02.188644Z",
+          "labels": {
+            "client.knative.dev/nonce": "dohqocijhi",
+            "serving.knative.dev/configuration": "tradiac-api",
+            "serving.knative.dev/configurationGeneration": "212",
+            "serving.knative.dev/service": "tradiac-api",
+            "serving.knative.dev/serviceUid": "d63b335e-aeda-4f55-9b40-80daaa39a116",
+            "cloud.googleapis.com/location": "us-central1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "20",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "545.0.0",
+            "run.googleapis.com/cloudsql-instances": "tradiac-testing:us-central1:tradiac-testing,tradiac-testing:us-central1:tradiac-testing-db",
+            "serving.knative.dev/creator": "941257247637-compute@developer.gserviceaccount.com",
+            "run.googleapis.com/build-source-location": "{\"tradiac-api-1\":\"gs://run-sources-tradiac-testing-us-central1/services/tradiac-api/1761830945.399495-32820ed1dd75495598d04352c348c04d.zip#1761830946786090\"}",
+            "run.googleapis.com/build-id": "{\"tradiac-api-1\":\"108ca81b-926e-4239-a59d-901e751c0420\"}",
+            "run.googleapis.com/operation-id": "bdc2ede7-3d28-4577-a004-3ea0321d1880",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "tradiac-api",
+              "uid": "46bb5472-9ac5-4197-8a9a-6ba0de2315bb",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ]
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "941257247637-compute@developer.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "tradiac-api-1",
+              "image": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DB_HOST",
+                  "value": "34.41.97.179"
+                },
+                {
+                  "name": "DB_PORT",
+                  "value": "5432"
+                },
+                {
+                  "name": "DB_NAME",
+                  "value": "tradiac_testing"
+                },
+                {
+                  "name": "DB_USER",
+                  "value": "postgres"
+                },
+                {
+                  "name": "DB_PASSWORD",
+                  "value": "Fu3lth3j3t!"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1000m",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "lastTransitionTime": "2025-10-30T13:30:04.325505Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed in 1.24s.",
+              "lastTransitionTime": "2025-10-30T13:30:04.264820Z"
+            },
+            {
+              "type": "Retry",
+              "status": "True",
+              "reason": "WatchWaiting",
+              "message": "System will retry after 0:00:05 from lastTransitionTime for attempt 0.",
+              "lastTransitionTime": "2025-10-30T13:30:04.325505Z",
+              "severity": "Info"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22",
+          "imageDigest": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3",
+          "containerStatuses": [
+            {
+              "name": "tradiac-api-1",
+              "imageDigest": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3"
+            }
+          ]
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "vn0jjvd7vvk",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:04.340761Z",
+    "severity": "INFO",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2025-10-30T13:30:04.707330012Z"
+  },
+  {
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "insertId": "6903685d000bca7cf3047f7b",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00212-4ql",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:05.772732Z",
+    "severity": "INFO",
+    "labels": {
+      "scaling_reason": "DEPLOYMENT_ROLLOUT",
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-10-30T13:30:05.777885160Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:05.899 UTC [207526]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@am",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:05.899597Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:05.899 UTC [207526]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=82576;b=8716cf07157f417e87601525b75667e2;m=373d4af740;t=642603e41ad8b;x=48b61f1beb30178-0@an",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:05.900241Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:08.456491380Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:07.611 UTC [207528]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=825a8;b=8716cf07157f417e87601525b75667e2;m=373e6634db;t=642603f5ceb26;x=5fdd8bd224c49589-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:07.611686Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:09.997940658Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:07.611 UTC [207528]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=825a9;b=8716cf07157f417e87601525b75667e2;m=373e6637f1;t=642603f5cee3c;x=ac62aa404306cfc1-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:07.612476Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:11.006438187Z"
+  },
+  {
+    "textPayload": "> tradiac-api-server@1.0.0 start",
+    "insertId": "690368600005c96019e0f12a",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.379232Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-10-30T13:30:08.383917288Z"
+  },
+  {
+    "textPayload": "> node server.js",
+    "insertId": "690368600005c981ce68d90d",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.379265Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-10-30T13:30:08.383917288Z"
+  },
+  {
+    "textPayload": "file:///workspace/method-comparison-endpoint.js:204",
+    "insertId": "69036860000e9747478da68f",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00212-4ql",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956231Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "    const methodStats: { [key: string]: { returns: number[], winRates: number[] } } = {};",
+    "insertId": "69036860000e976450c08433",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956260Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "          ^^^^^^^^^^^",
+    "insertId": "69036860000e9768727fa0f9",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956264Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "SyntaxError: Missing initializer in const declaration\n    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:107:18)",
+    "insertId": "69036860000e978959f371b2",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00212-4ql",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956297Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z",
+    "errorGroups": [
+      {
+        "id": "CLeTjqm_p-378AE"
+      }
+    ]
+  },
+  {
+    "textPayload": "    at #translate (node:internal/modules/esm/loader:546:20)",
+    "insertId": "69036860000e978b20326208",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00212-4ql",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956299Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "    at afterLoad (node:internal/modules/esm/loader:596:29)",
+    "insertId": "69036860000e978e899b5c2a",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956302Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:601:12)",
+    "insertId": "69036860000e979436df6d5d",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00212-4ql",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956308Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "    at #createModuleJob (node:internal/modules/esm/loader:624:36)",
+    "insertId": "69036860000e9798591b4410",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00212-4ql",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956312Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "    at #getJobFromResolveResult (node:internal/modules/esm/loader:343:34)",
+    "insertId": "69036860000e979bb249b0bd",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956315Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:311:41)",
+    "insertId": "69036860000e979f5ba367f7",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00212-4ql",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956319Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "Node.js v22.20.0",
+    "insertId": "69036860000e97a4942a4631",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00212-4ql",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.956324Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:08.959862798Z"
+  },
+  {
+    "textPayload": "npm notice",
+    "insertId": "69036860000ec6e25390c1f3",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.968418Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:09.295388987Z"
+  },
+  {
+    "textPayload": "npm notice New major version of npm available! 10.9.3 -> 11.6.2",
+    "insertId": "69036860000ec6f2428e0f92",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.968434Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:09.295388987Z"
+  },
+  {
+    "textPayload": "npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2",
+    "insertId": "69036860000ec6f8eb0312ac",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00212-4ql"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.968440Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:09.295388987Z"
+  },
+  {
+    "textPayload": "npm notice To update run: npm install -g npm@11.6.2",
+    "insertId": "69036860000ec6ff14dab7d7",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql",
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.968447Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:09.295388987Z"
+  },
+  {
+    "textPayload": "npm notice",
+    "insertId": "69036860000ec7045bcbd03e",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00212-4ql",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:08.968452Z",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-30T13:30:09.295388987Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:09.257 UTC [207529]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=825a9;b=8716cf07157f417e87601525b75667e2;m=373e6637f1;t=642603f5cee3c;x=ac62aa404306cfc1-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:09.257836Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:11.006438187Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:09.257 UTC [207529]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=825ad;b=8716cf07157f417e87601525b75667e2;m=373e7f556e;t=642603f760bb9;x=90282bc2a0dc7c62-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:09.258425Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:11.451176713Z"
+  },
+  {
+    "textPayload": "Container called exit(1).",
+    "insertId": "69036861000ebf7e4b6ed33b",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:09.966403432Z",
+    "severity": "WARNING",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef",
+      "container_name": "tradiac-api-1"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-10-30T13:30:10.108830089Z"
+  },
+  {
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"tradiac-api-1\" on port 8080. The instance was not started.\nConnection failed with status CANCELLED.",
+    "insertId": "690368620001f080be52822c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00212-4ql",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.127104Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "00147782965ed60ba468614db28a71859e3937afdef44153ffe945bc00ad6d8cd097854fa2a385b0a63c13bf09015c27ea46d12b6c762a3a295cd903406c365de4d841de67f788d27c7f7bc3b6bdef"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-10-30T13:30:10.443086947Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Revision tradiac-api-00212-4ql with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/tradiac-testing/revisions/tradiac-api-00212-4ql",
+      "response": {
+        "metadata": {
+          "name": "tradiac-api-00212-4ql",
+          "namespace": "941257247637",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/941257247637/revisions/tradiac-api-00212-4ql",
+          "uid": "a6c88b31-e9c7-4dae-9977-9d9c378986ec",
+          "resourceVersion": "AAZCYD+DTlo",
+          "generation": 1,
+          "creationTimestamp": "2025-10-30T13:30:02.188644Z",
+          "labels": {
+            "client.knative.dev/nonce": "dohqocijhi",
+            "serving.knative.dev/configuration": "tradiac-api",
+            "serving.knative.dev/configurationGeneration": "212",
+            "serving.knative.dev/service": "tradiac-api",
+            "serving.knative.dev/serviceUid": "d63b335e-aeda-4f55-9b40-80daaa39a116",
+            "serving.knative.dev/route": "tradiac-api",
+            "cloud.googleapis.com/location": "us-central1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "20",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "545.0.0",
+            "run.googleapis.com/cloudsql-instances": "tradiac-testing:us-central1:tradiac-testing,tradiac-testing:us-central1:tradiac-testing-db",
+            "serving.knative.dev/creator": "941257247637-compute@developer.gserviceaccount.com",
+            "run.googleapis.com/build-source-location": "{\"tradiac-api-1\":\"gs://run-sources-tradiac-testing-us-central1/services/tradiac-api/1761830945.399495-32820ed1dd75495598d04352c348c04d.zip#1761830946786090\"}",
+            "run.googleapis.com/build-id": "{\"tradiac-api-1\":\"108ca81b-926e-4239-a59d-901e751c0420\"}",
+            "run.googleapis.com/operation-id": "bdc2ede7-3d28-4577-a004-3ea0321d1880",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "tradiac-api",
+              "uid": "46bb5472-9ac5-4197-8a9a-6ba0de2315bb",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ]
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "941257247637-compute@developer.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "tradiac-api-1",
+              "image": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DB_HOST",
+                  "value": "34.41.97.179"
+                },
+                {
+                  "name": "DB_PORT",
+                  "value": "5432"
+                },
+                {
+                  "name": "DB_NAME",
+                  "value": "tradiac_testing"
+                },
+                {
+                  "name": "DB_USER",
+                  "value": "postgres"
+                },
+                {
+                  "name": "DB_PASSWORD",
+                  "value": "Fu3lth3j3t!"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1000m",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2025-10-30T13:30:10.127450Z"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2025-10-30T13:30:10.127450Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed in 1.24s.",
+              "lastTransitionTime": "2025-10-30T13:30:04.264820Z"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "True",
+              "message": "Provisioning imported containers completed in 1.4s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2025-10-30T13:30:05.665253Z"
+            },
+            {
+              "type": "Retry",
+              "status": "True",
+              "reason": "ImmediateRetry",
+              "message": "System will retry after 0:00:00 from lastTransitionTime for attempt 0.",
+              "lastTransitionTime": "2025-10-30T13:30:05.665253Z",
+              "severity": "Info"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22",
+          "imageDigest": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3",
+          "containerStatuses": [
+            {
+              "name": "tradiac-api-1",
+              "imageDigest": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3"
+            }
+          ]
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "slppu4dc97c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00212-4ql",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.138967Z",
+    "severity": "ERROR",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2025-10-30T13:30:10.231188873Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:10.233 UTC [207531]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=825ad;b=8716cf07157f417e87601525b75667e2;m=373e7f556e;t=642603f760bb9;x=90282bc2a0dc7c62-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.233778Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:11.451176713Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:10.233 UTC [207531]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=825af;b=8716cf07157f417e87601525b75667e2;m=373e8e3889;t=642603f84eed4;x=e6c8abf29323da2a-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.234068Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:12.396672305Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Service tradiac-api with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/tradiac-testing/services/tradiac-api",
+      "response": {
+        "metadata": {
+          "name": "tradiac-api",
+          "namespace": "941257247637",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/941257247637/services/tradiac-api",
+          "uid": "d63b335e-aeda-4f55-9b40-80daaa39a116",
+          "resourceVersion": "AAZCYD+HLA0",
+          "generation": 212,
+          "creationTimestamp": "2025-10-26T15:19:06.142195Z",
+          "labels": {
+            "cloud.googleapis.com/location": "us-central1"
+          },
+          "annotations": {
+            "serving.knative.dev/creator": "941257247637-compute@developer.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "941257247637-compute@developer.gserviceaccount.com",
+            "run.googleapis.com/build-base-image": "us-central1-docker.pkg.dev/serverless-runtimes/google-22/run/universal:public-image-next",
+            "run.googleapis.com/build-enable-automatic-updates": "false",
+            "run.googleapis.com/build-id": "108ca81b-926e-4239-a59d-901e751c0420",
+            "run.googleapis.com/build-image-uri": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api",
+            "run.googleapis.com/build-name": "projects/941257247637/locations/us-central1/builds/108ca81b-926e-4239-a59d-901e751c0420",
+            "run.googleapis.com/build-source-location": "gs://run-sources-tradiac-testing-us-central1/services/tradiac-api/1761830945.399495-32820ed1dd75495598d04352c348c04d.zip#1761830946786090",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "545.0.0",
+            "run.googleapis.com/operation-id": "bdc2ede7-3d28-4577-a004-3ea0321d1880",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/urls": "[\"https://tradiac-api-941257247637.us-central1.run.app\",\"https://tradiac-api-4v5l7um5lq-uc.a.run.app\"]"
+          }
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "spec": {
+          "template": {
+            "metadata": {
+              "labels": {
+                "client.knative.dev/nonce": "dohqocijhi",
+                "run.googleapis.com/startupProbeType": "Default"
+              },
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "20",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "545.0.0",
+                "run.googleapis.com/cloudsql-instances": "tradiac-testing:us-central1:tradiac-testing,tradiac-testing:us-central1:tradiac-testing-db",
+                "run.googleapis.com/startup-cpu-boost": "true"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "timeoutSeconds": 300,
+              "serviceAccountName": "941257247637-compute@developer.gserviceaccount.com",
+              "containers": [
+                {
+                  "image": "us-central1-docker.pkg.dev/tradiac-testing/cloud-run-source-deploy/tradiac-api@sha256:51b843f151c9226a387d1ce097768eadea4b9cbba75a071066e78f03d320e6a3",
+                  "ports": [
+                    {
+                      "name": "http1",
+                      "containerPort": 8080
+                    }
+                  ],
+                  "env": [
+                    {
+                      "name": "DB_HOST",
+                      "value": "34.41.97.179"
+                    },
+                    {
+                      "name": "DB_PORT",
+                      "value": "5432"
+                    },
+                    {
+                      "name": "DB_NAME",
+                      "value": "tradiac_testing"
+                    },
+                    {
+                      "name": "DB_USER",
+                      "value": "postgres"
+                    },
+                    {
+                      "name": "DB_PASSWORD",
+                      "value": "Fu3lth3j3t!"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1000m",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "timeoutSeconds": 240,
+                    "periodSeconds": 240,
+                    "failureThreshold": 1,
+                    "tcpSocket": {
+                      "port": 8080
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "percent": 100,
+              "latestRevision": true
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 212,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2025-10-30T13:30:10.308833Z"
+            },
+            {
+              "type": "ConfigurationsReady",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2025-10-30T13:30:10.167208Z"
+            },
+            {
+              "type": "RoutesReady",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2025-10-30T13:30:10.308833Z"
+            }
+          ],
+          "latestReadyRevisionName": "tradiac-api-00207-zgk",
+          "latestCreatedRevisionName": "tradiac-api-00212-4ql",
+          "traffic": [
+            {
+              "revisionName": "tradiac-api-00207-zgk",
+              "percent": 100,
+              "latestRevision": true
+            }
+          ],
+          "url": "https://tradiac-api-4v5l7um5lq-uc.a.run.app",
+          "address": {
+            "url": "https://tradiac-api-4v5l7um5lq-uc.a.run.app"
+          }
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service"
+      }
+    },
+    "insertId": "-12ihykd94c4",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "revision_name": "",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "configuration_name": ""
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.397905Z",
+    "severity": "ERROR",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2025-10-30T13:30:11.004303292Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Creating Revision..................................................................................failed",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-74",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.499755980Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Deployment failed",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-75",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.499775224Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": ERROR: (gcloud.run.deploy) The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-76",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.521502965Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": ",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-77",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.521517557Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Logs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00212-4ql&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00212-4ql%22 ",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-78",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.521520112Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-79",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:10.521521360Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "Finished Step #1 - \"deploy-api\"",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-80",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:11.132148417Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "ERROR",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-81",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:11.132306431Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "MAIN",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "ERROR: build step 1 \"gcr.io/google.com/cloudsdktool/cloud-sdk\" failed: step exited with non-zero status: 1",
+    "insertId": "98b001a4-d48f-44f7-a454-0233f873187f-82",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:11.132327211Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "MAIN",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T13:30:11.201597468Z"
+  },
+  {
+    "textPayload": "2025-10-30 13:30:11.604 UTC [207538]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=f81cad9d39c14d5db55c30adabe27da3;i=825af;b=8716cf07157f417e87601525b75667e2;m=373e8e3889;t=642603f84eed4;x=e6c8abf29323da2a-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:11.605121Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "37386337623034643632633961313266e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-30T13:30:12.396672305Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9
+      },
+      "authenticationInfo": {
+        "principalEmail": "941257247637@cloudbuild.gserviceaccount.com"
+      },
+      "requestMetadata": {
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "cloudbuild.googleapis.com",
+      "methodName": "google.devtools.cloudbuild.v1.CloudBuild.CreateBuild",
+      "authorizationInfo": [
+        {
+          "resource": "projects/tradiac-testing",
+          "permission": "cloudbuild.builds.create",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "projects/tradiac-testing/builds",
+      "resourceLocation": {
+        "currentLocations": [
+          "global"
+        ]
+      }
+    },
+    "insertId": "c98eghdq8zk",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:22.197216Z",
+    "severity": "ERROR",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "id": "operations/build/tradiac-testing/OThiMDAxYTQtZDQ4Zi00NGY3LWE0NTQtMDIzM2Y4NzMxODdm",
+      "producer": "cloudbuild.googleapis.com",
+      "last": true
+    },
+    "receiveTimestamp": "2025-10-30T13:30:22.441560372Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9
+      },
+      "authenticationInfo": {
+        "principalEmail": "941257247637@cloudbuild.gserviceaccount.com"
+      },
+      "requestMetadata": {
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "cloudbuild.googleapis.com",
+      "methodName": "google.devtools.cloudbuild.v1.CloudBuild.RunBuildTrigger",
+      "authorizationInfo": [
+        {
+          "resource": "projects/tradiac-testing",
+          "permission": "cloudbuild.builds.create",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "projects/tradiac-testing/triggers/8170a209-4406-42dd-8858-79ed6937cdef",
+      "resourceLocation": {
+        "currentLocations": [
+          "global"
+        ]
+      }
+    },
+    "insertId": "c98eghdq8zm",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "98b001a4-d48f-44f7-a454-0233f873187f",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T13:30:22.197623Z",
+    "severity": "ERROR",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "id": "operations/build/tradiac-testing/OThiMDAxYTQtZDQ4Zi00NGY3LWE0NTQtMDIzM2Y4NzMxODdm",
+      "producer": "cloudbuild.googleapis.com",
+      "last": true
+    },
+    "receiveTimestamp": "2025-10-30T13:30:22.441560372Z"
+  }
+]

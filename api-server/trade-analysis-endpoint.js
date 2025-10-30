@@ -193,7 +193,7 @@ export async function handleTradeAnalysis(req, res) {
     let longestLoseStreak = 0;
     let isWinStreak = false;
 
-    const dailyProfits: { [key: string]: number } = {};
+    const dailyProfits = {};
 
     for (const event of filteredEvents) {
       const price = parseFloat(event.stock_price);
