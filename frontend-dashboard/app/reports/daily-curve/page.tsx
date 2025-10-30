@@ -41,6 +41,8 @@ export default function DailyCurveReport() {
   const [endDate, setEndDate] = useState('2025-09-22');
   const [alignmentMode, setAlignmentMode] = useState('union');
   const [includeBtc, setIncludeBtc] = useState(true);
+  const [slippagePct, setSlippagePct] = useState(0.1);
+  const [conservativeRounding, setConservativeRounding] = useState(true);
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -76,6 +78,8 @@ export default function DailyCurveReport() {
         endDate,
         alignmentMode,
         includeBtc
+          slippagePct,
+          conservativeRounding
       });
       
       setData(response);
@@ -366,6 +370,45 @@ export default function DailyCurveReport() {
               </label>
             </div>
           </div>
+
+
+             {/* Slippage & Conservative Rounding */}
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+               <div>
+                 <label className="block text-sm font-medium text-gray-700 mb-2">
+                   Slippage (%)
+                 </label>
+                 <input
+                   type="number"
+                   step="0.1"
+                   min="0"
+                   max="5"
+                   value={slippagePct}
+                   onChange={(e) => setSlippagePct(parseFloat(e.target.value))}
+                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                 />
+                 <p className="mt-1 text-xs text-gray-500">
+                   Simulates price impact (0-5%, default 0.1%)
+                 </p>
+               </div>
+
+               <div>
+                 <label className="flex items-center pt-7">
+                   <input
+                     type="checkbox"
+                     checked={conservativeRounding}
+                     onChange={(e) => setConservativeRounding(e.target.checked)}
+                     className="mr-2"
+                   />
+                   <span className="text-sm font-medium text-gray-700">
+                     Conservative Rounding
+                   </span>
+                 </label>
+                 <p className="mt-1 text-xs text-gray-500 ml-6">
+                   Round up for buys, down for sells (more realistic)
+                 </p>
+               </div>
+             </div>
 
           {/* Submit Button */}
           <div className="flex gap-4">

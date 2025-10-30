@@ -179,19 +179,8 @@ function simulateDailyCurve(events, initialCapital = 10000, slippagePct = 0, con
     
     // Process events for this day
     for (const event of dayEvents) {
-         let price = parseFloat(event.stock_price);
-         const isBuy = event.event_type === 'BUY';
-         
-         // Apply slippage if enabled
-         if (slippagePct > 0) {
-           price = applySlippage(price, slippagePct, isBuy);
-         }
-         
-         // Apply conservative rounding if enabled
-         if (conservativeRounding) {
-           price = applyConservativeRounding(price, isBuy);
-         }
-         
+      const price = parseFloat(event.stock_price);
+      
       if (event.event_type === 'BUY' && shares === 0) {
         const sharesToBuy = Math.floor(cash / price);
         if (sharesToBuy > 0) {
@@ -293,9 +282,7 @@ router.post('/daily-curve', async (req, res) => {
       startDate,
       endDate,
       alignmentMode = 'union',
-      includeBtc = true,
-        slippagePct = 0,
-        conservativeRounding = false
+      includeBtc = true
     } = req.body;
     
     // Validate inputs
@@ -330,7 +317,7 @@ router.post('/daily-curve', async (req, res) => {
           const filteredEvents = filterToAlternating(events);
           
           // Simulate wallet
-          const { dailyData, metrics } = simulateDailyCurve(filteredEvents, 10000, slippagePct, conservativeRounding);
+          const { dailyData, metrics } = simulateDailyCurve(filteredEvents, 10000);
           
           return {
             symbol,
