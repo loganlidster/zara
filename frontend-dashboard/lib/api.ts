@@ -188,6 +188,14 @@ export interface DailyCurveData {
   series: {
     [symbol: string]: (number | null)[];
   };
+  summary?: {
+    [symbol: string]: {
+      totalReturn: number;
+      totalTrades: number;
+      winRate: number;
+      avgTrade: number;
+    };
+  };
 }
 
 export interface DailyCurveMetrics {
