@@ -13,7 +13,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'api-server'
+      - 'tradiac-api'
       - '--image'
       - 'gcr.io/tradiac-testing/api-server:$SHORT_SHA'
       - '--region'
