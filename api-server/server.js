@@ -25,6 +25,8 @@ import { handleSessionAnalysis } from './session-analysis-endpoint.js';
 import { handleMethodComparison } from './method-comparison-endpoint.js';
 import { handleTradeAnalysis } from './trade-analysis-endpoint.js';
 import handleMultiStockDailyCurve from './multi-stock-daily-curve-endpoint.js';
+import { handleGetWallets, handleGetWalletById } from './wallets-endpoint.js';
+import handleRealVsProjected from './real-vs-projected-endpoint.js';
 
 dotenv.config();
 
@@ -476,6 +478,13 @@ app.post('/api/trade-analysis', handleTradeAnalysis);
 
 // Multi-Stock Daily Curve endpoint
 app.post('/api/multi-stock-daily-curve', handleMultiStockDailyCurve);
+
+// Wallets endpoints (live trading data)
+app.get('/api/wallets', handleGetWallets);
+app.get('/api/wallets/:walletId', handleGetWalletById);
+
+// Real vs Projected comparison endpoint
+app.post('/api/real-vs-projected', handleRealVsProjected);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
