@@ -224,6 +224,8 @@ export async function getDailyCurve(params: {
   endDate: string;
   alignmentMode?: string;
   includeBtc?: boolean;
+  slippagePct?: number;
+  conservativeRounding?: boolean;
 }): Promise<DailyCurveResponse> {
   const response = await api.post("/api/events/daily-curve", params);
   return response.data;
