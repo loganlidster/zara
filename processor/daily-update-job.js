@@ -88,35 +88,46 @@ async function fetchBTCMinuteData(date) {
   
   console.log(`Fetching BTC data for ${date}...`);
   
-  const response = await fetch(url);
-  const data = await response.json();
-  
-  if (data.status !== 'OK' || !data.results) {
-    console.log(`No BTC data for ${date}`);
+  try {
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      console.log(`⚠️  BTC API returned ${response.status} - ${response.statusText}`);
+      return [];
+    }
+    
+    const data = await response.json();
+    
+    if (data.status !== 'OK' || !data.results) {
+      console.log(`No BTC data for ${date}`);
+      return [];
+    }
+    
+    return data.results.map(bar => {
+      const barTime = new Date(bar.t);
+      const etDate = date;
+      const etTime = barTime.toISOString().split('T')[1].substring(0, 8);
+      const session = getSession(etTime);
+      
+      return {
+        bar_time: barTime.toISOString(),
+        et_date: etDate,
+        et_time: etTime,
+        open: bar.o,
+        high: bar.h,
+        low: bar.l,
+        close: bar.c,
+        volume: bar.v,
+        vwap: bar.vw || bar.c,
+        trades: bar.n || 0,
+        session,
+        source: 'polygon'
+      };
+    });
+  } catch (error) {
+    console.log(`⚠️  Error fetching BTC data: ${error.message}`);
     return [];
   }
-  
-  return data.results.map(bar => {
-    const barTime = new Date(bar.t);
-    const etDate = date;
-    const etTime = barTime.toISOString().split('T')[1].substring(0, 8);
-    const session = getSession(etTime);
-    
-    return {
-      bar_time: barTime.toISOString(),
-      et_date: etDate,
-      et_time: etTime,
-      open: bar.o,
-      high: bar.h,
-      low: bar.l,
-      close: bar.c,
-      volume: bar.v,
-      vwap: bar.vw || bar.c,
-      trades: bar.n || 0,
-      session,
-      source: 'polygon'
-    };
-  });
 }
 
 // Insert stock minute data
