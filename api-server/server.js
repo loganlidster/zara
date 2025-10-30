@@ -24,6 +24,7 @@ import { handleBaselineLabFast } from './baseline-lab-fast-endpoint.js';
 import { handleSessionAnalysis } from './session-analysis-endpoint.js';
 import { handleMethodComparison } from './method-comparison-endpoint.js';
 import { handleTradeAnalysis } from './trade-analysis-endpoint.js';
+import handleMultiStockDailyCurve from './multi-stock-daily-curve-endpoint.js';
 
 dotenv.config();
 
@@ -472,6 +473,9 @@ app.post('/api/method-comparison', handleMethodComparison);
 
 // Trade Analysis endpoint
 app.post('/api/trade-analysis', handleTradeAnalysis);
+
+// Multi-Stock Daily Curve endpoint
+app.post('/api/multi-stock-daily-curve', handleMultiStockDailyCurve);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);

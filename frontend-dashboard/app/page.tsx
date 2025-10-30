@@ -99,6 +99,26 @@ export default function Home() {
                 </div>
               </div>
             </Link>
+
+            {/* Multi-Stock Daily Curve */}
+            <Link href="/reports/multi-stock-daily-curve">
+              <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-blue-500">
+                <div className="flex items-center mb-4">
+                  <div className="bg-blue-500 text-white rounded-full p-3 mr-4">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900">Multi-Stock Daily Curve</h2>
+                </div>
+                <p className="text-gray-600">
+                  Run Daily Curve for multiple stocks simultaneously with individual RTH/AH settings
+                </p>
+                <div className="mt-4 text-blue-500 font-semibold">
+                  View Report →
+                </div>
+              </div>
+            </Link>
           {/* Method Comparison */}
           <Link href="/reports/method-comparison">
             <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-purple-500">
