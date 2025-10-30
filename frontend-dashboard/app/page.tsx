@@ -219,6 +219,26 @@ export default function Home() {
             </div>
           </Link>
 
+          {/* Baseline Lab FAST */}
+          <Link href="/reports/baseline-lab-fast">
+            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-purple-500">
+              <div className="flex items-center mb-4">
+                <div className="bg-purple-500 text-white rounded-full p-3 mr-4">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">Baseline Lab — FAST</h2>
+              </div>
+              <p className="text-gray-600">
+                🔥 BUSINESS CRITICAL - Find best method &amp; thresholds per day with consistency metrics
+              </p>
+              <div className="mt-4 text-purple-500 font-semibold">
+                View Report →
+              </div>
+            </div>
+          </Link>
+
           {/* Grid Search */}
           <Link href="/reports/grid-search">
             <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-red-500">

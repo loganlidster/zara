@@ -1,14 +1,36 @@
 # TODO - Grid Search Enhancements
 
-## 🎯 Current Task: Add Slippage &amp; Conservative Rounding
+## 🎯 CURRENT PRIORITY: Baseline Lab — FAST Report
 
-Adding realistic trading features to Grid Search report:
-- [ ] Backend: Add slippage parameter
-- [ ] Backend: Add conservative rounding (round up buys, round down sells)
-- [ ] Frontend: Add slippage input field
-- [ ] Frontend: Add conservative rounding toggle
-- [ ] Test with realistic values
-- [ ] Deploy to production
+**BUSINESS CRITICAL** - This is the most important report for finding optimal strategies per day.
+
+### Implementation Tasks
+- [x] Create backend endpoint `/api/baseline-lab-fast`
+- [x] Implement per-day winner selection logic
+- [x] Implement method consistency metrics
+- [x] Build frontend page at `/reports/baseline-lab-fast`
+- [x] Add controls: symbols, date range, methods, thresholds
+- [x] Add results tables: daily winners + method consistency
+- [x] Add CSV export functionality
+- [x] Add report card to home page
+- [x] Commit all changes to GitHub
+- [ ] Deploy backend to Cloud Run
+- [ ] Deploy frontend to Vercel using token
+- [ ] Test with real data
+- [ ] Verify end-to-end functionality
+
+**Estimated Time**: 4-5 hours
+**Status**: Code complete, ready for deployment
+
+## ✅ COMPLETED: Slippage &amp; Conservative Rounding Added!
+
+Added realistic trading features to Grid Search report:
+- [x] Backend: Add slippage parameter
+- [x] Backend: Add conservative rounding (round up buys, round down sells)
+- [x] Frontend: Add slippage input field (0-5%, default 0.1%)
+- [x] Frontend: Add conservative rounding toggle (default enabled)
+- [x] Frontend: Show applied settings in results
+- [x] Deploy to production (frontend deploying now, backend needs deployment)
 
 ## ✅ COMPLETED: 3 New Reports Built!
 

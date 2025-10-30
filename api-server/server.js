@@ -20,6 +20,7 @@ import { handleSimulateTradesDetailed } from './simulate-trades-detailed-endpoin
 import gridSearchEndpoint from './grid-search-endpoint.js';
 import baselineCheckEndpoint from './baseline-check-endpoint.js';
 import coverageEndpoint from './coverage-endpoint.js';
+import { handleBaselineLabFast } from './baseline-lab-fast-endpoint.js';
 
 dotenv.config();
 
@@ -456,6 +457,9 @@ app.use('/api/baseline', baselineCheckEndpoint);
 
 // Coverage endpoint
 app.use('/api/data', coverageEndpoint);
+
+// Baseline Lab FAST endpoint
+app.post('/api/baseline-lab-fast', handleBaselineLabFast);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
