@@ -1,7 +1,7 @@
 // Pattern Best/Worst Per Stock Endpoint
 // Shows best AND worst performing strategies for each stock during pattern dates
 
-import fetch from 'node-fetch';
+// fetch is built-in in Node.js 18+
 
 // POST /api/patterns/best-worst-per-stock
 // Analyzes best and worst strategies for each stock during pattern matches

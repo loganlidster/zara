@@ -1,0 +1,1642 @@
+[
+  {
+    "textPayload": "starting build \"4bbb24fd-fe33-4d7d-ba44-afa827814c90\"\n",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-0",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:49.474258419Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:49.523579425Z"
+  },
+  {
+    "textPayload": "FETCHSOURCE",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-1",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:49.474272600Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:49.523579425Z"
+  },
+  {
+    "textPayload": "From https://github.com/loganlidster/zara",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-2",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:51.323863752Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "gsutil:STDERR"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:50.493693058Z"
+  },
+  {
+    "textPayload": " * branch            178357aeb172deddfeac63f20343898f9a07f78d -> FETCH_HEAD",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-3",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:51.323882294Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "gsutil:STDERR",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:50.493693058Z"
+  },
+  {
+    "textPayload": "HEAD is now at 178357a Fix deployment: Make live DB and Alpaca connections lazy-loaded",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-4",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:51.420154245Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "gsutil:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:50.493693058Z"
+  },
+  {
+    "textPayload": "GitCommit:",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-5",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:51.421613871Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "gsutil:STDOUT",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:50.493693058Z"
+  },
+  {
+    "textPayload": "178357aeb172deddfeac63f20343898f9a07f78d",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-6",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:51.422624733Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "gsutil:STDOUT"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:50.493693058Z"
+  },
+  {
+    "textPayload": "BUILD",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-7",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:51.642151654Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:51.492466424Z"
+  },
+  {
+    "textPayload": "Starting Step #0 - \"install-api-deps\"",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-8",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:52.099941668Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:51.492466424Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": Pulling image: node:20",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-9",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:52.100802784Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:51.492466424Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 20: Pulling from library/node",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-10",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:54.734188264Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:54.491479691Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": cd01849e3cbd: Already exists",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-11",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.446764218Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:54.491479691Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": f279d33abc52: Already exists",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-12",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.453699244Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:54.491479691Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 5daa5a418829: Already exists",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-13",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.459674704Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:54.491479691Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": da3556d62e9b: Already exists",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-14",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.464821611Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:54.491479691Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 8501d359779d: Already exists",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-15",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.470091420Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:54.491479691Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": ad1ecab4b183: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-16",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.474844526Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 3e82fb856c34: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-17",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.474857438Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": fa7b58dc9b39: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-18",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:55.474858238Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": fa7b58dc9b39: Verifying Checksum",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-19",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:56.073539560Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": fa7b58dc9b39: Download complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-20",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:56.073551881Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 3e82fb856c34: Verifying Checksum",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-21",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:56.075862103Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 3e82fb856c34: Download complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-22",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:56.075871224Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": ad1ecab4b183: Verifying Checksum",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-23",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:56.418294199Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": ad1ecab4b183: Download complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-24",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:56.418307260Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:55.492222220Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": ad1ecab4b183: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-25",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:57.776583156Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:57.491674949Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 3e82fb856c34: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-26",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:57.858672514Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:57.491674949Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": fa7b58dc9b39: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-27",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:57.904915294Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:57.491674949Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": Digest: sha256:c11ae157cdd9f8b522d5a65e7f3f5f5c34cf45a8bd883c15e8f2028a2673dec7",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-28",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:57.914315778Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:57.491674949Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": Status: Downloaded newer image for node:20",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-29",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:57.919000398Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:57.491674949Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": docker.io/library/node:20",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-30",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:57.920167425Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:57.491674949Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-31",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:58:59.942755200Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:58:59.490691406Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": ",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-32",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.490617123Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": added 92 packages, and audited 93 packages in 1s",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-33",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.490632345Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #0 - \"install-api-deps\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": ",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-34",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.490632834Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": 18 packages are looking for funding",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-35",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.490633405Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\":   run `npm fund` for details",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-36",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.490634094Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": ",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-37",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.491415803Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #0 - \"install-api-deps\": found 0 vulnerabilities",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-38",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.491427804Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #0 - \"install-api-deps\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Finished Step #0 - \"install-api-deps\"",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-39",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.730035771Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "MAIN",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Starting Step #1 - \"deploy-api\"",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-40",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.730115549Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "MAIN",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Pulling image: gcr.io/google.com/cloudsdktool/cloud-sdk",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-41",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:00.730666974Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Using default tag: latest",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-42",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.026906274Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:00.491690252Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": latest: Pulling from google.com/cloudsdktool/cloud-sdk",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-43",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.852319672Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": cd01849e3cbd: Already exists",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-44",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.852332883Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": c757e3444b52: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-45",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.856439725Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 2c3621a8fd59: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-46",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.856456347Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 45463d28348a: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-47",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.856457057Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 82570bcaaa88: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-48",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.856457387Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": fef72ffa5ba5: Pulling fs layer",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-49",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.856457707Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 82570bcaaa88: Waiting",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-50",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.856458477Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": fef72ffa5ba5: Waiting",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-51",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:01.856458667Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": c757e3444b52: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-52",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:02.170685602Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 82570bcaaa88: Verifying Checksum",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-53",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:02.382870967Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 82570bcaaa88: Download complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-54",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:02.382882178Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:01.477762685Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": fef72ffa5ba5: Download complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-55",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:02.641003153Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:02.491927520Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 45463d28348a: Verifying Checksum",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-56",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:02.821406388Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:02.491927520Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 45463d28348a: Download complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-57",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:02.821420089Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:02.491927520Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 2c3621a8fd59: Verifying Checksum",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-58",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:11.160077349Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:10.475630862Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 2c3621a8fd59: Download complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-59",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:11.160088850Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:10.475630862Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 2c3621a8fd59: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-60",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:36.476978154Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:36.473238861Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 45463d28348a: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-61",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:40.439285587Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:39.472113029Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": 82570bcaaa88: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-62",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:40.486080543Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:40.472181358Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": fef72ffa5ba5: Pull complete",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-63",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:40.531634585Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:40.472181358Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Digest: sha256:326a66ccf0018fbcb3fd7c6f9ee487826263e0c2be9658d6ec7c953c2549bfb0",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-64",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:40.540439318Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:40.472181358Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Status: Downloaded newer image for gcr.io/google.com/cloudsdktool/cloud-sdk:latest",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-65",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:40.544782174Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:40.472181358Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": gcr.io/google.com/cloudsdktool/cloud-sdk:latest",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-66",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:40.546395396Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:40.472181358Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Building using Buildpacks and deploying container to Cloud Run service [tradiac-api] in project [tradiac-testing] region [us-central1]",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-67",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:47.039642167Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:46.934599949Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Building and deploying...",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-68",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:47.039659925Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:46.934599949Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Validating Service.......done",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-69",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:47.435269023Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:46.934599949Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Uploading sources...................done",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-70",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T22:59:48.958829313Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T22:59:49.111867129Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Building Container........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................done",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-71",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:41.376430922Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:41.467032339Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Setting IAM Policy............done",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-72",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:42.768957722Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:43.465058181Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Creating Revision..........................................................failed",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-73",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.101823769Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.461800332Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Deployment failed",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-74",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.101836616Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.461800332Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": ERROR: (gcloud.run.deploy) The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-75",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.164280743Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.461800332Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": ",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-76",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.164293351Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.461800332Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": Logs URL: https://console.cloud.google.com/logs/viewer?project=tradiac-testing&resource=cloud_run_revision/service_name/tradiac-api/revision_name/tradiac-api-00220-n62&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22tradiac-api%22%0Aresource.labels.revision_name%3D%22tradiac-api-00220-n62%22 ",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-77",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.164309217Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "Step #1 - \"deploy-api\""
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.461800332Z"
+  },
+  {
+    "textPayload": "Step #1 - \"deploy-api\": For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-78",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.164310276Z",
+    "severity": "INFO",
+    "labels": {
+      "build_step": "Step #1 - \"deploy-api\"",
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.461800332Z"
+  },
+  {
+    "textPayload": "Finished Step #1 - \"deploy-api\"",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-79",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.587549732Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.646180070Z"
+  },
+  {
+    "textPayload": "ERROR",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-80",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing",
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.587618166Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.646180070Z"
+  },
+  {
+    "textPayload": "ERROR: build step 1 \"gcr.io/google.com/cloudsdktool/cloud-sdk\" failed: step exited with non-zero status: 1",
+    "insertId": "4bbb24fd-fe33-4d7d-ba44-afa827814c90-81",
+    "resource": {
+      "type": "build",
+      "labels": {
+        "build_trigger_id": "8170a209-4406-42dd-8858-79ed6937cdef",
+        "build_id": "4bbb24fd-fe33-4d7d-ba44-afa827814c90",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-30T23:00:48.587629103Z",
+    "severity": "INFO",
+    "labels": {
+      "build_tags": "trigger-8170a209-4406-42dd-8858-79ed6937cdef",
+      "build_step": "MAIN"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudbuild",
+    "receiveTimestamp": "2025-10-30T23:00:48.646180070Z"
+  }
+]

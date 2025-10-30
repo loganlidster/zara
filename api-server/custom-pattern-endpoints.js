@@ -1,6 +1,6 @@
 import pkg from 'pg';
 const { Pool } = pkg;
-import fetch from 'node-fetch';
+// fetch is built-in in Node.js 18+
 
 // Database connection
 const pool = new Pool({
