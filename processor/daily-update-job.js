@@ -10,7 +10,7 @@ const pool = new Pool({
   database: process.env.DB_NAME || 'tradiac_testing',
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
-  ssl: false,
+  ssl: { rejectUnauthorized: false },
   connectionTimeoutMillis: 30000,
 });
 
