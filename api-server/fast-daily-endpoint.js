@@ -67,7 +67,7 @@ function getSessionForTime(time, sessionType) {
   return 'RTH'; // Default
 }
 
-async function simulateSingleCombination(client, date, symbol, method, buyThreshold, sellThreshold, sessionType, conservativePricing, slippage, allowShorts) {
+async function simulateSingleCombination(client, date, symbol, method, buyThreshold, sellThreshold, sessionType, conservativePricing, slippage, allowShorts, rthBuyThreshold = null, rthSellThreshold = null, ahBuyThreshold = null, ahSellThreshold = null) {
   // Get session time filter
   let timeFilter = '';
   if (sessionType === 'RTH') {
@@ -139,8 +139,23 @@ async function simulateSingleCombination(client, date, symbol, method, buyThresh
     const btcPrice = parseFloat(bar.btc_price);
        const ratio = btcPrice / stockPrice;  // CORRECT: BTC / Stock
     
-    const buyThr = baseline * (1 + buyThreshold / 100);
-    const sellThr = baseline * (1 - sellThreshold / 100);
+    // Use session-specific thresholds if provided (for ALL session type)
+    let activeBuyThreshold = buyThreshold;
+    let activeSellThreshold = sellThreshold;
+    
+    if (sessionType === 'ALL' && rthBuyThreshold !== null && ahBuyThreshold !== null) {
+      // Use session-specific thresholds based on current bar's session
+      if (barSession === 'RTH') {
+        activeBuyThreshold = rthBuyThreshold;
+        activeSellThreshold = rthSellThreshold;
+      } else {
+        activeBuyThreshold = ahBuyThreshold;
+        activeSellThreshold = ahSellThreshold;
+      }
+    }
+    
+    const buyThr = baseline * (1 + activeBuyThreshold / 100);
+    const sellThr = baseline * (1 - activeSellThreshold / 100);
        
        let decision = 'HOLD';
        let positionStatus = position ? position.type : 'FLAT';
@@ -261,7 +276,11 @@ export async function handleFastDaily(req, res) {
       conservativePricing = true,
       slippage = 0.0,
       allowShorts = false,
-      includeDecisionLog = false  // NEW: Optional decision log
+      includeDecisionLog = false,  // Optional decision log
+      rthBuyPct,  // Separate RTH buy threshold for ALL session
+      rthSellPct, // Separate RTH sell threshold for ALL session
+      ahBuyPct,   // Separate AH buy threshold for ALL session
+      ahSellPct   // Separate AH sell threshold for ALL session
     } = req.body;
     
     console.log('Fast Daily request:', {
@@ -299,7 +318,8 @@ export async function handleFastDaily(req, res) {
           for (const sellThreshold of sellThresholds) {
             const result = await simulateSingleCombination(
               client, date, symbol, method, buyThreshold, sellThreshold,
-              sessionType, conservativePricing, slippage, allowShorts
+              sessionType, conservativePricing, slippage, allowShorts,
+              rthBuyPct, rthSellPct, ahBuyPct, ahSellPct
             );
             
             if (result) {
