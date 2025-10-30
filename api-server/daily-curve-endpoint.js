@@ -21,29 +21,90 @@ function getTableName(session, method) {
 }
 
 // Fetch events for a symbol
-async function fetchEventsForSymbol(client, symbol, method, session, buyPct, sellPct, startDate, endDate) {
-  const tableName = getTableName(session, method);
-  
-  const query = `
-    SELECT 
-      event_date,
-      event_time,
-      event_type,
-      stock_price,
-      btc_price,
-      ratio,
-      baseline
-    FROM ${tableName}
-    WHERE symbol = $1
-      AND buy_pct = $2
-      AND sell_pct = $3
-      AND event_date >= $4
-      AND event_date <= $5
-    ORDER BY event_date, event_time
-  `;
-  
-  const result = await client.query(query, [symbol, buyPct, sellPct, startDate, endDate]);
-  return result.rows;
+async function fetchEventsForSymbol(client, symbol, method, session, buyPct, sellPct, startDate, endDate, rthBuyPct, rthSellPct, ahBuyPct, ahSellPct) {
+  // If session is ALL and we have session-specific thresholds, query both RTH and AH
+  if (session === 'ALL' && rthBuyPct !== undefined && rthSellPct !== undefined && ahBuyPct !== undefined && ahSellPct !== undefined) {
+    // Query RTH table
+    const rthTableName = getTableName('RTH', method);
+    const rthQuery = `
+      SELECT 
+        event_date,
+        event_time,
+        event_type,
+        stock_price,
+        btc_price,
+        ratio,
+        baseline,
+        'RTH' as session
+      FROM ${rthTableName}
+      WHERE symbol = $1
+        AND buy_pct = $2
+        AND sell_pct = $3
+        AND event_date >= $4
+        AND event_date <= $5
+      ORDER BY event_date, event_time
+    `;
+    
+    // Query AH table
+    const ahTableName = getTableName('AH', method);
+    const ahQuery = `
+      SELECT 
+        event_date,
+        event_time,
+        event_type,
+        stock_price,
+        btc_price,
+        ratio,
+        baseline,
+        'AH' as session
+      FROM ${ahTableName}
+      WHERE symbol = $1
+        AND buy_pct = $2
+        AND sell_pct = $3
+        AND event_date >= $4
+        AND event_date <= $5
+      ORDER BY event_date, event_time
+    `;
+    
+    const [rthResult, ahResult] = await Promise.all([
+      client.query(rthQuery, [symbol, rthBuyPct, rthSellPct, startDate, endDate]),
+      client.query(ahQuery, [symbol, ahBuyPct, ahSellPct, startDate, endDate])
+    ]);
+    
+    // Merge and sort by date/time
+    const allEvents = [...rthResult.rows, ...ahResult.rows];
+    allEvents.sort((a, b) => {
+      const dateCompare = a.event_date.localeCompare(b.event_date);
+      if (dateCompare !== 0) return dateCompare;
+      return a.event_time.localeCompare(b.event_time);
+    });
+    
+    return allEvents;
+  } else {
+    // Single session query
+    const tableName = getTableName(session, method);
+    
+    const query = `
+      SELECT 
+        event_date,
+        event_time,
+        event_type,
+        stock_price,
+        btc_price,
+        ratio,
+        baseline
+      FROM ${tableName}
+      WHERE symbol = $1
+        AND buy_pct = $2
+        AND sell_pct = $3
+        AND event_date >= $4
+        AND event_date <= $5
+      ORDER BY event_date, event_time
+    `;
+    
+    const result = await client.query(query, [symbol, buyPct, sellPct, startDate, endDate]);
+    return result.rows;
+  }
 }
 
 // Filter to alternating BUY/SELL events

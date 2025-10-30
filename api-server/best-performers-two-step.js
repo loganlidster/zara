@@ -159,7 +159,7 @@ router.get('/top-performers-v2', async (req, res) => {
   
   try {
     await client.connect();
-    const { startDate, endDate, limit = 20, symbol, method, session } = req.query;
+    const { startDate, endDate, limit = 20, symbols, method, session, viewMode = 'overall' } = req.query;
     
     if (!startDate || !endDate) {
       return res.status(400).json({
@@ -168,16 +168,50 @@ router.get('/top-performers-v2', async (req, res) => {
       });
     }
     
+    // Parse symbols - can be comma-separated string or array
+    let symbolList = null;
+    if (symbols) {
+      symbolList = Array.isArray(symbols) ? symbols : symbols.split(',');
+    }
+    
     const requestedLimit = parseInt(limit);
     const candidateLimit = Math.max(100, requestedLimit * 5); // Get 5x more candidates than requested
     
     console.log(`Step 1: Finding top ${candidateLimit} candidates by score...`);
+    console.log(`Symbols: ${symbolList ? symbolList.join(', ') : 'All'}, ViewMode: ${viewMode}`);
     const step1Start = Date.now();
     
     // Step 1: Get top candidates by sum (fast)
-    const candidates = await getTopCandidates(
-      client, startDate, endDate, symbol, method, session, candidateLimit
-    );
+    // If multiple symbols, we need to handle them differently based on viewMode
+    let candidates;
+    if (symbolList && symbolList.length > 0 && viewMode === 'per-stock') {
+      // Per-stock mode: get top candidates for each symbol separately
+      const allCandidates = [];
+      for (const sym of symbolList) {
+        const symCandidates = await getTopCandidates(
+          client, startDate, endDate, sym, method, session, candidateLimit
+        );
+        allCandidates.push(...symCandidates);
+      }
+      candidates = allCandidates;
+    } else if (symbolList && symbolList.length > 0) {
+      // Overall mode with specific symbols: get candidates for all symbols combined
+      const allCandidates = [];
+      for (const sym of symbolList) {
+        const symCandidates = await getTopCandidates(
+          client, startDate, endDate, sym, method, session, candidateLimit
+        );
+        allCandidates.push(...symCandidates);
+      }
+      // Sort all candidates by score and take top N
+      allCandidates.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+      candidates = allCandidates.slice(0, candidateLimit);
+    } else {
+      // No specific symbols - get all
+      candidates = await getTopCandidates(
+        client, startDate, endDate, null, method, session, candidateLimit
+      );
+    }
     
     const step1Time = Date.now() - step1Start;
     console.log(`Step 1 completed in ${step1Time}ms, found ${candidates.length} candidates`);

@@ -214,8 +214,12 @@ export async function getDailyCurve(params: {
   symbols: string[];
   method: string;
   session: string;
-  buyPct: number;
-  sellPct: number;
+  buyPct?: number;
+  sellPct?: number;
+  rthBuyPct?: number;
+  rthSellPct?: number;
+  ahBuyPct?: number;
+  ahSellPct?: number;
   startDate: string;
   endDate: string;
   alignmentMode?: string;

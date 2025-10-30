@@ -5,7 +5,7 @@ import { getTopPerformers, getTopPerformersRange, TopPerformer, TopPerformersRes
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 
-const SYMBOLS = ['All', 'HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
+const SYMBOLS = ['HIVE', 'RIOT', 'MARA', 'CLSK', 'BTDR', 'CORZ', 'HUT', 'CAN', 'CIFR', 'APLD', 'WULF'];
 const METHODS = ['All', 'EQUAL_MEAN', 'VWAP_RATIO', 'VOL_WEIGHTED', 'WINSORIZED', 'WEIGHTED_MEDIAN'];
 const SESSIONS = ['All', 'RTH', 'AH'];
 
@@ -22,7 +22,7 @@ export default function BestPerformersReport() {
   const router = useRouter();
   
   // Version indicator for cache busting
-  console.log('Best Performers Report v2.0 - Fixed field names');
+  console.log('Best Performers Report v3.0 - Multi-select + Per-stock view');
   
   // Set default dates to yesterday and today
   const getYesterday = () => {
@@ -38,10 +38,11 @@ export default function BestPerformersReport() {
   
   const [startDate, setStartDate] = useState(getYesterday());
   const [endDate, setEndDate] = useState(getToday());
-  const [symbolFilter, setSymbolFilter] = useState('All');
+  const [selectedSymbols, setSelectedSymbols] = useState<string[]>(['HIVE', 'RIOT', 'MARA']); // Multi-select
   const [methodFilter, setMethodFilter] = useState('All');
   const [sessionFilter, setSessionFilter] = useState('All');
   const [limit, setLimit] = useState(20);
+  const [viewMode, setViewMode] = useState<'overall' | 'per-stock'>('overall'); // New: view mode
   const [loading, setLoading] = useState(false);
   const [performers, setPerformers] = useState<TopPerformer[]>([]);
   const [sortColumn, setSortColumn] = useState<keyof TopPerformer>('roiPct');
@@ -55,6 +56,23 @@ export default function BestPerformersReport() {
   const [buyMax, setBuyMax] = useState(0.6);
   const [sellMin, setSellMin] = useState(0.1);
   const [sellMax, setSellMax] = useState(0.3);
+
+  // Symbol selection handlers
+  const handleSymbolToggle = (symbol: string) => {
+    if (selectedSymbols.includes(symbol)) {
+      setSelectedSymbols(selectedSymbols.filter(s => s !== symbol));
+    } else {
+      setSelectedSymbols([...selectedSymbols, symbol]);
+    }
+  };
+
+  const handleSelectAllSymbols = () => {
+    setSelectedSymbols([...SYMBOLS]);
+  };
+
+  const handleClearAllSymbols = () => {
+    setSelectedSymbols([]);
+  };
 
   const handleSort = (column: keyof TopPerformer) => {
     if (sortColumn === column) {
@@ -86,18 +104,25 @@ export default function BestPerformersReport() {
     setError(null);
 
     try {
+      // Validate symbol selection
+      if (selectedSymbols.length === 0) {
+        setError('Please select at least one symbol');
+        setLoading(false);
+        return;
+      }
+
       let response: TopPerformersResponse;
       
       if (mode === 'range') {
-        // Range testing mode - only symbol is required
-        if (symbolFilter === 'All') {
-          setError('Range testing requires a specific symbol. Please select a symbol.');
+        // Range testing mode - only works with single symbol
+        if (selectedSymbols.length > 1) {
+          setError('Range testing requires a single symbol. Please select only one symbol.');
           setLoading(false);
           return;
         }
         
         response = await getTopPerformersRange({
-          symbol: symbolFilter,
+          symbol: selectedSymbols[0],
           method: methodFilter === 'All' ? undefined : methodFilter,
           session: sessionFilter === 'All' ? undefined : sessionFilter,
           buyMin,
@@ -109,14 +134,16 @@ export default function BestPerformersReport() {
           limit
         });
       } else {
-        // All mode
+        // All mode - supports multiple symbols
         const params: any = {
           startDate,
           endDate,
-          limit
+          limit: viewMode === 'per-stock' ? limit * selectedSymbols.length : limit, // Increase limit for per-stock view
+          viewMode // Pass view mode to backend
         };
   
-        if (symbolFilter !== 'All') params.symbol = symbolFilter;
+        // Pass selected symbols (not 'All')
+        params.symbols = selectedSymbols;
         if (methodFilter !== 'All') params.method = methodFilter;
         if (sessionFilter !== 'All') params.session = sessionFilter;
 
@@ -199,403 +226,475 @@ export default function BestPerformersReport() {
       startDate,
       endDate
     });
+    
     router.push(`/reports/fast-daily?${params.toString()}`);
   };
 
-  const exportToCSV = () => {
-    if (sortedPerformers.length === 0) return;
-    
-    const headers = [
-      'Rank', 'Symbol', 'Method', 'Session', 'Buy %', 'Sell %', 'ROI %', 'Total Events', 'Sell Events'
-    ];
-    
-    const rows = sortedPerformers.map((p, idx) => [
-      idx + 1,
-      p.symbol || '',
-      p.method || '',
-      p.session || '',
-      p.buyPct || 0,
-      p.sellPct || 0,
-      (p.roiPct || 0).toFixed(2),
-      p.totalEvents || 0,
-      p.sellEvents || 0
-    ]);
-    
-    const csvContent = [
-      headers.join(','),
-      ...rows.map(row => row.join(','))
-    ].join('\n');
-    
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `best-performers-${startDate}-${endDate}.csv`;
-    a.click();
-    window.URL.revokeObjectURL(url);
-  };
-
-  const getMedalIcon = (rank: number) => {
-    if (rank === 1) return '🥇';
-    if (rank === 2) return '🥈';
-    if (rank === 3) return '🥉';
-    return null;
-  };
+  // Group performers by symbol for per-stock view
+  const groupedPerformers = viewMode === 'per-stock' 
+    ? SYMBOLS.reduce((acc, symbol) => {
+        acc[symbol] = sortedPerformers.filter(p => p.symbol === symbol).slice(0, limit);
+        return acc;
+      }, {} as Record<string, TopPerformer[]>)
+    : null;
 
   return (
-    <div className="min-h-screen relative bg-white">
-      {/* Logo Watermark Background */}
-      <div 
-        className="fixed inset-0 opacity-15 pointer-events-none"
-        style={{
-          backgroundImage: 'url(/RAAS_primary_transparent_512.png)',
-          backgroundSize: '700px 700px',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      />
+    <div className="min-h-screen bg-gray-50">
       <Header />
-      <div className="container mx-auto px-4 py-8 relative z-10">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Best Performers</h1>
-          <p className="text-gray-600">Top performing trading combinations ranked by ROI</p>
+      
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Best Performers</h1>
+          <a
+            href="/"
+            className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+          >
+            ← Back to Home
+          </a>
         </div>
+        <p className="text-gray-600 mb-8">Find the best performing trading strategies</p>
 
-        {/* Filter Form */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          {/* Warning for large queries */}
-          {symbolFilter === 'All' && methodFilter === 'All' && sessionFilter === 'All' && (
-            <div className="mb-4 bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg">
-              <p className="text-sm">
-                <strong>Tip:</strong> Querying all symbols, methods, and sessions may take longer. 
-                For faster results, try filtering by a specific symbol, method, or session.
+        {/* Filters */}
+        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 mb-6">
+          {/* Mode Selection */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Mode
+            </label>
+            <div className="flex gap-4">
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  value="all"
+                  checked={mode === 'all'}
+                  onChange={(e) => setMode(e.target.value as 'all' | 'range')}
+                  className="mr-2"
+                />
+                All Combinations
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  value="range"
+                  checked={mode === 'range'}
+                  onChange={(e) => setMode(e.target.value as 'all' | 'range')}
+                  className="mr-2"
+                />
+                Range Testing
+              </label>
+            </div>
+          </div>
+
+          {/* Symbol Multi-Select */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Symbols {mode === 'range' && '(select one for range testing)'}
+              </label>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={handleSelectAllSymbols}
+                  className="text-sm text-blue-600 hover:text-blue-800"
+                >
+                  Select All
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClearAllSymbols}
+                  className="text-sm text-gray-600 hover:text-gray-800"
+                >
+                  Clear All
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {SYMBOLS.map((symbol) => (
+                <button
+                  key={symbol}
+                  type="button"
+                  onClick={() => handleSymbolToggle(symbol)}
+                  className={`px-4 py-2 rounded-lg border-2 transition-colors ${
+                    selectedSymbols.includes(symbol)
+                      ? 'bg-blue-600 text-white border-blue-600'
+                      : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
+                  }`}
+                >
+                  {symbol}
+                </button>
+              ))}
+            </div>
+            <p className="text-sm text-gray-500 mt-2">
+              Selected: {selectedSymbols.length} symbol{selectedSymbols.length !== 1 ? 's' : ''}
+            </p>
+          </div>
+
+          {/* View Mode (only for 'all' mode) */}
+          {mode === 'all' && (
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                View Mode
+              </label>
+              <div className="flex gap-4">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    value="overall"
+                    checked={viewMode === 'overall'}
+                    onChange={(e) => setViewMode(e.target.value as 'overall' | 'per-stock')}
+                    className="mr-2"
+                  />
+                  Overall Top Performers
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    value="per-stock"
+                    checked={viewMode === 'per-stock'}
+                    onChange={(e) => setViewMode(e.target.value as 'overall' | 'per-stock')}
+                    className="mr-2"
+                  />
+                  Top Performers Per Stock
+                </label>
+              </div>
+              <p className="text-sm text-gray-500 mt-1">
+                {viewMode === 'overall' 
+                  ? 'Shows the best performers across all selected symbols'
+                  : 'Shows the top performers for each symbol separately'}
               </p>
             </div>
           )}
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {/* Start Date */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
-              <input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
 
-            {/* End Date */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">End Date</label>
-              <input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            {/* Symbol Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Symbol</label>
-              <select
-                value={symbolFilter}
-                onChange={(e) => setSymbolFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {SYMBOLS.map(s => <option key={s} value={s}>{s}</option>)}
-              </select>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {/* Method Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Method</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Method
+              </label>
               <select
                 value={methodFilter}
                 onChange={(e) => setMethodFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                {METHODS.map(m => <option key={m} value={m}>{m}</option>)}
+                {METHODS.map(method => (
+                  <option key={method} value={method}>{method}</option>
+                ))}
               </select>
             </div>
 
             {/* Session Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Session</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Session
+              </label>
               <select
                 value={sessionFilter}
                 onChange={(e) => setSessionFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                {SESSIONS.map(s => <option key={s} value={s}>{s}</option>)}
+                {SESSIONS.map(session => (
+                  <option key={session} value={session}>{session}</option>
+                ))}
               </select>
             </div>
 
-            {/* Limit */}
+            {/* Start Date */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Show Top</label>
-              <select
-                value={limit}
-                onChange={(e) => setLimit(parseInt(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Start Date
+              </label>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
             </div>
 
+            {/* End Date */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                End Date
+              </label>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+          </div>
 
-              {/* Mode Selection */}
-              <div className="md:col-span-4 mb-4 pb-4 border-b border-gray-200">
-                <label className="block text-sm font-medium text-gray-700 mb-3">Testing Mode</label>
-                <div className="flex gap-6">
-                  <label className="flex items-center cursor-pointer">
-                    <input
-                      type="radio"
-                      value="all"
-                      checked={mode === 'all'}
-                      onChange={(e) => setMode(e.target.value as 'all' | 'range')}
-                      className="mr-2"
-                    />
-                    <span className="text-sm">
-                      <strong>All</strong> - Query existing precomputed data (fast)
-                    </span>
+          {/* Range Testing Parameters */}
+          {mode === 'range' && (
+            <div className="mb-6 p-4 bg-blue-50 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-700 mb-4">Range Testing Parameters</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Buy % Range
                   </label>
-                  <label className="flex items-center cursor-pointer">
+                  <div className="flex gap-2 items-center">
                     <input
-                      type="radio"
-                      value="range"
-                      checked={mode === 'range'}
-                      onChange={(e) => setMode(e.target.value as 'all' | 'range')}
-                      className="mr-2"
+                      type="number"
+                      step="0.1"
+                      value={buyMin}
+                      onChange={(e) => setBuyMin(parseFloat(e.target.value))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      placeholder="Min"
                     />
-                    <span className="text-sm">
-                      <strong>Custom Range</strong> - Test specific threshold ranges
-                    </span>
+                    <span>to</span>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={buyMax}
+                      onChange={(e) => setBuyMax(parseFloat(e.target.value))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      placeholder="Max"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Sell % Range
                   </label>
+                  <div className="flex gap-2 items-center">
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={sellMin}
+                      onChange={(e) => setSellMin(parseFloat(e.target.value))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      placeholder="Min"
+                    />
+                    <span>to</span>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={sellMax}
+                      onChange={(e) => setSellMax(parseFloat(e.target.value))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                      placeholder="Max"
+                    />
+                  </div>
                 </div>
               </div>
-
-              {/* Range Testing Controls */}
-              {mode === 'range' && (
-                <div className="md:col-span-4 mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <h3 className="text-sm font-semibold text-blue-900 mb-3">Custom Range Testing</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Buy Thresholds (%)</label>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-xs text-gray-600 mb-1">Min</label>
-                          <input type="number" value={buyMin} onChange={(e) => setBuyMin(parseFloat(e.target.value))} step="0.1" min="0" max="10" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
-                        </div>
-                        <div>
-                          <label className="block text-xs text-gray-600 mb-1">Max</label>
-                          <input type="number" value={buyMax} onChange={(e) => setBuyMax(parseFloat(e.target.value))} step="0.1" min="0" max="10" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Sell Thresholds (%)</label>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-xs text-gray-600 mb-1">Min</label>
-                          <input type="number" value={sellMin} onChange={(e) => setSellMin(parseFloat(e.target.value))} step="0.1" min="0" max="10" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
-                        </div>
-                        <div>
-                          <label className="block text-xs text-gray-600 mb-1">Max</label>
-                          <input type="number" value={sellMax} onChange={(e) => setSellMax(parseFloat(e.target.value))} step="0.1" min="0" max="10" className="w-full px-3 py-2 border border-gray-300 rounded-md" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-3 text-sm text-blue-700">
-                    {(() => {
-                      const buyCount = Math.round((buyMax - buyMin) / 0.1) + 1;
-                      const sellCount = Math.round((sellMax - sellMin) / 0.1) + 1;
-                      const methodCount = methodFilter === 'All' ? 5 : 1;
-                      const sessionCount = sessionFilter === 'All' ? 2 : 1;
-                      const total = buyCount * sellCount * methodCount * sessionCount;
-                      return (
-                        <>
-                          <strong>This will test:</strong> {buyCount} buy × {sellCount} sell
-                          {methodCount > 1 && ` × ${methodCount} methods`}
-                          {sessionCount > 1 && ` × ${sessionCount} sessions`}
-                          {' = '}<strong>{total} combinations</strong>
-                          {total > 100 && <span className="ml-2 text-amber-600">(This may take a while)</span>}
-                        </>
-                      );
-                    })()}
-                  </div>
-                </div>
-              )}
-
-            {/* Submit Button */}
-            <div className="flex items-end md:col-span-2">
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
-              >
-                {loading ? 'Loading...' : 'Run Report'}
-              </button>
-            </div>
-          </form>
-
-          {/* Export Button */}
-          {sortedPerformers.length > 0 && (
-            <div className="mt-4">
-              <button
-                type="button"
-                onClick={exportToCSV}
-                className="w-full bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition-colors"
-              >
-                Export to CSV
-              </button>
             </div>
           )}
-        </div>
 
-        {/* Error */}
+          {/* Limit */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Results Limit {viewMode === 'per-stock' && '(per stock)'}
+            </label>
+            <input
+              type="number"
+              value={limit}
+              onChange={(e) => setLimit(parseInt(e.target.value))}
+              min="1"
+              max="100"
+              className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading || selectedSymbols.length === 0}
+            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors font-medium"
+          >
+            {loading ? 'Loading...' : 'Find Best Performers'}
+          </button>
+        </form>
+
+        {/* Error Message */}
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-8">
-            <p className="font-semibold">Error:</p>
-            <p>{error}</p>
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+            {error}
           </div>
         )}
 
-        {/* Results Table */}
-        {sortedPerformers.length > 0 && (
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        {/* Timing Info */}
+        {timing && (
+          <div className="bg-blue-50 border border-blue-200 px-4 py-3 rounded-lg mb-6">
+            <p className="text-sm text-blue-800">
+              <strong>Performance:</strong> Step 1: {timing.step1}ms | Step 2: {timing.step2}ms | Total: {timing.total}ms | Candidates Evaluated: {timing.candidatesEvaluated}
+            </p>
+          </div>
+        )}
+
+        {/* Results */}
+        {performers.length > 0 && (
+          <div className="bg-white rounded-lg shadow overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900">
-                Top {sortedPerformers.length} Performers
+              <h2 className="text-xl font-semibold text-gray-900">
+                {viewMode === 'overall' ? 'Top Performers' : 'Top Performers by Stock'}
               </h2>
               <p className="text-sm text-gray-600 mt-1">
-                {formatDate(startDate)} - {formatDate(endDate)}
+                {performers.length} result{performers.length !== 1 ? 's' : ''} found
+                {viewMode === 'per-stock' && ` across ${selectedSymbols.length} symbol${selectedSymbols.length !== 1 ? 's' : ''}`}
               </p>
             </div>
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Rank
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('symbol')}
-                    >
-                      Symbol {sortColumn === 'symbol' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('method')}
-                    >
-                      Method {sortColumn === 'method' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('session')}
-                    >
-                      Session {sortColumn === 'session' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('buyPct')}
-                    >
-                      Buy % {sortColumn === 'buyPct' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('sellPct')}
-                    >
-                      Sell % {sortColumn === 'sellPct' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('roiPct')}
-                    >
-                      ROI % {sortColumn === 'roiPct' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('totalEvents')}
-                    >
-                      Events {sortColumn === 'totalEvents' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort('sellEvents')}
-                    >
-                      Trades {sortColumn === 'sellEvents' && (sortDirection === 'asc' ? '↑' : '↓')}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {sortedPerformers.map((performer, idx) => {
-                    const rank = idx + 1;
-                    const medal = getMedalIcon(rank);
-                    return (
+
+            {viewMode === 'overall' ? (
+              // Overall view - single table
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th 
+                        onClick={() => handleSort('symbol')}
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                      >
+                        Symbol {sortColumn === 'symbol' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      </th>
+                      <th 
+                        onClick={() => handleSort('method')}
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                      >
+                        Method {sortColumn === 'method' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      </th>
+                      <th 
+                        onClick={() => handleSort('session')}
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                      >
+                        Session {sortColumn === 'session' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      </th>
+                      <th 
+                        onClick={() => handleSort('buyPct')}
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                      >
+                        Buy % {sortColumn === 'buyPct' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      </th>
+                      <th 
+                        onClick={() => handleSort('sellPct')}
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                      >
+                        Sell % {sortColumn === 'sellPct' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      </th>
+                      <th 
+                        onClick={() => handleSort('roiPct')}
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                      >
+                        ROI % {sortColumn === 'roiPct' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      </th>
+                      <th 
+                        onClick={() => handleSort('totalTrades')}
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                      >
+                        Trades {sortColumn === 'totalTrades' && (sortDirection === 'asc' ? '↑' : '↓')}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {sortedPerformers.map((performer, idx) => (
                       <tr 
-                        key={`${performer.symbol}-${performer.method}-${performer.session}-${performer.buyPct}-${performer.sellPct}`}
+                        key={idx}
                         onClick={() => handleRowClick(performer)}
-                        className="hover:bg-blue-50 cursor-pointer transition-colors"
+                        className="hover:bg-gray-50 cursor-pointer transition-colors"
                       >
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {medal ? <span className="text-2xl">{medal}</span> : rank}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                           {performer.symbol}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {performer.method}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                          <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                            performer.session === 'RTH' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'
-                          }`}>
-                            {performer.session}
-                          </span>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {performer.session}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {(performer.buyPct || 0).toFixed(1)}%
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {performer.buyPct.toFixed(1)}%
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {(performer.sellPct || 0).toFixed(1)}%
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {performer.sellPct.toFixed(1)}%
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
-                          <span className={`px-3 py-1 text-sm font-bold rounded-full ${
-                            (performer.roiPct || 0) >= 10 ? 'bg-green-100 text-green-800' :
-                            (performer.roiPct || 0) >= 5 ? 'bg-green-50 text-green-700' :
-                            (performer.roiPct || 0) >= 0 ? 'bg-gray-100 text-gray-700' :
-                            (performer.roiPct || 0) >= -5 ? 'bg-red-50 text-red-700' :
-                            'bg-red-100 text-red-800'
-                          }`}>
-                            {(performer.roiPct || 0).toFixed(2)}%
-                          </span>
+                        <td className={`px-6 py-4 whitespace-nowrap text-sm font-semibold ${
+                          performer.roiPct >= 0 ? 'text-green-600' : 'text-red-600'
+                        }`}>
+                          {performer.roiPct.toFixed(2)}%
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.totalEvents || 0}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">
-                          {performer.sellEvents || 0}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {performer.totalTrades}
                         </td>
                       </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* No Data */}
-        {!loading && sortedPerformers.length === 0 && !error && (
-          <div className="bg-white rounded-lg shadow-lg p-12 text-center">
-            <p className="text-gray-500 text-lg">Run a report to see top performers</p>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              // Per-stock view - grouped tables
+              <div className="p-6 space-y-8">
+                {selectedSymbols.map(symbol => {
+                  const symbolPerformers = groupedPerformers?.[symbol] || [];
+                  if (symbolPerformers.length === 0) return null;
+                  
+                  return (
+                    <div key={symbol} className="border border-gray-200 rounded-lg overflow-hidden">
+                      <div className="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 className="text-lg font-semibold text-gray-900">{symbol}</h3>
+                        <p className="text-sm text-gray-600">{symbolPerformers.length} top performer{symbolPerformers.length !== 1 ? 's' : ''}</p>
+                      </div>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full divide-y divide-gray-200">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Method
+                              </th>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Session
+                              </th>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Buy %
+                              </th>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Sell %
+                              </th>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                ROI %
+                              </th>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Trades
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            {symbolPerformers.map((performer, idx) => (
+                              <tr 
+                                key={idx}
+                                onClick={() => handleRowClick(performer)}
+                                className="hover:bg-gray-50 cursor-pointer transition-colors"
+                              >
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {performer.method}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {performer.session}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {performer.buyPct.toFixed(1)}%
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {performer.sellPct.toFixed(1)}%
+                                </td>
+                                <td className={`px-6 py-4 whitespace-nowrap text-sm font-semibold ${
+                                  performer.roiPct >= 0 ? 'text-green-600' : 'text-red-600'
+                                }`}>
+                                  {performer.roiPct.toFixed(2)}%
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {performer.totalTrades}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </div>
