@@ -461,6 +461,18 @@ app.use('/api/data', coverageEndpoint);
 // Baseline Lab FAST endpoint
 app.post('/api/baseline-lab-fast', handleBaselineLabFast);
 
+// Session Analysis endpoint
+import { handleSessionAnalysis } from './session-analysis-endpoint.js';
+app.post('/api/session-analysis', handleSessionAnalysis);
+
+// Method Comparison endpoint
+import { handleMethodComparison } from './method-comparison-endpoint.js';
+app.post('/api/method-comparison', handleMethodComparison);
+
+// Trade Analysis endpoint
+import { handleTradeAnalysis } from './trade-analysis-endpoint.js';
+app.post('/api/trade-analysis', handleTradeAnalysis);
+
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
 app.get('/api/patterns/instances', patternEndpoints.getPatternInstances);
