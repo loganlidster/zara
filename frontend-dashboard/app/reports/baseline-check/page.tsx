@@ -38,7 +38,8 @@ export default function BaselineCheckReport() {
     setError(null);
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/baseline/check`, {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tradiac-api-941257247637.us-central1.run.app';
+      const response = await fetch(`${API_URL}/api/baseline/check`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
