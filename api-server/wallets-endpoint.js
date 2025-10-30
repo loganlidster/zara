@@ -1,11 +1,25 @@
-import livePool from './live-db.js';
-
 /**
  * Wallets Endpoint
  * 
  * Fetches wallet configurations and stock settings from live trading database.
  * This allows users to load their actual live trading settings into reports.
  */
+
+let livePool = null;
+
+// Lazy load live DB connection
+async function getLivePool() {
+  if (!livePool) {
+    try {
+      const liveDbModule = await import('./live-db.js');
+      livePool = liveDbModule.default;
+    } catch (error) {
+      console.error('[Wallets] Failed to load live DB:', error);
+      throw new Error('Live database connection not available');
+    }
+  }
+  return livePool;
+}
 
 // Method name mapping from live DB to testing DB
 const METHOD_MAP = {
@@ -23,6 +37,8 @@ async function handleGetWallets(req, res) {
   try {
     console.log('[Wallets] Fetching all wallets from live database');
 
+    const pool = await getLivePool();
+
     // Fetch all wallets
     const walletsQuery = `
       SELECT 
@@ -37,7 +53,7 @@ async function handleGetWallets(req, res) {
       ORDER BY name ASC
     `;
 
-    const walletsResult = await livePool.query(walletsQuery);
+    const walletsResult = await pool.query(walletsQuery);
     const wallets = walletsResult.rows;
 
     console.log(`[Wallets] Found ${wallets.length} wallets`);
@@ -64,7 +80,7 @@ async function handleGetWallets(req, res) {
           ORDER BY symbol ASC
         `;
 
-        const stocksResult = await livePool.query(stocksQuery, [wallet.wallet_id]);
+        const stocksResult = await pool.query(stocksQuery, [wallet.wallet_id]);
         
         // Map method names and format data
         const stocks = stocksResult.rows.map(stock => ({
@@ -120,6 +136,8 @@ async function handleGetWalletById(req, res) {
     const { walletId } = req.params;
     console.log(`[Wallets] Fetching wallet ${walletId}`);
 
+    const pool = await getLivePool();
+
     // Fetch wallet
     const walletQuery = `
       SELECT 
@@ -134,7 +152,7 @@ async function handleGetWalletById(req, res) {
       WHERE wallet_id = $1
     `;
 
-    const walletResult = await livePool.query(walletQuery, [walletId]);
+    const walletResult = await pool.query(walletQuery, [walletId]);
     
     if (walletResult.rows.length === 0) {
       return res.status(404).json({
@@ -165,7 +183,7 @@ async function handleGetWalletById(req, res) {
       ORDER BY symbol ASC
     `;
 
-    const stocksResult = await livePool.query(stocksQuery, [walletId]);
+    const stocksResult = await pool.query(stocksQuery, [walletId]);
     
     // Map method names and format data
     const stocks = stocksResult.rows.map(stock => ({

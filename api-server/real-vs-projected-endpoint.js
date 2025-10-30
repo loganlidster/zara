@@ -1,6 +1,4 @@
-import livePool from './live-db.js';
 import pool from './db.js';
-import { getOrders } from './alpaca-client.js';
 
 /**
  * Real vs Projected Comparison Endpoint
@@ -8,6 +6,26 @@ import { getOrders } from './alpaca-client.js';
  * Compares simulated (projected) trading results against actual Alpaca execution.
  * Calculates slippage, identifies missed trades, and provides detailed analysis.
  */
+
+let livePool = null;
+let alpacaClient = null;
+
+// Lazy load dependencies
+async function getLivePool() {
+  if (!livePool) {
+    const liveDbModule = await import('./live-db.js');
+    livePool = liveDbModule.default;
+  }
+  return livePool;
+}
+
+async function getAlpacaClient() {
+  if (!alpacaClient) {
+    const alpacaModule = await import('./alpaca-client.js');
+    alpacaClient = alpacaModule;
+  }
+  return alpacaClient;
+}
 
 // Method name mapping
 const METHOD_MAP = {
@@ -175,13 +193,16 @@ async function handleRealVsProjected(req, res) {
 
     console.log(`[Real vs Projected] Processing wallet ${wallet_id} from ${startDate} to ${endDate}`);
 
+    const liveDb = await getLivePool();
+    const alpaca = await getAlpacaClient();
+
     // Step 1: Load wallet settings from live DB
     const walletQuery = `
       SELECT wallet_id, name, env, enabled
       FROM public.wallets
       WHERE wallet_id = $1
     `;
-    const walletResult = await livePool.query(walletQuery, [wallet_id]);
+    const walletResult = await liveDb.query(walletQuery, [wallet_id]);
 
     if (walletResult.rows.length === 0) {
       return res.status(404).json({
@@ -206,7 +227,7 @@ async function handleRealVsProjected(req, res) {
       FROM public.wallet_symbols
       WHERE wallet_id = $1 AND enabled = true
     `;
-    const stocksResult = await livePool.query(stocksQuery, [wallet_id]);
+    const stocksResult = await liveDb.query(stocksQuery, [wallet_id]);
     const stocks = stocksResult.rows;
 
     console.log(`[Real vs Projected] Found ${stocks.length} enabled stocks`);
@@ -236,7 +257,7 @@ async function handleRealVsProjected(req, res) {
     // Step 4: Fetch actual orders from Alpaca
     console.log('[Real vs Projected] Fetching actual orders from Alpaca');
     
-    const alpacaOrders = await getOrders({
+    const alpacaOrders = await alpaca.getOrders({
       after: startDate,
       until: endDate,
       status: 'all',

@@ -9,27 +9,35 @@ import pg from 'pg';
  * - Execution orders
  */
 
-const livePool = new pg.Pool({
-  host: '35.199.155.114',
-  port: 5432,
-  database: 'tradiac',
-  user: 'appuser',
-  password: 'Fu3lth3j3t!',
-  ssl: {
-    rejectUnauthorized: false
-  },
-  max: 10,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 10000,
-});
+let livePool = null;
 
-// Test connection on startup
-livePool.on('connect', () => {
-  console.log('[Live DB] Connected to tradiac live database');
-});
+function getLivePool() {
+  if (!livePool) {
+    console.log('[Live DB] Initializing connection to tradiac live database');
+    livePool = new pg.Pool({
+      host: '35.199.155.114',
+      port: 5432,
+      database: 'tradiac',
+      user: 'appuser',
+      password: 'Fu3lth3j3t!',
+      ssl: {
+        rejectUnauthorized: false
+      },
+      max: 10,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 10000,
+    });
 
-livePool.on('error', (err) => {
-  console.error('[Live DB] Unexpected error on idle client', err);
-});
+    livePool.on('connect', () => {
+      console.log('[Live DB] Connected to tradiac live database');
+    });
 
-export default livePool;
+    livePool.on('error', (err) => {
+      console.error('[Live DB] Unexpected error on idle client', err);
+    });
+  }
+  
+  return livePool;
+}
+
+export default getLivePool();
