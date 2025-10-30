@@ -73,16 +73,41 @@ function filterToAlternating(events) {
   return filtered;
 }
 
+// Round price conservatively
+function roundPrice(price, roundUp) {
+  if (roundUp) {
+    return Math.ceil(price * 100) / 100;  // Round up for buys
+  } else {
+    return Math.floor(price * 100) / 100;  // Round down for sells
+  }
+}
+
+// Apply slippage
+function applySlippage(price, isBuy, slippage) {
+  if (slippage === 0) return price;
+  if (isBuy) {
+    return price * (1 + slippage);  // Pay more when buying
+  } else {
+    return price * (1 - slippage);  // Get less when selling
+  }
+}
+
 // Simulate wallet and calculate true portfolio ROI
-function simulateWallet(events, initialCapital = 10000) {
+function simulateWallet(events, initialCapital = 10000, conservativePricing = false, slippage = 0) {
   let cash = initialCapital;
   let shares = 0;
   let trades = 0;
   
   for (const event of events) {
-    const price = parseFloat(event.stock_price);
+    let price = parseFloat(event.stock_price);
     
     if (event.event_type === 'BUY' && shares === 0) {
+      // Apply slippage and conservative rounding for buys
+      price = applySlippage(price, true, slippage);
+      if (conservativePricing) {
+        price = roundPrice(price, true);  // Round up for buys
+      }
+      
       // Buy as many shares as possible
       const sharesToBuy = Math.floor(cash / price);
       if (sharesToBuy > 0) {
@@ -91,6 +116,12 @@ function simulateWallet(events, initialCapital = 10000) {
         trades++;
       }
     } else if (event.event_type === 'SELL' && shares > 0) {
+      // Apply slippage and conservative rounding for sells
+      price = applySlippage(price, false, slippage);
+      if (conservativePricing) {
+        price = roundPrice(price, false);  // Round down for sells
+      }
+      
       // Sell all shares
       cash += shares * price;
       shares = 0;
@@ -129,7 +160,9 @@ router.post('/best-performers-range', async (req, res) => {
       sellMax,
       startDate,
       endDate,
-      limit = 20
+      limit = 20,
+      conservativePricing = false,
+      slippage = 0
     } = req.body;
     
     // Validate inputs
@@ -193,8 +226,8 @@ router.post('/best-performers-range', async (req, res) => {
           // Filter to alternating
           const filteredEvents = filterToAlternating(events);
           
-          // Simulate wallet
-          const walletResult = simulateWallet(filteredEvents, 10000);
+          // Simulate wallet with conservative pricing and slippage
+          const walletResult = simulateWallet(filteredEvents, 10000, conservativePricing, slippage);
           
           results.push({
             symbol,
