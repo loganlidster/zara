@@ -100,6 +100,7 @@ async function fetchBTCMinuteData(date) {
     const barTime = new Date(bar.t);
     const etDate = date;
     const etTime = barTime.toISOString().split('T')[1].substring(0, 8);
+    const session = getSession(etTime);
     
     return {
       bar_time: barTime.toISOString(),
@@ -109,7 +110,11 @@ async function fetchBTCMinuteData(date) {
       high: bar.h,
       low: bar.l,
       close: bar.c,
-      volume: bar.v
+      volume: bar.v,
+      vwap: bar.vw || bar.c,
+      trades: bar.n || 0,
+      session,
+      source: 'polygon'
     };
   });
 }
@@ -149,23 +154,25 @@ async function insertBTCMinuteData(client, data) {
   if (data.length === 0) return 0;
   
   const values = data.map((bar, i) => 
-    `($${i*6+1}, $${i*6+2}, $${i*6+3}, $${i*6+4}, $${i*6+5}, $${i*6+6})`
+    `($${i*12+1}, $${i*12+2}, $${i*12+3}, $${i*12+4}, $${i*12+5}, $${i*12+6}, $${i*12+7}, $${i*12+8}, $${i*12+9}, $${i*12+10}, $${i*12+11}, $${i*12+12})`
   ).join(',');
   
   const params = data.flatMap(bar => [
-    bar.bar_time, bar.et_date, bar.et_time, bar.open, bar.high, bar.low, bar.close, bar.volume
+    bar.bar_time, bar.et_date, bar.et_time, bar.open, bar.high, bar.low, bar.close, bar.volume, bar.vwap, bar.trades, bar.session, bar.source
   ]);
   
-  // Check the actual minute_btc schema
   const query = `
-    INSERT INTO minute_btc (bar_time, et_date, et_time, open, high, low, close, volume)
+    INSERT INTO minute_btc (bar_time, et_date, et_time, open, high, low, close, volume, vwap, trades, session, source)
     VALUES ${values}
     ON CONFLICT (bar_time) DO UPDATE SET
       open = EXCLUDED.open,
       high = EXCLUDED.high,
       low = EXCLUDED.low,
       close = EXCLUDED.close,
-      volume = EXCLUDED.volume
+      volume = EXCLUDED.volume,
+      vwap = EXCLUDED.vwap,
+      trades = EXCLUDED.trades,
+      session = EXCLUDED.session
   `;
   
   await client.query(query, params);
