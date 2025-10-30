@@ -17,6 +17,9 @@ import fastAggregatedPerformers from './fast-aggregated-performers.js';
 import { handleBtcOverlayData } from './btc-overlay-data-endpoint.js';
 import { handleBaselineValues } from './baseline-values-endpoint.js';
 import { handleSimulateTradesDetailed } from './simulate-trades-detailed-endpoint.js';
+import gridSearchEndpoint from './grid-search-endpoint.js';
+import baselineCheckEndpoint from './baseline-check-endpoint.js';
+import coverageEndpoint from './coverage-endpoint.js';
 
 dotenv.config();
 
@@ -444,6 +447,15 @@ app.use('/api/events', bestPerformersRange);
 
 // Fast aggregated performers (no wallet simulation)
 app.use('/api/events', fastAggregatedPerformers);
+
+// Grid search endpoint
+app.use('/api/events', gridSearchEndpoint);
+
+// Baseline check endpoint
+app.use('/api/baseline', baselineCheckEndpoint);
+
+// Coverage endpoint
+app.use('/api/data', coverageEndpoint);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);

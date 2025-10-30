@@ -200,7 +200,7 @@ export default function Home() {
           </Link>
 
           {/* BTC Impact */}
-          <Link href="/reports/btc-impact">
+          <Link href="/reports/btc-overlay">
             <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-yellow-500">
               <div className="flex items-center mb-4">
                 <div className="bg-yellow-500 text-white rounded-full p-3 mr-4">
@@ -208,12 +208,72 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900">BTC Impact</h2>
+                <h2 className="text-2xl font-bold text-gray-900">BTC Overlay</h2>
               </div>
               <p className="text-gray-600">
                 Analyze how Bitcoin price levels affect trading decisions and outcomes
               </p>
               <div className="mt-4 text-yellow-500 font-semibold">
+                View Report →
+              </div>
+            </div>
+          </Link>
+
+          {/* Grid Search */}
+          <Link href="/reports/grid-search">
+            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-red-500">
+              <div className="flex items-center mb-4">
+                <div className="bg-red-500 text-white rounded-full p-3 mr-4">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">Grid Search</h2>
+              </div>
+              <p className="text-gray-600">
+                Parameter optimization - test multiple buy%/sell% combinations
+              </p>
+              <div className="mt-4 text-red-500 font-semibold">
+                View Report →
+              </div>
+            </div>
+          </Link>
+
+          {/* Baseline Check */}
+          <Link href="/reports/baseline-check">
+            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-teal-500">
+              <div className="flex items-center mb-4">
+                <div className="bg-teal-500 text-white rounded-full p-3 mr-4">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">Baseline Check</h2>
+              </div>
+              <p className="text-gray-600">
+                Quick baseline calculation verification for specific dates
+              </p>
+              <div className="mt-4 text-teal-500 font-semibold">
+                View Report →
+              </div>
+            </div>
+          </Link>
+
+          {/* Coverage Report */}
+          <Link href="/reports/coverage">
+            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer border-2 border-transparent hover:border-pink-500">
+              <div className="flex items-center mb-4">
+                <div className="bg-pink-500 text-white rounded-full p-3 mr-4">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">Coverage Report</h2>
+              </div>
+              <p className="text-gray-600">
+                Data quality and coverage analysis across all symbols
+              </p>
+              <div className="mt-4 text-pink-500 font-semibold">
                 View Report →
               </div>
             </div>
