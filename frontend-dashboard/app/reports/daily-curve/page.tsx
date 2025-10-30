@@ -77,9 +77,9 @@ export default function DailyCurveReport() {
         startDate,
         endDate,
         alignmentMode,
-        includeBtc
-          slippagePct,
-          conservativeRounding
+        includeBtc,
+        slippagePct,
+        conservativeRounding
       });
       
       setData(response);
