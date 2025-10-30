@@ -21,6 +21,9 @@ import gridSearchEndpoint from './grid-search-endpoint.js';
 import baselineCheckEndpoint from './baseline-check-endpoint.js';
 import coverageEndpoint from './coverage-endpoint.js';
 import { handleBaselineLabFast } from './baseline-lab-fast-endpoint.js';
+import { handleSessionAnalysis } from './session-analysis-endpoint.js';
+import { handleMethodComparison } from './method-comparison-endpoint.js';
+import { handleTradeAnalysis } from './trade-analysis-endpoint.js';
 
 dotenv.config();
 
@@ -462,15 +465,12 @@ app.use('/api/data', coverageEndpoint);
 app.post('/api/baseline-lab-fast', handleBaselineLabFast);
 
 // Session Analysis endpoint
-import { handleSessionAnalysis } from './session-analysis-endpoint.js';
 app.post('/api/session-analysis', handleSessionAnalysis);
 
 // Method Comparison endpoint
-import { handleMethodComparison } from './method-comparison-endpoint.js';
 app.post('/api/method-comparison', handleMethodComparison);
 
 // Trade Analysis endpoint
-import { handleTradeAnalysis } from './trade-analysis-endpoint.js';
 app.post('/api/trade-analysis', handleTradeAnalysis);
 
 // Pattern analysis endpoints
