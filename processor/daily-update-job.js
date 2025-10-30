@@ -30,6 +30,21 @@ function getTargetDate() {
   return yesterday.toISOString().split('T')[0];
 }
 
+// Determine session based on time
+function getSession(etTime) {
+  const hour = parseInt(etTime.split(':')[0]);
+  const minute = parseInt(etTime.split(':')[1]);
+  const totalMinutes = hour * 60 + minute;
+  
+  // RTH: 09:30 - 16:00 (570 - 960 minutes)
+  // AH: 04:00 - 09:30 and 16:00 - 20:00
+  if (totalMinutes >= 570 && totalMinutes < 960) {
+    return 'RTH';
+  } else {
+    return 'AH';
+  }
+}
+
 // Fetch minute data from Polygon.io
 async function fetchStockMinuteData(symbol, date) {
   const url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/minute/${date}/${date}?adjusted=true&sort=asc&limit=50000&apiKey=${POLYGON_API_KEY}`;
@@ -44,18 +59,28 @@ async function fetchStockMinuteData(symbol, date) {
     return [];
   }
   
-  return data.results.map(bar => ({
-    symbol,
-    cal_date: date,
-    bar_time: new Date(bar.t).toISOString().split('T')[1].substring(0, 8),
-    o: bar.o,
-    h: bar.h,
-    l: bar.l,
-    c: bar.c,
-    v: bar.v,
-    vw: bar.vw || bar.c,
-    n: bar.n || 0
-  }));
+  return data.results.map(bar => {
+    const barTime = new Date(bar.t);
+    const etDate = date;
+    const etTime = barTime.toISOString().split('T')[1].substring(0, 8);
+    const session = getSession(etTime);
+    
+    return {
+      symbol,
+      bar_time: barTime.toISOString(),
+      et_date: etDate,
+      et_time: etTime,
+      open: bar.o,
+      high: bar.h,
+      low: bar.l,
+      close: bar.c,
+      volume: bar.v,
+      vwap: bar.vw || bar.c,
+      trades: bar.n || 0,
+      session,
+      source: 'polygon'
+    };
+  });
 }
 
 async function fetchBTCMinuteData(date) {
@@ -71,15 +96,22 @@ async function fetchBTCMinuteData(date) {
     return [];
   }
   
-  return data.results.map(bar => ({
-    cal_date: date,
-    bar_time: new Date(bar.t).toISOString().split('T')[1].substring(0, 8),
-    open: bar.o,
-    high: bar.h,
-    low: bar.l,
-    close: bar.c,
-    volume: bar.v
-  }));
+  return data.results.map(bar => {
+    const barTime = new Date(bar.t);
+    const etDate = date;
+    const etTime = barTime.toISOString().split('T')[1].substring(0, 8);
+    
+    return {
+      bar_time: barTime.toISOString(),
+      et_date: etDate,
+      et_time: etTime,
+      open: bar.o,
+      high: bar.h,
+      low: bar.l,
+      close: bar.c,
+      volume: bar.v
+    };
+  });
 }
 
 // Insert stock minute data
@@ -87,24 +119,25 @@ async function insertStockMinuteData(client, data) {
   if (data.length === 0) return 0;
   
   const values = data.map((bar, i) => 
-    `($${i*10+1}, $${i*10+2}, $${i*10+3}, $${i*10+4}, $${i*10+5}, $${i*10+6}, $${i*10+7}, $${i*10+8}, $${i*10+9}, $${i*10+10})`
+    `($${i*13+1}, $${i*13+2}, $${i*13+3}, $${i*13+4}, $${i*13+5}, $${i*13+6}, $${i*13+7}, $${i*13+8}, $${i*13+9}, $${i*13+10}, $${i*13+11}, $${i*13+12}, $${i*13+13})`
   ).join(',');
   
   const params = data.flatMap(bar => [
-    bar.symbol, bar.cal_date, bar.bar_time, bar.o, bar.h, bar.l, bar.c, bar.v, bar.vw, bar.n
+    bar.symbol, bar.bar_time, bar.et_date, bar.et_time, bar.open, bar.high, bar.low, bar.close, bar.volume, bar.vwap, bar.trades, bar.session, bar.source
   ]);
   
   const query = `
-    INSERT INTO minute_stock (symbol, cal_date, bar_time, o, h, l, c, v, vw, n)
+    INSERT INTO minute_stock (symbol, bar_time, et_date, et_time, open, high, low, close, volume, vwap, trades, session, source)
     VALUES ${values}
-    ON CONFLICT (symbol, cal_date, bar_time) DO UPDATE SET
-      o = EXCLUDED.o,
-      h = EXCLUDED.h,
-      l = EXCLUDED.l,
-      c = EXCLUDED.c,
-      v = EXCLUDED.v,
-      vw = EXCLUDED.vw,
-      n = EXCLUDED.n
+    ON CONFLICT (symbol, bar_time) DO UPDATE SET
+      open = EXCLUDED.open,
+      high = EXCLUDED.high,
+      low = EXCLUDED.low,
+      close = EXCLUDED.close,
+      volume = EXCLUDED.volume,
+      vwap = EXCLUDED.vwap,
+      trades = EXCLUDED.trades,
+      session = EXCLUDED.session
   `;
   
   await client.query(query, params);
@@ -120,13 +153,14 @@ async function insertBTCMinuteData(client, data) {
   ).join(',');
   
   const params = data.flatMap(bar => [
-    bar.cal_date, bar.bar_time, bar.open, bar.high, bar.low, bar.close, bar.volume
+    bar.bar_time, bar.et_date, bar.et_time, bar.open, bar.high, bar.low, bar.close, bar.volume
   ]);
   
+  // Check the actual minute_btc schema
   const query = `
-    INSERT INTO minute_btc (cal_date, bar_time, open, high, low, close, volume)
+    INSERT INTO minute_btc (bar_time, et_date, et_time, open, high, low, close, volume)
     VALUES ${values}
-    ON CONFLICT (cal_date, bar_time) DO UPDATE SET
+    ON CONFLICT (bar_time) DO UPDATE SET
       open = EXCLUDED.open,
       high = EXCLUDED.high,
       low = EXCLUDED.low,
@@ -138,133 +172,190 @@ async function insertBTCMinuteData(client, data) {
   return data.length;
 }
 
-// Calculate baselines for a date
+// Calculate baselines
 async function calculateBaselines(client, date) {
-  console.log(`\nCalculating baselines for ${date}...`);
-  
-  // Delete existing baselines for this date
-  await client.query('DELETE FROM baseline_daily WHERE cal_date = $1', [date]);
-  
   let totalInserted = 0;
   
-  for (const method of METHODS) {
-    for (const session of ['RTH', 'AH']) {
-      const startTime = session === 'RTH' ? '09:30:00' : '04:00:00';
-      const endTime = session === 'RTH' ? '16:00:00' : '09:30:00';
-      const excludeRTH = session === 'AH';
-      
-      let query = '';
+  for (const session of ['RTH', 'AH']) {
+    const startTime = session === 'RTH' ? '09:30:00' : '04:00:00';
+    const endTime = session === 'RTH' ? '16:00:00' : '20:00:00';
+    
+    for (const method of METHODS) {
+      let query;
       
       switch (method) {
         case 'EQUAL_MEAN':
           query = `
-            INSERT INTO baseline_daily (symbol, method, session, cal_date, baseline)
+            INSERT INTO baseline_daily (symbol, method, session, trading_day, baseline, sample_count)
             SELECT 
               symbol,
               'EQUAL_MEAN' as method,
               '${session}' as session,
-              '${date}' as cal_date,
-              AVG((o + h + l + c) / 4.0) as baseline
-            FROM minute_stock
-            WHERE cal_date = '${date}'
-              AND bar_time >= '${startTime}'
-              ${excludeRTH ? "AND bar_time < '09:30:00'" : "AND bar_time < '16:00:00'"}
+              '${date}' as trading_day,
+              AVG(close / btc.btc_price) as baseline,
+              COUNT(*) as sample_count
+            FROM minute_stock ms
+            CROSS JOIN LATERAL (
+              SELECT close as btc_price
+              FROM minute_btc
+              WHERE et_date = ms.et_date
+                AND et_time = ms.et_time
+              LIMIT 1
+            ) btc
+            WHERE ms.et_date = '${date}'
+              AND ms.session = '${session}'
+              AND ms.et_time >= '${startTime}'
+              AND ms.et_time < '${endTime}'
             GROUP BY symbol
-            HAVING COUNT(*) > 0
+            ON CONFLICT (symbol, session, trading_day, method) DO UPDATE SET
+              baseline = EXCLUDED.baseline,
+              sample_count = EXCLUDED.sample_count
           `;
           break;
           
         case 'VWAP_RATIO':
           query = `
-            INSERT INTO baseline_daily (symbol, method, session, cal_date, baseline)
+            INSERT INTO baseline_daily (symbol, method, session, trading_day, baseline, sample_count)
             SELECT 
-              s.symbol,
+              symbol,
               'VWAP_RATIO' as method,
               '${session}' as session,
-              '${date}' as cal_date,
-              (SUM(s.c * s.v) / NULLIF(SUM(s.v), 0)) / 
-              NULLIF((SUM(b.close * b.volume) / NULLIF(SUM(b.volume), 0)), 0) as baseline
-            FROM minute_stock s
-            CROSS JOIN minute_btc b
-            WHERE s.cal_date = '${date}'
-              AND b.cal_date = '${date}'
-              AND s.bar_time = b.bar_time
-              AND s.bar_time >= '${startTime}'
-              ${excludeRTH ? "AND s.bar_time < '09:30:00'" : "AND s.bar_time < '16:00:00'"}
-            GROUP BY s.symbol
-            HAVING COUNT(*) > 0
+              '${date}' as trading_day,
+              SUM(vwap * volume) / SUM(volume) / AVG(btc.btc_price) as baseline,
+              COUNT(*) as sample_count
+            FROM minute_stock ms
+            CROSS JOIN LATERAL (
+              SELECT close as btc_price
+              FROM minute_btc
+              WHERE et_date = ms.et_date
+                AND et_time = ms.et_time
+              LIMIT 1
+            ) btc
+            WHERE ms.et_date = '${date}'
+              AND ms.session = '${session}'
+              AND ms.et_time >= '${startTime}'
+              AND ms.et_time < '${endTime}'
+            GROUP BY symbol
+            ON CONFLICT (symbol, session, trading_day, method) DO UPDATE SET
+              baseline = EXCLUDED.baseline,
+              sample_count = EXCLUDED.sample_count
           `;
           break;
           
         case 'VOL_WEIGHTED':
           query = `
-            INSERT INTO baseline_daily (symbol, method, session, cal_date, baseline)
+            INSERT INTO baseline_daily (symbol, method, session, trading_day, baseline, sample_count)
             SELECT 
               symbol,
               'VOL_WEIGHTED' as method,
               '${session}' as session,
-              '${date}' as cal_date,
-              SUM(c * v) / NULLIF(SUM(v), 0) as baseline
-            FROM minute_stock
-            WHERE cal_date = '${date}'
-              AND bar_time >= '${startTime}'
-              ${excludeRTH ? "AND bar_time < '09:30:00'" : "AND bar_time < '16:00:00'"}
+              '${date}' as trading_day,
+              SUM((close / btc.btc_price) * volume) / SUM(volume) as baseline,
+              COUNT(*) as sample_count
+            FROM minute_stock ms
+            CROSS JOIN LATERAL (
+              SELECT close as btc_price
+              FROM minute_btc
+              WHERE et_date = ms.et_date
+                AND et_time = ms.et_time
+              LIMIT 1
+            ) btc
+            WHERE ms.et_date = '${date}'
+              AND ms.session = '${session}'
+              AND ms.et_time >= '${startTime}'
+              AND ms.et_time < '${endTime}'
             GROUP BY symbol
-            HAVING COUNT(*) > 0
+            ON CONFLICT (symbol, session, trading_day, method) DO UPDATE SET
+              baseline = EXCLUDED.baseline,
+              sample_count = EXCLUDED.sample_count
           `;
           break;
           
         case 'WINSORIZED':
           query = `
-            INSERT INTO baseline_daily (symbol, method, session, cal_date, baseline)
-            WITH ranked AS (
+            INSERT INTO baseline_daily (symbol, method, session, trading_day, baseline, sample_count)
+            WITH ratios AS (
               SELECT 
                 symbol,
-                (o + h + l + c) / 4.0 as price,
-                ROW_NUMBER() OVER (PARTITION BY symbol ORDER BY (o + h + l + c) / 4.0) as rn,
-                COUNT(*) OVER (PARTITION BY symbol) as total
-              FROM minute_stock
-              WHERE cal_date = '${date}'
-                AND bar_time >= '${startTime}'
-                ${excludeRTH ? "AND bar_time < '09:30:00'" : "AND bar_time < '16:00:00'"}
+                close / btc.btc_price as ratio
+              FROM minute_stock ms
+              CROSS JOIN LATERAL (
+                SELECT close as btc_price
+                FROM minute_btc
+                WHERE et_date = ms.et_date
+                  AND et_time = ms.et_time
+                LIMIT 1
+              ) btc
+              WHERE ms.et_date = '${date}'
+                AND ms.session = '${session}'
+                AND ms.et_time >= '${startTime}'
+                AND ms.et_time < '${endTime}'
+            ),
+            percentiles AS (
+              SELECT 
+                symbol,
+                PERCENTILE_CONT(0.05) WITHIN GROUP (ORDER BY ratio) as p5,
+                PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY ratio) as p95
+              FROM ratios
+              GROUP BY symbol
             )
             SELECT 
-              symbol,
+              r.symbol,
               'WINSORIZED' as method,
               '${session}' as session,
-              '${date}' as cal_date,
-              AVG(price) as baseline
-            FROM ranked
-            WHERE rn > total * 0.05 AND rn <= total * 0.95
-            GROUP BY symbol
+              '${date}' as trading_day,
+              AVG(CASE 
+                WHEN r.ratio < p.p5 THEN p.p5
+                WHEN r.ratio > p.p95 THEN p.p95
+                ELSE r.ratio
+              END) as baseline,
+              COUNT(*) as sample_count
+            FROM ratios r
+            JOIN percentiles p ON r.symbol = p.symbol
+            GROUP BY r.symbol
+            ON CONFLICT (symbol, session, trading_day, method) DO UPDATE SET
+              baseline = EXCLUDED.baseline,
+              sample_count = EXCLUDED.sample_count
           `;
           break;
           
         case 'WEIGHTED_MEDIAN':
           query = `
-            INSERT INTO baseline_daily (symbol, method, session, cal_date, baseline)
+            INSERT INTO baseline_daily (symbol, method, session, trading_day, baseline, sample_count)
             WITH sorted AS (
               SELECT 
                 symbol,
-                c as price,
-                v as volume,
-                SUM(v) OVER (PARTITION BY symbol ORDER BY c) as cumulative_volume,
-                SUM(v) OVER (PARTITION BY symbol) as total_volume
-              FROM minute_stock
-              WHERE cal_date = '${date}'
-                AND bar_time >= '${startTime}'
-                ${excludeRTH ? "AND bar_time < '09:30:00'" : "AND bar_time < '16:00:00'"}
+                close / btc.btc_price as ratio,
+                volume,
+                SUM(volume) OVER (PARTITION BY symbol ORDER BY close / btc.btc_price) as cumulative_volume,
+                SUM(volume) OVER (PARTITION BY symbol) as total_volume
+              FROM minute_stock ms
+              CROSS JOIN LATERAL (
+                SELECT close as btc_price
+                FROM minute_btc
+                WHERE et_date = ms.et_date
+                  AND et_time = ms.et_time
+                LIMIT 1
+              ) btc
+              WHERE ms.et_date = '${date}'
+                AND ms.session = '${session}'
+                AND ms.et_time >= '${startTime}'
+                AND ms.et_time < '${endTime}'
             )
             SELECT 
               symbol,
               'WEIGHTED_MEDIAN' as method,
               '${session}' as session,
-              '${date}' as cal_date,
-              AVG(price) as baseline
+              '${date}' as trading_day,
+              AVG(ratio) as baseline,
+              COUNT(*) as sample_count
             FROM sorted
             WHERE cumulative_volume >= total_volume * 0.5
               AND cumulative_volume - volume < total_volume * 0.5
             GROUP BY symbol
+            ON CONFLICT (symbol, session, trading_day, method) DO UPDATE SET
+              baseline = EXCLUDED.baseline,
+              sample_count = EXCLUDED.sample_count
           `;
           break;
       }
