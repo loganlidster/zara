@@ -14,6 +14,9 @@ import customPatternEndpoints from './custom-pattern-endpoints.js';
 import patternBestWorstEndpoints from './pattern-best-worst-per-stock.js';
 import bestPerformersRange from './best-performers-range.js';
 import fastAggregatedPerformers from './fast-aggregated-performers.js';
+import { handleBtcOverlayData } from './btc-overlay-data-endpoint.js';
+import { handleBaselineValues } from './baseline-values-endpoint.js';
+import { handleSimulateTradesDetailed } from './simulate-trades-detailed-endpoint.js';
 
 dotenv.config();
 
@@ -418,6 +421,11 @@ app.post('/api/batch-daily', batchDaily);
 
 // Fast daily endpoint
 app.post('/api/fast-daily', handleFastDaily);
+
+// BTC Overlay Report endpoints
+app.post('/api/btc-overlay-data', handleBtcOverlayData);
+app.post('/api/baseline-values', handleBaselineValues);
+app.post('/api/simulate-trades-detailed', handleSimulateTradesDetailed);
 
 // Event-based endpoints
 app.use('/api/events', eventEndpoints);
