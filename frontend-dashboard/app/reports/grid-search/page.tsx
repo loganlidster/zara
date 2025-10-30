@@ -52,6 +52,8 @@ export default function GridSearchReport() {
   const [startDate, setStartDate] = useState('2024-10-01');
   const [endDate, setEndDate] = useState('2024-10-29');
   const [initialCapital, setInitialCapital] = useState(10000);
+  const [slippage, setSlippage] = useState(0.1);
+  const [conservativeRounding, setConservativeRounding] = useState(true);
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -94,7 +96,9 @@ export default function GridSearchReport() {
           sellStep,
           startDate,
           endDate,
-          initialCapital
+          initialCapital,
+          slippage,
+          conservativeRounding
         })
       });
       
@@ -230,6 +234,49 @@ export default function GridSearchReport() {
                 step="100"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
+            </div>
+          </div>
+
+          {/* Trading Realism Settings */}
+          <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="text-sm font-semibold text-gray-900 mb-3">Trading Realism Settings</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Slippage */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Slippage (%)
+                </label>
+                <input
+                  type="number"
+                  value={slippage}
+                  onChange={(e) => setSlippage(parseFloat(e.target.value))}
+                  step="0.05"
+                  min="0"
+                  max="5"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Increases buy prices and decreases sell prices (typical: 0.1-0.5%)
+                </p>
+              </div>
+
+              {/* Conservative Rounding */}
+              <div>
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={conservativeRounding}
+                    onChange={(e) => setConservativeRounding(e.target.checked)}
+                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                  />
+                  <span className="ml-2 text-sm font-medium text-gray-700">
+                    Conservative Rounding
+                  </span>
+                </label>
+                <p className="text-xs text-gray-500 mt-1 ml-6">
+                  Round up for buys (pay more), round down for sells (receive less)
+                </p>
+              </div>
             </div>
           </div>
 
@@ -388,7 +435,7 @@ export default function GridSearchReport() {
             {/* Stats */}
             <div className="bg-white rounded-lg shadow p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Search Statistics</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 <div>
                   <p className="text-sm text-gray-600">Total Combinations</p>
                   <p className="text-2xl font-bold text-gray-900">{data.stats.totalCombinations}</p>
@@ -406,6 +453,19 @@ export default function GridSearchReport() {
                   <p className="text-2xl font-bold text-gray-900">{data.timing.avgPerCombination}ms</p>
                 </div>
               </div>
+              {(slippage > 0 || conservativeRounding) && (
+                <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <p className="text-sm font-medium text-blue-900">Trading Realism Applied:</p>
+                  <div className="flex gap-4 mt-2 text-sm text-blue-800">
+                    {slippage > 0 && (
+                      <span>✓ Slippage: {slippage}%</span>
+                    )}
+                    {conservativeRounding && (
+                      <span>✓ Conservative Rounding</span>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Best Per Method */}

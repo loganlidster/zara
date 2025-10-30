@@ -61,14 +61,47 @@ function filterToAlternating(events) {
   return filtered;
 }
 
-// Simulate wallet and calculate ROI
-function simulateWallet(events, initialCapital = 10000) {
+// Apply conservative rounding (round up for buys, round down for sells)
+function applyConservativeRounding(price, isBuy) {
+  if (isBuy) {
+    // Round up to nearest cent for buys (pay more)
+    return Math.ceil(price * 100) / 100;
+  } else {
+    // Round down to nearest cent for sells (receive less)
+    return Math.floor(price * 100) / 100;
+  }
+}
+
+// Apply slippage (increases buy price, decreases sell price)
+function applySlippage(price, slippagePct, isBuy) {
+  if (isBuy) {
+    // Increase price for buys
+    return price * (1 + slippagePct / 100);
+  } else {
+    // Decrease price for sells
+    return price * (1 - slippagePct / 100);
+  }
+}
+
+// Simulate wallet and calculate ROI with slippage and conservative rounding
+function simulateWallet(events, initialCapital = 10000, slippagePct = 0, conservativeRounding = false) {
   let cash = initialCapital;
   let shares = 0;
   let trades = 0;
   
   for (const event of events) {
-    const price = parseFloat(event.stock_price);
+    let price = parseFloat(event.stock_price);
+    const isBuy = event.event_type === 'BUY';
+    
+    // Apply slippage if enabled
+    if (slippagePct > 0) {
+      price = applySlippage(price, slippagePct, isBuy);
+    }
+    
+    // Apply conservative rounding if enabled
+    if (conservativeRounding) {
+      price = applyConservativeRounding(price, isBuy);
+    }
     
     if (event.event_type === 'BUY' && shares === 0) {
       // Buy as many shares as possible
@@ -86,7 +119,7 @@ function simulateWallet(events, initialCapital = 10000) {
     }
   }
   
-  // Calculate final equity
+  // Calculate final equity (use original price for final valuation, no slippage/rounding)
   const lastPrice = events.length > 0 ? parseFloat(events[events.length - 1].stock_price) : 0;
   const finalEquity = cash + (shares * lastPrice);
   const totalReturn = ((finalEquity - initialCapital) / initialCapital) * 100;
@@ -128,7 +161,9 @@ router.post('/grid-search', async (req, res) => {
       sellStep,
       startDate,
       endDate,
-      initialCapital = 10000
+      initialCapital = 10000,
+      slippage = 0,
+      conservativeRounding = false
     } = req.body;
     
     // Validate inputs
@@ -181,8 +216,13 @@ router.post('/grid-search', async (req, res) => {
             // Filter to alternating
             const filteredEvents = filterToAlternating(events);
             
-            // Simulate wallet
-            const walletResult = simulateWallet(filteredEvents, initialCapital);
+            // Simulate wallet with slippage and conservative rounding
+            const walletResult = simulateWallet(
+              filteredEvents, 
+              initialCapital, 
+              parseFloat(slippage), 
+              conservativeRounding
+            );
             
             const result = {
               method: methodUpper,

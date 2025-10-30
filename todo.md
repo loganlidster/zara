@@ -1,4 +1,14 @@
-# TODO - Complete Dashboard Implementation
+# TODO - Grid Search Enhancements
+
+## 🎯 Current Task: Add Slippage &amp; Conservative Rounding
+
+Adding realistic trading features to Grid Search report:
+- [ ] Backend: Add slippage parameter
+- [ ] Backend: Add conservative rounding (round up buys, round down sells)
+- [ ] Frontend: Add slippage input field
+- [ ] Frontend: Add conservative rounding toggle
+- [ ] Test with realistic values
+- [ ] Deploy to production
 
 ## ✅ COMPLETED: 3 New Reports Built!
 
