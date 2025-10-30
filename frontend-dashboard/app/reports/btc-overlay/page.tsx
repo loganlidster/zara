@@ -159,6 +159,17 @@ export default function BtcOverlayReport() {
     }
   };
 
+  // Prepare chart data
+  const chartData = minuteData.map((bar) => {
+    const timestamp = `${bar.et_date} ${bar.et_time}`;
+    return {
+      timestamp,
+      stockPrice: bar.stock_price,
+      btcPrice: bar.btc_price,
+      ratio: bar.ratio
+    };
+  });
+
   // Export to CSV
   const exportToCSV = () => {
     if (!simulation) return;
@@ -184,14 +195,6 @@ export default function BtcOverlayReport() {
     a.download = `btc-overlay-${symbol}-${startDate}-${endDate}.csv`;
     a.click();
   };
-
-  // Prepare chart data
-  const chartData = minuteData.slice(0, 1000).map((bar) => ({
-    timestamp: `${bar.et_date} ${bar.et_time}`,
-    stockPrice: bar.stock_price,
-    btcPrice: bar.btc_price,
-    ratio: bar.ratio
-  }));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -424,48 +427,49 @@ export default function BtcOverlayReport() {
           </div>
         )}
 
-        {/* Charts */}
+        {/* Charts and Tables */}
         {minuteData.length > 0 && (
           <div className="bg-white rounded-lg shadow">
+            {/* Tabs */}
             <div className="border-b border-gray-200">
-              <nav className="flex space-x-8 px-6" aria-label="Tabs">
+              <div className="flex space-x-4 px-6">
                 <button
                   onClick={() => setActiveTab('price')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  className={`py-4 px-2 border-b-2 font-medium text-sm ${
                     activeTab === 'price'
                       ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
                   Price Chart
                 </button>
                 <button
                   onClick={() => setActiveTab('equity')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  className={`py-4 px-2 border-b-2 font-medium text-sm ${
                     activeTab === 'equity'
                       ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
                   Equity Curve
                 </button>
                 <button
                   onClick={() => setActiveTab('trades')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  className={`py-4 px-2 border-b-2 font-medium text-sm ${
                     activeTab === 'trades'
                       ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
                   Trade List
                 </button>
-              </nav>
+              </div>
             </div>
 
             <div className="p-6">
               {activeTab === 'price' && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Stock & BTC Prices</h3>
+                  <h3 className="text-lg font-semibold mb-4">Stock &amp; BTC Prices</h3>
                   <ResponsiveContainer width="100%" height={500}>
                     <ComposedChart data={chartData}>
                       <CartesianGrid strokeDasharray="3 3" />
