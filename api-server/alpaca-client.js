@@ -1,17 +1,65 @@
 /**
  * Alpaca API Client
  * 
- * Fetches actual trading data from Alpaca paper trading account
+ * Fetches actual trading data from Alpaca accounts (paper and live)
  * to compare against simulated results.
+ * 
+ * Supports multiple Alpaca accounts for different users and environments.
  */
 
-const ALPACA_API_KEY = 'PKM9CGRKTW3SVUT19YQB';
-const ALPACA_SECRET = 'XVGrnhMlsnE83QO1UYLgteUeOsoQ830Ha93xliE7';
-const ALPACA_BASE_URL = 'https://paper-api.alpaca.markets';
+// Alpaca API credentials for different accounts
+const ALPACA_ACCOUNTS = {
+  'aaron_live': {
+    key: 'AKM66J83T3HY7ATG6TX8',
+    secret: 'zXtNFJm0gMjozrMoHH1b7ipzUDIaMFdyZOydDvEp',
+    baseUrl: 'https://api.alpaca.markets'
+  },
+  'aaron_paper': {
+    key: 'PK5O3P0965R40JCKO6EX',
+    secret: 'ukJIIDXNNrccKy6eA5UkVrAGAiPEjG4z4otEbCSb',
+    baseUrl: 'https://paper-api.alpaca.markets'
+  },
+  'logan_live': {
+    key: 'AKPOCPLRX08Q6XEK7Q8O',
+    secret: 'P7x8qxMyfCaSIGjS14e0IsZIWrzC8AVxXUXzZ9p0',
+    baseUrl: 'https://api.alpaca.markets'
+  },
+  'logan_paper': {
+    key: 'PKM9CGRKTW3SVUT19YQB',
+    secret: 'XVGrnhMlsnE83QO1UYLgteUeOsoQ830Ha93xliE7',
+    baseUrl: 'https://paper-api.alpaca.markets'
+  }
+};
+
+/**
+ * Get Alpaca credentials for a specific user and environment
+ * @param {string} userId - User ID (e.g., 'P51WMvxXc4XVD73ASaaFysEIIKZ2' for Logan)
+ * @param {string} env - Environment ('live' or 'paper')
+ * @returns {Object} Alpaca credentials
+ */
+function getAlpacaCredentials(userId, env) {
+  // Map user IDs to account names
+  const userMap = {
+    'Gu30l6MKUnhMjRouzmqtLCPLm6M2': 'aaron', // Aaron's user ID
+    'P51WMvxXc4XVD73ASaaFysEIIKZ2': 'logan'  // Logan's user ID
+  };
+  
+  const userName = userMap[userId] || 'logan'; // Default to Logan
+  const accountKey = `${userName}_${env}`;
+  
+  const account = ALPACA_ACCOUNTS[accountKey];
+  if (!account) {
+    throw new Error(`No Alpaca account configured for ${userName} ${env}`);
+  }
+  
+  return account;
+}
 
 /**
  * Get orders from Alpaca
  * @param {Object} params - Query parameters
+ * @param {string} params.userId - User ID to determine which Alpaca account to use
+ * @param {string} params.env - Environment ('live' or 'paper')
  * @param {string} params.after - Start date (YYYY-MM-DD)
  * @param {string} params.until - End date (YYYY-MM-DD)
  * @param {string} params.status - Order status (all, open, closed, filled, etc.)
@@ -19,22 +67,26 @@ const ALPACA_BASE_URL = 'https://paper-api.alpaca.markets';
  * @returns {Promise<Array>} Array of order objects
  */
 export async function getOrders(params = {}) {
+  const { userId, env, ...queryOptions } = params;
+  
+  // Get credentials for this user/env
+  const credentials = getAlpacaCredentials(userId, env);
+  
   const queryParams = new URLSearchParams();
+  if (queryOptions.after) queryParams.append('after', queryOptions.after);
+  if (queryOptions.until) queryParams.append('until', queryOptions.until);
+  if (queryOptions.status) queryParams.append('status', queryOptions.status);
+  if (queryOptions.limit) queryParams.append('limit', queryOptions.limit.toString());
+  if (queryOptions.direction) queryParams.append('direction', queryOptions.direction);
   
-  if (params.after) queryParams.append('after', params.after);
-  if (params.until) queryParams.append('until', params.until);
-  if (params.status) queryParams.append('status', params.status);
-  if (params.limit) queryParams.append('limit', params.limit.toString());
-  if (params.direction) queryParams.append('direction', params.direction);
-  
-  const url = `${ALPACA_BASE_URL}/v2/orders?${queryParams.toString()}`;
+  const url = `${credentials.baseUrl}/v2/orders?${queryParams.toString()}`;
   
   try {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'APCA-API-KEY-ID': ALPACA_API_KEY,
-        'APCA-API-SECRET-KEY': ALPACA_SECRET
+        'APCA-API-KEY-ID': credentials.key,
+        'APCA-API-SECRET-KEY': credentials.secret
       }
     });
 
@@ -44,7 +96,7 @@ export async function getOrders(params = {}) {
     }
 
     const orders = await response.json();
-    console.log(`[Alpaca] Fetched ${orders.length} orders`);
+    console.log(`[Alpaca] Fetched ${orders.length} orders for ${env} account`);
     return orders;
   } catch (error) {
     console.error('[Alpaca] Error fetching orders:', error);
@@ -55,17 +107,20 @@ export async function getOrders(params = {}) {
 /**
  * Get specific order by ID
  * @param {string} orderId - Alpaca order ID
+ * @param {string} userId - User ID to determine which Alpaca account to use
+ * @param {string} env - Environment ('live' or 'paper')
  * @returns {Promise<Object>} Order object
  */
-export async function getOrderById(orderId) {
-  const url = `${ALPACA_BASE_URL}/v2/orders/${orderId}`;
+export async function getOrderById(orderId, userId, env) {
+  const credentials = getAlpacaCredentials(userId, env);
+  const url = `${credentials.baseUrl}/v2/orders/${orderId}`;
   
   try {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'APCA-API-KEY-ID': ALPACA_API_KEY,
-        'APCA-API-SECRET-KEY': ALPACA_SECRET
+        'APCA-API-KEY-ID': credentials.key,
+        'APCA-API-SECRET-KEY': credentials.secret
       }
     });
 
@@ -83,17 +138,20 @@ export async function getOrderById(orderId) {
 
 /**
  * Get account information
+ * @param {string} userId - User ID to determine which Alpaca account to use
+ * @param {string} env - Environment ('live' or 'paper')
  * @returns {Promise<Object>} Account object
  */
-export async function getAccount() {
-  const url = `${ALPACA_BASE_URL}/v2/account`;
+export async function getAccount(userId, env) {
+  const credentials = getAlpacaCredentials(userId, env);
+  const url = `${credentials.baseUrl}/v2/account`;
   
   try {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'APCA-API-KEY-ID': ALPACA_API_KEY,
-        'APCA-API-SECRET-KEY': ALPACA_SECRET
+        'APCA-API-KEY-ID': credentials.key,
+        'APCA-API-SECRET-KEY': credentials.secret
       }
     });
 
@@ -112,6 +170,8 @@ export async function getAccount() {
 /**
  * Get portfolio history
  * @param {Object} params - Query parameters
+ * @param {string} params.userId - User ID to determine which Alpaca account to use
+ * @param {string} params.env - Environment ('live' or 'paper')
  * @param {string} params.period - Time period (1D, 1W, 1M, 3M, 1A, all)
  * @param {string} params.timeframe - Timeframe (1Min, 5Min, 15Min, 1H, 1D)
  * @param {string} params.date_end - End date (YYYY-MM-DD)
@@ -119,23 +179,25 @@ export async function getAccount() {
  * @returns {Promise<Object>} Portfolio history object
  */
 export async function getPortfolioHistory(params = {}) {
-  const queryParams = new URLSearchParams();
+  const { userId, env, ...queryOptions } = params;
+  const credentials = getAlpacaCredentials(userId, env);
   
-  if (params.period) queryParams.append('period', params.period);
-  if (params.timeframe) queryParams.append('timeframe', params.timeframe);
-  if (params.date_end) queryParams.append('date_end', params.date_end);
-  if (params.extended_hours !== undefined) {
-    queryParams.append('extended_hours', params.extended_hours.toString());
+  const queryParams = new URLSearchParams();
+  if (queryOptions.period) queryParams.append('period', queryOptions.period);
+  if (queryOptions.timeframe) queryParams.append('timeframe', queryOptions.timeframe);
+  if (queryOptions.date_end) queryParams.append('date_end', queryOptions.date_end);
+  if (queryOptions.extended_hours !== undefined) {
+    queryParams.append('extended_hours', queryOptions.extended_hours.toString());
   }
   
-  const url = `${ALPACA_BASE_URL}/v2/account/portfolio/history?${queryParams.toString()}`;
+  const url = `${credentials.baseUrl}/v2/account/portfolio/history?${queryParams.toString()}`;
   
   try {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'APCA-API-KEY-ID': ALPACA_API_KEY,
-        'APCA-API-SECRET-KEY': ALPACA_SECRET
+        'APCA-API-KEY-ID': credentials.key,
+        'APCA-API-SECRET-KEY': credentials.secret
       }
     });
 
@@ -153,17 +215,20 @@ export async function getPortfolioHistory(params = {}) {
 
 /**
  * Get current positions
+ * @param {string} userId - User ID to determine which Alpaca account to use
+ * @param {string} env - Environment ('live' or 'paper')
  * @returns {Promise<Array>} Array of position objects
  */
-export async function getPositions() {
-  const url = `${ALPACA_BASE_URL}/v2/positions`;
+export async function getPositions(userId, env) {
+  const credentials = getAlpacaCredentials(userId, env);
+  const url = `${credentials.baseUrl}/v2/positions`;
   
   try {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'APCA-API-KEY-ID': ALPACA_API_KEY,
-        'APCA-API-SECRET-KEY': ALPACA_SECRET
+        'APCA-API-KEY-ID': credentials.key,
+        'APCA-API-SECRET-KEY': credentials.secret
       }
     });
 
@@ -184,5 +249,6 @@ export default {
   getOrderById,
   getAccount,
   getPortfolioHistory,
-  getPositions
+  getPositions,
+  getAlpacaCredentials
 };

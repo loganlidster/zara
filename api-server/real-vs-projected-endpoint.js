@@ -198,7 +198,7 @@ async function handleRealVsProjected(req, res) {
 
     // Step 1: Load wallet settings from live DB
     const walletQuery = `
-      SELECT wallet_id, name, env, enabled
+      SELECT wallet_id, user_id, name, env, enabled
       FROM public.wallets
       WHERE wallet_id = $1
     `;
@@ -212,6 +212,8 @@ async function handleRealVsProjected(req, res) {
     }
 
     const wallet = walletResult.rows[0];
+    
+    console.log(`[Real vs Projected] Wallet: ${wallet.name} (${wallet.env}) - User: ${wallet.user_id}`);
 
     // Step 2: Load stock settings
     const stocksQuery = `
@@ -255,9 +257,11 @@ async function handleRealVsProjected(req, res) {
     );
 
     // Step 4: Fetch actual orders from Alpaca
-    console.log('[Real vs Projected] Fetching actual orders from Alpaca');
+    console.log(`[Real vs Projected] Fetching actual orders from Alpaca (${wallet.env} account)`);
     
     const alpacaOrders = await alpaca.getOrders({
+      userId: wallet.user_id,
+      env: wallet.env,
       after: startDate,
       until: endDate,
       status: 'all',
