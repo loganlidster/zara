@@ -1,0 +1,38 @@
+[
+  {
+    "insertId": "690464f10000edb0980aedf2",
+    "httpRequest": {
+      "requestMethod": "GET",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/events/query?symbol=HIVE&method=EQUAL_MEAN&session=RTH&startDate=2024-09-01&endDate=2025-10-22&buyPct=0.5&sellPct=0.5",
+      "requestSize": "968",
+      "status": 500,
+      "responseSize": "441",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:d134:f20:1c5b:a8ed",
+      "referer": "https://frontend-dashboard-46h86kcny-logans-projects-57bfdedc.vercel.app/",
+      "serverIp": "2600:1900:4242:200::",
+      "latency": "0.277730649s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00242-mvb",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T07:27:44.774094Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "001477829673ec5b3321321d3c55521990b304dec5d2367cf1dd0ad7903806457871e11fef58d709bcf0b92de11b40aa9b5d7ddcff347faaeee0ea757579a32186ca29046c3975b7be5f9d3163"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/5f1e51bfd816a6981b9f90ee5e473255",
+    "receiveTimestamp": "2025-10-31T07:27:45.067201915Z",
+    "spanId": "53b6661387cfa525",
+    "traceSampled": true
+  }
+]

@@ -14,7 +14,7 @@ const isCloudRun = process.env.K_SERVICE !== undefined;
 
 const poolConfig = {
   database: process.env.DB_NAME || 'tradiac_testing',
-  user: process.env.DB_USER || 'appuser',
+  user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
   max: 20,
   idleTimeoutMillis: 30000,
