@@ -7,7 +7,7 @@ const router = Router();
 // Database configuration
 const dbConfig = {
   host: process.env.DB_HOST || '/cloudsql/tradiac-testing:us-central1:tradiac-testing',
-  user: process.env.DB_USER || 'postgres',
+  user: process.env.DB_USER || 'appuser',
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME || 'tradiac_testing',
   port: 5432,

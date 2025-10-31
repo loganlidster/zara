@@ -5,7 +5,7 @@ const dbConfig = {
   host: process.env.DB_HOST || '34.41.97.179',
   port: parseInt(process.env.DB_PORT || '5432'),
   database: process.env.DB_NAME || 'tradiac_testing',
-  user: process.env.DB_USER || 'postgres',
+  user: process.env.DB_USER || 'appuser',
   password: process.env.DB_PASSWORD,
   ssl: { rejectUnauthorized: false }
 };

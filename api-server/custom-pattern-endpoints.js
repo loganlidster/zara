@@ -5,7 +5,7 @@ const { Pool } = pkg;
 // Database connection
 const pool = new Pool({
   host: process.env.DB_HOST || '/cloudsql/tradiac-testing:us-central1:tradiac-testing',
-  user: process.env.DB_USER || 'postgres',
+  user: process.env.DB_USER || 'appuser',
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME || 'tradiac_testing',
   max: 20,
