@@ -23,11 +23,13 @@
 - [ ] **USER ACTION: Deploy backend to Cloud Run**
 - [ ] Test with same settings as Daily Curve to verify identical results
 
-### 2. Per-Stock Baseline Method Selection [IN PROGRESS]
-- [ ] Add separate RTH method dropdown per stock
-- [ ] Add separate AH method dropdown per stock
-- [ ] Update StockConfig interface to include rthMethod and ahMethod
-- [ ] Update backend to query different tables based on session-specific methods
+### 2. Per-Stock Baseline Method Selection [COMPLETE]
+- [x] Add separate RTH method dropdown per stock
+- [x] Add separate AH method dropdown per stock
+- [x] Update StockConfig interface to include rthMethod and ahMethod
+- [x] Update backend to query different tables based on session-specific methods
+- [x] Frontend deployed successfully
+- [ ] **USER ACTION: Deploy backend to Cloud Run**
 - [ ] Test with different methods for RTH vs AH
 
 ### 3. Fix Wallet Loading in Real vs Projected [NOT STARTED]
@@ -37,8 +39,14 @@
 - [ ] Test wallet selection and data loading
 
 ### 4. Deploy and Test [WAITING ON USER]
-- [ ] **USER: Trigger Cloud Build deployment**
+- [ ] **USER: Trigger Cloud Build deployment for backend**
+  - Go to Google Cloud Console → Cloud Build → Triggers
+  - Find trigger for `tradiac-api`
+  - Click "Run" and select branch `main`
+  - Wait 3-5 minutes for deployment
 - [ ] Test Multi-Stock with 3 stocks using same settings
 - [ ] Verify ROI values are reasonable (-100% to +100%)
 - [ ] Compare with Daily Curve report - results should match
+- [ ] Test separate RTH/AH methods (e.g., EQUAL_MEAN for RTH, VWAP_RATIO for AH)
+- [ ] Test "Load Live Settings" button with 11 stocks
 - [ ] Test Real vs Projected with loaded wallets (after fixing wallet loading)
