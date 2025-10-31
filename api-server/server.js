@@ -42,7 +42,9 @@ app.use(cors({
     'https://raas.help',
     'https://www.raas.help',
     'https://zara-report-ej9cikknp-logans-projects-57bfdedc.vercel.app',
-    'https://frontend-dashboard-epth6tc6e-logans-projects-57bfdedc.vercel.app'
+    'https://frontend-dashboard-epth6tc6e-logans-projects-57bfdedc.vercel.app',
+    'https://frontend-dashboard-qg2zw2tnm-logans-projects-57bfdedc.vercel.app',
+    /^https:\/\/frontend-dashboard-.*\.vercel\.app$/
   ],
   credentials: true
 }));
