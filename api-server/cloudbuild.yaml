@@ -21,6 +21,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--clear-base-image'
       - '--set-env-vars'
       - 'DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=appuser,DB_PASSWORD=Fu3lth3j3t!,POLYGON_API_KEY=K_hSDwyuUSqRmD57vOlUmYqZGdcZsoG0'
 
