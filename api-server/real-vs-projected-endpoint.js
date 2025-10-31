@@ -67,7 +67,7 @@ async function simulateStock(params) {
   // Fetch events
   const eventsQuery = `
     SELECT 
-      event_id,
+      
       symbol,
       event_time,
       event_date,
@@ -77,8 +77,8 @@ async function simulateStock(params) {
       btc_price,
       ratio,
       baseline,
-      buy_threshold_pct,
-      sell_threshold_pct
+      buy_pct,
+      sell_pct
     FROM ${tableName}
     WHERE symbol = $1
       AND event_date >= $2
@@ -100,9 +100,9 @@ async function simulateStock(params) {
     const sellThreshold = isRTH ? rthSellPct : ahSellPct;
 
     if (event.event_type === 'BUY') {
-      return event.buy_threshold_pct >= buyThreshold;
+      return event.buy_pct >= buyThreshold;
     } else {
-      return event.sell_threshold_pct >= sellThreshold;
+      return event.sell_pct >= sellThreshold;
     }
   });
 
