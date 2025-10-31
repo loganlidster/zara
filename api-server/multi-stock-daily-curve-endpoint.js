@@ -107,9 +107,15 @@ async function simulateSingleStock(params) {
   // Combine and sort events chronologically
   const allEvents = [...rthResult.rows, ...ahResult.rows];
   allEvents.sort((a, b) => {
-    const dateCompare = a.event_date.localeCompare(b.event_date);
+    // Convert dates to strings if they're Date objects
+    const dateA = typeof a.event_date === 'string' ? a.event_date : a.event_date.toISOString().split('T')[0];
+    const dateB = typeof b.event_date === 'string' ? b.event_date : b.event_date.toISOString().split('T')[0];
+    const dateCompare = dateA.localeCompare(dateB);
     if (dateCompare !== 0) return dateCompare;
-    return a.event_time.localeCompare(b.event_time);
+    
+    const timeA = typeof a.event_time === 'string' ? a.event_time : a.event_time.toISOString();
+    const timeB = typeof b.event_time === 'string' ? b.event_time : b.event_time.toISOString();
+    return timeA.localeCompare(timeB);
   });
 
   if (allEvents.length === 0) {
