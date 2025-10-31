@@ -29,7 +29,8 @@ const COLORS = [
 interface StockConfig {
   id: string;
   symbol: string;
-  method: string;
+  rthMethod: string;
+  ahMethod: string;
   rthBuyPct: number;
   rthSellPct: number;
   ahBuyPct: number;
@@ -39,7 +40,8 @@ interface StockConfig {
 
 interface StockResult {
   symbol: string;
-  method: string;
+  rthMethod: string;
+  ahMethod: string;
   dates: string[];
   equityCurve: number[];
   summary: {
@@ -66,9 +68,9 @@ export default function MultiStockDailyCurve() {
   const [conservativeRounding, setConservativeRounding] = useState(true);
   
   const [stocks, setStocks] = useState<StockConfig[]>([
-    { id: '1', symbol: 'HIVE', method: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-    { id: '2', symbol: 'RIOT', method: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-    { id: '3', symbol: 'MARA', method: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+    { id: '1', symbol: 'HIVE', rthMethod: 'EQUAL_MEAN', ahMethod: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+    { id: '2', symbol: 'RIOT', rthMethod: 'EQUAL_MEAN', ahMethod: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+    { id: '3', symbol: 'MARA', rthMethod: 'EQUAL_MEAN', ahMethod: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
   ]);
 
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -80,7 +82,8 @@ export default function MultiStockDailyCurve() {
     setStocks([...stocks, {
       id: newId,
       symbol: 'HIVE',
-      method: 'EQUAL_MEAN',
+      rthMethod: 'EQUAL_MEAN',
+      ahMethod: 'EQUAL_MEAN',
       rthBuyPct: 0.5,
       rthSellPct: 0.5,
       ahBuyPct: 0.5,
@@ -100,17 +103,17 @@ export default function MultiStockDailyCurve() {
   const loadLiveSettings = () => {
     // Example preset - user can customize this
     setStocks([
-      { id: '1', symbol: 'BTDR', method: 'WEIGHTED_MEDIAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '2', symbol: 'RIOT', method: 'EQUAL_MEAN', rthBuyPct: 0.6, rthSellPct: 0.4, ahBuyPct: 0.7, ahSellPct: 0.3, enabled: true },
-      { id: '3', symbol: 'MARA', method: 'VWAP_RATIO', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.6, ahSellPct: 0.4, enabled: true },
-      { id: '4', symbol: 'CLSK', method: 'VOL_WEIGHTED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '5', symbol: 'CORZ', method: 'WINSORIZED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '6', symbol: 'HUT', method: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '7', symbol: 'CAN', method: 'VWAP_RATIO', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '8', symbol: 'CIFR', method: 'WEIGHTED_MEDIAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '9', symbol: 'HIVE', method: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '10', symbol: 'APLD', method: 'VOL_WEIGHTED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
-      { id: '11', symbol: 'WULF', method: 'WINSORIZED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '1', symbol: 'BTDR', rthMethod: 'WEIGHTED_MEDIAN', ahMethod: 'WEIGHTED_MEDIAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '2', symbol: 'RIOT', rthMethod: 'EQUAL_MEAN', ahMethod: 'EQUAL_MEAN', rthBuyPct: 0.6, rthSellPct: 0.4, ahBuyPct: 0.7, ahSellPct: 0.3, enabled: true },
+      { id: '3', symbol: 'MARA', rthMethod: 'VWAP_RATIO', ahMethod: 'VWAP_RATIO', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.6, ahSellPct: 0.4, enabled: true },
+      { id: '4', symbol: 'CLSK', rthMethod: 'VOL_WEIGHTED', ahMethod: 'VOL_WEIGHTED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '5', symbol: 'CORZ', rthMethod: 'WINSORIZED', ahMethod: 'WINSORIZED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '6', symbol: 'HUT', rthMethod: 'EQUAL_MEAN', ahMethod: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '7', symbol: 'CAN', rthMethod: 'VWAP_RATIO', ahMethod: 'VWAP_RATIO', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '8', symbol: 'CIFR', rthMethod: 'WEIGHTED_MEDIAN', ahMethod: 'WEIGHTED_MEDIAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '9', symbol: 'HIVE', rthMethod: 'EQUAL_MEAN', ahMethod: 'EQUAL_MEAN', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '10', symbol: 'APLD', rthMethod: 'VOL_WEIGHTED', ahMethod: 'VOL_WEIGHTED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
+      { id: '11', symbol: 'WULF', rthMethod: 'WINSORIZED', ahMethod: 'WINSORIZED', rthBuyPct: 0.5, rthSellPct: 0.5, ahBuyPct: 0.5, ahSellPct: 0.5, enabled: true },
     ]);
   };
 
@@ -146,7 +149,8 @@ export default function MultiStockDailyCurve() {
           conservativeRounding,
           stocks: enabledStocks.map(s => ({
             symbol: s.symbol,
-            method: s.method,
+            rthMethod: s.rthMethod,
+            ahMethod: s.ahMethod,
             rthBuyPct: s.rthBuyPct,
             rthSellPct: s.rthSellPct,
             ahBuyPct: s.ahBuyPct,
@@ -316,7 +320,7 @@ export default function MultiStockDailyCurve() {
                         className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                       />
                       
-                      <div className="flex-1 grid grid-cols-1 md:grid-cols-6 gap-4">
+                      <div className="flex-1 grid grid-cols-1 md:grid-cols-8 gap-4">
                         <div>
                           <label className="block text-xs font-medium text-gray-700 mb-1">Symbol</label>
                           <select
@@ -484,7 +488,8 @@ export default function MultiStockDailyCurve() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Symbol</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">RTH Method</th>
+                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">AH Method</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Return %</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Trades</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Win Rate %</th>
@@ -498,7 +503,8 @@ export default function MultiStockDailyCurve() {
                       .map((result) => (
                         <tr key={result.symbol}>
                           <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">{result.symbol}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{result.method}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{result.rthMethod}</td>
+                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{result.ahMethod}</td>
                           <td className={`px-6 py-4 whitespace-nowrap font-semibold ${result.summary.totalReturnPct >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                             {result.summary.totalReturnPct.toFixed(2)}%
                           </td>

@@ -40,7 +40,8 @@ function filterToAlternating(events) {
 async function simulateSingleStock(params) {
   const {
     symbol,
-    method,
+    rthMethod,
+    ahMethod,
     startDate,
     endDate,
     rthBuyPct,
@@ -52,9 +53,11 @@ async function simulateSingleStock(params) {
   } = params;
 
   // Fetch events from both RTH and AH tables with EXACT threshold matching
-  const methodLower = method.toLowerCase();
-  const rthTableName = `trade_events_rth_${methodLower}`;
-  const ahTableName = `trade_events_ah_${methodLower}`;
+  // Each session can use a different baseline method
+  const rthMethodLower = rthMethod.toLowerCase();
+  const ahMethodLower = ahMethod.toLowerCase();
+  const rthTableName = `trade_events_rth_${rthMethodLower}`;
+  const ahTableName = `trade_events_ah_${ahMethodLower}`;
 
   // Fetch RTH events with EXACT buy_pct and sell_pct match
   const rthEventsQuery = `
@@ -112,7 +115,8 @@ async function simulateSingleStock(params) {
   if (allEvents.length === 0) {
     return {
       symbol,
-      method,
+      rthMethod,
+      ahMethod,
       dates: [],
       equityCurve: [],
       summary: {
@@ -220,7 +224,8 @@ async function simulateSingleStock(params) {
 
   return {
     symbol,
-    method,
+    rthMethod,
+    ahMethod,
     dates,
     equityCurve,
     summary: {
@@ -263,10 +268,10 @@ async function handleMultiStockDailyCurve(req, res) {
 
     // Validate each stock configuration
     for (const stock of stocks) {
-      if (!stock.symbol || !stock.method) {
+      if (!stock.symbol || !stock.rthMethod || !stock.ahMethod) {
         return res.status(400).json({
           success: false,
-          error: 'Each stock must have symbol and method'
+          error: 'Each stock must have symbol, rthMethod, and ahMethod'
         });
       }
       if (stock.rthBuyPct === undefined || stock.rthSellPct === undefined ||
@@ -288,7 +293,8 @@ async function handleMultiStockDailyCurve(req, res) {
       try {
         const result = await simulateSingleStock({
           symbol: stock.symbol,
-          method: stock.method,
+          rthMethod: stock.rthMethod,
+            ahMethod: stock.ahMethod,
           startDate,
           endDate,
           rthBuyPct: stock.rthBuyPct,
@@ -299,7 +305,7 @@ async function handleMultiStockDailyCurve(req, res) {
           conservativeRounding
         });
         results.push(result);
-        console.log(`[Multi-Stock Daily Curve] ${stock.symbol} completed: ${result.summary.totalReturnPct.toFixed(2)}% return`);
+        console.log(`[Multi-Stock Daily Curve] ${stock.symbol} (RTH:${stock.rthMethod}, AH:${stock.ahMethod}) completed: ${result.summary.totalReturnPct.toFixed(2)}% return`);
       } catch (error) {
         console.error(`[Multi-Stock Daily Curve] Error processing ${stock.symbol}:`, error);
         errors.push({
