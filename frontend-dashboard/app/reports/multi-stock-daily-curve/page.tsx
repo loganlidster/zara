@@ -122,6 +122,69 @@ export default function MultiStockDailyCurve() {
     ]);
   };
 
+  const handleImportCSV = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target?.result as string;
+      const lines = text.split('\n').filter(line => line.trim());
+      
+      // Skip header row
+      const dataLines = lines.slice(1);
+      
+      const importedStocks: StockConfig[] = dataLines.map((line, index) => {
+        const [symbol, rthMethod, ahMethod, rthBuyPct, rthSellPct, ahBuyPct, ahSellPct] = line.split(',').map(s => s.trim());
+        
+        return {
+          id: (index + 1).toString(),
+          symbol: symbol || 'HIVE',
+          rthMethod: rthMethod || 'EQUAL_MEAN',
+          ahMethod: ahMethod || 'EQUAL_MEAN',
+          rthBuyPct: parseFloat(rthBuyPct) || 0.5,
+          rthSellPct: parseFloat(rthSellPct) || 0.5,
+          ahBuyPct: parseFloat(ahBuyPct) || 0.5,
+          ahSellPct: parseFloat(ahSellPct) || 0.5,
+          enabled: true
+        };
+      });
+
+      setStocks(importedStocks);
+      setError(null);
+    };
+
+    reader.onerror = () => {
+      setError('Failed to read CSV file');
+    };
+
+    reader.readAsText(file);
+  };
+
+  const exportToCSV = () => {
+    const headers = ['Symbol', 'RTH Method', 'AH Method', 'RTH Buy %', 'RTH Sell %', 'AH Buy %', 'AH Sell %'];
+    const rows = stocks.map(s => [
+      s.symbol,
+      s.rthMethod,
+      s.ahMethod,
+      s.rthBuyPct,
+      s.rthSellPct,
+      s.ahBuyPct,
+      s.ahSellPct
+    ]);
+
+    const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `multi-stock-settings-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   const selectAll = () => {
     setStocks(stocks.map(s => ({ ...s, enabled: true })));
   };
@@ -311,6 +374,22 @@ export default function MultiStockDailyCurve() {
                     className="px-3 py-1 text-sm bg-green-100 text-green-700 rounded hover:bg-green-200"
                   >
                     Load Live Settings
+                  </button>
+                  <label className="px-3 py-1 text-sm bg-purple-100 text-purple-700 rounded hover:bg-purple-200 cursor-pointer">
+                    Import CSV
+                    <input
+                      type="file"
+                      accept=".csv"
+                      onChange={handleImportCSV}
+                      className="hidden"
+                    />
+                  </label>
+                  <button
+                    type="button"
+                    onClick={exportToCSV}
+                    className="px-3 py-1 text-sm bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200"
+                  >
+                    Export CSV
                   </button>
                 </div>
               </div>
