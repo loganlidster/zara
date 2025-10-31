@@ -42,13 +42,12 @@
 - [ ] Verify wallets-endpoint works after deployment
 - [ ] Test wallet selection and data loading
 
-### 4. Deploy and Test [IN PROGRESS - BUILD RUNNING]
+### 4. Deploy and Test [IN PROGRESS - FIXING BUILD ERRORS]
 - [x] **USER: Triggered backend deployment**
-  - Build ID: 8a8e7342 (running)
-  - Trigger: tradiac-auto-deploy
-  - Branch: main
-  - Status: Building...
-  - Wait 3-5 minutes for completion
+- [x] Fixed missing Dockerfile (commit 188c867)
+- [x] Fixed --clear-base-image error (commit 624ca9a)
+- [ ] Wait for new build to complete (should auto-trigger from push)
+- [ ] Verify deployment succeeds this time
   
 After deployment completes, test:
 - [ ] Multi-Stock with 3 stocks - verify ROI is reasonable (-100% to +100%)
