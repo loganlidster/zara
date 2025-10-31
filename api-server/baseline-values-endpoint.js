@@ -129,7 +129,7 @@ export async function handleBaselineValues(req, res) {
       FROM trading_calendar tc
       WHERE tc.cal_date >= $1
         AND tc.cal_date <= $2
-        AND tc.is_trading_day = true
+        AND tc.is_open = true
       ORDER BY tc.cal_date
     `;
 
