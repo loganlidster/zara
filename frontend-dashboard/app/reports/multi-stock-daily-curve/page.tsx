@@ -198,10 +198,11 @@ export default function MultiStockDailyCurve() {
   const exportCSV = () => {
     if (!data?.results) return;
 
-    const headers = ['Symbol', 'Method', 'Total Return %', 'Total Trades', 'Win Rate %', 'Avg Trade %', 'Final Equity'];
+    const headers = ['Symbol', 'RTH Method', 'AH Method', 'Total Return %', 'Total Trades', 'Win Rate %', 'Avg Trade %', 'Final Equity'];
     const rows = data.results.map(r => [
       r.symbol,
-      r.method,
+      r.rthMethod,
+      r.ahMethod,
       r.summary.totalReturnPct.toFixed(2),
       r.summary.totalTrades,
       r.summary.winRate.toFixed(2),
