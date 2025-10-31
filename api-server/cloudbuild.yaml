@@ -22,7 +22,7 @@ steps:
       - 'managed'
       - '--allow-unauthenticated'
       - '--set-env-vars'
-      - 'DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_PASSWORD=Fu3lth3j3t!,POLYGON_API_KEY=K_hSDwyuUSqRmD57vOlUmYqZGdcZsoG0'
+      - 'DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=appuser,DB_PASSWORD=Fu3lth3j3t!,POLYGON_API_KEY=K_hSDwyuUSqRmD57vOlUmYqZGdcZsoG0'
 
 images:
   - 'gcr.io/tradiac-testing/api-server:$SHORT_SHA'
