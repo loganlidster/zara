@@ -333,16 +333,6 @@ export default function MultiStockDailyCurve() {
                           </select>
                         </div>
                         
-                        <div>
-                          <label className="block text-xs font-medium text-gray-700 mb-1">Method</label>
-                          <select
-                            value={stock.method}
-                            onChange={(e) => updateStock(stock.id, 'method', e.target.value)}
-                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          >
-                            {METHODS.map(m => <option key={m} value={m}>{m}</option>)}
-                          </select>
-                        </div>
 
                         <div>
                           <label className="block text-xs font-medium text-gray-700 mb-1">RTH Buy %</label>
