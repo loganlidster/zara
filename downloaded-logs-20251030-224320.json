@@ -1,0 +1,2642 @@
+[
+  {
+    "textPayload": "2025-10-31 05:42:20.284 UTC [6483]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7315;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f588a44a;t=6426dd422b550;x=17909ecb37a75f08-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:20.284814Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:22.275840223Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:20.284 UTC [6483]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7315;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f588a44a;t=6426dd422b550;x=17909ecb37a75f08-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:20.285742Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:22.275840223Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:20.390 UTC [6484]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7315;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f588a44a;t=6426dd422b550;x=17909ecb37a75f08-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:20.391287Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:22.275840223Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:20.390 UTC [6484]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5aa6fdd;t=6426dd44480e2;x=defe50ef2e50ea0b-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:20.391650Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.055798817Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:21.583 UTC [6486]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5aa6fdd;t=6426dd44480e2;x=defe50ef2e50ea0b-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:21.583691Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.055798817Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:21.583 UTC [6486]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5aa6fdd;t=6426dd44480e2;x=defe50ef2e50ea0b-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:21.584512Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.055798817Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:21.893 UTC [6488]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5aa6fdd;t=6426dd44480e2;x=defe50ef2e50ea0b-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:21.893787Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.055798817Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:21.893 UTC [6488]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731f;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5c15f5a;t=6426dd45b7060;x=f0b7754017e9b112-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:21.894752Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.475999916Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:22.378 UTC [6489]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731f;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5c15f5a;t=6426dd45b7060;x=f0b7754017e9b112-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:22.378728Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.475999916Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:22.378 UTC [6489]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731f;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5c15f5a;t=6426dd45b7060;x=f0b7754017e9b112-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:22.379257Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.475999916Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:22.784 UTC [6490]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=731f;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5c15f5a;t=6426dd45b7060;x=f0b7754017e9b112-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:22.785489Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:23.475999916Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:22.784 UTC [6490]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7323;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5cefcc5;t=6426dd4690dcb;x=23aa495651b0b9a3-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:22.787019Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:24.963093131Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:23.479 UTC [6491]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7323;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5cefcc5;t=6426dd4690dcb;x=23aa495651b0b9a3-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:23.479998Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:24.963093131Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:23.479 UTC [6491]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7325;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5d9911d;t=6426dd473a222;x=d7899df3b0b2d6b2-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:23.480354Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:26.046192491Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:24.093 UTC [6492]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7325;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5d9911d;t=6426dd473a222;x=d7899df3b0b2d6b2-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:24.094239Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:26.046192491Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:24.093 UTC [6492]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7327;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5e2f265;t=6426dd47d036b;x=c0992408b7497aa-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:24.095083Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:26.630775342Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:25.165 UTC [6495]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7327;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5e2f265;t=6426dd47d036b;x=c0992408b7497aa-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:25.166473Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:26.630775342Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:25.165 UTC [6495]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=732d;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5f34fd9;t=6426dd48d60de;x=d4d9cc76fb69e183-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:25.167582Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.040985370Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:26.271 UTC [6496]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=732d;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5f34fd9;t=6426dd48d60de;x=d4d9cc76fb69e183-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:26.271678Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.040985370Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:26.271 UTC [6496]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=732d;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5f34fd9;t=6426dd48d60de;x=d4d9cc76fb69e183-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:26.272462Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.040985370Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:26.296 UTC [6494]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=732d;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f5f34fd9;t=6426dd48d60de;x=d4d9cc76fb69e183-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:26.296916Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.040985370Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:26.296 UTC [6494]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7331;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6048c81;t=6426dd49e9d86;x=951f65c0ab6ea2cc-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:26.297222Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.956748853Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:27.393 UTC [6498]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7331;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6048c81;t=6426dd49e9d86;x=951f65c0ab6ea2cc-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:27.393626Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.956748853Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:27.393 UTC [6498]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7331;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6048c81;t=6426dd49e9d86;x=951f65c0ab6ea2cc-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:27.394298Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.956748853Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:27.561 UTC [6499]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7331;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6048c81;t=6426dd49e9d86;x=951f65c0ab6ea2cc-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:27.562201Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:28.956748853Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:27.561 UTC [6499]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7335;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f617daf2;t=6426dd4b1ebf7;x=dd3b6118e0894ea7-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:27.562487Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:29.956649918Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:28.867 UTC [6500]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7335;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f617daf2;t=6426dd4b1ebf7;x=dd3b6118e0894ea7-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:28.867573Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:29.956649918Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:28.867 UTC [6500]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7337;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f62bc77e;t=6426dd4c5d884;x=6d8b17ad326f5ef5-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:28.868228Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:31.400496004Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:29.782 UTC [6501]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7337;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f62bc77e;t=6426dd4c5d884;x=6d8b17ad326f5ef5-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:29.783036Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:31.400496004Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:29.782 UTC [6501]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7339;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f639be1c;t=6426dd4d3cf21;x=fb1de8ecf8d0204-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:29.783329Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:32.049248737Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:30.194 UTC [6502]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7339;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f639be1c;t=6426dd4d3cf21;x=fb1de8ecf8d0204-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:30.194420Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:32.049248737Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:30.194 UTC [6502]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:30.195081Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:32.064 UTC [6504]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:32.064648Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:32.064 UTC [6504]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:32.065320Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:32.066 UTC [6505]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:32.067543Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:32.066 UTC [6505]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a5",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:32.067728Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:33.775 UTC [6507]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a6",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:33.776527Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:33.775 UTC [6507]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a7",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:33.777172Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:34.292 UTC [6509]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a8",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:34.292565Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:34.292 UTC [6509]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@a9",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:34.292819Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:35.284 UTC [6510]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@aa",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:35.285173Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:35.284 UTC [6510]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ab",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:35.285753Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:35.778 UTC [6511]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ac",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:35.778658Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:35.778 UTC [6511]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ad",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:35.778883Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:36.882 UTC [6513]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ae",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:36.883444Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:36.882 UTC [6513]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@af",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:36.884178Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:39.888 UTC [6515]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ag",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:39.891039Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:39.888 UTC [6515]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ah",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:39.891640Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:40.878 UTC [6514]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ai",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:40.878735Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:40.878 UTC [6514]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@aj",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:40.879080Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:41.182 UTC [6522]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ak",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:41.183297Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:41.182 UTC [6522]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@al",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:41.184600Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:42.288 UTC [6524]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@am",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:42.288525Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:42.288 UTC [6524]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@an",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:42.289344Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:43.795 UTC [6523]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ao",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:43.796233Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:43.795 UTC [6523]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ap",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:43.797101Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:43.979 UTC [6527]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@aq",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:43.979913Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:43.979 UTC [6527]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ar",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:43.980234Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:44.569 UTC [6529]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@as",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:44.569517Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:44.569 UTC [6529]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@at",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:44.569760Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:44.578 UTC [6528]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@au",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:44.578698Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:44.578 UTC [6528]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@av",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:44.578947Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:46.384 UTC [6531]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@aw",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:46.384584Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:46.384 UTC [6531]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ax",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:46.385270Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:47.076 UTC [6532]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@ay",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:47.076950Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:47.076 UTC [6532]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@az",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:47.077276Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:47.974 UTC [6533]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@b10",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:47.974836Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:47.974 UTC [6533]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=733b;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f6400684;t=6426dd4da1789;x=6019080da6bc40ee-0@b11",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:47.975686Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:49.244403539Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:48.498 UTC [6534]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=736d;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f757503d;t=6426dd5f16143;x=426a1c737578c426-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:48.498499Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:50.340564991Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:48.498 UTC [6534]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=736e;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f7575202;t=6426dd5f16308;x=e2117b3f98672aa8-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:48.498952Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:51.111897796Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:50.295 UTC [6537]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=736e;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f7575202;t=6426dd5f16308;x=e2117b3f98672aa8-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:50.296233Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:42:51.111897796Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:50.295 UTC [6537]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:50.296795Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:52.197 UTC [6536]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:52.197699Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:52.197 UTC [6536]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:52.198664Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:52.287 UTC [6539]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a4",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:52.288245Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:52.287 UTC [6539]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a5",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:52.288637Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:53.481 UTC [6541]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a6",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:53.483258Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:53.481 UTC [6541]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a7",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:53.483854Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:53.884 UTC [6540]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a8",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:53.884618Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:53.884 UTC [6540]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@a9",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:53.884875Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:54.691 UTC [6544]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@aa",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:54.692245Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:54.691 UTC [6544]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ab",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:54.692832Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:55.297 UTC [6543]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ac",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:55.297542Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:55.297 UTC [6543]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ad",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:55.297846Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:55.865 UTC [6545]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ae",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:55.865656Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:55.865 UTC [6545]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@af",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:55.866573Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:57.464 UTC [6546]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ag",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:57.464782Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:57.464 UTC [6546]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ah",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:57.465568Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:57.467 UTC [6548]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ai",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:57.467468Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:57.467 UTC [6548]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@aj",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:57.467681Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:58.277 UTC [6551]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ak",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:58.277725Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:58.277 UTC [6551]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@al",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:58.278086Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:58.692 UTC [6550]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@am",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:58.692656Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:58.692 UTC [6550]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@an",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:58.693510Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:59.992 UTC [6552]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ao",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:59.992634Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:42:59.992 UTC [6552]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ap",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:42:59.993283Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:00.092 UTC [6553]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@aq",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:00.092885Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:00.092 UTC [6553]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ar",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:00.093269Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:00.385 UTC [6555]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@as",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:00.385820Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:00.385 UTC [6555]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@at",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:00.386142Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:02.067 UTC [6557]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@au",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:02.068328Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:02.067 UTC [6557]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@av",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:02.069116Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:03.366 UTC [6558]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@aw",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:03.367156Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:03.366 UTC [6558]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ax",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:03.367772Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:04.591 UTC [6556]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@ay",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:04.591516Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:04.591 UTC [6556]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@az",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:04.592185Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:04.766 UTC [6560]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@b10",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:04.767048Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:04.766 UTC [6560]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@b11",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:04.767379Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:05.495 UTC [6561]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@b12",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:05.495425Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:05.495 UTC [6561]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=7381;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f772c0d6;t=6426dd60cd1db;x=411665c4b26f4543-0@b13",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:05.495790Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:07.036571365Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:05.879 UTC [6562]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73b3;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f8608911;t=6426dd6fa9a17;x=7ffb9e3226d2442d-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:05.880087Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:08.076987502Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:05.879 UTC [6562]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73b3;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f8608911;t=6426dd6fa9a17;x=7ffb9e3226d2442d-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:05.880805Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:08.076987502Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:05.881 UTC [6564]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73b3;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f8608911;t=6426dd6fa9a17;x=7ffb9e3226d2442d-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:05.883232Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:08.076987502Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:05.881 UTC [6564]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73b6;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f8609611;t=6426dd6faa716;x=99e1ed0c30d01f7b-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:05.883414Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:09.086864452Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:07.895 UTC [6566]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73b6;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f8609611;t=6426dd6faa716;x=99e1ed0c30d01f7b-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:07.896341Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:09.086864452Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:07.895 UTC [6566]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73b8;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f87f5054;t=6426dd7196159;x=573f232084346333-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:07.897177Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:10.199759529Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:08.790 UTC [6565]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73b8;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f87f5054;t=6426dd7196159;x=573f232084346333-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:08.791216Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:10.199759529Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:08.790 UTC [6565]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73ba;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f88cf5a2;t=6426dd72706a8;x=650c45e899786ae0-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:08.791464Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:10.669546100Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:09.070 UTC [6568]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73ba;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f88cf5a2;t=6426dd72706a8;x=650c45e899786ae0-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:09.070489Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:10.669546100Z"
+  },
+  {
+    "textPayload": "2025-10-31 05:43:09.070 UTC [6568]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=73bc;b=a9301e23aa9342fcbd62bbd3b93906f7;m=f8913a56;t=6426dd72b4b5c;x=e12be091d215b33c-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T05:43:09.071196Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T05:43:11.461818829Z"
+  }
+]

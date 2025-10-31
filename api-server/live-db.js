@@ -14,6 +14,8 @@ let livePool = null;
 function getLivePool() {
   if (!livePool) {
     console.log('[Live DB] Initializing connection to tradiac live database');
+    console.log('[Live DB] Host: 35.199.155.114, Database: tradiac, User: appuser');
+    
     livePool = new pg.Pool({
       host: '35.199.155.114',
       port: 5432,
@@ -29,11 +31,12 @@ function getLivePool() {
     });
 
     livePool.on('connect', () => {
-      console.log('[Live DB] Connected to tradiac live database');
+      console.log('[Live DB] Successfully connected to tradiac live database');
     });
 
     livePool.on('error', (err) => {
-      console.error('[Live DB] Unexpected error on idle client', err);
+      console.error('[Live DB] Pool error:', err.message);
+      console.error('[Live DB] Full error:', err);
     });
   }
   
