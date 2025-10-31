@@ -28,25 +28,32 @@
 - [x] Add separate AH method dropdown per stock
 - [x] Update StockConfig interface to include rthMethod and ahMethod
 - [x] Update backend to query different tables based on session-specific methods
-- [x] Frontend deployed successfully
+- [x] Fix missing dropdowns in form (they were accidentally removed)
+- [x] Frontend deployed successfully (commit 4286874)
 - [ ] **USER ACTION: Deploy backend to Cloud Run**
 - [ ] Test with different methods for RTH vs AH
 
-### 3. Fix Wallet Loading in Real vs Projected [NOT STARTED]
-- [ ] Debug why wallet dropdown is not loading
-- [ ] Check database connection to live database
-- [ ] Verify wallets-endpoint is working
+### 3. Fix Wallet Loading in Real vs Projected [BLOCKED - NEEDS BACKEND DEPLOYMENT]
+- [x] Debug why wallet dropdown is not loading
+  - FOUND: Backend not deployed yet, still running old code
+  - Error: Trying to connect with user 'postgres' instead of 'appuser'
+  - live-db.js has correct config but not deployed
+- [ ] **USER ACTION: Deploy backend to Cloud Run**
+- [ ] Verify wallets-endpoint works after deployment
 - [ ] Test wallet selection and data loading
 
-### 4. Deploy and Test [WAITING ON USER]
-- [ ] **USER: Trigger Cloud Build deployment for backend**
-  - Go to Google Cloud Console → Cloud Build → Triggers
-  - Find trigger for `tradiac-api`
-  - Click "Run" and select branch `main`
-  - Wait 3-5 minutes for deployment
-- [ ] Test Multi-Stock with 3 stocks using same settings
-- [ ] Verify ROI values are reasonable (-100% to +100%)
-- [ ] Compare with Daily Curve report - results should match
+### 4. Deploy and Test [IN PROGRESS - BUILD RUNNING]
+- [x] **USER: Triggered backend deployment**
+  - Build ID: 8a8e7342 (running)
+  - Trigger: tradiac-auto-deploy
+  - Branch: main
+  - Status: Building...
+  - Wait 3-5 minutes for completion
+  
+After deployment completes, test:
+- [ ] Multi-Stock with 3 stocks - verify ROI is reasonable (-100% to +100%)
+- [ ] Compare Multi-Stock results with Daily Curve - should match exactly
 - [ ] Test separate RTH/AH methods (e.g., EQUAL_MEAN for RTH, VWAP_RATIO for AH)
 - [ ] Test "Load Live Settings" button with 11 stocks
-- [ ] Test Real vs Projected with loaded wallets (after fixing wallet loading)
+- [ ] Real vs Projected - verify wallets load from tradiac database
+- [ ] Real vs Projected - verify wallet dropdown populates

@@ -1,0 +1,1321 @@
+[
+  {
+    "textPayload": "2025-10-31 04:47:15.994 UTC [968]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ae",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:15.995258Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:15.994 UTC [968]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@af",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:15.995586Z",
+    "severity": "INFO",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:16.770 UTC [970]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ag",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:16.771140Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:16.770 UTC [970]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ah",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:16.772128Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "insertId": "69043f54000d792fc0a4e27d",
+    "httpRequest": {
+      "requestMethod": "OPTIONS",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/multi-stock-daily-curve",
+      "requestSize": "819",
+      "status": 204,
+      "responseSize": "376",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:d134:f20:1c5b:a8ed",
+      "referer": "https://frontend-dashboard-51bbrxue9-logans-projects-57bfdedc.vercel.app/",
+      "serverIp": "2600:1901:81d5:200::",
+      "latency": "0.003833970s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:16.869450Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/c4560fd6ac9001126775eba904a2b868",
+    "receiveTimestamp": "2025-10-31T04:47:16.887059076Z",
+    "spanId": "915123b87fc43713",
+    "traceSampled": true
+  },
+  {
+    "insertId": "69043f550007e4ac1ac2f190",
+    "httpRequest": {
+      "requestMethod": "POST",
+      "requestUrl": "https://tradiac-api-941257247637.us-central1.run.app/api/multi-stock-daily-curve",
+      "requestSize": "1513",
+      "status": 200,
+      "responseSize": "804",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "remoteIp": "2605:59c8:3057:2508:d134:f20:1c5b:a8ed",
+      "referer": "https://frontend-dashboard-51bbrxue9-logans-projects-57bfdedc.vercel.app/",
+      "serverIp": "2600:1901:81d5:200::",
+      "latency": "0.545040484s",
+      "protocol": "HTTP/1.1"
+    },
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:16.970473Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Frequests",
+    "trace": "projects/tradiac-testing/traces/ca20b6f36157ca8d098147e5c170980d",
+    "receiveTimestamp": "2025-10-31T04:47:17.555041575Z",
+    "spanId": "97d16bb2614f4214"
+  },
+  {
+    "textPayload": "[Multi-Stock Daily Curve] Processing 4 stocks from 2024-10-01 to 2024-10-31",
+    "insertId": "69043f54000f269be1f8ac05",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00236-45r",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:16.992923Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-10-31T04:47:16.998144105Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:17.087 UTC [971]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ai",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.087665Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:17.087 UTC [971]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@aj",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.088349Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "OK"
+      },
+      "authenticationInfo": {
+        "principalEmail": "941257247637-compute@developer.gserviceaccount.com",
+        "serviceAccountDelegationInfo": [
+          {
+            "firstPartyPrincipal": {
+              "principalEmail": "service-941257247637@serverless-robot-prod.iam.gserviceaccount.com"
+            }
+          }
+        ],
+        "principalSubject": "serviceAccount:941257247637-compute@developer.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "109322198787325288531"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "2600:1900:0:2d08::501",
+        "requestAttributes": {
+          "time": "2025-10-31T04:47:17.288894Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "cloudsql.googleapis.com",
+      "methodName": "cloudsql.instances.connect",
+      "authorizationInfo": [
+        {
+          "resource": "projects/tradiac-testing/instances/tradiac-testing-db",
+          "permission": "cloudsql.instances.connect",
+          "granted": true,
+          "resourceAttributes": {
+            "service": "sqladmin.googleapis.com",
+            "name": "projects/tradiac-testing/instances/tradiac-testing-db",
+            "type": "sqladmin.googleapis.com/Instance"
+          },
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "projects/tradiac-testing/instances/tradiac-testing-db",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.sql.v1.GenerateEphemeralCertRequest",
+        "project": "tradiac-testing",
+        "instance": "tradiac-testing-db"
+      },
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.sql.v1.GenerateEphemeralCertResponse",
+        "ephemeralCert": {
+          "kind": "sql#sslCert"
+        }
+      }
+    },
+    "insertId": "-wer7dfe51042",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central1",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.266582Z",
+    "severity": "NOTICE",
+    "logName": "projects/tradiac-testing/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2025-10-31T04:47:18.229611047Z"
+  },
+  {
+    "textPayload": "[DB] Connected to tradiac_testing database",
+    "insertId": "69043f5500053aed5caccec6",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.342765Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-10-31T04:47:17.664556687Z"
+  },
+  {
+    "textPayload": "[DB] Connected to tradiac_testing database",
+    "insertId": "69043f5500054497fd445a77",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00236-45r",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.345239Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-10-31T04:47:17.664556687Z"
+  },
+  {
+    "textPayload": "[Multi-Stock Daily Curve] Error processing HIVE: TypeError: a.event_date.localeCompare is not a function",
+    "insertId": "69043f55000765f2280758c2",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.484850Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.490255683Z"
+  },
+  {
+    "textPayload": "    at file:///workspace/multi-stock-daily-curve-endpoint.js:110:38",
+    "insertId": "69043f550007660890d463d5",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.484872Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.490255683Z"
+  },
+  {
+    "textPayload": "    at Array.sort (<anonymous>)",
+    "insertId": "69043f550007660d744b1869",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.484877Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.490255683Z"
+  },
+  {
+    "textPayload": "    at simulateSingleStock (file:///workspace/multi-stock-daily-curve-endpoint.js:109:13)",
+    "insertId": "69043f5500076611fe5b608c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.484881Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.490255683Z"
+  },
+  {
+    "textPayload": "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "insertId": "69043f55000766158b05bc00",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00236-45r",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.484885Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.490255683Z"
+  },
+  {
+    "textPayload": "    at async handleMultiStockDailyCurve (file:///workspace/multi-stock-daily-curve-endpoint.js:294:24)",
+    "insertId": "69043f550007661a02af1d0f",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00236-45r",
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.484890Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.490255683Z"
+  },
+  {
+    "textPayload": "[Multi-Stock Daily Curve] Error processing RIOT: TypeError: a.event_date.localeCompare is not a function",
+    "insertId": "69043f55000796be873170ae",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.497342Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at file:///workspace/multi-stock-daily-curve-endpoint.js:110:38",
+    "insertId": "69043f55000796cb9e02a459",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00236-45r",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.497355Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at Array.sort (<anonymous>)",
+    "insertId": "69043f55000796cfbf21d842",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00236-45r",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.497359Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at simulateSingleStock (file:///workspace/multi-stock-daily-curve-endpoint.js:109:13)",
+    "insertId": "69043f55000796d315c501c5",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00236-45r",
+        "service_name": "tradiac-api",
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.497363Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "insertId": "69043f55000796d86cbea7df",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.497368Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at async handleMultiStockDailyCurve (file:///workspace/multi-stock-daily-curve-endpoint.js:294:24)",
+    "insertId": "69043f55000796db5e3081a0",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.497371Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "[Multi-Stock Daily Curve] Error processing MARA: TypeError: a.event_date.localeCompare is not a function",
+    "insertId": "69043f550007bc0d2a350a25",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.506893Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at file:///workspace/multi-stock-daily-curve-endpoint.js:110:38",
+    "insertId": "69043f550007bc1921ee06b2",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00236-45r",
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.506905Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at Array.sort (<anonymous>)",
+    "insertId": "69043f550007bc1ef6728986",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.506910Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at simulateSingleStock (file:///workspace/multi-stock-daily-curve-endpoint.js:109:13)",
+    "insertId": "69043f550007bc22dc197dba",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "tradiac-api-00236-45r",
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.506914Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "insertId": "69043f550007bc26e418fdb3",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "service_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.506918Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at async handleMultiStockDailyCurve (file:///workspace/multi-stock-daily-curve-endpoint.js:294:24)",
+    "insertId": "69043f550007bc28d6190a9c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00236-45r",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.506920Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "[Multi-Stock Daily Curve] Error processing CLSK: TypeError: a.event_date.localeCompare is not a function",
+    "insertId": "69043f550007df68d0d70a53",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00236-45r"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.515944Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at file:///workspace/multi-stock-daily-curve-endpoint.js:110:38",
+    "insertId": "69043f550007df75bb20a728",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "configuration_name": "tradiac-api",
+        "location": "us-central1",
+        "revision_name": "tradiac-api-00236-45r",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.515957Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at Array.sort (<anonymous>)",
+    "insertId": "69043f550007df7aeb08a57f",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "service_name": "tradiac-api",
+        "configuration_name": "tradiac-api",
+        "revision_name": "tradiac-api-00236-45r",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.515962Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at simulateSingleStock (file:///workspace/multi-stock-daily-curve-endpoint.js:109:13)",
+    "insertId": "69043f550007df7eb8fcfc26",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00236-45r",
+        "location": "us-central1",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.515966Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "insertId": "69043f550007df85e45e745d",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "us-central1",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00236-45r",
+        "configuration_name": "tradiac-api",
+        "service_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.515973Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "    at async handleMultiStockDailyCurve (file:///workspace/multi-stock-daily-curve-endpoint.js:294:24)",
+    "insertId": "69043f550007df88cea59dc7",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "tradiac-api",
+        "project_id": "tradiac-testing",
+        "revision_name": "tradiac-api-00236-45r",
+        "location": "us-central1",
+        "configuration_name": "tradiac-api"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:17.515976Z",
+    "labels": {
+      "instanceId": "00147782965790711834cb427f58d29187ff7131eccd4fdaa09b06c76bfff94feb1543afec1fab499ddcfaaf8213b9378b5d37d5987ea5cb7a3ebd0bb5bfbf3c0b453a28c1994036e3b58d328d"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-10-31T04:47:17.822179882Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:18.090 UTC [973]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ak",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:18.090746Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:18.090 UTC [973]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@al",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:18.091714Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:18.674 UTC [977]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@am",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:18.674525Z",
+    "severity": "ALERT",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:18.674 UTC [977]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@an",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:18.674895Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:18.971 UTC [976]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ao",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:18.972019Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:18.971 UTC [976]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ap",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:18.972233Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:19.964 UTC [978]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@aq",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:19.964908Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:19.964 UTC [978]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ar",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:19.965527Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:20.889 UTC [980]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@as",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:20.890219Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:20.889 UTC [980]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@at",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:20.890574Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:22.374 UTC [982]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@au",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:22.375107Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:22.374 UTC [982]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@av",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:22.375739Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:24.275 UTC [985]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@aw",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:24.276047Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:24.275 UTC [985]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ax",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:24.276668Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:24.671 UTC [983]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@ay",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:24.672022Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:24.671 UTC [983]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@az",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:24.672291Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:26.665 UTC [987]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@b10",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:26.666222Z",
+    "severity": "ALERT",
+    "labels": {
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:26.665 UTC [987]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@b11",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:26.666817Z",
+    "severity": "INFO",
+    "labels": {
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:26.785 UTC [986]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@b12",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:26.786053Z",
+    "severity": "ALERT",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:26.785 UTC [986]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4453;b=a9301e23aa9342fcbd62bbd3b93906f7;m=30477ad8;t=6426d0ee18bde;x=970935448d4e393f-0@b13",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:26.786401Z",
+    "severity": "INFO",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "PROJECT_NUMBER": "941257247637"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.004021791Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:28.088 UTC [989]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4493;b=a9301e23aa9342fcbd62bbd3b93906f7;m=316de14d;t=6426d1007f252;x=3f18d3b45d33c3ba-0@a1",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:28.088658Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.857047784Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:28.088 UTC [989]: [2-1] db=postgres,user=postgres DETAIL:  Connection matched pg_hba.conf line 92: \"hostnossl  all           all     all        md5\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4493;b=a9301e23aa9342fcbd62bbd3b93906f7;m=316de14d;t=6426d1007f252;x=3f18d3b45d33c3ba-0@a2",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "region": "us-central",
+        "database_id": "tradiac-testing:tradiac-testing-db"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:28.089319Z",
+    "severity": "INFO",
+    "labels": {
+      "PROJECT_NUMBER": "941257247637",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442",
+      "LOG_BUCKET_NUM": "48",
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.857047784Z"
+  },
+  {
+    "textPayload": "2025-10-31 04:47:29.074 UTC [991]: [1-1] db=postgres,user=postgres FATAL:  password authentication failed for user \"postgres\"",
+    "insertId": "s=934d964a17234432a8d9929f70e8b901;i=4493;b=a9301e23aa9342fcbd62bbd3b93906f7;m=316de14d;t=6426d1007f252;x=3f18d3b45d33c3ba-0@a3",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "database_id": "tradiac-testing:tradiac-testing-db",
+        "project_id": "tradiac-testing",
+        "region": "us-central"
+      }
+    },
+    "timestamp": "2025-10-31T04:47:29.075064Z",
+    "severity": "ALERT",
+    "labels": {
+      "INSTANCE_UID": "1-a52e614c-09c2-462a-a27b-7abd136ecb50",
+      "PROJECT_NUMBER": "941257247637",
+      "LOG_BUCKET_NUM": "48",
+      "SOURCE_ID": "30623961376133376639363331656263e3b0c442"
+    },
+    "logName": "projects/tradiac-testing/logs/cloudsql.googleapis.com%2Fpostgres.log",
+    "receiveTimestamp": "2025-10-31T04:47:29.857047784Z"
+  }
+]
