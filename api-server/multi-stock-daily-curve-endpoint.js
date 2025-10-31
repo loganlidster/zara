@@ -36,17 +36,19 @@ async function simulateSingleStock(params) {
     conservativeRounding = true
   } = params;
 
-  const session = 'ALL'; // Always use ALL to get both RTH and AH events
-  const tableName = `trade_events_all_${method.toLowerCase()}`;
+  // Fetch events from both RTH and AH tables
+  const methodLower = method.toLowerCase();
+  const rthTableName = `trade_events_rth_${methodLower}`;
+  const ahTableName = `trade_events_ah_${methodLower}`;
 
-  // Fetch events for this stock
-  const eventsQuery = `
+  // Fetch RTH events
+  const rthEventsQuery = `
     SELECT 
       event_id,
       symbol,
       event_time,
       event_date,
-      session,
+      'RTH' as session,
       event_type,
       stock_price,
       btc_price,
@@ -54,15 +56,42 @@ async function simulateSingleStock(params) {
       baseline,
       buy_threshold_pct,
       sell_threshold_pct
-    FROM ${tableName}
+    FROM ${rthTableName}
     WHERE symbol = $1
       AND event_date >= $2
       AND event_date <= $3
-    ORDER BY event_time ASC
   `;
 
-  const eventsResult = await pool.query(eventsQuery, [symbol, startDate, endDate]);
-  const events = eventsResult.rows;
+  // Fetch AH events
+  const ahEventsQuery = `
+    SELECT 
+      event_id,
+      symbol,
+      event_time,
+      event_date,
+      'AH' as session,
+      event_type,
+      stock_price,
+      btc_price,
+      ratio,
+      baseline,
+      buy_threshold_pct,
+      sell_threshold_pct
+    FROM ${ahTableName}
+    WHERE symbol = $1
+      AND event_date >= $2
+      AND event_date <= $3
+  `;
+
+  const [rthResult, ahResult] = await Promise.all([
+    pool.query(rthEventsQuery, [symbol, startDate, endDate]),
+    pool.query(ahEventsQuery, [symbol, startDate, endDate])
+  ]);
+
+  // Combine and sort events by time
+  const events = [...rthResult.rows, ...ahResult.rows].sort((a, b) => {
+    return new Date(a.event_time) - new Date(b.event_time);
+  });
 
   if (events.length === 0) {
     return {
