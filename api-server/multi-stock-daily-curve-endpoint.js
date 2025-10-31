@@ -21,7 +21,22 @@ function applyConservativeRounding(price, type) {
   return type === 'BUY' ? Math.ceil(price * 100) / 100 : Math.floor(price * 100) / 100;
 }
 
-// Simulate trading for a single stock (reuses Daily Curve logic)
+// Filter to alternating BUY/SELL events (matches Daily Curve logic)
+function filterToAlternating(events) {
+  const filtered = [];
+  let lastType = null;
+  
+  for (const event of events) {
+    if (event.event_type !== lastType) {
+      filtered.push(event);
+      lastType = event.event_type;
+    }
+  }
+  
+  return filtered;
+}
+
+// Simulate trading for a single stock (MATCHES Daily Curve logic exactly)
 async function simulateSingleStock(params) {
   const {
     symbol,
@@ -36,62 +51,65 @@ async function simulateSingleStock(params) {
     conservativeRounding = true
   } = params;
 
-  // Fetch events from both RTH and AH tables
+  // Fetch events from both RTH and AH tables with EXACT threshold matching
   const methodLower = method.toLowerCase();
   const rthTableName = `trade_events_rth_${methodLower}`;
   const ahTableName = `trade_events_ah_${methodLower}`;
 
-  // Fetch RTH events
+  // Fetch RTH events with EXACT buy_pct and sell_pct match
   const rthEventsQuery = `
     SELECT 
-      symbol,
-      event_time,
       event_date,
-      'RTH' as session,
+      event_time,
       event_type,
       stock_price,
       btc_price,
       ratio,
       baseline,
-      buy_pct,
-      sell_pct
+      'RTH' as session
     FROM ${rthTableName}
     WHERE symbol = $1
-      AND event_date >= $2
-      AND event_date <= $3
+      AND buy_pct = $2
+      AND sell_pct = $3
+      AND event_date >= $4
+      AND event_date <= $5
+    ORDER BY event_date, event_time
   `;
 
-  // Fetch AH events
+  // Fetch AH events with EXACT buy_pct and sell_pct match
   const ahEventsQuery = `
     SELECT 
-      symbol,
-      event_time,
       event_date,
-      'AH' as session,
+      event_time,
       event_type,
       stock_price,
       btc_price,
       ratio,
       baseline,
-      buy_pct,
-      sell_pct
+      'AH' as session
     FROM ${ahTableName}
     WHERE symbol = $1
-      AND event_date >= $2
-      AND event_date <= $3
+      AND buy_pct = $2
+      AND sell_pct = $3
+      AND event_date >= $4
+      AND event_date <= $5
+    ORDER BY event_date, event_time
   `;
 
   const [rthResult, ahResult] = await Promise.all([
-    pool.query(rthEventsQuery, [symbol, startDate, endDate]),
-    pool.query(ahEventsQuery, [symbol, startDate, endDate])
+    pool.query(rthEventsQuery, [symbol, parseFloat(rthBuyPct), parseFloat(rthSellPct), startDate, endDate]),
+    pool.query(ahEventsQuery, [symbol, parseFloat(ahBuyPct), parseFloat(ahSellPct), startDate, endDate])
   ]);
 
-  // Combine and sort events by time
-  const events = [...rthResult.rows, ...ahResult.rows].sort((a, b) => {
-    return new Date(a.event_time) - new Date(b.event_time);
+  // Combine and sort events chronologically
+  const allEvents = [...rthResult.rows, ...ahResult.rows];
+  allEvents.sort((a, b) => {
+    const dateCompare = a.event_date.localeCompare(b.event_date);
+    if (dateCompare !== 0) return dateCompare;
+    return a.event_time.localeCompare(b.event_time);
   });
 
-  if (events.length === 0) {
+  if (allEvents.length === 0) {
     return {
       symbol,
       method,
@@ -108,32 +126,16 @@ async function simulateSingleStock(params) {
     };
   }
 
-  // Filter events based on session-specific thresholds
-  const filteredEvents = events.filter(event => {
-    const isRTH = event.session === 'RTH';
-    const buyThreshold = isRTH ? rthBuyPct : ahBuyPct;
-    const sellThreshold = isRTH ? rthSellPct : ahSellPct;
+  // Filter to alternating BUY/SELL pattern (matches Daily Curve)
+  const filteredEvents = filterToAlternating(allEvents);
 
-    if (event.event_type === 'BUY') {
-      return event.buy_pct >= buyThreshold;
-    } else {
-      return event.sell_pct >= sellThreshold;
-    }
-  });
-
-  // Simulate wallet
+  // Simulate wallet (EXACT Daily Curve logic)
   let cash = 10000;
   let shares = 0;
-  let lastAction = null;
   const trades = [];
   const dailyEquity = {};
 
   for (const event of filteredEvents) {
-    // Enforce alternating BUY/SELL pattern
-    if (lastAction === event.event_type) {
-      continue;
-    }
-
     let price = parseFloat(event.stock_price);
 
     // Apply slippage
@@ -148,40 +150,35 @@ async function simulateSingleStock(params) {
 
     if (event.event_type === 'BUY' && shares === 0) {
       // Buy with all available cash
-      shares = Math.floor(cash / price);
-      const cost = shares * price;
-      cash -= cost;
-      lastAction = 'BUY';
+      const sharesToBuy = Math.floor(cash / price);
+      if (sharesToBuy > 0) {
+        shares = sharesToBuy;
+        cash -= sharesToBuy * price;
 
-      trades.push({
-        date: event.event_date,
-        time: event.event_time,
-        type: 'BUY',
-        price,
-        shares,
-        value: cost,
-        cash,
-        equity: cash + (shares * price)
-      });
+        trades.push({
+          date: event.event_date,
+          time: event.event_time,
+          type: 'BUY',
+          price,
+          shares,
+          value: sharesToBuy * price
+        });
+      }
     } else if (event.event_type === 'SELL' && shares > 0) {
       // Sell all shares
       const proceeds = shares * price;
       cash += proceeds;
-      const equity = cash;
-      
+
       trades.push({
         date: event.event_date,
         time: event.event_time,
         type: 'SELL',
         price,
         shares,
-        value: proceeds,
-        cash,
-        equity
+        value: proceeds
       });
 
       shares = 0;
-      lastAction = 'SELL';
     }
 
     // Track daily equity
