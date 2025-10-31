@@ -90,7 +90,8 @@ router.get('/query', async (req, res) => {
       }
 
       // Query RTH table
-      const rthTableName = getTableName('RTH', method);
+      const rthMethodToUse = req.query.rthMethod || method;
+        const rthTableName = getTableName('RTH', rthMethodToUse);
       tablesQueried.push(rthTableName);
       
       const rthQuery = `
@@ -125,7 +126,8 @@ router.get('/query', async (req, res) => {
       ]);
 
       // Query AH table
-      const ahTableName = getTableName('AH', method);
+      const ahMethodToUse = req.query.ahMethod || method;
+        const ahTableName = getTableName('AH', ahMethodToUse);
       tablesQueried.push(ahTableName);
       
       const ahQuery = `
@@ -296,7 +298,8 @@ router.get('/summary', async (req, res) => {
       }
 
       // Query RTH table
-      const rthTableName = getTableName('RTH', method);
+      const rthMethodToUse = req.query.rthMethod || method;
+        const rthTableName = getTableName('RTH', rthMethodToUse);
       tablesQueried.push(rthTableName);
       
       const rthQuery = `
@@ -320,7 +323,8 @@ router.get('/summary', async (req, res) => {
       ]);
 
       // Query AH table
-      const ahTableName = getTableName('AH', method);
+      const ahMethodToUse = req.query.ahMethod || method;
+        const ahTableName = getTableName('AH', ahMethodToUse);
       tablesQueried.push(ahTableName);
       
       const ahQuery = `

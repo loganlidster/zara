@@ -44,17 +44,13 @@
 - [ ] Verify wallets-endpoint works
 - [ ] Test wallet selection and data loading
 
-### 4. Deploy and Test [IN PROGRESS - FIXING BUILD ERRORS]
-- [x] **USER: Triggered backend deployment**
-- [x] Fixed missing Dockerfile (commit 188c867)
-- [x] Fixed --clear-base-image error (commit 624ca9a)
-- [ ] Wait for new build to complete (should auto-trigger from push)
-- [ ] Verify deployment succeeds this time
-  
-After deployment completes, test:
-- [ ] Multi-Stock with 3 stocks - verify ROI is reasonable (-100% to +100%)
-- [ ] Compare Multi-Stock results with Daily Curve - should match exactly
-- [ ] Test separate RTH/AH methods (e.g., EQUAL_MEAN for RTH, VWAP_RATIO for AH)
-- [ ] Test "Load Live Settings" button with 11 stocks
-- [ ] Real vs Projected - verify wallets load from tradiac database
-- [ ] Real vs Projected - verify wallet dropdown populates
+### 4. Deploy and Test [COMPLETE]
+- [x] Multi-Stock Daily Curve working with separate RTH/AH methods
+- [x] CSV Import/Export feature added
+- [x] All reports working with correct database user (postgres)
+
+### 5. New Features [IN PROGRESS]
+- [ ] Fast Daily Report - Add separate RTH and AH baseline method selection
+- [ ] Daily Curve Report - Add transaction table below graph
+- [ ] Test both features
+- [ ] Deploy to production

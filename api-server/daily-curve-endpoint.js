@@ -147,7 +147,7 @@ function applySlippage(price, slippagePct, isBuy) {
 
 function simulateDailyCurve(events, initialCapital = 10000, slippagePct = 0, conservativeRounding = false) {
   if (events.length === 0) {
-    return { dailyData: [], metrics: null };
+    return { dailyData: [], metrics: null, trades: [] };
   }
   
   let cash = initialCapital;
@@ -155,6 +155,7 @@ function simulateDailyCurve(events, initialCapital = 10000, slippagePct = 0, con
   let totalTrades = 0;
   const dailyData = [];
   const equityHistory = [];
+  const trades = [];
   
   // Group events by date
   const eventsByDate = {};
@@ -196,13 +197,38 @@ function simulateDailyCurve(events, initialCapital = 10000, slippagePct = 0, con
         const sharesToBuy = Math.floor(cash / price);
         if (sharesToBuy > 0) {
           shares = sharesToBuy;
-          cash -= sharesToBuy * price;
+          const cost = sharesToBuy * price;
+          cash -= cost;
           totalTrades++;
+          
+          trades.push({
+            date: event.event_date,
+            time: event.event_time,
+            type: 'BUY',
+            price: price,
+            shares: sharesToBuy,
+            value: cost,
+            cash: cash,
+            equity: cash + (shares * price)
+          });
         }
       } else if (event.event_type === 'SELL' && shares > 0) {
-        cash += shares * price;
-        shares = 0;
+        const proceeds = shares * price;
+        cash += proceeds;
         totalTrades++;
+        
+        trades.push({
+          date: event.event_date,
+          time: event.event_time,
+          type: 'SELL',
+          price: price,
+          shares: shares,
+          value: proceeds,
+          cash: cash,
+          equity: cash
+        });
+        
+        shares = 0;
       }
     }
     
@@ -240,7 +266,8 @@ function simulateDailyCurve(events, initialCapital = 10000, slippagePct = 0, con
       totalTrades,
       maxDrawdown,
       finalEquity
-    }
+    },
+    trades
   };
 }
 
@@ -330,7 +357,7 @@ router.post('/daily-curve', async (req, res) => {
           const filteredEvents = filterToAlternating(events);
           
           // Simulate wallet
-          const { dailyData, metrics } = simulateDailyCurve(filteredEvents, 10000, slippagePct, conservativeRounding);
+          const { dailyData, metrics, trades } = simulateDailyCurve(filteredEvents, 10000, slippagePct, conservativeRounding);
           
           return {
             symbol,
