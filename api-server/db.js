@@ -10,26 +10,18 @@ import pg from 'pg';
  * - Trade events
  */
 
-const isCloudRun = process.env.K_SERVICE !== undefined;
-
+// Always use TCP connection for now (Unix socket has auth issues)
 const poolConfig = {
+  host: process.env.DB_HOST || '34.41.97.179',
+  port: parseInt(process.env.DB_PORT || '5432'),
   database: process.env.DB_NAME || 'tradiac_testing',
   user: process.env.DB_USER || 'appuser',
   password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
+  ssl: { rejectUnauthorized: false },
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 10000,
 };
-
-if (isCloudRun) {
-  // Cloud Run: Use Unix socket
-  poolConfig.host = '/cloudsql/tradiac-testing:us-central1:tradiac-testing-db';
-} else {
-  // Local/External: Use TCP connection
-  poolConfig.host = process.env.DB_HOST || '34.41.97.179';
-  poolConfig.port = parseInt(process.env.DB_PORT || '5432');
-  poolConfig.ssl = { rejectUnauthorized: false };
-}
 
 const pool = new pg.Pool(poolConfig);
 

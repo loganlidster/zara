@@ -62,8 +62,13 @@ interface ApiResponse {
 }
 
 export default function MultiStockDailyCurve() {
-  const [startDate, setStartDate] = useState('2024-10-01');
-  const [endDate, setEndDate] = useState('2024-10-31');
+  // Set default dates: today and 7 days ago
+  const today = new Date();
+  const sevenDaysAgo = new Date(today);
+  sevenDaysAgo.setDate(today.getDate() - 7);
+  
+  const [startDate, setStartDate] = useState(sevenDaysAgo.toISOString().split('T')[0]);
+  const [endDate, setEndDate] = useState(today.toISOString().split('T')[0]);
   const [slippagePct, setSlippagePct] = useState(0.1);
   const [conservativeRounding, setConservativeRounding] = useState(true);
   
@@ -330,6 +335,28 @@ export default function MultiStockDailyCurve() {
                             className="w-full px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           >
                             {SYMBOLS.map(s => <option key={s} value={s}>{s}</option>)}
+                          </select>
+                        </div>
+                        
+                        <div>
+                          <label className="block text-xs font-medium text-gray-700 mb-1">RTH Method</label>
+                          <select
+                            value={stock.rthMethod}
+                            onChange={(e) => updateStock(stock.id, 'rthMethod', e.target.value)}
+                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          >
+                            {METHODS.map(m => <option key={m} value={m}>{m}</option>)}
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-medium text-gray-700 mb-1">AH Method</label>
+                          <select
+                            value={stock.ahMethod}
+                            onChange={(e) => updateStock(stock.id, 'ahMethod', e.target.value)}
+                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          >
+                            {METHODS.map(m => <option key={m} value={m}>{m}</option>)}
                           </select>
                         </div>
                         

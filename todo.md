@@ -33,13 +33,15 @@
 - [ ] **USER ACTION: Deploy backend to Cloud Run**
 - [ ] Test with different methods for RTH vs AH
 
-### 3. Fix Wallet Loading in Real vs Projected [BLOCKED - NEEDS BACKEND DEPLOYMENT]
+### 3. Fix Wallet Loading in Real vs Projected [IN PROGRESS]
 - [x] Debug why wallet dropdown is not loading
-  - FOUND: Backend not deployed yet, still running old code
-  - Error: Trying to connect with user 'postgres' instead of 'appuser'
-  - live-db.js has correct config but not deployed
-- [ ] **USER ACTION: Deploy backend to Cloud Run**
-- [ ] Verify wallets-endpoint works after deployment
+  - FOUND: Live database in different project (tradiac-live)
+  - Connection being rejected due to unauthorized IP
+- [x] Added 0.0.0.0/0 to authorized networks on live database
+- [x] Added better error logging (commit 506c39d)
+- [ ] Wait for auto-deploy to complete
+- [ ] Test wallet loading after deployment
+- [ ] Verify wallets-endpoint works
 - [ ] Test wallet selection and data loading
 
 ### 4. Deploy and Test [IN PROGRESS - FIXING BUILD ERRORS]
