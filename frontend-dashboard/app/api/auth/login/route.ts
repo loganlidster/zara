@@ -14,6 +14,15 @@ export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
     
+    // Log environment check (remove after debugging)
+    console.log('DB Config:', {
+      host: process.env.DB_HOST ? 'set' : 'missing',
+      port: process.env.DB_PORT ? 'set' : 'missing',
+      database: process.env.DB_NAME ? 'set' : 'missing',
+      user: process.env.DB_USER ? 'set' : 'missing',
+      password: process.env.DB_PASSWORD ? 'set' : 'missing',
+    });
+    
     // Query database for user
     const client = await pool.connect();
     try {
