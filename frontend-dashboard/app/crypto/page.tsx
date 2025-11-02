@@ -5,16 +5,24 @@ import Header from '@/components/Header';
 
 const CRYPTO_REPORTS = [
   {
-    title: 'Daily Curve',
-    description: 'View crypto price movements with BUY/SELL signals based on baseline deviations (24/7 trading)',
-    href: '/reports/crypto-daily-curve',
-    icon: 'M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z',
+    title: 'Grid Search',
+    description: 'Test all buy/sell combinations with heatmap visualization - find optimal thresholds for crypto',
+    href: '/reports/crypto-grid-search',
+    icon: 'M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM12 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM12 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z',
     color: 'orange',
     status: 'live'
   },
   {
+    title: 'Daily Curve',
+    description: 'View crypto price movements with BUY/SELL signals based on baseline deviations (24/7 trading)',
+    href: '/reports/crypto-daily-curve',
+    icon: 'M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z',
+    color: 'blue',
+    status: 'live'
+  },
+  {
     title: 'Best Performers',
-    description: 'Find the most profitable buy/sell combinations across 27 cryptocurrencies',
+    description: 'Find the most profitable buy/sell combinations across cryptocurrencies',
     href: '/reports/crypto-best-performers',
     icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
     color: 'green',
@@ -25,7 +33,7 @@ const CRYPTO_REPORTS = [
     description: 'Quick performance summary showing total events, returns, and win rates',
     href: '/reports/crypto-fast-daily',
     icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-    color: 'blue',
+    color: 'purple',
     status: 'coming-soon'
   },
   {
@@ -33,7 +41,7 @@ const CRYPTO_REPORTS = [
     description: 'Compare multiple cryptocurrencies on the same chart with synchronized signals',
     href: '/reports/crypto-multi-curve',
     icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-    color: 'purple',
+    color: 'indigo',
     status: 'coming-soon'
   },
   {
@@ -41,7 +49,7 @@ const CRYPTO_REPORTS = [
     description: 'Compare EQUAL_MEAN vs WINSORIZED performance across all cryptos',
     href: '/reports/crypto-method-comparison',
     icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-    color: 'indigo',
+    color: 'teal',
     status: 'coming-soon'
   },
   {
@@ -60,7 +68,8 @@ const colorClasses = {
   indigo: { bg: 'from-indigo-500 to-indigo-600', border: 'hover:border-indigo-500', text: 'text-indigo-500' },
   emerald: { bg: 'from-emerald-500 to-emerald-600', border: 'hover:border-emerald-500', text: 'text-emerald-500' },
   purple: { bg: 'from-purple-500 to-purple-600', border: 'hover:border-purple-500', text: 'text-purple-500' },
-  orange: { bg: 'from-orange-500 to-orange-600', border: 'hover:border-orange-500', text: 'text-orange-500' }
+  orange: { bg: 'from-orange-500 to-orange-600', border: 'hover:border-orange-500', text: 'text-orange-500' },
+  teal: { bg: 'from-teal-500 to-teal-600', border: 'hover:border-teal-500', text: 'text-teal-500' }
 };
 
 export default function CryptoPage() {
@@ -93,7 +102,7 @@ export default function CryptoPage() {
             ))}
           </div>
           <p className="text-xs text-gray-500 mt-4">
-            * Includes stablecoins (USDT, USDC, DAI, USDe) for low-fee transfer strategies
+            * Includes stablecoins (USDT, USDC, TUSD, CUSD, USDe) for low-fee transfer strategies
           </p>
         </div>
 
@@ -143,7 +152,7 @@ export default function CryptoPage() {
             <p>• <strong>24/7 Trading:</strong> Crypto markets never close - signals generated continuously</p>
             <p>• <strong>2 Methods:</strong> EQUAL_MEAN (simple average) and WINSORIZED (outlier-resistant)</p>
             <p>• <strong>900 Combinations:</strong> 30 buy thresholds × 30 sell thresholds per method</p>
-            <p>• <strong>Stablecoin Strategy:</strong> Use USDT, USDC, DAI, or USDe for low-fee transfers between positions</p>
+            <p>• <strong>Stablecoin Strategy:</strong> Use USDT, USDC, TUSD, CUSD, or USDe for low-fee transfers between positions</p>
             <p>• <strong>Data Source:</strong> Polygon API with 18 months of minute-by-minute data</p>
           </div>
         </div>
