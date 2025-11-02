@@ -30,6 +30,7 @@ import handleRealVsProjected from './real-vs-projected-endpoint.js';
 import handleCryptoDailyCurve from './crypto-daily-curve-endpoint.js';
 import handleCryptoBestPerformers from './crypto-best-performers-endpoint.js';
 import handleCryptoFastDaily from './crypto-fast-daily-endpoint.js';
+import cryptoGridSearchEndpoint from './crypto-grid-search-endpoint.js';
 
 dotenv.config();
 
@@ -495,6 +496,7 @@ app.post('/api/real-vs-projected', handleRealVsProjected);
 app.get('/api/crypto/daily-curve', (req, res) => handleCryptoDailyCurve(req, res, pool));
 app.get('/api/crypto/best-performers', (req, res) => handleCryptoBestPerformers(req, res, pool));
 app.get('/api/crypto/fast-daily', (req, res) => handleCryptoFastDaily(req, res, pool));
+app.use('/api/crypto', cryptoGridSearchEndpoint);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
