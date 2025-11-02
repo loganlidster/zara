@@ -14,7 +14,8 @@
     "react-dom": "18.2.0",
     "recharts": "2.10.3",
     "date-fns": "3.0.6",
-    "axios": "1.6.2"
+    "axios": "1.6.2",
+    "pg": "^8.11.3"
   },
   "devDependencies": {
     "@types/node": "20.10.5",
