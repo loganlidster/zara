@@ -408,14 +408,23 @@ export default function DailyCurveReport() {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis 
                     dataKey="date" 
-                    tickFormatter={(date) => new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    tickFormatter={(date) => {
+                        // Date is already in YYYY-MM-DD format, just format it without timezone conversion
+                        const [year, month, day] = date.split('-');
+                        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                        return `${monthNames[parseInt(month) - 1]} ${parseInt(day)}`;
+                      }}
                   />
                   <YAxis 
                     label={{ value: 'Cumulative Return (%)', angle: -90, position: 'insideLeft' }}
                     tickFormatter={(value) => `${value.toFixed(0)}%`}
                   />
                   <Tooltip 
-                    labelFormatter={(date) => new Date(date).toLocaleDateString()}
+                    labelFormatter={(date) => {
+                        // Date is already in YYYY-MM-DD format, just format it without timezone conversion
+                        const [year, month, day] = date.split('-');
+                        return `${month}/${day}/${year}`;
+                      }}
                     formatter={(value: any) => value !== null ? `${value.toFixed(2)}%` : 'N/A'}
                   />
                   <Legend />

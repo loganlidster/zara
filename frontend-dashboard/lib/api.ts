@@ -1,7 +1,7 @@
 // API client for Tradiac event-based data
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tradiac-api-941257247637.us-central1.run.app';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api-server-neon-five.vercel.app';
 
 const api = axios.create({
   baseURL: API_URL,
