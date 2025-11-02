@@ -2,9 +2,21 @@
 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
   const router = useRouter();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    // Check if user is admin
+    const checkAdmin = () => {
+      const cookies = document.cookie.split(';');
+      const adminCookie = cookies.find(c => c.trim().startsWith('user_is_admin='));
+      setIsAdmin(adminCookie?.includes('true') || false);
+    };
+    checkAdmin();
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -32,12 +44,22 @@ export default function Header() {
           </h1>
         </Link>
         
-        <button
-          onClick={handleLogout}
-          className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-        >
-          Logout
-        </button>
+        <div className="flex items-center gap-3">
+          {isAdmin && (
+            <Link
+              href="/admin"
+              className="px-4 py-2 text-sm font-medium bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              👤 Admin Panel
+            </Link>
+          )}
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </header>
   );
