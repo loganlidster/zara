@@ -27,6 +27,9 @@ import { handleTradeAnalysis } from './trade-analysis-endpoint.js';
 import handleMultiStockDailyCurve from './multi-stock-daily-curve-endpoint.js';
 import { handleGetWallets, handleGetWalletById } from './wallets-endpoint.js';
 import handleRealVsProjected from './real-vs-projected-endpoint.js';
+import handleCryptoDailyCurve from './crypto-daily-curve-endpoint.js';
+import handleCryptoBestPerformers from './crypto-best-performers-endpoint.js';
+import handleCryptoFastDaily from './crypto-fast-daily-endpoint.js';
 
 dotenv.config();
 
@@ -487,6 +490,11 @@ app.get('/api/wallets/:walletId', handleGetWalletById);
 
 // Real vs Projected comparison endpoint
 app.post('/api/real-vs-projected', handleRealVsProjected);
+
+// Crypto endpoints
+app.get('/api/crypto/daily-curve', (req, res) => handleCryptoDailyCurve(req, res, pool));
+app.get('/api/crypto/best-performers', (req, res) => handleCryptoBestPerformers(req, res, pool));
+app.get('/api/crypto/fast-daily', (req, res) => handleCryptoFastDaily(req, res, pool));
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
