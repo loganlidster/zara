@@ -5,6 +5,13 @@ import Header from '@/components/Header';
 
 const STOCK_REPORTS = [
   {
+    title: 'Grid Search',
+    description: 'Test all buy/sell combinations with heatmap visualization - find optimal thresholds',
+    href: '/reports/grid-search',
+    icon: 'M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM12 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM12 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z',
+    color: 'orange'
+  },
+  {
     title: 'Fast Daily',
     description: 'Single simulation report showing all BUY/SELL events with detailed performance metrics',
     href: '/reports/fast-daily',
@@ -17,6 +24,13 @@ const STOCK_REPORTS = [
     href: '/reports/best-performers',
     icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
     color: 'green'
+  },
+  {
+    title: 'Baseline Lab',
+    description: 'Test multiple baseline methods and find daily winners with consistency analysis',
+    href: '/reports/baseline-lab-fast',
+    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+    color: 'teal'
   },
   {
     title: 'Daily Curve & ROI',
@@ -78,7 +92,8 @@ const colorClasses = {
   pink: 'from-pink-500 to-pink-600 hover:border-pink-500',
   cyan: 'from-cyan-500 to-cyan-600 hover:border-cyan-500',
   red: 'from-red-500 to-red-600 hover:border-red-500',
-  orange: 'from-orange-500 to-orange-600 hover:border-orange-500'
+  orange: 'from-orange-500 to-orange-600 hover:border-orange-500',
+  teal: 'from-teal-500 to-teal-600 hover:border-teal-500'
 };
 
 export default function StocksPage() {
