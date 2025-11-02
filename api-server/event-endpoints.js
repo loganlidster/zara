@@ -15,6 +15,28 @@ dotenv.config();
 
 const router = express.Router();
 
+/**
+ * Helper function to format dates as strings to avoid timezone conversion issues
+ * PostgreSQL DATE type returns as "YYYY-MM-DD 00:00:00 UTC"
+ * When converted to ET timezone, it becomes the previous day
+ * Solution: Format as "YYYY-MM-DD" string before sending to frontend
+ */
+function formatDateString(date) {
+  if (!date) return null;
+  if (typeof date === 'string') return date.split('T')[0];
+  return date.toISOString().split('T')[0];
+}
+
+/**
+ * Helper function to format event rows with proper date strings
+ */
+function formatEventRow(row) {
+  return {
+    ...row,
+    event_date: formatDateString(row.event_date)
+  };
+}
+
 // Database configuration
 const isCloudRun = process.env.K_SERVICE !== undefined;
 const dbConfig = {
@@ -72,6 +94,14 @@ router.get('/query', async (req, res) => {
       endDate
     ]);
 
+      // Add cache-busting headers to prevent browser caching
+      res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+      });
+
     res.json({
       success: true,
       symbol,
@@ -81,7 +111,7 @@ router.get('/query', async (req, res) => {
       sellPct: parseFloat(sellPct),
       dateRange: { startDate, endDate },
       eventCount: result.rows.length,
-      events: result.rows
+      events: result.rows.map(formatEventRow)
     });
 
   } catch (error) {
@@ -132,6 +162,14 @@ router.get('/summary', async (req, res) => {
     ]);
 
     const summary = result.rows[0];
+
+      // Add cache-busting headers to prevent browser caching
+      res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+      });
 
     res.json({
       success: true,
@@ -213,6 +251,14 @@ router.get('/portfolio-state', async (req, res) => {
     }
 
     const state = result.rows[0];
+
+      // Add cache-busting headers to prevent browser caching
+      res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+      });
 
     res.json({
       success: true,
@@ -316,6 +362,14 @@ router.post('/batch-summary', async (req, res) => {
     // Sort by ROI descending
     results.sort((a, b) => b.roiPct - a.roiPct);
 
+      // Add cache-busting headers to prevent browser caching
+      res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+      });
+
     res.json({
       success: true,
       dateRange: { startDate, endDate },
@@ -371,6 +425,14 @@ router.get('/metadata', async (req, res) => {
     query += ' ORDER BY symbol, method, session, buy_pct, sell_pct';
 
     const result = await client.query(query, params);
+
+      // Add cache-busting headers to prevent browser caching
+      res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+      });
 
     res.json({
       success: true,
@@ -456,6 +518,14 @@ router.get('/top-performers', async (req, res) => {
     `;
 
     const result = await client.query(query, params);
+
+      // Add cache-busting headers to prevent browser caching
+      res.set({
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store'
+      });
 
     res.json({
       success: true,
