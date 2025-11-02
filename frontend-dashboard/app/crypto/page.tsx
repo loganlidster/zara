@@ -78,7 +78,7 @@ export default function CryptoPage() {
             Cryptocurrency Trading Analysis vs Bitcoin
           </p>
           <p className="text-sm text-gray-500">
-            27 Symbols • 24/7 Trading • 2 Baseline Methods • 18 Months History
+            19 Symbols • 24/7 Trading • 2 Baseline Methods • 18 Months History
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default function CryptoPage() {
         <div className="bg-white rounded-lg shadow p-6 mb-8 max-w-4xl mx-auto">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Supported Cryptocurrencies</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {['ETH', 'USDT', 'XRP', 'BNB', 'SOL', 'USDC', 'TRX', 'DOGE', 'ADA', 'HYPE', 'LINK', 'BCH', 'XLM', 'USDe', 'LEO', 'SUI', 'HBAR', 'AVAX', 'LTC', 'ZEC', 'XMR', 'SHIB', 'TON', 'DAI', 'CRO', 'TAO', 'DOT'].map(symbol => (
+            {['ETH', 'USDT', 'XRP', 'SOL', 'USDC', 'TRX', 'DOGE', 'ADA', 'HYPE', 'LINK', 'BCH', 'XLM', 'USDe', 'LEO', 'SUI', 'HBAR', 'AVAX', 'LTC', 'ZEC', 'XMR', 'TON', 'TUSD', 'CUSD'].map(symbol => (
               <div key={symbol} className="px-3 py-2 bg-gray-100 rounded text-center text-sm font-medium text-gray-700">
                 {symbol}
               </div>
