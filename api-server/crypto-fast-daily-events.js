@@ -67,13 +67,23 @@ export default async function handler(req, res) {
 
     const result = await pool.query(query, params);
 
+    // Convert string values to numbers
+    const events = result.rows.map(event => ({
+      ...event,
+      crypto_price: parseFloat(event.crypto_price),
+      btc_price: parseFloat(event.btc_price),
+      ratio: parseFloat(event.ratio),
+      baseline: parseFloat(event.baseline),
+      trade_roi_pct: event.trade_roi_pct ? parseFloat(event.trade_roi_pct) : null
+    }));
+
     res.status(200).json({
       success: true,
       symbol: symbol.toUpperCase(),
       method: method.toUpperCase(),
       buy_pct: parseFloat(buy_pct),
       sell_pct: parseFloat(sell_pct),
-      events: result.rows
+      events: events
     });
 
   } catch (error) {
