@@ -32,22 +32,49 @@ function formatTime(dateStr: string): string {
   return date.toISOString().split('T')[1].substring(0, 8);
 }
 
-// Conservative rounding with slippage
+// Helper function to format price with appropriate decimal places
+function formatPrice(price: number): string {
+  if (price >= 100) return price.toFixed(2);
+  if (price >= 10) return price.toFixed(3);
+  if (price >= 1) return price.toFixed(4);
+  if (price >= 0.1) return price.toFixed(5);
+  if (price >= 0.01) return price.toFixed(6);
+  return price.toFixed(8);
+}
+
+// Conservative rounding with slippage - adaptive precision for crypto
 function applyConservativeRounding(price: number, isBuy: boolean, slippagePct: number = 0): number {
   // Apply slippage first
   const priceWithSlippage = isBuy 
     ? price * (1 + slippagePct / 100)  // Increase price for buys
     : price * (1 - slippagePct / 100); // Decrease price for sells
   
-  // Round to nearest cent
-  const cents = Math.round(priceWithSlippage * 100);
+  // Determine appropriate decimal places based on price
+  // This ensures rounding impact is reasonable across all price ranges
+  let decimalPlaces: number;
+  if (priceWithSlippage >= 100) {
+    decimalPlaces = 2;  // $100+ -> round to cents ($100.12)
+  } else if (priceWithSlippage >= 10) {
+    decimalPlaces = 3;  // $10-99 -> round to 0.1 cents ($10.123)
+  } else if (priceWithSlippage >= 1) {
+    decimalPlaces = 4;  // $1-9 -> round to 0.01 cents ($1.1234)
+  } else if (priceWithSlippage >= 0.1) {
+    decimalPlaces = 5;  // $0.10-0.99 -> 5 decimals ($0.12345)
+  } else if (priceWithSlippage >= 0.01) {
+    decimalPlaces = 6;  // $0.01-0.09 -> 6 decimals ($0.012345)
+  } else {
+    decimalPlaces = 8;  // <$0.01 -> 8 decimals (like BTC precision)
+  }
+  
+  const multiplier = Math.pow(10, decimalPlaces);
+  const scaled = priceWithSlippage * multiplier;
   
   if (isBuy) {
     // Round UP for buys (conservative - pay more)
-    return Math.ceil(cents) / 100;
+    return Math.ceil(scaled) / multiplier;
   } else {
     // Round DOWN for sells (conservative - receive less)
-    return Math.floor(cents) / 100;
+    return Math.floor(scaled) / multiplier;
   }
 }
 
@@ -179,8 +206,8 @@ export default function CryptoFastDailyReport() {
       formatDate(e.event_timestamp),
       formatTime(e.event_timestamp),
       e.event_type,
-      e.crypto_price.toFixed(4),
-      e.adjusted_price.toFixed(2),
+      formatPrice(e.crypto_price),
+      formatPrice(e.adjusted_price),
       e.btc_price.toFixed(2),
       e.ratio.toFixed(2),
       e.baseline.toFixed(2),
@@ -399,8 +426,8 @@ export default function CryptoFastDailyReport() {
                       <td className="px-4 py-3 text-sm">{formatDate(event.event_timestamp)}</td>
                       <td className="px-4 py-3 text-sm">{formatTime(event.event_timestamp)}</td>
                       <td className="px-4 py-3 text-sm font-medium">{event.event_type}</td>
-                      <td className="px-4 py-3 text-sm text-right">${event.crypto_price.toFixed(4)}</td>
-                      <td className="px-4 py-3 text-sm text-right">${event.adjusted_price.toFixed(2)}</td>
+                      <td className="px-4 py-3 text-sm text-right">${formatPrice(event.crypto_price)}</td>
+                      <td className="px-4 py-3 text-sm text-right">${formatPrice(event.adjusted_price)}</td>
                       <td className="px-4 py-3 text-sm text-right">${event.btc_price.toFixed(2)}</td>
                       <td className="px-4 py-3 text-sm text-right">{event.ratio.toFixed(2)}</td>
                       <td className="px-4 py-3 text-sm text-right">{event.baseline.toFixed(2)}</td>
