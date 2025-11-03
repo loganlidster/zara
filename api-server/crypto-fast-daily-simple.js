@@ -1,4 +1,4 @@
-import { pool } from './db.js';
+import pool from './db.js';
 
 /**
  * Crypto Fast Daily - Optimized for existing event data

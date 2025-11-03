@@ -1,4 +1,4 @@
-import { pool } from './db.js';
+import pool from './db.js';
 
 /**
  * Crypto Daily Curve - Optimized for existing event data
