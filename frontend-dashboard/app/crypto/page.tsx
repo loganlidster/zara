@@ -7,7 +7,7 @@ const CRYPTO_REPORTS = [
   {
     title: 'Grid Search',
     description: 'Test all buy/sell combinations with heatmap visualization - find optimal thresholds for crypto',
-    href: '/reports/crypto-grid-search',
+    href: '/reports/crypto-grid-search-new',
     icon: 'M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM12 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM12 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z',
     color: 'orange',
     status: 'live'
@@ -15,7 +15,7 @@ const CRYPTO_REPORTS = [
   {
     title: 'Daily Curve',
     description: 'View crypto price movements with BUY/SELL signals based on baseline deviations (24/7 trading)',
-    href: '/reports/crypto-daily-curve',
+    href: '/reports/crypto-daily-curve-new',
     icon: 'M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z',
     color: 'blue',
     status: 'live'
@@ -31,7 +31,7 @@ const CRYPTO_REPORTS = [
   {
     title: 'Fast Daily',
     description: 'Quick performance summary showing total events, returns, and win rates',
-    href: '/reports/crypto-fast-daily',
+    href: '/reports/crypto-fast-daily-new',
     icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
     color: 'purple',
     status: 'coming-soon'
