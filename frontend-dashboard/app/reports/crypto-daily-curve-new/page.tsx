@@ -111,26 +111,38 @@ export default function CryptoDailyCurveReport() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium mb-1">Buy %</label>
-              <input 
-                type="number" 
-                step="0.1"
-                value={buyPct} 
-                onChange={(e) => setBuyPct(parseFloat(e.target.value))}
-                className="w-full border rounded px-3 py-2"
-              />
-            </div>
+                 <label className="block text-sm font-medium mb-1">Buy %</label>
+                 <select 
+                   value={buyPct} 
+                   onChange={(e) => setBuyPct(parseFloat(e.target.value))}
+                   className="w-full border rounded px-3 py-2"
+                 >
+                   <option value="0.3">0.3%</option>
+                   <option value="1.0">1.0%</option>
+                   <option value="1.5">1.5%</option>
+                   <option value="2.0">2.0%</option>
+                   <option value="3.0">3.0%</option>
+                   <option value="4.0">4.0%</option>
+                   <option value="5.0">5.0%</option>
+                 </select>
+               </div>
             
             <div>
-              <label className="block text-sm font-medium mb-1">Sell %</label>
-              <input 
-                type="number" 
-                step="0.1"
-                value={sellPct} 
-                onChange={(e) => setSellPct(parseFloat(e.target.value))}
-                className="w-full border rounded px-3 py-2"
-              />
-            </div>
+                 <label className="block text-sm font-medium mb-1">Sell %</label>
+                 <select 
+                   value={sellPct} 
+                   onChange={(e) => setSellPct(parseFloat(e.target.value))}
+                   className="w-full border rounded px-3 py-2"
+                 >
+                   <option value="0.3">0.3%</option>
+                   <option value="1.0">1.0%</option>
+                   <option value="1.5">1.5%</option>
+                   <option value="2.0">2.0%</option>
+                   <option value="3.0">3.0%</option>
+                   <option value="4.0">4.0%</option>
+                   <option value="5.0">5.0%</option>
+                 </select>
+               </div>
             
             <div>
               <label className="block text-sm font-medium mb-1">Start Date</label>
