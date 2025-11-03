@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 
-const CRYPTO_SYMBOLS = ['ADA', 'AVAX', 'BCH', 'CUSD', 'DAI', 'DOGE', 'ETH', 'HBAR', 'HYPE', 'LEO', 'LINK', 'LTC', 'SOL', 'SUI', 'TON', 'TRX', 'TUSD', 'XLM', 'XMR', 'XRP'];
+const CRYPTO_SYMBOLS = ['ADA', 'AVAX', 'BCH', 'CUSD', 'DAI', 'DOGE', 'ETH', 'HBAR', 'HYPE', 'LEO', 'LINK', 'LTC', 'SOL', 'SUI', 'TON', 'TRX', 'TUSD', 'XLM', 'XMR', 'XRP', 'ZEC'];
 const METHODS = ['EQUAL_MEAN', 'WINSORIZED'];
 const THRESHOLDS = [0.3, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0];
 
