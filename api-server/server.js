@@ -34,6 +34,7 @@ import cryptoGridSearchEndpoint from './crypto-grid-search-endpoint.js';
 import { cryptoGridSearchSimple } from './crypto-grid-search-simple.js';
 import { cryptoFastDailySimple } from './crypto-fast-daily-simple.js';
 import { cryptoDailyCurveSimple } from './crypto-daily-curve-simple.js';
+import handleCryptoFastDailyEvents from './crypto-fast-daily-events.js';
 
 dotenv.config();
 
@@ -503,6 +504,7 @@ app.use('/api/crypto', cryptoGridSearchEndpoint);
 app.get('/api/crypto/grid-search-simple', cryptoGridSearchSimple);
 app.get('/api/crypto/fast-daily-simple', cryptoFastDailySimple);
 app.get('/api/crypto/daily-curve-simple', cryptoDailyCurveSimple);
+app.get('/api/crypto/fast-daily-events', handleCryptoFastDailyEvents);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
