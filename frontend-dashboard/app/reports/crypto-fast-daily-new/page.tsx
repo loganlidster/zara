@@ -44,7 +44,7 @@ export default function CryptoFastDailyReport() {
     setError(null);
 
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api-server-neon-five.vercel.app';
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tradiac-api-941257247637.us-central1.run.app';
       const params = new URLSearchParams({
         symbol,
         method,
