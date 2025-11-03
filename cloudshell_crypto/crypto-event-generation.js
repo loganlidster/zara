@@ -39,6 +39,14 @@ const pool = new Pool({
 
 // Configuration from environment
 const METHOD = process.env.METHOD;
+
+// Validate METHOD is set
+if (!METHOD) {
+  console.error('ERROR: METHOD environment variable is required');
+  console.error('Usage: METHOD=EQUAL_MEAN node crypto-event-generation.js');
+  process.exit(1);
+}
+
 const START_DATE = process.env.START_DATE || '2024-10-01'; // 13 months of data (Oct 2024 - Nov 2, 2025)
 const END_DATE = process.env.END_DATE || '2025-11-02';
 

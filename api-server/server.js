@@ -31,6 +31,9 @@ import handleCryptoDailyCurve from './crypto-daily-curve-endpoint.js';
 import handleCryptoBestPerformers from './crypto-best-performers-endpoint.js';
 import handleCryptoFastDaily from './crypto-fast-daily-endpoint.js';
 import cryptoGridSearchEndpoint from './crypto-grid-search-endpoint.js';
+import { cryptoGridSearchSimple } from './crypto-grid-search-simple.js';
+import { cryptoFastDailySimple } from './crypto-fast-daily-simple.js';
+import { cryptoDailyCurveSimple } from './crypto-daily-curve-simple.js';
 
 dotenv.config();
 
@@ -497,6 +500,9 @@ app.get('/api/crypto/daily-curve', (req, res) => handleCryptoDailyCurve(req, res
 app.get('/api/crypto/best-performers', (req, res) => handleCryptoBestPerformers(req, res, pool));
 app.get('/api/crypto/fast-daily', (req, res) => handleCryptoFastDaily(req, res, pool));
 app.use('/api/crypto', cryptoGridSearchEndpoint);
+app.get('/api/crypto/grid-search-simple', cryptoGridSearchSimple);
+app.get('/api/crypto/fast-daily-simple', cryptoFastDailySimple);
+app.get('/api/crypto/daily-curve-simple', cryptoDailyCurveSimple);
 
 // Pattern analysis endpoints
 app.get('/api/patterns/summary', patternEndpoints.getPatternSummary);
