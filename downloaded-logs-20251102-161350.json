@@ -1,0 +1,136 @@
+[
+  {
+    "textPayload": "file:///app/event-update-job.js:8",
+    "insertId": "6907f2a800031a4eb8fa4f45",
+    "resource": {
+      "type": "cloud_run_job",
+      "labels": {
+        "location": "us-central1",
+        "job_name": "crypto-event-job",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-11-03T00:09:12.203342Z",
+    "labels": {
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0",
+      "instanceId": "0014778296f3cbd91d5d19716886b8f32eb2c4fa214dee582cded4b73916ba7aacf019c3a223e2481ca86aed4d9eff09838689bb304789588c56c4c935bb818c04e15459aaa23bf7ca6a8086ba526406903f",
+      "run.googleapis.com/execution_name": "crypto-event-job-bghtl"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-11-03T00:09:12.208806342Z"
+  },
+  {
+    "textPayload": "function getTableName(method, session) { return 'trade_events_' + session.toLowerCase() + '_' + method.toLowerCase(); }",
+    "insertId": "6907f2a800031a65e8b1e492",
+    "resource": {
+      "type": "cloud_run_job",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "job_name": "crypto-event-job",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-11-03T00:09:12.203365Z",
+    "labels": {
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0",
+      "run.googleapis.com/execution_name": "crypto-event-job-bghtl",
+      "instanceId": "0014778296f3cbd91d5d19716886b8f32eb2c4fa214dee582cded4b73916ba7aacf019c3a223e2481ca86aed4d9eff09838689bb304789588c56c4c935bb818c04e15459aaa23bf7ca6a8086ba526406903f"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-11-03T00:09:12.208806342Z"
+  },
+  {
+    "textPayload": "                                                                          ^",
+    "insertId": "6907f2a800031a7dadfec04d",
+    "resource": {
+      "type": "cloud_run_job",
+      "labels": {
+        "job_name": "crypto-event-job",
+        "project_id": "tradiac-testing",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2025-11-03T00:09:12.203389Z",
+    "labels": {
+      "run.googleapis.com/task_index": "0",
+      "run.googleapis.com/task_attempt": "0",
+      "instanceId": "0014778296f3cbd91d5d19716886b8f32eb2c4fa214dee582cded4b73916ba7aacf019c3a223e2481ca86aed4d9eff09838689bb304789588c56c4c935bb818c04e15459aaa23bf7ca6a8086ba526406903f",
+      "run.googleapis.com/execution_name": "crypto-event-job-bghtl"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-11-03T00:09:12.208806342Z"
+  },
+  {
+    "textPayload": "TypeError: Cannot read properties of undefined (reading 'toLowerCase')\n    at getTableName (file:///app/event-update-job.js:8:75)\n    at file:///app/event-update-job.js:9:20\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)",
+    "insertId": "6907f2a800031a9d11fa1771",
+    "resource": {
+      "type": "cloud_run_job",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "job_name": "crypto-event-job"
+      }
+    },
+    "timestamp": "2025-11-03T00:09:12.203421Z",
+    "severity": "ERROR",
+    "labels": {
+      "run.googleapis.com/execution_name": "crypto-event-job-bghtl",
+      "instanceId": "0014778296f3cbd91d5d19716886b8f32eb2c4fa214dee582cded4b73916ba7aacf019c3a223e2481ca86aed4d9eff09838689bb304789588c56c4c935bb818c04e15459aaa23bf7ca6a8086ba526406903f",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-11-03T00:09:12.208806342Z",
+    "errorGroups": [
+      {
+        "id": "CIrY8L6B6MnUVg"
+      }
+    ]
+  },
+  {
+    "textPayload": "Node.js v20.19.5",
+    "insertId": "6907f2a800031aa209139bd5",
+    "resource": {
+      "type": "cloud_run_job",
+      "labels": {
+        "location": "us-central1",
+        "job_name": "crypto-event-job",
+        "project_id": "tradiac-testing"
+      }
+    },
+    "timestamp": "2025-11-03T00:09:12.203426Z",
+    "labels": {
+      "run.googleapis.com/task_index": "0",
+      "run.googleapis.com/execution_name": "crypto-event-job-bghtl",
+      "instanceId": "0014778296f3cbd91d5d19716886b8f32eb2c4fa214dee582cded4b73916ba7aacf019c3a223e2481ca86aed4d9eff09838689bb304789588c56c4c935bb818c04e15459aaa23bf7ca6a8086ba526406903f",
+      "run.googleapis.com/task_attempt": "0"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2025-11-03T00:09:12.208806342Z"
+  },
+  {
+    "textPayload": "Container called exit(1).",
+    "insertId": "6907f2a80003b171ebdd1280",
+    "resource": {
+      "type": "cloud_run_job",
+      "labels": {
+        "project_id": "tradiac-testing",
+        "location": "us-central1",
+        "job_name": "crypto-event-job"
+      }
+    },
+    "timestamp": "2025-11-03T00:09:12.241904Z",
+    "severity": "WARNING",
+    "labels": {
+      "run.googleapis.com/execution_name": "crypto-event-job-bghtl",
+      "instanceId": "0014778296f3cbd91d5d19716886b8f32eb2c4fa214dee582cded4b73916ba7aacf019c3a223e2481ca86aed4d9eff09838689bb304789588c56c4c935bb818c04e15459aaa23bf7ca6a8086ba526406903f",
+      "run.googleapis.com/task_index": "0",
+      "run.googleapis.com/task_attempt": "0",
+      "container_name": "worker"
+    },
+    "logName": "projects/tradiac-testing/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-11-03T00:09:12.245794603Z"
+  }
+]

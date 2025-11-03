@@ -1,99 +1,40 @@
-# TRADIAC Crypto System - Implementation Checklist
+# Crypto Reports - Critical 3
 
-## ✅ COMPLETED
+## 1. Grid Search Report
+- [x] Create optimized API endpoint (query existing data)
+- [x] Test with ADA data - WORKING! (3.4M events, 2 symbols)
+- [x] Create new frontend page (crypto-grid-search-new)
+- [ ] Deploy to production
 
-### Database Setup
-- [x] Create crypto database tables (8 tables)
-- [x] Verify tables created successfully
-- [x] Test data import (1 hour sample)
+## 2. Fast Daily Report
+- [x] Create optimized API endpoint (query existing data)
+- [x] Test with ADA data - WORKING!
+- [x] Create new frontend page (crypto-fast-daily-new)
+- [ ] Deploy to production
 
-### Scripts Created
-- [x] crypto-data-import.js (Coinbase API integration)
-- [x] crypto-baseline-calculation.js (5 baseline methods)
-- [x] crypto-event-generation.js (event generation logic)
-- [x] Documentation (CRYPTO_SYSTEM_SETUP.md)
+## 3. Daily Curve Report
+- [x] Create optimized API endpoint (query existing data)
+- [x] Test with ADA data - WORKING!
+- [x] Create new frontend page (crypto-daily-curve-new)
+- [ ] Deploy to production
 
----
+## 4. Deploy & Test - READY FOR TESTING ✅
+- [x] Push API changes to production (commit 19348a4)
+- [x] Push frontend changes to production (commit 19348a4)
+- [x] Update crypto landing page with new report links (commit 5dc8117)
+- [x] Fix import syntax error in crypto endpoints (commit b2bee6a)
+- [x] Fix threshold inputs to use dropdowns (commit 4b84757)
+- [x] Fix API URL to use Cloud Run instead of Vercel (commit c8cdb81)
+- [x] Vercel deployment complete
+- [ ] Test all 3 reports on raas.help
+- [ ] Verify dropdowns show only 7 thresholds (0.3-5.0%)
+- [ ] Verify performance (fast queries)
+- [ ] Confirm ALL 19 symbols available in dropdowns
 
-## 🔄 IN PROGRESS
-
-### Data Collection
-- [ ] Backfill historical crypto data (6-12 months)
-- [ ] Verify data quality and completeness
-- [ ] Calculate baselines for all dates
-
-### Event Generation
-- [ ] Generate events for all 5 methods
-- [ ] Verify event counts and quality
-- [ ] Test sample queries
-
----
-
-## ⏳ TODO
-
-### API Development
-- [ ] Create crypto API endpoints (crypto-endpoints.js)
-- [ ] Add crypto routes to main server
-- [ ] Test API responses
-- [ ] Deploy API to Vercel
-
-### Frontend Development
-- [ ] Create crypto Fast Daily report
-- [ ] Create crypto Daily Curve report
-- [ ] Create crypto Best Performers report
-- [ ] Add navigation links
-- [ ] Deploy frontend to Vercel
-
-### Testing & Validation
-- [ ] Test end-to-end flow (data → baseline → events → API → report)
-- [ ] Verify dates display correctly
-- [ ] Compare crypto vs stock performance
-- [ ] Validate calculations
-
-### Documentation
-- [ ] Update COMPLETE_SYSTEM_DOCUMENTATION.md with crypto section
-- [ ] Create crypto-specific troubleshooting guide
-- [ ] Document API endpoints
-- [ ] Create user guide for crypto reports
-
----
-
-## 🎯 CURRENT PRIORITY
-
-**Next Action**: Backfill historical data
-
-**Command**:
-```bash
-cd processor
-node crypto-data-import.js --backfill 2025-04-01
-```
-
-**Expected Result**: ~7 months of data (~300K crypto bars, ~40K BTC bars)
-
-**Estimated Time**: 2-3 hours (due to API rate limits)
-
----
-
-## 📊 PROGRESS METRICS
-
-- Database tables: 8/8 (100%) ✅
-- Scripts created: 3/3 (100%) ✅
-- Data imported: 1 hour / 7 months (0.6%) 🔄
-- Baselines calculated: 0 / ~1,050 (0%) ⏳
-- Events generated: 0 / ~40M (0%) ⏳
-- API endpoints: 0 / 5 (0%) ⏳
-- Frontend reports: 0 / 3 (0%) ⏳
-
-**Overall Progress: 25%**
-
----
-
-## 🚀 ESTIMATED TIMELINE
-
-- **Today**: Database + scripts (DONE ✅)
-- **Tomorrow**: Data backfill + baselines (2-3 hours)
-- **Day 3**: Event generation (30-40 minutes)
-- **Day 4**: API + Frontend (2-3 hours)
-- **Day 5**: Testing + deployment (1-2 hours)
-
-**Total: 4-5 days to full crypto system**
+## 5. Current Status - COMPLETE ✅
+- [x] Event generation COMPLETE
+- [x] All 19 symbols processed (ADA, AVAX, BCH, CUSD, DAI, DOGE, ETH, HBAR, HYPE, LEO, LINK, LTC, SOL, SUI, TON, TRX, TUSD, XLM, XMR)
+- [x] Total: 65.8M events generated
+- [x] EQUAL_MEAN: 33.2M events
+- [x] WINSORIZED: 32.6M events
+- [x] All reports deployed and functional

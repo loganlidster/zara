@@ -1,0 +1,12 @@
+# CORRECTED BLOCK 4: Execute Both Jobs
+
+Paste this into Cloud Shell:
+
+gcloud run jobs execute crypto-event-job --region us-central1 --update-env-vars METHOD=EQUAL_MEAN --async
+
+gcloud run jobs execute crypto-event-job --region us-central1 --update-env-vars METHOD=WINSORIZED --async
+
+echo "✅ Both jobs started!"
+
+# Then monitor at:
+# https://console.cloud.google.com/run/jobs?project=tradiac-testing
