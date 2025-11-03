@@ -22,7 +22,15 @@ TO_CHAR(date_column, 'MM/DD/YYYY') as formatted_date
 ```
 
 ## Steps
-1. Find all crypto report API endpoints
-2. Update SQL queries to format dates
-3. Test each report
-4. Verify dates display correctly
+1. [x] Find all crypto report API endpoints
+2. [x] Update SQL queries to format dates
+3. [x] Update frontend threshold dropdowns to 30 values
+   - [x] crypto-daily-curve-new (manual dropdowns)
+   - [x] crypto-fast-daily (THRESHOLDS constant)
+   - [x] crypto-fast-daily-new (queries all combos - no change needed)
+   - [x] crypto-grid-search-new (queries all combos - no change needed)
+4. [x] Push to GitHub (auto-deploys)
+5. [ ] Wait for deployment
+6. [ ] Test crypto reports
+7. [ ] Verify dates display as MM/DD/YYYY
+8. [ ] Verify all 30 threshold options available
