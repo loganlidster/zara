@@ -62,7 +62,7 @@ export default async function handleCryptoDailyCurve(req, res, pool) {
       // Get events with baseline data
       const query = `
         SELECT 
-          e.event_timestamp,
+          TO_CHAR(e.event_timestamp, 'MM/DD/YYYY HH24:MI:SS') as event_timestamp,
           e.event_type,
           e.crypto_price,
           e.btc_price,
@@ -81,7 +81,7 @@ export default async function handleCryptoDailyCurve(req, res, pool) {
       // Format dates as strings to avoid timezone issues
       const events = result.rows.map(row => ({
         ...row,
-        event_timestamp: row.event_timestamp.toISOString(),
+        event_timestamp: row.event_timestamp,
         crypto_price: parseFloat(row.crypto_price),
         btc_price: parseFloat(row.btc_price),
         ratio: parseFloat(row.ratio),
@@ -94,7 +94,7 @@ export default async function handleCryptoDailyCurve(req, res, pool) {
       // Get minute data for the chart (crypto prices and baselines)
       const minuteQuery = `
         SELECT 
-          mc.timestamp,
+          TO_CHAR(mc.timestamp, 'MM/DD/YYYY HH24:MI:SS') as timestamp,
           mc.close as crypto_price,
           mbc.close as btc_price,
           mbc.close / mc.close as ratio,
@@ -118,7 +118,7 @@ export default async function handleCryptoDailyCurve(req, res, pool) {
       const minuteResult = await client.query(minuteQuery, minuteParams);
 
       const minuteData = minuteResult.rows.map(row => ({
-        timestamp: row.timestamp.toISOString(),
+        timestamp: row.timestamp,
         crypto_price: parseFloat(row.crypto_price),
         btc_price: parseFloat(row.btc_price),
         ratio: parseFloat(row.ratio),

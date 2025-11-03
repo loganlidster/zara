@@ -21,7 +21,7 @@ async function fetchEventsForCombination(client, symbol, method, buyPct, sellPct
   
   const query = `
     SELECT 
-      event_timestamp,
+      TO_CHAR(event_timestamp, 'MM/DD/YYYY HH24:MI:SS') as event_timestamp,
       event_type,
       crypto_price,
       btc_price,

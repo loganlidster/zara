@@ -1,0 +1,32 @@
+# BLOCK 3: Execute Event Generation for Both Methods
+# Copy and paste this entire block into Cloud Shell
+
+echo "Starting EQUAL_MEAN method..."
+gcloud run jobs execute crypto-event-generation \
+  --region us-central1 \
+  --update-env-vars METHOD=EQUAL_MEAN \
+  --wait
+
+echo ""
+echo "✅ EQUAL_MEAN complete!"
+echo ""
+echo "Starting WINSORIZED method..."
+
+gcloud run jobs execute crypto-event-generation \
+  --region us-central1 \
+  --update-env-vars METHOD=WINSORIZED \
+  --wait
+
+echo ""
+echo "=========================================="
+echo "✅ ALL COMPLETE - 30x30 GRID REGENERATION"
+echo "=========================================="
+echo ""
+echo "Summary:"
+echo "- 30 buy thresholds × 30 sell thresholds = 900 combinations"
+echo "- 19 crypto symbols"
+echo "- 2 baseline methods (EQUAL_MEAN, WINSORIZED)"
+echo "- Total: 19 × 900 × 2 = 34,200 parameter sets"
+echo ""
+echo "Next: Test your crypto reports to see the expanded data!"
+echo ""

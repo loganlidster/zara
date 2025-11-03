@@ -1,0 +1,17 @@
+# BLOCK 2: Build Docker Image and Deploy Cloud Run Job
+# Copy and paste this entire block into Cloud Shell
+
+# Build and push Docker image
+gcloud builds submit --tag gcr.io/tradiac-testing/crypto-event-generation
+
+# Deploy Cloud Run job
+gcloud run jobs deploy crypto-event-generation \
+  --image gcr.io/tradiac-testing/crypto-event-generation \
+  --region us-central1 \
+  --memory 4Gi \
+  --cpu 2 \
+  --max-retries 0 \
+  --task-timeout 3600 \
+  --set-env-vars DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_PASSWORD=Fu3lth3j3t!
+
+echo "✅ Block 2 Complete: Docker image built and Cloud Run job deployed"

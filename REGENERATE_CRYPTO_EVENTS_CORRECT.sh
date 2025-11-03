@@ -45,7 +45,12 @@ const METHOD = process.env.METHOD;
 const START_DATE = '2024-10-01';
 const END_DATE = '2025-11-02';
 const BATCH_SIZE = 5000;
-const THRESHOLDS = [0.3, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0];
+// 30 thresholds: 0.1 to 2.0 by 0.1 (20 values) + 10 additional values
+const THRESHOLDS = [
+  0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
+  1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
+  2.2, 2.4, 2.8, 3.0, 3.5, 3.7, 3.9, 4.0, 4.5, 5.0
+];
 
 function generateCombinations() {
   const combinations = [];

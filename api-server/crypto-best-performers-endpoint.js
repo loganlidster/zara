@@ -68,7 +68,7 @@ export default async function handleCryptoBestPerformers(req, res, pool) {
             symbol,
             buy_pct,
             sell_pct,
-            event_timestamp,
+            TO_CHAR(event_timestamp, 'MM/DD/YYYY HH24:MI:SS') as event_timestamp,
             event_type,
             crypto_price,
             LAG(crypto_price) OVER (PARTITION BY symbol, buy_pct, sell_pct ORDER BY event_timestamp) as prev_price,

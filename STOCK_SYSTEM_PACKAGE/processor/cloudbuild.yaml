@@ -1,0 +1,38 @@
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-f'
+      - 'Dockerfile.event-update'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/event-update-job:latest'
+      - '.'
+    dir: 'processor'
+
+  # Push the image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/event-update-job:latest'
+
+  # Deploy to Cloud Run Jobs
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'jobs'
+      - 'create'
+      - 'event-update-job'
+      - '--image=gcr.io/$PROJECT_ID/event-update-job:latest'
+      - '--region=us-central1'
+      - '--set-env-vars=DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_PASSWORD=Fu3lth3j3t!'
+      - '--max-retries=0'
+      - '--task-timeout=3600'
+      - '--memory=4Gi'
+      - '--cpu=2'
+
+images:
+  - 'gcr.io/$PROJECT_ID/event-update-job:latest'
+
+timeout: '1200s'

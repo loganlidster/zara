@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         symbol,
         buy_pct,
         sell_pct,
-        event_timestamp,
+        TO_CHAR(event_timestamp, 'MM/DD/YYYY HH24:MI:SS') as event_timestamp,
         event_type,
         crypto_price,
         btc_price,

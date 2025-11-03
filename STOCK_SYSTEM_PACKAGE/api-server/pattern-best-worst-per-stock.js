@@ -1,0 +1,290 @@
+// Pattern Best/Worst Per Stock Endpoint
+// Shows best AND worst performing strategies for each stock during pattern dates
+
+// fetch is built-in in Node.js 18+
+
+// POST /api/patterns/best-worst-per-stock
+// Analyzes best and worst strategies for each stock during pattern matches
+export async function bestWorstPerStock(req, res) {
+  try {
+    const {
+      matches,        // array of pattern matches from custom-detect
+      offset = 0,     // 0 = during pattern, 1 = day after, 2 = 2 days after, etc.
+      minInstances = 3 // minimum pattern instances to include strategy
+    } = req.body;
+
+    if (!matches || !Array.isArray(matches) || matches.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing or invalid matches array'
+      });
+    }
+
+    console.log(`Analyzing best/worst per stock for ${matches.length} pattern matches with offset ${offset}`);
+    console.log(`minInstances: ${minInstances}`);
+
+    const API_BASE_URL = 'https://tradiac-api-941257247637.us-central1.run.app';
+    const allResults = [];
+
+    // Process matches in parallel batches of 25 (faster processing)
+    const batchSize = 25;
+    const batches = [];
+    for (let i = 0; i < matches.length; i += batchSize) {
+      batches.push(matches.slice(i, i + batchSize));
+    }
+
+    console.log(`Processing ${matches.length} matches in ${batches.length} batches of ${batchSize}`);
+
+    for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+      const batch = batches[batchIndex];
+      console.log(`Processing batch ${batchIndex + 1}/${batches.length} (${batch.length} matches)`);
+
+      // Process all matches in this batch in parallel
+      const batchPromises = batch.map(async (match, i) => {
+        const actualIndex = batchIndex * batchSize + i;
+      
+      try {
+          // Calculate analysis date range based on offset
+          let analysisStartDate, analysisEndDate;
+          
+          if (offset === 0) {
+            // During the pattern
+            analysisStartDate = match.start_date;
+            analysisEndDate = match.end_date;
+          } else {
+            // After the pattern (offset days)
+            const endDate = new Date(match.end_date);
+            analysisStartDate = new Date(endDate);
+            analysisStartDate.setDate(analysisStartDate.getDate() + offset);
+            
+            analysisEndDate = new Date(analysisStartDate);
+            analysisEndDate.setDate(analysisEndDate.getDate() + 1); // Analyze 1 day
+            
+            analysisStartDate = analysisStartDate.toISOString().split('T')[0];
+            analysisEndDate = analysisEndDate.toISOString().split('T')[0];
+          }
+
+          console.log(`  [${actualIndex + 1}/${matches.length}] Analyzing ${analysisStartDate} to ${analysisEndDate}`);
+
+        // Call both RTH and AH in parallel
+          const rthUrl = `${API_BASE_URL}/api/events/fast-aggregated-performers?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=RTH&limit=500`;
+          const ahUrl = `${API_BASE_URL}/api/events/fast-aggregated-performers?startDate=${analysisStartDate}&endDate=${analysisEndDate}&session=AH&limit=500`;
+
+          const [rthResponse, ahResponse] = await Promise.all([
+            fetch(rthUrl, { method: 'GET', headers: { 'Content-Type': 'application/json' } }),
+            fetch(ahUrl, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+          ]);
+
+          const [rthResult, ahResult] = await Promise.all([
+            rthResponse.json(),
+            ahResponse.json()
+          ]);
+
+          const matchResults = [];
+
+          if (rthResult.success && rthResult.performers) {
+            rthResult.performers.forEach(strategy => {
+              matchResults.push({
+                symbol: strategy.symbol,
+                method: strategy.method,
+                session: strategy.session,
+                buyPct: strategy.buyPct,
+                sellPct: strategy.sellPct,
+                totalRoi: strategy.totalRoi,
+                totalTrades: strategy.totalTrades,
+                winningTrades: strategy.winningTrades,
+                matchStartDate: match.start_date,
+                matchEndDate: match.end_date,
+                matchChangePct: match.change_pct,
+                analysisStartDate,
+                analysisEndDate,
+                offset
+              });
+            });
+          }
+
+          if (ahResult.success && ahResult.performers) {
+            ahResult.performers.forEach(strategy => {
+              matchResults.push({
+                symbol: strategy.symbol,
+                method: strategy.method,
+                session: strategy.session,
+                buyPct: strategy.buyPct,
+                sellPct: strategy.sellPct,
+                totalRoi: strategy.totalRoi,
+                totalTrades: strategy.totalTrades,
+                winningTrades: strategy.winningTrades,
+                matchStartDate: match.start_date,
+                matchEndDate: match.end_date,
+                matchChangePct: match.change_pct,
+                analysisStartDate,
+                analysisEndDate,
+                offset
+              });
+            });
+          }
+
+          return matchResults;
+
+        } catch (error) {
+          console.error(`  Error processing match ${actualIndex + 1}:`, error.message);
+          return [];
+        }
+      });
+
+      // Wait for all matches in this batch to complete
+      const batchResults = await Promise.all(batchPromises);
+      
+      // Flatten and add to allResults
+      batchResults.forEach(results => {
+        allResults.push(...results);
+      });
+
+      console.log(`Batch ${batchIndex + 1} complete. Total results so far: ${allResults.length}`);
+    }
+
+    // Aggregate results by strategy (symbol, method, session, buy_pct, sell_pct)
+    const aggregated = {};
+    
+    console.log(`Total results collected from API calls: ${allResults.length}`);
+    
+    allResults.forEach(result => {
+      const key = `${result.symbol}_${result.method}_${result.session}_${result.buyPct}_${result.sellPct}`;
+      
+      if (!aggregated[key]) {
+        aggregated[key] = {
+          symbol: result.symbol,
+          method: result.method,
+          session: result.session,
+          buyPct: result.buyPct,
+          sellPct: result.sellPct,
+          instances: 0,
+          totalRoi: 0,
+          winningInstances: 0,
+          totalTrades: 0,
+          winningTrades: 0,
+          roiValues: []
+        };
+      }
+
+      aggregated[key].instances++;
+      aggregated[key].totalRoi += result.totalRoi || 0;
+      aggregated[key].roiValues.push(result.totalRoi || 0);
+      
+      if (result.totalRoi > 0) {
+        aggregated[key].winningInstances++;
+      }
+      
+      aggregated[key].totalTrades += result.totalTrades || 0;
+      aggregated[key].winningTrades += result.winningTrades || 0;
+    });
+
+    // Calculate final metrics for all strategies (don't filter by minInstances yet)
+    console.log(`Unique strategies aggregated: ${Object.keys(aggregated).length}`);
+    
+    const allStrategies = Object.values(aggregated)
+      .map(strategy => ({
+        symbol: strategy.symbol,
+        method: strategy.method,
+        session: strategy.session,
+        buyPct: strategy.buyPct,
+        sellPct: strategy.sellPct,
+        instances: strategy.instances,
+        avgRoi: strategy.totalRoi / strategy.instances,
+        consistency: (strategy.winningInstances / strategy.instances) * 100,
+        totalTrades: strategy.totalTrades,
+        avgWinRate: strategy.totalTrades > 0 
+          ? (strategy.winningTrades / strategy.totalTrades) * 100 
+          : 0,
+        minRoi: Math.min(...strategy.roiValues),
+        maxRoi: Math.max(...strategy.roiValues)
+      }));
+
+    // Group by stock and session, find best and worst for each
+    const stockSessions = {};
+    
+    console.log(`Total strategies before grouping: ${allStrategies.length}`);
+    
+    allStrategies.forEach(strategy => {
+      const key = `${strategy.symbol}_${strategy.session}`;
+      
+      if (!stockSessions[key]) {
+        stockSessions[key] = {
+          symbol: strategy.symbol,
+          session: strategy.session,
+          strategies: []
+        };
+      }
+      
+      stockSessions[key].strategies.push(strategy);
+    });
+
+    // Find best and worst for each stock+session
+    const results = [];
+    
+    console.log(`Stock+Session groups: ${Object.keys(stockSessions).length}`);
+    
+    Object.values(stockSessions).forEach(group => {
+      console.log(`Processing ${group.symbol} ${group.session}: ${group.strategies.length} strategies`);
+      
+      // Filter strategies that meet minInstances requirement
+      let validStrategies = group.strategies.filter(s => s.instances >= minInstances);
+      
+      console.log(`  After minInstances filter (>=${minInstances}): ${validStrategies.length} strategies`);
+      
+      if (validStrategies.length === 0) {
+        // If no strategies meet minInstances, just use all strategies for this stock+session
+        console.log(`  No strategies meet minInstances, using all ${group.strategies.length} strategies`);
+        validStrategies = [...group.strategies];
+      }
+      
+      // Sort by avgRoi
+      const sorted = validStrategies.sort((a, b) => b.avgRoi - a.avgRoi);
+      
+      if (sorted.length > 0) {
+        // Best strategy
+        results.push({
+          ...sorted[0],
+          category: 'BEST'
+        });
+        
+        // Worst strategy (if we have more than one)
+        if (sorted.length > 1) {
+          results.push({
+            ...sorted[sorted.length - 1],
+            category: 'WORST'
+          });
+        }
+      }
+    });
+
+    // Sort results: by symbol, then session (RTH first), then category (BEST first)
+    results.sort((a, b) => {
+      if (a.symbol !== b.symbol) return a.symbol.localeCompare(b.symbol);
+      if (a.session !== b.session) return a.session === 'RTH' ? -1 : 1;
+      return a.category === 'BEST' ? -1 : 1;
+    });
+
+    console.log(`Found ${results.length} best/worst strategies across ${Object.keys(stockSessions).length} stock+session combinations`);
+
+    res.json({
+      success: true,
+      offset,
+      matchesAnalyzed: matches.length,
+      minInstances,
+      totalResults: results.length,
+      data: results
+    });
+
+  } catch (error) {
+    console.error('Error in bestWorstPerStock:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+}
+
+export default {
+  bestWorstPerStock
+};

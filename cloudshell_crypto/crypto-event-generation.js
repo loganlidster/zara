@@ -58,13 +58,16 @@ const BATCH_SIZE = 1500;
 
 /**
  * Generate parameter combinations
- * Custom thresholds optimized for 0.3% round-trip fees (0.15% each way)
- * Minimum 0.2% net profit after fees
+ * 30x30 grid: 0.1 to 2.0 by 0.1 increments + additional values
  */
 function generateCombinations() {
   const combinations = [];
-  // Custom thresholds: 0.3, 0.6, 0.8, 1.0, 1.4, 1.8, 2.0, 2.4, 2.8, 3.0, 3.5, 4.0, 5.0
-  const thresholds = [0.3, 0.6, 0.8, 1.0, 1.4, 1.8, 2.0, 2.4, 2.8, 3.0, 3.5, 4.0, 5.0];
+  // 30 thresholds: 0.1 to 2.0 by 0.1 (20 values) + 10 additional values
+  const thresholds = [
+    0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
+    1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
+    2.2, 2.4, 2.8, 3.0, 3.5, 3.7, 3.9, 4.0, 4.5, 5.0
+  ];
   
   for (const buy of thresholds) {
     for (const sell of thresholds) {
@@ -75,7 +78,7 @@ function generateCombinations() {
     }
   }
   
-  console.log(`Custom thresholds: ${thresholds.join(', ')}`);
+  console.log(`30x30 Grid thresholds: ${thresholds.join(', ')}`);
   console.log(`Total combinations: ${combinations.length} (${thresholds.length}×${thresholds.length})`);
   
   return combinations;

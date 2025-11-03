@@ -1,40 +1,28 @@
-# Crypto Reports - Critical 3
+# Update Crypto Reports Date Format
 
-## 1. Grid Search Report
-- [x] Create optimized API endpoint (query existing data)
-- [x] Test with ADA data - WORKING! (3.4M events, 2 symbols)
-- [x] Create new frontend page (crypto-grid-search-new)
-- [ ] Deploy to production
+## Task
+Change date display in crypto reports from UTC timestamp to MM/DD/YYYY format
 
-## 2. Fast Daily Report
-- [x] Create optimized API endpoint (query existing data)
-- [x] Test with ADA data - WORKING!
-- [x] Create new frontend page (crypto-fast-daily-new)
-- [ ] Deploy to production
+## Current Issue
+- Dates showing as: "2025-10-26T00:00:00.000Z"
+- Hard to read and takes up too much space
+- Need: "10/26/2025"
 
-## 3. Daily Curve Report
-- [x] Create optimized API endpoint (query existing data)
-- [x] Test with ADA data - WORKING!
-- [x] Create new frontend page (crypto-daily-curve-new)
-- [ ] Deploy to production
+## Files to Update
+- [x] Crypto Daily Curve report API endpoint
+- [x] Crypto Fast Daily report API endpoint (crypto-fast-daily-events.js)
+- [x] Crypto Grid Search report API endpoint
+- [x] Crypto Best Performers endpoint
+- [x] All crypto simple endpoints
 
-## 4. Deploy & Test - READY FOR TESTING ✅
-- [x] Push API changes to production (commit 19348a4)
-- [x] Push frontend changes to production (commit 19348a4)
-- [x] Update crypto landing page with new report links (commit 5dc8117)
-- [x] Fix import syntax error in crypto endpoints (commit b2bee6a)
-- [x] Fix threshold inputs to use dropdowns (commit 4b84757)
-- [x] Fix API URL to use Cloud Run instead of Vercel (commit c8cdb81)
-- [x] Vercel deployment complete
-- [ ] Test all 3 reports on raas.help
-- [ ] Verify dropdowns show only 7 thresholds (0.3-5.0%)
-- [ ] Verify performance (fast queries)
-- [ ] Confirm ALL 19 symbols available in dropdowns
+## SQL Change Needed
+Replace date columns with:
+```sql
+TO_CHAR(date_column, 'MM/DD/YYYY') as formatted_date
+```
 
-## 5. Current Status - COMPLETE ✅
-- [x] Event generation COMPLETE
-- [x] All 19 symbols processed (ADA, AVAX, BCH, CUSD, DAI, DOGE, ETH, HBAR, HYPE, LEO, LINK, LTC, SOL, SUI, TON, TRX, TUSD, XLM, XMR)
-- [x] Total: 65.8M events generated
-- [x] EQUAL_MEAN: 33.2M events
-- [x] WINSORIZED: 32.6M events
-- [x] All reports deployed and functional
+## Steps
+1. Find all crypto report API endpoints
+2. Update SQL queries to format dates
+3. Test each report
+4. Verify dates display correctly

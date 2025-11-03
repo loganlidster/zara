@@ -1,0 +1,18 @@
+FROM node:20-slim
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the event update job
+COPY event-update-job.js ./
+
+# Make executable
+RUN chmod +x event-update-job.js
+
+# Run the job
+CMD ["node", "event-update-job.js"]

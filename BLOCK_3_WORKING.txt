@@ -1,0 +1,29 @@
+echo "Clearing crypto event tables..."
+PGPASSWORD='Fu3lth3j3t!' psql -h 34.41.97.179 -U postgres -d tradiac_testing -c "TRUNCATE TABLE trade_events_crypto_equal_mean; TRUNCATE TABLE trade_events_crypto_winsorized; SELECT 'Tables cleared' as status;"
+
+echo "Building Docker image..."
+gcloud builds submit --tag gcr.io/tradiac-testing/crypto-event-generator-30x30
+
+echo "Deploying Cloud Run job..."
+gcloud run jobs delete crypto-event-job-30x30 --region us-central1 --quiet 2>/dev/null
+gcloud run jobs create crypto-event-job-30x30 \
+  --image gcr.io/tradiac-testing/crypto-event-generator-30x30:latest \
+  --region us-central1 \
+  --memory 8Gi \
+  --cpu 4 \
+  --max-retries 0 \
+  --task-timeout 3h \
+  --set-env-vars DB_HOST=34.41.97.179,DB_PORT=5432,DB_NAME=tradiac_testing,DB_USER=postgres,DB_PASSWORD=Fu3lth3j3t!
+
+echo "Starting EQUAL_MEAN job..."
+gcloud run jobs execute crypto-event-job-30x30 --region us-central1 --update-env-vars METHOD=EQUAL_MEAN --async
+
+echo "Starting WINSORIZED job..."
+gcloud run jobs execute crypto-event-job-30x30 --region us-central1 --update-env-vars METHOD=WINSORIZED --async
+
+echo ""
+echo "✅ Both jobs started with 30x30 grid (900 combinations)!"
+echo "Expected: Millions of events per crypto"
+echo "Time: ~2-3 hours"
+echo ""
+echo "Monitor: gcloud run jobs executions list --region us-central1"

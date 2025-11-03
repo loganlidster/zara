@@ -23,7 +23,7 @@ export async function cryptoDailyCurveSimple(req, res) {
     const query = `
       SELECT 
         event_timestamp::date as trade_date,
-        event_timestamp,
+        TO_CHAR(event_timestamp, 'MM/DD/YYYY HH24:MI:SS') as event_timestamp,
         trade_roi_pct
       FROM ${tableName}
       WHERE symbol = $1
@@ -47,7 +47,7 @@ export async function cryptoDailyCurveSimple(req, res) {
       cumulativeReturn += parseFloat(row.trade_roi_pct || 0);
       return {
         date: row.trade_date,
-        timestamp: row.event_timestamp,
+        timestamp: row.TO_CHAR(event_timestamp, 'MM/DD/YYYY HH24:MI:SS') as event_timestamp,
         trade_roi: parseFloat(parseFloat(row.trade_roi_pct).toFixed(2)),
         cumulative_return: parseFloat(cumulativeReturn.toFixed(2))
       };

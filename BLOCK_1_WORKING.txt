@@ -1,0 +1,89 @@
+cd ~
+mkdir -p crypto-job-30x30
+cd crypto-job-30x30
+
+cat > crypto-event-generation.js << 'EOF'
+#!/usr/bin/env node
+import pg from 'pg';
+const { Pool } = pg;
+
+const pool = new Pool({
+  host: process.env.DB_HOST || '34.41.97.179',
+  port: process.env.DB_PORT || 5432,
+  database: process.env.DB_NAME || 'tradiac_testing',
+  user: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'Fu3lth3j3t!',
+  max: 50,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 10000
+});
+
+const METHOD = process.env.METHOD;
+const START_DATE = '2024-10-01';
+const END_DATE = '2025-11-02';
+const BATCH_SIZE = 5000;
+const THRESHOLDS = [
+  0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
+  1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
+  2.2, 2.4, 2.8, 3.0, 3.5, 3.7, 3.9, 4.0, 4.5, 5.0
+];
+
+function generateCombinations() {
+  const combinations = [];
+  for (const buy of THRESHOLDS) {
+    for (const sell of THRESHOLDS) {
+      combinations.push({ buy_pct: buy, sell_pct: sell });
+    }
+  }
+  return combinations;
+}
+
+const COMBINATIONS = generateCombinations();
+const TABLE_NAME = `trade_events_crypto_${METHOD.toLowerCase()}`;
+
+console.log('\n========================================');
+console.log(`Method: ${METHOD}, Combinations: ${COMBINATIONS.length}`);
+console.log(`Batch size: ${BATCH_SIZE}`);
+console.log('========================================\n');
+
+async function getLastEventState(client, symbol, buyPct, sellPct, beforeDate) {
+  const result = await client.query(`
+    SELECT event_type FROM ${TABLE_NAME}
+    WHERE symbol = $1 AND buy_pct = $2 AND sell_pct = $3 AND event_timestamp < $4
+    ORDER BY event_timestamp DESC LIMIT 1
+  `, [symbol, buyPct, sellPct, beforeDate]);
+  return result.rows.length === 0 ? true : result.rows[0].event_type === 'SELL';
+}
+
+function simulateTrading(minuteData, buyPct, sellPct, expectingBuy) {
+  const events = [];
+  let lastBuyPrice = null;
+  for (const bar of minuteData) {
+    const ratio = bar.btc_close / bar.crypto_close;
+    const baseline = bar.baseline;
+    const buyThreshold = baseline * (1 + buyPct / 100);
+    const sellThreshold = baseline * (1 - sellPct / 100);
+    if (expectingBuy && ratio >= buyThreshold) {
+      lastBuyPrice = bar.crypto_close;
+      events.push({
+        event_timestamp: bar.timestamp, event_type: 'BUY',
+        crypto_price: bar.crypto_close, btc_price: bar.btc_close,
+        ratio: ratio, baseline: baseline, trade_roi_pct: null
+      });
+      expectingBuy = false;
+    } else if (!expectingBuy && ratio <= sellThreshold && lastBuyPrice) {
+      const roi = ((bar.crypto_close - lastBuyPrice) / lastBuyPrice) * 100;
+      events.push({
+        event_timestamp: bar.timestamp, event_type: 'SELL',
+        crypto_price: bar.crypto_close, btc_price: bar.btc_close,
+        ratio: ratio, baseline: baseline, trade_roi_pct: roi
+      });
+      expectingBuy = true;
+      lastBuyPrice = null;
+    }
+  }
+  return events;
+}
+EOF
+
+echo "✅ Part 1 created with 30x30 grid (900 combinations)"
